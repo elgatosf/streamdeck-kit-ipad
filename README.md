@@ -10,6 +10,8 @@
 1. In the Link Binary With Libraries phase, add StreamDeckSDK from the SPM dependency
 1. You may also need to add the library to the Dependencies phase
 
+Add IOKit library.
+
 ### CocoaPods
 
 Example Podfile

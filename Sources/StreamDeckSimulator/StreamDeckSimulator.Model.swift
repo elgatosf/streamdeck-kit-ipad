@@ -8,16 +8,20 @@ import Foundation
 import StreamDeckKit
 
 public extension StreamDeckSimulator {
-    enum Model {
-        case plus
-        case regular
+    enum Model: CaseIterable {
         case mini
+        case regular
+        case plus
         case xl
         case pedal
     }
 }
 
-extension StreamDeckSimulator.Model {
+extension StreamDeckSimulator.Model: Identifiable {
+
+    public var id: Int {
+        productID
+    }
 
     var productID: Int {
         switch self {
@@ -36,6 +40,16 @@ extension StreamDeckSimulator.Model {
         case .plus: return "SD+ Simulator"
         case .xl: return "SD XL Simulator"
         case .pedal: return "SD Pedal Simulator"
+        }
+    }
+
+    var formFactorName: String {
+        switch self {
+        case .mini: return "Mini"
+        case .regular: return "Classic"
+        case .plus: return "Plus"
+        case .xl: return "XL"
+        case .pedal: return "Pedal"
         }
     }
 
@@ -99,13 +113,13 @@ extension StreamDeckSimulator.Model {
         }
     }
 
-    func createDevice() -> (StreamDeck, StreamDeckClientMock) {
+    func createConfiguration() -> StreamDeckSimulator.Configuration {
         let client = StreamDeckClientMock(capabilities: capabilities)
         let device = StreamDeck(
             client: client,
             info: .init(productID: productID, productName: productName, serialNumber: "SIM-" + UUID().uuidString),
             capabilities: capabilities
         )
-        return (device, client)
+        return .init(device: device, client: client)
     }
 }

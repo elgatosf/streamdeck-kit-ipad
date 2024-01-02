@@ -38,8 +38,8 @@ class StreamDeckHandler {
         session.stop()
     }
 
-    func showSimulator(streamDeck model: StreamDeckSimulator.Model) {
-        StreamDeckSimulator.show(streamDeck: model, for: session)
+    func showSimulator() {
+        StreamDeckSimulator.show(for: session)
     }
 
     private func addDevice(_ device: StreamDeck) {

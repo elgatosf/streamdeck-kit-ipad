@@ -5,41 +5,45 @@
 //  Created by Roman Schlagowsky on 08.12.23.
 //
 
+import Combine
 import StreamDeckKit
 import SwiftUI
 
 struct SimulatorContainer: View {
 
-    typealias DragValueHandler = (DragGesture.Value) -> Void
-    typealias SizeChangeHandler = (CGFloat) -> Void
+    public typealias DragValueHandler = (DragGesture.Value) -> Void
+    public typealias SizeChangeHandler = (CGFloat) -> Void
+    public typealias DeviceChangeHandler = (StreamDeckSimulator.Model, StreamDeck) -> Void
 
-    let model: StreamDeckSimulator.Model
-    let device: StreamDeck
-    let client: StreamDeckClientMock
     let onDragMove: DragValueHandler
     let onSizeChange: SizeChangeHandler
+    let onDeviceChange: DeviceChangeHandler
 
+    @State private var model: StreamDeckSimulator.Model
+
+    @State private(set) var configuration: StreamDeckSimulator.Configuration
     @State private var showDeviceBezels: Bool = true
     @State private var showKeyAreaBorders: Bool = false
     @State var size: CGFloat
 
-    init(
-        model: StreamDeckSimulator.Model,
-        device: StreamDeck,
-        client: StreamDeckClientMock,
+    var device: StreamDeck { configuration.device }
+
+    public init(
+        model: StreamDeckSimulator.Model = .regular,
         size: CGFloat = 400,
-        onDragMove: @escaping SimulatorContainer.DragValueHandler = { _ in },
-        onSizeChange: @escaping SimulatorContainer.SizeChangeHandler = { _ in }
+        onDragMove: @escaping DragValueHandler = { _ in },
+        onSizeChange: @escaping SizeChangeHandler = { _ in },
+        onDeviceChange: @escaping DeviceChangeHandler = { _, _ in }
     ) {
         self.model = model
-        self.device = device
-        self.client = client
+        configuration = model.createConfiguration()
         self.onDragMove = onDragMove
         self.onSizeChange = onSizeChange
+        self.onDeviceChange = onDeviceChange
         self.size = size
     }
 
-    var body: some View {
+    public var body: some View {
         VStack {
             HStack(spacing: 0) {
                 Button {
@@ -51,18 +55,23 @@ struct SimulatorContainer: View {
 
                 Spacer().frame(maxWidth: .infinity)
 
-                Toggle(isOn: $showDeviceBezels) {
-                    Image(systemName: "square.grid.3x3.middle.filled")
+                Text("Stream Deck: ")
+                Menu {
+                    Section("Stream Deck Model") {
+                        modelPicker
+                    }
+                    Section("Options") {
+                        if model != .pedal {
+                            Toggle("Show device bezels", isOn: $showDeviceBezels)
+                        }
+                        Toggle("Show guides", isOn: $showKeyAreaBorders)
+                    }
+                } label: {
+                    HStack {
+                        Text(model.formFactorName)
+                        Image(systemName: "chevron.up.chevron.down")
+                    }
                 }
-                .fixedSize(horizontal: true, vertical: false)
-                .opacity(model == .pedal ? 0 : 1)
-
-                Spacer()
-
-                Toggle(isOn: $showKeyAreaBorders) {
-                    Image(systemName: "grid")
-                }
-                .fixedSize(horizontal: true, vertical: false)
             }
             .padding([.top, .leading], 4)
             .padding(.trailing)
@@ -85,6 +94,19 @@ struct SimulatorContainer: View {
         .shadow(radius: 10)
     }
 
+    private var modelPicker: some View {
+        Picker(model.formFactorName, selection: $model) {
+            ForEach(StreamDeckSimulator.Model.allCases) { model in
+                Text(model.formFactorName).tag(model)
+            }
+        }
+        .onChange(of: model) { _, newValue in
+            let config = newValue.createConfiguration()
+            onDeviceChange(newValue, config.device)
+            configuration = config
+        }
+    }
+
     private var resizeHandle: some View {
         Image(systemName: "arrow.up.left.and.arrow.down.right.circle.fill")
             .frame(width: 44, height: 44)
@@ -102,16 +124,11 @@ struct SimulatorContainer: View {
     @ViewBuilder
     private var simulator: some View {
         if model == .pedal {
-            StreamDeckPedalSimulatorView(
-                device: device,
-                client: client,
-                showTouchAreaBorders: $showKeyAreaBorders
-            )
+            StreamDeckPedalSimulatorView(config: configuration, showTouchAreaBorders: $showKeyAreaBorders)
         } else {
             StreamDeckSimulatorView.create(
                 streamDeck: model,
-                device: device,
-                client: client,
+                config: configuration,
                 showDeviceBezels: $showDeviceBezels,
                 showKeyAreaBorders: $showKeyAreaBorders
             )
@@ -120,43 +137,23 @@ struct SimulatorContainer: View {
 }
 
 #if DEBUG
-    #Preview("Plus", traits: .fixedLayout(width: 600, height: 600)) {
-        Group {
-            let model: StreamDeckSimulator.Model = .plus
-            let (device, client) = model.createDevice()
-            SimulatorContainer(model: model, device: device, client: client)
-        }
-    }
+#Preview("Plus", traits: .fixedLayout(width: 600, height: 600)) {
+    SimulatorContainer(model: .plus)
+}
 
-    #Preview("Mini", traits: .fixedLayout(width: 600, height: 600)) {
-        Group {
-            let model: StreamDeckSimulator.Model = .mini
-            let (device, client) = model.createDevice()
-            SimulatorContainer(model: model, device: device, client: client)
-        }
-    }
+#Preview("Mini", traits: .fixedLayout(width: 600, height: 600)) {
+    SimulatorContainer(model: .mini)
+}
 
-    #Preview("Regular", traits: .fixedLayout(width: 600, height: 600)) {
-        Group {
-            let model: StreamDeckSimulator.Model = .regular
-            let (device, client) = model.createDevice()
-            SimulatorContainer(model: model, device: device, client: client)
-        }
-    }
+#Preview("Regular", traits: .fixedLayout(width: 600, height: 600)) {
+    SimulatorContainer(model: .regular)
+}
 
-    #Preview("XL", traits: .fixedLayout(width: 600, height: 600)) {
-        Group {
-            let model: StreamDeckSimulator.Model = .xl
-            let (device, client) = model.createDevice()
-            SimulatorContainer(model: model, device: device, client: client)
-        }
-    }
+#Preview("XL", traits: .fixedLayout(width: 600, height: 600)) {
+    SimulatorContainer(model: .xl)
+}
 
-    #Preview("Pedal", traits: .fixedLayout(width: 600, height: 600)) {
-        Group {
-            let model: StreamDeckSimulator.Model = .pedal
-            let (device, client) = model.createDevice()
-            SimulatorContainer(model: model, device: device, client: client)
-        }
-    }
+#Preview("Pedal", traits: .fixedLayout(width: 600, height: 600)) {
+    SimulatorContainer(model: .pedal)
+}
 #endif

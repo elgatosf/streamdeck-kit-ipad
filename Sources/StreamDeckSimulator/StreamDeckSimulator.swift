@@ -10,6 +10,12 @@ import SwiftUI
 import UIKit
 
 public final class StreamDeckSimulator {
+
+    internal struct Configuration {
+        let device: StreamDeck
+        let client: StreamDeckClientMock
+    }
+
     private class PassThroughWindow: UIWindow {
         override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
             // Get view from superclass.
@@ -26,13 +32,14 @@ public final class StreamDeckSimulator {
 
     private var lastSimulatorCenter: CGPoint?
     private var lastSimulatorSize: CGFloat?
+    private var lastSimulatorModel: Model?
 
     private var activeScene: UIWindowScene? {
         let windowScene = UIApplication.shared.connectedScenes as? Set<UIWindowScene>
         return windowScene?.first { $0.activationState == .foregroundActive }
     }
 
-    public static func show(streamDeck model: Model, for session: StreamDeckSession) {
+    public static func show(streamDeck model: Model? = nil, for session: StreamDeckSession) {
         shared.showSimulator(model, for: session)
     }
 
@@ -47,17 +54,15 @@ public final class StreamDeckSimulator {
         session = nil
     }
 
-    private func showSimulator(_ model: Model, for session: StreamDeckSession) {
+    private func showSimulator(_ model: Model?, for session: StreamDeckSession) {
         clearWindow()
 
         guard let scene = activeScene else { return }
 
+        let model: Model = model ?? lastSimulatorModel ?? .regular
         let window = PassThroughWindow(windowScene: scene)
-        let (device, client) = model.createDevice()
         let simulatorContainer = SimulatorContainer(
             model: model,
-            device: device,
-            client: client,
             size: lastSimulatorSize ?? 400,
             onDragMove: { [weak self] value in
                 guard let rootView = self?.window?.rootViewController?.view else { return }
@@ -69,6 +74,10 @@ public final class StreamDeckSimulator {
             },
             onSizeChange: { [weak self] newSize in
                 self?.lastSimulatorSize = newSize
+            },
+            onDeviceChange: { [weak self] newModel, newDevice in
+                self?.updateDevice(newDevice)
+                self?.lastSimulatorModel = newModel
             }
         )
         let hostViewController = UIHostingController(rootView: simulatorContainer)
@@ -77,10 +86,17 @@ public final class StreamDeckSimulator {
         window.rootViewController = hostViewController
         window.isHidden = false
         lastSimulatorCenter.map { hostViewController.view.center = $0 }
-        session.append(device: device)
+        session.append(device: simulatorContainer.device)
 
         self.window = window
         self.session = session
+        device = simulatorContainer.device
+        lastSimulatorModel = model
+    }
+
+    private func updateDevice(_ device: StreamDeck) {
+        self.device.map { session?.remove(device: $0) }
+        session?.append(device: device)
         self.device = device
     }
 }

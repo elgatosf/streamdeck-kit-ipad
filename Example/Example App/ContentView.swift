@@ -18,7 +18,7 @@ struct ContentView: View {
                 Text("Please connect a Stream Deck device!")
                 Text("or")
                 Button("Start the Stream Deck Simulator") {
-                    streamDeckHandler.showSimulator(streamDeck: .regular)
+                    streamDeckHandler.showSimulator()
                 }
             } else {
                 ForEach(streamDeckHandler.devices) { device in

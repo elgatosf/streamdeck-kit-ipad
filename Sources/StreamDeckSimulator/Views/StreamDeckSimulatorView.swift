@@ -17,8 +17,9 @@ struct StreamDeckSimulatorView: View {
     @State private var backgroundImage: UIImage?
     @State private var buttonImages: [Int: UIImage] = [:]
 
-    let device: StreamDeck
-    let client: StreamDeckClientMock
+    let config: StreamDeckSimulator.Configuration
+    var device: StreamDeck { config.device }
+    var client: StreamDeckClientMock { config.client }
 
     let layoutInfo: StreamDeckLayoutInfo
     let bezelImageName: String
@@ -27,8 +28,7 @@ struct StreamDeckSimulatorView: View {
     let yTransformBaseScaleMultiplier: CGFloat
 
     fileprivate init(
-        device: StreamDeck,
-        client: StreamDeckClientMock,
+        config: StreamDeckSimulator.Configuration,
         layoutInfo: StreamDeckLayoutInfo,
         bezelImageAspectRatio: CGFloat,
         bezelImageName: String,
@@ -37,8 +37,7 @@ struct StreamDeckSimulatorView: View {
         showDeviceBezels: Binding<Bool>,
         showKeyAreaBorders: Binding<Bool>
     ) {
-        self.device = device
-        self.client = client
+        self.config = config
         self.layoutInfo = layoutInfo
         self.bezelImageName = bezelImageName
         self.bezelImageAspectRatio = bezelImageAspectRatio
@@ -59,12 +58,13 @@ struct StreamDeckSimulatorView: View {
     }
 }
 
+// MARK: - Configuration
+
 extension StreamDeckSimulatorView {
 
     static func create(
         streamDeck model: StreamDeckSimulator.Model,
-        device: StreamDeck,
-        client: StreamDeckClientMock,
+        config: StreamDeckSimulator.Configuration,
         showDeviceBezels: Binding<Bool> = .constant(true),
         showKeyAreaBorders: Binding<Bool> = .constant(true)
     ) -> StreamDeckSimulatorView {
@@ -76,8 +76,7 @@ extension StreamDeckSimulatorView {
             yTransformBaseScaleMultiplier: CGFloat
         ) -> StreamDeckSimulatorView {
             .init(
-                device: device,
-                client: client,
+                config: config,
                 layoutInfo: layoutInfo,
                 bezelImageAspectRatio: bezelImageAspectRatio,
                 bezelImageName: bezelImageName,
@@ -251,25 +250,24 @@ private extension StreamDeckSimulatorView {
 
 #if DEBUG
 
-    // MARK: - Preview
+// MARK: - Preview
 
-    #Preview("Square", traits: .fixedLayout(width: 700, height: 700)) {
-        Group {
-            let (device, client) = StreamDeckSimulator.Model.mini.createDevice()
-            StreamDeckSimulatorView.create(streamDeck: .mini, device: device, client: client)
-                .frame(width: 400, height: 700)
-                .border(.green)
-                .onAppear {
-                    device.setImage(.init(systemName: "gear")!, to: 1)
-                    device.set(color: .red, to: 3)
-                }
-        }
+#Preview("Square", traits: .fixedLayout(width: 700, height: 700)) {
+    Group {
+        let config = StreamDeckSimulator.Model.mini.createConfiguration()
+        StreamDeckSimulatorView.create(streamDeck: .mini, config: config)
+            .frame(width: 400, height: 700)
+            .border(.green)
+            .onAppear {
+                config.device.setImage(.init(systemName: "gear")!, to: 1)
+                config.device.set(color: .red, to: 3)
+            }
     }
+}
 
-    #Preview("Landscape", traits: .landscapeLeft) {
-        Group {
-            let (device, client) = StreamDeckSimulator.Model.plus.createDevice()
-            StreamDeckSimulatorView.create(streamDeck: .plus, device: device, client: client)
-        }
+#Preview("Landscape", traits: .landscapeLeft) {
+    Group {
+        StreamDeckSimulatorView.create(streamDeck: .plus, config: StreamDeckSimulator.Model.plus.createConfiguration())
     }
+}
 #endif

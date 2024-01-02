@@ -11,8 +11,8 @@ import UIKit
 
 struct StreamDeckPedalSimulatorView: View {
 
-    let device: StreamDeck
-    let client: StreamDeckClientMock
+    let config: StreamDeckSimulator.Configuration
+    var client: StreamDeckClientMock { config.client }
 
     @Binding var showTouchAreaBorders: Bool
 
@@ -41,13 +41,13 @@ private extension StreamDeckPedalSimulatorView {
                 }
                 .frame(width: geo.size.width / 5)
                 .border(showTouchAreaBorders ? .red : .clear)
-                
+
                 SimulatorKeyView(image: nil) { pressed in
                     client.emit(.keyPress(index: 1, pressed: pressed))
                 }
                 .frame(width: geo.size.width * 0.475)
                 .border(showTouchAreaBorders ? .red : .clear)
-                
+
                 SimulatorKeyView(image: nil) { pressed in
                     client.emit(.keyPress(index: 2, pressed: pressed))
                 }
@@ -66,8 +66,10 @@ private extension StreamDeckPedalSimulatorView {
 }
 
 #if DEBUG
-    #Preview {
-        let (device, client) = StreamDeckSimulator.Model.pedal.createDevice()
-        return StreamDeckPedalSimulatorView(device: device, client: client, showTouchAreaBorders: .constant(false))
-    }
+#Preview {
+    StreamDeckPedalSimulatorView(
+        config: StreamDeckSimulator.Model.pedal.createConfiguration(),
+        showTouchAreaBorders: .constant(false)
+    )
+}
 #endif

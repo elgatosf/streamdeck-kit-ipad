@@ -13,7 +13,7 @@ import SwiftUI
 @Observable
 class StreamDeckHandler {
 
-    private let session = StreamDeckSession()
+    private let session: StreamDeckSession = .shared
     private var deviceObservations: [StreamDeck: AnyCancellable] = [:]
 
     var devices: [StreamDeck] {
@@ -39,7 +39,7 @@ class StreamDeckHandler {
     }
 
     func showSimulator() {
-        StreamDeckSimulator.show(for: session)
+        StreamDeckSimulator.show()
     }
 
     private func addDevice(_ device: StreamDeck) {
@@ -135,4 +135,10 @@ private struct DeckKeyView: View {
             .frame(width: size.width, height: size.height)
             .background(background)
     }
+}
+
+// MARK: - Simulator preview
+
+#Preview(traits: .landscapeLeft) {
+    StreamDeckSimulator.PreviewView(model: .xl, context: { StreamDeckHandler() })
 }

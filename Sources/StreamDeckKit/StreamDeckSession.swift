@@ -16,6 +16,8 @@ public final class StreamDeckSession {
         case detached(StreamDeck)
     }
 
+    public static let shared = StreamDeckSession()
+
     public typealias Listener = (Event) -> Void
 
     private var notificationPort: IONotificationPortRef?
@@ -24,7 +26,7 @@ public final class StreamDeckSession {
 
     public var listener: Listener?
 
-    public init() {}
+    private init() {}
 
     public func start() {
         guard notificationPort == nil else { return }
@@ -115,14 +117,16 @@ public final class StreamDeckSession {
         }
     }
 
-    /// - Discussion: Could be internal
-    public func append(device: StreamDeck) {
+    private func append(device: StreamDeck) {
         devices.append(device)
         listener?(.attached(device))
     }
 
-    /// - Discussion: Could be internal
-    public func remove(device: StreamDeck) {
+    public func _appendSimulator(device: StreamDeck) {
+        append(device: device)
+    }
+
+    public func _removeSimulator(device: StreamDeck) {
         devices.removeAll { $0.info.serialNumber == device.info.serialNumber }
         listener?(.detached(device))
     }

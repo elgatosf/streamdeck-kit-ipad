@@ -39,3 +39,16 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
+// MARK: - Simulator preview
+
+#if DEBUG
+import StreamDeckSimulator
+
+#Preview("With simulator attached") {
+    VStack {
+        ContentView()
+        StreamDeckSimulator.PreviewView(model: .mini)
+    }
+}
+#endif

@@ -26,9 +26,11 @@ public final class StreamDeckSimulator {
     }
 
     private static let shared = StreamDeckSimulator()
-    private var session: StreamDeckSession?
     private var device: StreamDeck?
     private var window: UIWindow?
+    private var session: StreamDeckSession {
+        .shared
+    }
 
     private var lastSimulatorCenter: CGPoint?
     private var lastSimulatorSize: CGFloat?
@@ -39,8 +41,12 @@ public final class StreamDeckSimulator {
         return windowScene?.first { $0.activationState == .foregroundActive }
     }
 
-    public static func show(streamDeck model: Model? = nil, for session: StreamDeckSession) {
-        shared.showSimulator(model, for: session)
+    public static func show(streamDeck model: Model) {
+        shared.showSimulator(model)
+    }
+
+    public static func show(defaultStreamDeck defaultModel: Model = .regular) {
+        shared.showSimulator(shared.lastSimulatorModel ?? defaultModel)
     }
 
     public static func close() {
@@ -48,13 +54,12 @@ public final class StreamDeckSimulator {
     }
 
     private func clearWindow() {
-        device.map { session?.remove(device: $0) }
+        device.map { session._removeSimulator(device: $0) }
         window?.isHidden = true
         window = nil
-        session = nil
     }
 
-    private func showSimulator(_ model: Model?, for session: StreamDeckSession) {
+    private func showSimulator(_ model: Model) {
         clearWindow()
 
         guard let scene = activeScene else { return }
@@ -86,17 +91,16 @@ public final class StreamDeckSimulator {
         window.rootViewController = hostViewController
         window.isHidden = false
         lastSimulatorCenter.map { hostViewController.view.center = $0 }
-        session.append(device: simulatorContainer.device)
+        session._appendSimulator(device: simulatorContainer.device)
 
         self.window = window
-        self.session = session
         device = simulatorContainer.device
         lastSimulatorModel = model
     }
 
     private func updateDevice(_ device: StreamDeck) {
-        self.device.map { session?.remove(device: $0) }
-        session?.append(device: device)
+        self.device.map { session._removeSimulator(device: $0) }
+        session._appendSimulator(device: device)
         self.device = device
     }
 }

@@ -9,7 +9,7 @@ import Combine
 import Foundation
 import UIKit
 
-public final class StreamDeck: StreamDeckProtocol {
+public final class StreamDeck {
     let client: StreamDeckClientProtocol
     public let info: DeviceInfo
     public let capabilities: DeviceCapabilities

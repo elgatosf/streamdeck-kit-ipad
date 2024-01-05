@@ -39,7 +39,7 @@ private extension View {
     }
 }
 
-public extension StreamDeckProtocol {
+public extension StreamDeck {
 
     func clear(key: Int) {
         set(uiColor: .black, to: key)

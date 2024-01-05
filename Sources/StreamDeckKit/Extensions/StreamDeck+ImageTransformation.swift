@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import UniformTypeIdentifiers
 
-public extension StreamDeck {
+extension StreamDeck {
 
     func transform(_ image: UIImage, size: CGSize, scaleAspectFit: Bool) -> Data? {
         let format = UIGraphicsImageRendererFormat(for: .init(displayScale: 1))

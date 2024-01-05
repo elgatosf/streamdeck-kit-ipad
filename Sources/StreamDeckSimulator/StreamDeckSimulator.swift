@@ -13,7 +13,7 @@ public final class StreamDeckSimulator {
 
     internal struct Configuration {
         let device: StreamDeck
-        let client: StreamDeckClientMock
+        let client: StreamDeckSimulatorClient
     }
 
     private class PassThroughWindow: UIWindow {

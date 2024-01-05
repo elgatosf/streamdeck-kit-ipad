@@ -12,14 +12,14 @@ public struct StreamDeckViewContext {
 
     public typealias DirtyHandler = (DirtyMarker) -> Void
 
-    public let device: StreamDeckProtocol
+    public let device: StreamDeck
     public private(set) var dirtyMarker: DirtyMarker
     public private(set) var size: CGSize
     public private(set) var index: Int
     private let onDirty: DirtyHandler?
 
     public init(
-        device: StreamDeckProtocol,
+        device: StreamDeck,
         dirtyMarker: DirtyMarker,
         size: CGSize,
         index: Int = -1,

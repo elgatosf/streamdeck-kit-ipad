@@ -9,7 +9,6 @@ import Combine
 import Foundation
 import StreamDeckCApi
 
-/// - Discussion: Could be internal
 public protocol StreamDeckClientProtocol: Actor {
     nonisolated var inputEventsPublisher: AnyPublisher<InputEvent, Never> { get }
     var service: io_service_t { get }

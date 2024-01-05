@@ -12,7 +12,7 @@ import UIKit
 struct StreamDeckPedalSimulatorView: View {
 
     let config: StreamDeckSimulator.Configuration
-    var client: StreamDeckClientMock { config.client }
+    var client: StreamDeckSimulatorClient { config.client }
 
     @Binding var showTouchAreaBorders: Bool
 

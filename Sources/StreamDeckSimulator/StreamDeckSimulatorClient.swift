@@ -1,5 +1,5 @@
 //
-//  StreamDeckClientMock.swift
+//  StreamDeckSimulatorClient.swift
 //
 //
 //  Created by Roman Schlagowsky on 06.12.23.
@@ -11,7 +11,7 @@ import StreamDeckCApi
 import StreamDeckKit
 import UIKit
 
-public final actor StreamDeckClientMock {
+public final actor StreamDeckSimulatorClient {
 
     private let capabilities: DeviceCapabilities
     private let inputEventSubject = PassthroughSubject<InputEvent, Never>()
@@ -55,7 +55,7 @@ public final actor StreamDeckClientMock {
 
 // MARK: - StreamDeckClientProtocol conformance
 
-extension StreamDeckClientMock: StreamDeckClientProtocol {
+extension StreamDeckSimulatorClient: StreamDeckClientProtocol {
 
     public nonisolated var inputEventsPublisher: AnyPublisher<InputEvent, Never> {
         inputEventSubject.eraseToAnyPublisher()

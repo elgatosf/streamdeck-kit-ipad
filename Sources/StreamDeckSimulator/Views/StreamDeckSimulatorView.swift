@@ -19,7 +19,7 @@ struct StreamDeckSimulatorView: View {
 
     let config: StreamDeckSimulator.Configuration
     var device: StreamDeck { config.device }
-    var client: StreamDeckClientMock { config.client }
+    var client: StreamDeckSimulatorClient { config.client }
 
     let layoutInfo: StreamDeckLayoutInfo
     let bezelImageName: String

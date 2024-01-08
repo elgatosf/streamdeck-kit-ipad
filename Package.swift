@@ -30,7 +30,10 @@ let package = Package(
             name: "StreamDeckKit",
             dependencies: ["StreamDeckCApi"]
         ),
-        .target(name: "StreamDeckCApi"),
+        .target(
+            name: "StreamDeckCApi",
+            linkerSettings: [.linkedFramework("IOKit")]
+        ),
         .testTarget(
             name: "StreamDeckSDKTests",
             dependencies: ["StreamDeckKit"]

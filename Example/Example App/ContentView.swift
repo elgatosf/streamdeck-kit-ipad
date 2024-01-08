@@ -14,6 +14,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
+            Text("Session State: \(streamDeckHandler.stateDescription)")
             if streamDeckHandler.devices.isEmpty {
                 Text("Please connect a Stream Deck device!")
                 Text("or")
@@ -31,8 +32,6 @@ struct ContentView: View {
             }
         }
         .padding()
-        .onAppear { streamDeckHandler.start() }
-        .onDisappear { streamDeckHandler.stop() }
     }
 }
 

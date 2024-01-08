@@ -4,6 +4,8 @@
 //
 //  Created by Alexander Jentz on 14.11.23.
 //
+//  ☝️ Important: This file needs to be in sync with the corresponding version of StreamDeckKit!
+//
 
 #ifndef StreamDeckDriverShared_h
 #define StreamDeckDriverShared_h
@@ -19,6 +21,11 @@ typedef enum {
     SDExternalMethod_fillDisplay = 7,
     SDNumberOfExternalMethods // Has to be last
 } SDExternalMethod;
+
+typedef enum {
+    SDRootExternalMethod_getDriverVersion = 0, // Don't change; this call must work in all versions
+    SDRootNumberOfExternalMethods // Has to be last
+} SDRootExternalMethod;
 
 typedef struct SDDeviceInfo {
     uint16_t vendorID;

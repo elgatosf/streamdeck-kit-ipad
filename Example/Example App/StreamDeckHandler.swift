@@ -15,27 +15,38 @@ class StreamDeckHandler {
 
     private let session: StreamDeckSession = .shared
     private var deviceObservations: [StreamDeck: AnyCancellable] = [:]
+    private var cancellables = Set<AnyCancellable>()
 
     var devices: [StreamDeck] {
         Array(deviceObservations.keys)
     }
     private(set) var pressedKeys: [StreamDeck: Set<Int>] = [:]
+    private(set) var stateDescription: String = StreamDeckSession.State.idle.debugDescription
 
     init() {
-        session.listener = { [weak self] event in
+        session.deviceConnectionHandler = { [weak self] event in
             switch event {
             case let .attached(device): self?.addDevice(device)
             case let .detached(device): self?.removeDevice(device)
             }
         }
-    }
 
-    func start() {
-        session.start()
-    }
+        session.$state
+            .map(\.debugDescription)
+            .sink { [weak self] in self?.stateDescription = $0 }
+            .store(in: &cancellables)
+        
+        NotificationCenter
+            .default
+            .publisher(for: UIApplication.didBecomeActiveNotification)
+            .sink { [weak self] _ in self?.session.start() }
+            .store(in: &cancellables)
 
-    func stop() {
-        session.stop()
+        NotificationCenter
+            .default
+            .publisher(for: UIApplication.willResignActiveNotification)
+            .sink { [weak self] _ in self?.session.stop() }
+            .store(in: &cancellables)
     }
 
     func showSimulator() {

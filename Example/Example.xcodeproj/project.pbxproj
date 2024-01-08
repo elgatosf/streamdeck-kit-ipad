@@ -15,12 +15,12 @@
 		3073017E2B3DB96200C5F5B4 /* StreamDeckSimulator in Frameworks */ = {isa = PBXBuildFile; productRef = 3073017D2B3DB96200C5F5B4 /* StreamDeckSimulator */; };
 		307301822B3DBA7900C5F5B4 /* StreamDeckKit in Frameworks */ = {isa = PBXBuildFile; productRef = 307301812B3DBA7900C5F5B4 /* StreamDeckKit */; };
 		307301842B3DBA7900C5F5B4 /* StreamDeckSimulator in Frameworks */ = {isa = PBXBuildFile; productRef = 307301832B3DBA7900C5F5B4 /* StreamDeckSimulator */; };
-		307301882B3DC01E00C5F5B4 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307301872B3DC01E00C5F5B4 /* IOKit.framework */; };
 		30D518D32B3DC08C0077705C /* StreamDeckHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D518D22B3DC08C0077705C /* StreamDeckHandler.swift */; };
 		30D518D52B3EFAC60077705C /* StreamDeckKeyGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D518D42B3EFAC60077705C /* StreamDeckKeyGridView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		21DE1EAA2B46E86600B18417 /* Example-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Example-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		307301692B3DB70000C5F5B4 /* StreamDeckKit Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "StreamDeckKit Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3073016C2B3DB70000C5F5B4 /* StreamDeckKit_ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamDeckKit_ExampleApp.swift; sourceTree = "<group>"; };
 		3073016E2B3DB70000C5F5B4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,7 +40,6 @@
 				3073017E2B3DB96200C5F5B4 /* StreamDeckSimulator in Frameworks */,
 				307301822B3DBA7900C5F5B4 /* StreamDeckKit in Frameworks */,
 				307301842B3DBA7900C5F5B4 /* StreamDeckSimulator in Frameworks */,
-				307301882B3DC01E00C5F5B4 /* IOKit.framework in Frameworks */,
 				3073017C2B3DB96200C5F5B4 /* StreamDeckKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -68,6 +67,7 @@
 		3073016B2B3DB70000C5F5B4 /* Example App */ = {
 			isa = PBXGroup;
 			children = (
+				21DE1EAA2B46E86600B18417 /* Example-App-Info.plist */,
 				307301852B3DBC7600C5F5B4 /* Example App.entitlements */,
 				3073016C2B3DB70000C5F5B4 /* StreamDeckKit_ExampleApp.swift */,
 				3073016E2B3DB70000C5F5B4 /* ContentView.swift */,
@@ -315,6 +315,7 @@
 				DEVELOPMENT_TEAM = Y93VXCB8Q5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Example-App-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -345,6 +346,7 @@
 				DEVELOPMENT_TEAM = Y93VXCB8Q5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Example-App-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

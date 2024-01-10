@@ -113,11 +113,15 @@ extension StreamDeckSimulator.Model: Identifiable {
         }
     }
 
-    func createConfiguration() -> StreamDeckSimulator.Configuration {
+    func createConfiguration(serialNumber: String? = nil) -> StreamDeckSimulator.Configuration {
         let client = StreamDeckSimulatorClient(capabilities: capabilities)
         let device = StreamDeck(
             client: client,
-            info: .init(productID: productID, productName: productName, serialNumber: "SIM-" + UUID().uuidString),
+            info: .init(
+                productID: productID,
+                productName: productName,
+                serialNumber: DeviceInfo.simulatorSerialPrefix + (serialNumber ?? UUID().uuidString)
+            ),
             capabilities: capabilities
         )
         return .init(device: device, client: client)

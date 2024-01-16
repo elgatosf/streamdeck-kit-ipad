@@ -15,11 +15,11 @@ struct StreamDeckKeyGridView: View {
 
     var body: some View {
         Grid(horizontalSpacing: 2, verticalSpacing: 2) {
-            ForEach(0 ..< capabilities.rows, id: \.self) { row in
+            ForEach(0 ..< capabilities.keyRows, id: \.self) { row in
                 GridRow {
-                    ForEach(0 ..< capabilities.columns, id: \.self) { column in
+                    ForEach(0 ..< capabilities.keyColumns, id: \.self) { column in
 
-                        let index = capabilities.columns * row + column
+                        let index = capabilities.keyColumns * row + column
                         let isPressed = pressedButtons.contains(index) == true
 
                         ZStack {
@@ -38,8 +38,8 @@ struct StreamDeckKeyGridView: View {
 
 #Preview {
     VStack {
-        StreamDeckKeyGridView(capabilities: .init(rows: 2, columns: 3), pressedButtons: [2])
-        StreamDeckKeyGridView(capabilities: .init(rows: 3, columns: 5), pressedButtons: [2])
-        StreamDeckKeyGridView(capabilities: .init(rows: 4, columns: 8), pressedButtons: [2])
+        StreamDeckKeyGridView(capabilities: .init(keyRows: 2, keyColumns: 3), pressedButtons: [2])
+        StreamDeckKeyGridView(capabilities: .init(keyRows: 3, keyColumns: 5), pressedButtons: [2])
+        StreamDeckKeyGridView(capabilities: .init(keyRows: 4, keyColumns: 8), pressedButtons: [2])
     }.padding()
 }

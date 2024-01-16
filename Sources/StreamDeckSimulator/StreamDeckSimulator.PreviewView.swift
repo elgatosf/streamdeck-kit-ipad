@@ -9,11 +9,11 @@ import StreamDeckKit
 
 public extension StreamDeckSimulator {
 
-    public struct PreviewView: View {
+    struct PreviewView: View {
 
         let model: StreamDeckSimulator.Model
         let configuration: StreamDeckSimulator.Configuration
-        let context: Any
+        let context: Any?
         let showOptions: Bool
 
         @State private var showDeviceBezels: Bool

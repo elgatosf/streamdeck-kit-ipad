@@ -31,7 +31,7 @@ public extension StreamDeck {
     }
 
     var centerButton: StreamDeck.Button? {
-        buttons.first { $0.position.x == capabilities.columns / 2 && $0.position.y == capabilities.rows / 2 }
+        buttons.first { $0.position.x == capabilities.keyColumns / 2 && $0.position.y == capabilities.keyRows / 2 }
     }
 }
 

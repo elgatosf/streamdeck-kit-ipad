@@ -35,8 +35,8 @@ public final class StreamDeck {
             Button(
                 index: $0,
                 position: .init(
-                    x: $0 % capabilities.columns,
-                    y: Int(floor(Double($0) / Double(capabilities.columns)))
+                    x: $0 % capabilities.keyColumns,
+                    y: Int(floor(Double($0) / Double(capabilities.keyColumns)))
                 )
             )
         }

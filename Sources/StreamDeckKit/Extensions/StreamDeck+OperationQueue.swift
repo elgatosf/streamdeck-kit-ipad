@@ -89,10 +89,14 @@ extension StreamDeck {
             await client.setImage(data, toButtonAt: key)
 
         case let .setFullscreenImage(image, scaleAspectFit):
-            guard let data = transform(image, size: capabilities.displaySize, scaleAspectFit: scaleAspectFit)
-            else { return }
+            if capabilities.hasSetFullscreenImageSupport {
+                guard let data = transform(image, size: capabilities.displaySize, scaleAspectFit: scaleAspectFit)
+                else { return }
 
-            await client.setFullscreenImage(data)
+                await client.setFullscreenImage(data)
+            } else {
+                await fakeSetFullscreenImage(image, scaleAspectFit: scaleAspectFit)
+            }
 
         case let .setTouchAreaImage(image, rect, scaleAspectFit):
             guard let data = transform(image, size: rect.size, scaleAspectFit: scaleAspectFit)
@@ -101,16 +105,72 @@ extension StreamDeck {
             await client.setImage(data, x: Int(rect.origin.x), y: Int(rect.origin.y), w: Int(rect.width), h: Int(rect.height))
 
         case let .fillDisplay(color):
-            var red: CGFloat = 0
-            var green: CGFloat = 0
-            var blue: CGFloat = 0
-            var alpha: CGFloat = 0
-            color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-            await client.fillDisplay(red: UInt8(255 * red), green: UInt8(255 * green), blue: UInt8(255 * blue))
+            if capabilities.hasFillDisplaySupport {
+                var red: CGFloat = 0
+                var green: CGFloat = 0
+                var blue: CGFloat = 0
+                var alpha: CGFloat = 0
+                color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+                await client.fillDisplay(red: UInt8(255 * red), green: UInt8(255 * green), blue: UInt8(255 * blue))
+            } else {
+                await fakeFillDisplay(color)
+            }
 
         case .close:
             await client.close()
             operationsTask?.cancel()
+        }
+    }
+
+}
+
+// MARK: Emulated Stream Deck hardware functions
+private extension StreamDeck {
+
+    func fakeSetFullscreenImage(_ image: UIImage, scaleAspectFit: Bool = true) async {
+        let newImage: UIImage
+        if image.size == capabilities.displaySize {
+            newImage = image
+        } else {
+            let format = UIGraphicsImageRendererFormat(for: .init(displayScale: 1))
+            let renderer = UIGraphicsImageRenderer(size: capabilities.displaySize, format: format)
+            let drawingAction = Self.transformDrawingAction(
+                image: image,
+                size: capabilities.displaySize,
+                transform: .identity,
+                scaleAspectFit: scaleAspectFit
+            )
+            newImage = renderer.image(actions: drawingAction)
+        }
+
+        guard let cgImage = newImage.cgImage else { return }
+
+        for index in 0 ..< capabilities.keyCount {
+            let rect = capabilities.getKeyRect(index)
+
+            guard let cropped = cgImage.cropping(to: rect) else { return }
+
+            let keyImage = UIImage(cgImage: cropped, scale: 1, orientation: newImage.imageOrientation)
+
+            guard let data = transform(keyImage, size: capabilities.keySize, scaleAspectFit: false)
+            else { return }
+
+            await client.setImage(data, toButtonAt: index)
+        }
+    }
+
+    func fakeFillDisplay(_ color: UIColor) async {
+        let format = UIGraphicsImageRendererFormat(for: .init(displayScale: 1))
+        let renderer = UIGraphicsImageRenderer(size: capabilities.keySize, format: format)
+        let image = renderer.image { context in
+            color.setFill()
+            context.fill(.init(origin: .zero, size: capabilities.keySize))
+        }
+        guard let data = transform(image, size: capabilities.keySize, scaleAspectFit: false)
+        else { return }
+
+        for index in 0 ..< capabilities.keyCount {
+            await client.setImage(data, toButtonAt: index)
         }
     }
 

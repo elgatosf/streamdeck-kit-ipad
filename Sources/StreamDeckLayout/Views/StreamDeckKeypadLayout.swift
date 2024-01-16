@@ -13,15 +13,9 @@ public struct StreamDeckKeypadLayout<Key: View>: View {
 
     @Environment(\.streamDeckViewContext) private var context
 
-    let layoutInfo: StreamDeckLayoutInfo
-
     @ViewBuilder let keyView: KeyViewProvider
 
-    public init(
-        layoutInfo: StreamDeckLayoutInfo,
-        @ViewBuilder keyView: @escaping KeyViewProvider
-    ) {
-        self.layoutInfo = layoutInfo
+    public init(@ViewBuilder keyView: @escaping KeyViewProvider) {
         self.keyView = keyView
     }
 
@@ -30,13 +24,13 @@ public struct StreamDeckKeypadLayout<Key: View>: View {
 
         GridLayout(
             alignment: .topLeading,
-            horizontalSpacing: layoutInfo.keyHorizontalSpacing,
-            verticalSpacing: layoutInfo.keyVerticalSpacing
+            horizontalSpacing: caps.keyHorizontalSpacing,
+            verticalSpacing: caps.keyVerticalSpacing
         ) {
-            ForEach(0 ..< caps.rows, id: \.self) { row in
+            ForEach(0 ..< caps.keyRows, id: \.self) { row in
                 GridRow {
-                    ForEach(0 ..< caps.columns, id: \.self) { col in
-                        let position = (row * caps.columns) + col
+                    ForEach(0 ..< caps.keyColumns, id: \.self) { col in
+                        let position = (row * caps.keyColumns) + col
 
                         let keyContext = context.with(
                             dirtyMarker: .key(position),
@@ -51,9 +45,9 @@ public struct StreamDeckKeypadLayout<Key: View>: View {
                 }
             }
         }
-        .padding(.top, layoutInfo.keyAreaTopSpacing)
-        .padding(.leading, layoutInfo.keyAreaLeadingSpacing)
-        .padding(.trailing, layoutInfo.keyAreaTrailingSpacing)
-        .padding(.bottom, layoutInfo.keyAreaBottomSpacing)
+        .padding(.top, caps.keyAreaTopSpacing)
+        .padding(.leading, caps.keyAreaLeadingSpacing)
+        .padding(.trailing, caps.keyAreaTrailingSpacing)
+        .padding(.bottom, caps.keyAreaBottomSpacing)
     }
 }

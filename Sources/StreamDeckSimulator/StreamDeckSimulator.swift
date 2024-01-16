@@ -64,7 +64,6 @@ public final class StreamDeckSimulator {
 
         guard let scene = activeScene else { return }
 
-        let model: Model = model ?? lastSimulatorModel ?? .regular
         let window = PassThroughWindow(windowScene: scene)
         let simulatorContainer = SimulatorContainer(
             model: model,

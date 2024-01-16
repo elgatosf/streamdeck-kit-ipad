@@ -21,7 +21,6 @@ struct StreamDeckSimulatorView: View {
     var device: StreamDeck { config.device }
     var client: StreamDeckSimulatorClient { config.client }
 
-    let layoutInfo: StreamDeckLayoutInfo
     let bezelImageName: String
     let bezelImageAspectRatio: CGFloat
     let baseScaleMultiplier: CGFloat
@@ -29,7 +28,6 @@ struct StreamDeckSimulatorView: View {
 
     fileprivate init(
         config: StreamDeckSimulator.Configuration,
-        layoutInfo: StreamDeckLayoutInfo,
         bezelImageAspectRatio: CGFloat,
         bezelImageName: String,
         baseScaleMultiplier: CGFloat,
@@ -38,7 +36,6 @@ struct StreamDeckSimulatorView: View {
         showKeyAreaBorders: Binding<Bool>
     ) {
         self.config = config
-        self.layoutInfo = layoutInfo
         self.bezelImageName = bezelImageName
         self.bezelImageAspectRatio = bezelImageAspectRatio
         self.baseScaleMultiplier = baseScaleMultiplier
@@ -69,7 +66,6 @@ extension StreamDeckSimulatorView {
         showKeyAreaBorders: Binding<Bool> = .constant(true)
     ) -> StreamDeckSimulatorView {
         func create(
-            streamDeck layoutInfo: StreamDeckLayoutInfo,
             bezelImageAspectRatio: CGFloat,
             bezelImageName: String,
             baseScaleMultiplier: CGFloat,
@@ -77,7 +73,6 @@ extension StreamDeckSimulatorView {
         ) -> StreamDeckSimulatorView {
             .init(
                 config: config,
-                layoutInfo: layoutInfo,
                 bezelImageAspectRatio: bezelImageAspectRatio,
                 bezelImageName: bezelImageName,
                 baseScaleMultiplier: baseScaleMultiplier,
@@ -90,7 +85,6 @@ extension StreamDeckSimulatorView {
         switch model {
         case .mini:
             return create(
-                streamDeck: .mini,
                 bezelImageAspectRatio: 1668 / 1206,
                 bezelImageName: "MiniBlackTemplate",
                 baseScaleMultiplier: 0.68,
@@ -98,7 +92,6 @@ extension StreamDeckSimulatorView {
             )
         case .regular:
             return create(
-                streamDeck: .regular,
                 bezelImageAspectRatio: 1396 / 997,
                 bezelImageName: "MK2BlackTemplate",
                 baseScaleMultiplier: 0.805,
@@ -106,7 +99,6 @@ extension StreamDeckSimulatorView {
             )
         case .plus:
             return create(
-                streamDeck: .plus,
                 bezelImageAspectRatio: 2017 / 1953,
                 bezelImageName: "SD+BlackTemplate",
                 baseScaleMultiplier: 0.771,
@@ -114,7 +106,6 @@ extension StreamDeckSimulatorView {
             )
         case .xl:
             return create(
-                streamDeck: .xl,
                 bezelImageAspectRatio: 3573 / 2175,
                 bezelImageName: "XLBlackTemplate",
                 baseScaleMultiplier: 0.858,
@@ -143,7 +134,7 @@ private extension StreamDeckSimulatorView {
 
                 backplate
                     .overlay(alignment: .bottom) {
-                        if layoutInfo.dialCount != 0 {
+                        if device.capabilities.dialCount != 0 {
                             dialControls
                                 .frame(
                                     width: metrics.size.width * 0.74,
@@ -165,7 +156,7 @@ private extension StreamDeckSimulatorView {
                 Color.black
             }
         } keyAreaView: { _ in
-            StreamDeckKeypadLayout(layoutInfo: layoutInfo) { context in
+            StreamDeckKeypadLayout { context in
                 StreamDeckKeyView { _ in } content: {
                     SimulatorKeyView(image: buttonImages[context.index]) { pressed in
                         client.emit(.keyPress(index: context.index, pressed: pressed))
@@ -173,22 +164,20 @@ private extension StreamDeckSimulatorView {
                 }
             }
         } touchAreaView: { context in
-            if layoutInfo.dialCount != 0 {
-                StreamDeckDialLayout { context in
-                    StreamDeckDialView {
-                        SimulatorTouchView { localLocation in
-                            let x = CGFloat(context.index) * context.size.width + localLocation.x
-                            client.emit(.touch(x: Int(x), y: Int(localLocation.y)))
-                        } onFling: { startLocation, endLocation in
-                            let startX = CGFloat(context.index) * context.size.width + startLocation.x
-                            let endX = CGFloat(context.index) * context.size.width + endLocation.x
-                            client.emit(.fling(
-                                startX: Int(startX),
-                                startY: Int(startLocation.y),
-                                endX: Int(endX),
-                                endY: Int(endLocation.y)
-                            ))
-                        }
+            StreamDeckDialLayout { context in
+                StreamDeckDialView {
+                    SimulatorTouchView { localLocation in
+                        let x = CGFloat(context.index) * context.size.width + localLocation.x
+                        client.emit(.touch(x: Int(x), y: Int(localLocation.y)))
+                    } onFling: { startLocation, endLocation in
+                        let startX = CGFloat(context.index) * context.size.width + startLocation.x
+                        let endX = CGFloat(context.index) * context.size.width + endLocation.x
+                        client.emit(.fling(
+                            startX: Int(startX),
+                            startY: Int(startLocation.y),
+                            endX: Int(endX),
+                            endY: Int(endLocation.y)
+                        ))
                     }
                 }
             }
@@ -204,7 +193,7 @@ private extension StreamDeckSimulatorView {
 
     var borderOverlay: some View {
         VStack {
-            StreamDeckKeypadLayout(layoutInfo: layoutInfo) { _ in
+            StreamDeckKeypadLayout { _ in
                 StreamDeckKeyView { _ in
                 } content: {
                     SimulatorKeyView { _ in
@@ -213,7 +202,7 @@ private extension StreamDeckSimulatorView {
                     .background(.clear)
                 }
             }
-            if layoutInfo.dialCount != 0 {
+            if device.capabilities.dialCount != 0 {
                 Spacer()
 
                 StreamDeckDialLayout { _ in
@@ -232,7 +221,7 @@ private extension StreamDeckSimulatorView {
     var dialControls: some View {
         GeometryReader { metrics in
             HStack(spacing: metrics.size.width * 0.14) {
-                ForEach(0 ..< layoutInfo.dialCount, id: \.self) { index in
+                ForEach(0 ..< device.capabilities.dialCount, id: \.self) { index in
                     VStack {
                         SimulatorDialView { rotation in
                             client.emit(.rotaryEncoderRotation(index: index, rotation: rotation))

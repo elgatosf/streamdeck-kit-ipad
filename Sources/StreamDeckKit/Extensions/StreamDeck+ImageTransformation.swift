@@ -11,11 +11,15 @@ import UniformTypeIdentifiers
 
 extension StreamDeck {
 
-    func transform(_ image: UIImage, size: CGSize, scaleAspectFit: Bool) -> Data? {
-        let format = UIGraphicsImageRendererFormat(for: .init(displayScale: 1))
-        let action: UIGraphicsImageRenderer.DrawingActions = { context in
+    static func transformDrawingAction(
+        image: UIImage,
+        size: CGSize,
+        transform: CGAffineTransform,
+        scaleAspectFit: Bool
+    ) -> UIGraphicsImageRenderer.DrawingActions {
+        { context in
             var newSize = CGRect(origin: .zero, size: size)
-                .applying(self.capabilities.transform)
+                .applying(transform)
                 .size
 
             newSize.width = floor(newSize.width)
@@ -24,7 +28,7 @@ extension StreamDeck {
             // Move origin to middle
             context.cgContext.translateBy(x: newSize.width / 2, y: newSize.height / 2)
             // Apply transformation
-            context.cgContext.concatenate(self.capabilities.transform)
+            context.cgContext.concatenate(transform)
 
             context.cgContext.setFillColor(UIColor.black.cgColor)
             context.fill(.init(origin: .zero.translatedByHalf(of: newSize), size: size))
@@ -32,6 +36,16 @@ extension StreamDeck {
             let rect = image.drawingRect(resizedTo: newSize, scaleAspectFit: scaleAspectFit)
             image.draw(in: CGRect(origin: rect.origin.translatedByHalf(of: newSize), size: rect.size))
         }
+    }
+
+    func transform(_ image: UIImage, size: CGSize, scaleAspectFit: Bool) -> Data? {
+        let format = UIGraphicsImageRendererFormat(for: .init(displayScale: 1))
+        let action = Self.transformDrawingAction(
+            image: image,
+            size: size,
+            transform: capabilities.transform,
+            scaleAspectFit: scaleAspectFit
+        )
 
         switch capabilities.imageFormat {
         case .jpeg:

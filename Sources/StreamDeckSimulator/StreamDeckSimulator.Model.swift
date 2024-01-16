@@ -58,56 +58,88 @@ extension StreamDeckSimulator.Model: Identifiable {
         case .plus:
             return DeviceCapabilities(
                 keyCount: 8,
-                rotaryEncoderCount: 4,
                 keySize: .init(width: 120, height: 120),
-                rows: 2,
-                columns: 4,
+                keyRows: 2,
+                keyColumns: 4,
+                dialCount: 4,
                 displaySize: .init(width: 800, height: 480),
-                touchDisplayHeight: 100,
-                imageFormat: .jpeg
+                touchDisplayRect: .init(
+                    x: 0,
+                    y: 380,
+                    width: 800,
+                    height: 100
+                ),
+                keyAreaSize: .init(width: 120 * 4 + 99 * 3, height: 120 * 2 + 40),
+                keyAreaTopSpacing: 12,
+                keyAreaTrailingSpacing: 10,
+                keyAreaBottomSpacing: 88,
+                keyAreaLeadingSpacing: 13,
+                keyHorizontalSpacing: 99,
+                keyVerticalSpacing: 40,
+                imageFormat: .jpeg,
+                hasSetFullscreenImageSupport: true,
+                hasSetImageOnXYSupport: true,
+                hasFillDisplaySupport: true
             )
         case .regular:
             return DeviceCapabilities(
                 keyCount: 15,
-                rotaryEncoderCount: 0,
                 keySize: .init(width: 72, height: 72),
-                rows: 3,
-                columns: 5,
+                keyRows: 3,
+                keyColumns: 5,
                 displaySize: .init(width: 480, height: 272),
-                touchDisplayHeight: 0,
-                imageFormat: .jpeg
+                keyAreaSize: .init(width: 5 * 72 + 4 * 25, height: 3 * 72 + 2 * 25),
+                keyAreaTopSpacing: 5,
+                keyAreaTrailingSpacing: 9,
+                keyAreaBottomSpacing: 1,
+                keyAreaLeadingSpacing: 11,
+                keyHorizontalSpacing: 25,
+                keyVerticalSpacing: 25,
+                imageFormat: .jpeg,
+                hasSetFullscreenImageSupport: true,
+                hasFillDisplaySupport: true
             )
         case .mini:
             return DeviceCapabilities(
                 keyCount: 6,
-                rotaryEncoderCount: 0,
                 keySize: .init(width: 80, height: 80),
-                rows: 2,
-                columns: 3,
+                keyRows: 2,
+                keyColumns: 3,
                 displaySize: .init(width: 320, height: 240),
-                touchDisplayHeight: 0,
+                keyAreaSize: .init(width: 3 * 80 + 28 + 27, height: 2 * 80 + 28),
+                keyAreaTopSpacing: 26,
+                keyAreaTrailingSpacing: 10, // Is actually 11, but the distance between the keys is unequal
+                keyAreaBottomSpacing: 26,
+                keyAreaLeadingSpacing: 14,
+                keyHorizontalSpacing: 28,
+                keyVerticalSpacing: 28,
                 imageFormat: .jpeg
             )
         case .xl:
             return DeviceCapabilities(
                 keyCount: 32,
-                rotaryEncoderCount: 0,
                 keySize: .init(width: 96, height: 96),
-                rows: 4,
-                columns: 8,
+                keyRows: 4,
+                keyColumns: 8,
                 displaySize: .init(width: 1024, height: 600),
-                touchDisplayHeight: 0,
-                imageFormat: .jpeg
+                keyAreaSize: .init(width: 8 * 96 + 7 * 32, height: 4 * 96 + 3 * 39),
+                keyAreaTopSpacing: 47,
+                keyAreaTrailingSpacing: 16,
+                keyAreaBottomSpacing: 52,
+                keyAreaLeadingSpacing: 14,
+                keyHorizontalSpacing: 32,
+                keyVerticalSpacing: 39,
+                imageFormat: .jpeg,
+                hasSetFullscreenImageSupport: true,
+                hasFillDisplaySupport: true
             )
         case .pedal:
             return DeviceCapabilities(
                 keyCount: 3,
-                rotaryEncoderCount: 0,
                 keySize: .zero,
-                rows: 1,
-                columns: 3,
+                keyRows: 1,
+                keyColumns: 3,
                 displaySize: .zero,
-                touchDisplayHeight: 0,
                 imageFormat: .none
             )
         }

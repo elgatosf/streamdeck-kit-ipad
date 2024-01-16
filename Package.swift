@@ -9,7 +9,11 @@ let package = Package(
     products: [
         .library(
             name: "StreamDeckKit",
-            targets: ["StreamDeckKit", "StreamDeckLayout"]
+            targets: ["StreamDeckKit"]
+        ),
+        .library(
+            name: "StreamDeckLayout",
+            targets: ["StreamDeckLayout"]
         ),
         .library(
             name: "StreamDeckSimulator",

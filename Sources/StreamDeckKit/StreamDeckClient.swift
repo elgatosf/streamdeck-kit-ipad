@@ -146,18 +146,44 @@ final actor StreamDeckClient: StreamDeckClientProtocol {
             return nil
         }
 
-        let (m11, m12, m21, m22, dx, dy) = rawCaps.affine
+        let (m11, m12, m21, m22, dx, dy) = rawCaps.imageTransform
 
-        return .init(
+        return DeviceCapabilities(
             keyCount: Int(rawCaps.keyCount),
-            rotaryEncoderCount: Int(rawCaps.rotaryEncoderCount),
-            keySize: .init(width: CGFloat(rawCaps.keyWidth), height: CGFloat(rawCaps.keyHeight)),
-            rows: Int(rawCaps.rows),
-            columns: Int(rawCaps.columns),
-            displaySize: .init(width: CGFloat(rawCaps.displayWidth), height: CGFloat(rawCaps.displayHeight)),
-            touchDisplayHeight: CGFloat(rawCaps.touchDisplayHeight),
+            keySize: .init(
+                width: CGFloat(rawCaps.keyWidth),
+                height: CGFloat(rawCaps.keyHeight)
+            ),
+            keyRows: Int(rawCaps.keyRows),
+            keyColumns: Int(rawCaps.keyColumns),
+            dialCount: Int(rawCaps.dialCount),
+            displaySize: .init(
+                width: CGFloat(rawCaps.displayWidth),
+                height: CGFloat(rawCaps.displayHeight)
+            ),
+            touchDisplayRect: CGRect(
+                x: Int(rawCaps.touchDisplayX),
+                y: Int(rawCaps.touchDisplayY),
+                width: Int(rawCaps.touchDisplayWidth),
+                height: Int(rawCaps.touchDisplayHeight)
+            ),
+            keyAreaSize: .init(
+                width: CGFloat(rawCaps.keyAreaWidth),
+                height: CGFloat(rawCaps.keyAreaHeight)
+            ),
+            keyAreaTopSpacing: CGFloat(rawCaps.keyAreaTopSpacing),
+            keyAreaTrailingSpacing: CGFloat(rawCaps.keyAreaTrailingSpacing),
+            keyAreaBottomSpacing: CGFloat(rawCaps.keyAreaBottomSpacing),
+            keyAreaLeadingSpacing: CGFloat(rawCaps.keyAreaLeadingSpacing),
+            keyHorizontalSpacing: CGFloat(rawCaps.keyHorizontalSpacing),
+            keyVerticalSpacing: CGFloat(rawCaps.keyVerticalSpacing),
             imageFormat: .init(format: rawCaps.imageFormat),
-            transform: .init(CGFloat(m11), CGFloat(m12), CGFloat(m21), CGFloat(m22), CGFloat(dx), CGFloat(dy))
+            transform: .init(
+                CGFloat(m11), CGFloat(m12), CGFloat(m21), CGFloat(m22), CGFloat(dx), CGFloat(dy)
+            ),
+            hasSetFullscreenImageSupport: rawCaps.hasSetFullscreenImageSupport,
+            hasSetImageOnXYSupport: rawCaps.hasFillDisplaySupport,
+            hasFillDisplaySupport: rawCaps.hasFillDisplaySupport
         )
     }
 

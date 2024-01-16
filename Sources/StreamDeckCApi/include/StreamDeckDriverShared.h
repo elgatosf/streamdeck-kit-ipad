@@ -10,6 +10,8 @@
 #ifndef StreamDeckDriverShared_h
 #define StreamDeckDriverShared_h
 
+#pragma pack(push, 1)
+
 typedef enum {
     SDExternalMethod_getDeviceInfo = 0,
     SDExternalMethod_getDeviceCapabilities = 1,
@@ -45,16 +47,30 @@ typedef int affine_t[6]; // m11, m12, m21, m22, dx, dy
 
 typedef struct SDDeviceCapabilities {
     uint8_t keyCount;
-    uint8_t rotaryEncoderCount;
     uint8_t keyWidth;
     uint8_t keyHeight;
-    uint8_t rows;
-    uint8_t columns;
+    uint8_t keyRows;
+    uint8_t keyColumns;
+    uint8_t dialCount;
     uint16_t displayWidth;
     uint16_t displayHeight;
+    uint16_t touchDisplayX;
+    uint16_t touchDisplayY;
+    uint16_t touchDisplayWidth;
     uint16_t touchDisplayHeight;
-    affine_t affine;
+    uint16_t keyAreaWidth;
+    uint16_t keyAreaHeight;
+    uint16_t keyAreaTopSpacing;
+    uint16_t keyAreaTrailingSpacing;
+    uint16_t keyAreaBottomSpacing;
+    uint16_t keyAreaLeadingSpacing;
+    uint16_t keyHorizontalSpacing;
+    uint16_t keyVerticalSpacing;
+    affine_t imageTransform;
     SDImageFormat imageFormat;
+    bool hasSetFullscreenImageSupport;
+    bool hasSetImageOnXYSupport;
+    bool hasFillDisplaySupport;
 } SDDeviceCapabilities;
 
 typedef enum {
@@ -68,8 +84,6 @@ typedef enum {
     SDInputEventRotaryTypeRotate = 0,
     SDInputEventRotaryTypePress = 1,
 } SDInputEventRotaryType;
-
-#pragma pack(push, 1)
 
 typedef struct {
     int16_t x;

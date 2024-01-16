@@ -7,6 +7,7 @@
 
 import StreamDeckKit
 import StreamDeckSimulator
+import StreamDeckLayout
 import Combine
 import SwiftUI
 
@@ -14,6 +15,7 @@ import SwiftUI
 class StreamDeckHandler {
 
     private let session: StreamDeckSession = .shared
+    let renderer = StreamDeckLayoutRenderer()
     private var deviceObservations: [StreamDeck: AnyCancellable] = [:]
     private var cancellables = Set<AnyCancellable>()
 
@@ -73,8 +75,7 @@ class StreamDeckHandler {
 
     private func removeDevice(_ device: StreamDeck) {
         // Cancel input event observation.
-        deviceObservations[device]?.cancel()
-        deviceObservations.removeValue(forKey: device)
+        deviceObservations.removeValue(forKey: device)?.cancel()
 
         // Clear pressed key state.
         pressedKeys.removeValue(forKey: device)

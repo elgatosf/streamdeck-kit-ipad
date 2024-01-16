@@ -26,11 +26,13 @@ public struct StreamDeckDialLayout<Dial: View>: View {
     }
 
     public var body: some View {
+        let caps = context.device.capabilities
+
         HStack(spacing: 0) {
-            ForEach(0 ..< StreamDeckLayoutInfo.plus.dialCount, id: \.self) { section in
+            ForEach(0 ..< caps.dialCount, id: \.self) { section in
                 let dialContext = context.with(
                     dirtyMarker: .touchAreaSection(section),
-                    size: .init(width: context.size.width / CGFloat(StreamDeckLayoutInfo.plus.dialCount), height: context.size.height),
+                    size: .init(width: context.size.width / CGFloat(caps.dialCount), height: context.size.height),
                     index: section
                 )
                 dial(dialContext)

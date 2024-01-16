@@ -30,9 +30,9 @@ public final class StreamDeckSession {
         case detached(StreamDeck)
     }
 
-    public typealias DeviceConnectionHandler = (DeviceConnectionEvent) -> Void
+    public typealias DeviceConnectionHandler = @MainActor (DeviceConnectionEvent) -> Void
 
-    public typealias StateHandler = (State) -> Void
+    public typealias StateHandler = @MainActor (State) -> Void
 
     @Published public private(set) var state: State = .idle
 
@@ -41,7 +41,10 @@ public final class StreamDeckSession {
     @Published public private(set) var devices = [StreamDeck]()
 
     public var deviceConnectionEventsPublisher: AnyPublisher<DeviceConnectionEvent, Never> {
-        internalSession.deviceConnectionEvents.eraseToAnyPublisher()
+        internalSession
+            .deviceConnectionEvents
+            .receive(on: RunLoop.main)
+            .eraseToAnyPublisher()
     }
 
     public var stateHandler: StateHandler?
@@ -66,16 +69,20 @@ public final class StreamDeckSession {
             .assign(to: &$devices)
 
         internalSession.deviceConnectionEvents
-            .receive(on: RunLoop.main)
             .sink { [weak self] event in
-                self?.deviceConnectionHandler?(event)
+                guard let self = self, self.deviceConnectionHandler != nil else { return }
+                Task { @MainActor in
+                    self.deviceConnectionHandler?(event)
+                }
             }
             .store(in: &cancellables)
 
         internalSession.state
-            .receive(on: RunLoop.main)
             .sink { [weak self] event in
-                self?.stateHandler?(event)
+                guard let self = self, self.stateHandler != nil else { return }
+                Task { @MainActor in
+                    self.stateHandler?(event)
+                }
             }
             .store(in: &cancellables)
     }

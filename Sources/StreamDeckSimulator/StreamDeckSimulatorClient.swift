@@ -19,15 +19,12 @@ public final actor StreamDeckSimulatorClient {
     private let backgroundImageSubject = CurrentValueSubject<UIImage?, Never>(nil)
     private let buttonImageSubject = CurrentValueSubject<[Int: UIImage], Never>([:])
     private let backgroundRenderer: UIGraphicsImageRenderer?
-    private let touchDisplayOffset: CGPoint
 
     public init(capabilities: DeviceCapabilities) {
         self.capabilities = capabilities
-        backgroundRenderer = capabilities.touchDisplayRect.isEmpty ? nil : UIGraphicsImageRenderer(
-            size: capabilities.displaySize,
-            format: .init(for: .init(displayScale: 1))
-        )
-        touchDisplayOffset = capabilities.touchDisplayRect.origin
+        backgroundRenderer = capabilities.touchDisplayRect.flatMap { rect in
+            UIGraphicsImageRenderer(size: rect.size, format: .init(for: .init(displayScale: 1)))
+        }
     }
 
     public nonisolated func emit(_ event: InputEvent) {
@@ -74,22 +71,24 @@ extension StreamDeckSimulatorClient: StreamDeckClientProtocol {
     }
 
     public func setImage(_ data: Data, x: Int, y: Int, w: Int, h: Int) {
-        guard let renderer = backgroundRenderer else { return }
-        let image = renderer.image { [weak self] context in
-            guard let self = self else { return }
+        guard let renderer = backgroundRenderer,
+              let displaySize = capabilities.displaySize,
+              let touchDisplayRect = capabilities.touchDisplayRect
+        else { return }
+
+        let image = renderer.image { context in
             let targetRect = CGRect(
-                x: CGFloat(x) + touchDisplayOffset.x,
-                y: CGFloat(y) + touchDisplayOffset.y,
+                x: CGFloat(x) + touchDisplayRect.origin.x,
+                y: CGFloat(y) + touchDisplayRect.origin.y,
                 width: CGFloat(w),
                 height: CGFloat(h)
             )
-            let size = capabilities.displaySize
 
             if let backgroundImage = backgroundImageSubject.value {
-                backgroundImage.draw(in: CGRect(origin: .zero, size: size))
+                backgroundImage.draw(in: CGRect(origin: .zero, size: displaySize))
             } else {
                 context.cgContext.setFillColor(UIColor.black.cgColor)
-                context.cgContext.fill(CGRect(origin: .zero, size: size))
+                context.cgContext.fill(CGRect(origin: .zero, size: displaySize))
             }
 
             if let image = UIImage(data: data) {
@@ -108,6 +107,7 @@ extension StreamDeckSimulatorClient: StreamDeckClientProtocol {
     }
 
     public func fillDisplay(red: UInt8, green: UInt8, blue: UInt8) {
+        guard let displaySize = capabilities.displaySize else { return }
         buttonImageSubject.value = [:]
         backgroundImageSubject.value = UIImage.colored(
             .init(
@@ -116,7 +116,7 @@ extension StreamDeckSimulatorClient: StreamDeckClientProtocol {
                 blue: CGFloat(blue) / 255,
                 alpha: 1
             ),
-            size: capabilities.displaySize
+            size: displaySize
         )
     }
 

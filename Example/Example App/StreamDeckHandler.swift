@@ -119,8 +119,9 @@ extension StreamDeck {
     }
 
     func setKey(_ index: Int, pressed isPressed: Bool) {
+        guard let keySize = capabilities.keySize else { return }
         set(
-            view: DeckKeyView(index: index, size: capabilities.keySize, background: isPressed ? .green : .gray),
+            view: DeckKeyView(index: index, size: keySize, background: isPressed ? .green : .gray),
             to: index
         )
     }

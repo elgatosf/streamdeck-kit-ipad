@@ -83,14 +83,17 @@ extension StreamDeck {
             await client.setBrightness(brightness)
 
         case let .setImageOnKey(image, key, scaleAspectFit):
-            guard let data = transform(image, size: capabilities.keySize, scaleAspectFit: scaleAspectFit)
+            guard let keySize = capabilities.keySize,
+                  let data = transform(image, size: keySize, scaleAspectFit: scaleAspectFit)
             else { return }
 
             await client.setImage(data, toButtonAt: key)
 
         case let .setFullscreenImage(image, scaleAspectFit):
+            guard let displaySize = capabilities.displaySize else { return }
+
             if capabilities.hasSetFullscreenImageSupport {
-                guard let data = transform(image, size: capabilities.displaySize, scaleAspectFit: scaleAspectFit)
+                guard let data = transform(image, size: displaySize, scaleAspectFit: scaleAspectFit)
                 else { return }
 
                 await client.setFullscreenImage(data)
@@ -99,7 +102,8 @@ extension StreamDeck {
             }
 
         case let .setTouchAreaImage(image, rect, scaleAspectFit):
-            guard let data = transform(image, size: rect.size, scaleAspectFit: scaleAspectFit)
+            guard capabilities.hasSetImageOnXYSupport,
+                  let data = transform(image, size: rect.size, scaleAspectFit: scaleAspectFit)
             else { return }
 
             await client.setImage(data, x: Int(rect.origin.x), y: Int(rect.origin.y), w: Int(rect.width), h: Int(rect.height))
@@ -128,15 +132,19 @@ extension StreamDeck {
 private extension StreamDeck {
 
     func fakeSetFullscreenImage(_ image: UIImage, scaleAspectFit: Bool = true) async {
+        guard let displaySize = capabilities.displaySize,
+              let keySize = capabilities.keySize
+        else { return }
+
         let newImage: UIImage
-        if image.size == capabilities.displaySize {
+        if image.size == displaySize {
             newImage = image
         } else {
             let format = UIGraphicsImageRendererFormat(for: .init(displayScale: 1))
-            let renderer = UIGraphicsImageRenderer(size: capabilities.displaySize, format: format)
+            let renderer = UIGraphicsImageRenderer(size: displaySize, format: format)
             let drawingAction = Self.transformDrawingAction(
                 image: image,
-                size: capabilities.displaySize,
+                size: displaySize,
                 transform: .identity,
                 scaleAspectFit: scaleAspectFit
             )
@@ -152,7 +160,7 @@ private extension StreamDeck {
 
             let keyImage = UIImage(cgImage: cropped, scale: 1, orientation: newImage.imageOrientation)
 
-            guard let data = transform(keyImage, size: capabilities.keySize, scaleAspectFit: false)
+            guard let data = transform(keyImage, size: keySize, scaleAspectFit: false)
             else { return }
 
             await client.setImage(data, toButtonAt: index)
@@ -160,13 +168,15 @@ private extension StreamDeck {
     }
 
     func fakeFillDisplay(_ color: UIColor) async {
+        guard let keySize = capabilities.keySize else { return }
+
         let format = UIGraphicsImageRendererFormat(for: .init(displayScale: 1))
-        let renderer = UIGraphicsImageRenderer(size: capabilities.keySize, format: format)
+        let renderer = UIGraphicsImageRenderer(size: keySize, format: format)
         let image = renderer.image { context in
             color.setFill()
-            context.fill(.init(origin: .zero, size: capabilities.keySize))
+            context.fill(.init(origin: .zero, size: keySize))
         }
-        guard let data = transform(image, size: capabilities.keySize, scaleAspectFit: false)
+        guard let data = transform(image, size: keySize, scaleAspectFit: false)
         else { return }
 
         for index in 0 ..< capabilities.keyCount {

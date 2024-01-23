@@ -39,7 +39,7 @@ public final class StreamDeckLayoutRenderer {
         let context = StreamDeckViewContext(
             device: device,
             dirtyMarker: .background,
-            size: device.capabilities.displaySize
+            size: device.capabilities.displaySize ?? .zero
         ) { [weak self] in
             self?.updateRequired($0)
         }
@@ -97,13 +97,13 @@ public final class StreamDeckLayoutRenderer {
             }
         }
 
-        guard !caps.touchDisplayRect.isEmpty else { return }
+        guard let touchDisplayRect = caps.touchDisplayRect else { return }
 
         if dirtyViews.contains(.touchArea)  {
             print("!!! complete touch area required")
-            let deviceRect = CGRect(origin: .zero, size: caps.touchDisplayRect.size)
+            let deviceRect = CGRect(origin: .zero, size: touchDisplayRect.size)
 
-            device.setTouchAreaImage(image.cropping(to: caps.touchDisplayRect), at: deviceRect, scaleAspectFit: false)
+            device.setTouchAreaImage(image.cropping(to: touchDisplayRect), at: deviceRect, scaleAspectFit: false)
         } else {
             for dirtyView in dirtyViews {
                 if case let .touchAreaSection(section) = dirtyView {

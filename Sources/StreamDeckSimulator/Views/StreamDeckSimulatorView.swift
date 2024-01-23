@@ -124,7 +124,7 @@ private extension StreamDeckSimulatorView {
     var simulatorView: some View {
         GeometryReader { metrics in
             ZStack(alignment: .top) {
-                let baseScale = (metrics.size.width / device.capabilities.displaySize.width)
+                let baseScale = metrics.size.width / (device.capabilities.displaySize?.width ?? CGFloat(1))
                 let scale = baseScale * baseScaleMultiplier
                 touchPad
                     .overlay { if showKeyAreaBorders { borderOverlay } }

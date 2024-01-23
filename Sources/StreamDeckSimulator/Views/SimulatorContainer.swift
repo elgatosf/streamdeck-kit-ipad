@@ -137,8 +137,8 @@ private extension View {
     func environment(for streamDeck: StreamDeck) -> some View {
         environment(\.streamDeckViewContext, .init(
             device: streamDeck,
-            dirtyMarker: .touchArea,
-            size: streamDeck.capabilities.displaySize
+            dirtyMarker: .background,
+            size: streamDeck.capabilities.displaySize ?? .zero
         ))
     }
 }

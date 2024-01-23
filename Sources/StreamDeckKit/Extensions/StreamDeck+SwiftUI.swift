@@ -50,27 +50,35 @@ public extension StreamDeck {
     }
 
     func set(uiColor: UIColor, to key: Int) {
+        guard let keySize = capabilities.keySize else { return }
+
         DispatchQueue.main.async { [weak self] in
-            guard let self = self, let image: UIImage = .colored(uiColor, size: capabilities.keySize) else { return }
+            guard let self = self, let image: UIImage = .colored(uiColor, size: keySize) else { return }
             setImage(image, to: key, scaleAspectFit: false)
         }
     }
 
     func set(view: some View, to key: Int) {
+        guard let keySize = capabilities.keySize else { return }
+
         DispatchQueue.main.async { [weak self] in
-            guard let self = self, let image = view.renderAsImage(of: capabilities.keySize) else { return }
+            guard let self = self, let image = view.renderAsImage(of: keySize) else { return }
             setImage(image, to: key, scaleAspectFit: false)
         }
     }
 
     func setFullscreen(view: some View) {
+        guard let displaySize = capabilities.displaySize else { return }
+
         DispatchQueue.main.async { [weak self] in
-            guard let self = self, let image = view.renderAsImage(of: capabilities.displaySize) else { return }
+            guard let self = self, let image = view.renderAsImage(of: displaySize) else { return }
             setFullscreenImage(image, scaleAspectFit: false)
         }
     }
 
     func setTouchArea(view: some View, at rect: CGRect) {
+        guard capabilities.hasSetImageOnXYSupport else { return }
+
         DispatchQueue.main.async { [weak self] in
             guard let self = self, let image = view.renderAsImage(of: rect.size) else { return }
             setTouchAreaImage(image, at: rect, scaleAspectFit: false)

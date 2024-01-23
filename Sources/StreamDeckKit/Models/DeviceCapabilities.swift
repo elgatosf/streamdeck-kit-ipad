@@ -16,7 +16,7 @@ public struct DeviceCapabilities {
     /// The number of keys.
     public let keyCount: Int
     /// The size of the display on a key in pixels.
-    public let keySize: CGSize
+    public let keySize: CGSize?
     /// The number of rows of the keypad part of the device.
     public let keyRows: Int
     /// The number of columns of the keypad part of the device.
@@ -27,10 +27,11 @@ public struct DeviceCapabilities {
     ///
     /// On a Stream Deck Plus, this also covers the touch area. So the display runs from the top-left corner of
     /// the top-left key, to the bottom-right corner of the touch strip.
-    public let displaySize: CGSize
+    public let displaySize: CGSize?
+    /// The position and dimension of the key area inside the main display.
+    public let keyAreaRect: CGRect?
     /// The position and dimension of the touch strip area inside the main display.
-    public let keyAreaRect: CGRect
-    public let touchDisplayRect: CGRect
+    public let touchDisplayRect: CGRect?
     /// The space between key columns in pixels.
     public let keyHorizontalSpacing: CGFloat
     /// The space between key rows in pixels.
@@ -51,13 +52,13 @@ public struct DeviceCapabilities {
     /// - Note: This is mainly intended for `StreamDeckSimulator` to produce mock data.
     public init(
         keyCount: Int = 0,
-        keySize: CGSize = .zero,
+        keySize: CGSize? = nil,
         keyRows: Int = 0,
         keyColumns: Int = 0,
         dialCount: Int = 0,
-        displaySize: CGSize = .zero,
-        keyAreaRect: CGRect = .null,
-        touchDisplayRect: CGRect = .null,
+        displaySize: CGSize? = nil,
+        keyAreaRect: CGRect? = nil,
+        touchDisplayRect: CGRect? = nil,
         keyHorizontalSpacing: CGFloat = 0,
         keyVerticalSpacing: CGFloat = 0,
         imageFormat: ImageFormat = .none,

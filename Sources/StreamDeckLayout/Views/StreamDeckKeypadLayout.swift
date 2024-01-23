@@ -31,15 +31,16 @@ public struct StreamDeckKeypadLayout<Key: View>: View {
                 GridRow {
                     ForEach(0 ..< caps.keyColumns, id: \.self) { col in
                         let position = (row * caps.keyColumns) + col
+                        let keySize = caps.keySize ?? .zero
 
                         let keyContext = context.with(
                             dirtyMarker: .key(position),
-                            size: caps.keySize,
+                            size: keySize,
                             index: position
                         )
 
                         keyView(keyContext)
-                            .frame(width: caps.keySize.width, height: caps.keySize.height)
+                            .frame(width: keySize.width, height: keySize.height)
                             .environment(\.streamDeckViewContext, keyContext)
                     }
                 }

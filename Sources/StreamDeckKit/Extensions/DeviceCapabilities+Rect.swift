@@ -10,22 +10,33 @@ import CoreGraphics
 extension DeviceCapabilities {
 
     public var keyAreaTopSpacing: CGFloat {
-        keyAreaRect.origin.y
+        keyAreaRect?.origin.y ?? 0
     }
 
     public var keyAreaLeadingSpacing: CGFloat {
-        keyAreaRect.origin.x
+        keyAreaRect?.origin.x ?? 0
     }
 
     public var keyAreaTrailingSpacing: CGFloat {
-        displaySize.width - (keyAreaLeadingSpacing + keyAreaRect.width)
+        guard let displayWidth = displaySize?.width,
+              let keyAreaWidth = keyAreaRect?.width
+        else { return 0 }
+
+        return displayWidth - (keyAreaLeadingSpacing + keyAreaWidth)
     }
 
     public var keyAreaBottomSpacing: CGFloat {
-        displaySize.height - (keyAreaTopSpacing + keyAreaRect.height + touchDisplayRect.height)
+        guard let displayHeight = displaySize?.height,
+              let keyAreaHeight = keyAreaRect?.height,
+              let touchDisplayHeight = touchDisplayRect?.height
+        else { return 0 }
+
+        return displayHeight - (keyAreaTopSpacing + keyAreaHeight + touchDisplayHeight)
     }
 
     public func getKeyRect(_ key: Int) -> CGRect {
+        guard let keySize = keySize else { return .zero }
+
         let col = CGFloat(key % keyColumns)
         let row = CGFloat(key / keyColumns)
 
@@ -38,7 +49,7 @@ extension DeviceCapabilities {
     }
 
     public func getTouchAreaSectionDeviceRect(_ section: Int) -> CGRect {
-        guard !touchDisplayRect.isEmpty else { return .null }
+        guard let touchDisplayRect = touchDisplayRect else { return .zero }
 
         let sectionWidth = Int(touchDisplayRect.width) / dialCount
         return .init(
@@ -52,7 +63,9 @@ extension DeviceCapabilities {
     public func getTouchAreaSectionRect(_ section: Int) -> CGRect {
         let rect = getTouchAreaSectionDeviceRect(section)
 
-        guard !rect.isEmpty else { return .null }
+        guard !rect.isEmpty,
+              let touchDisplayRect = touchDisplayRect
+        else { return .zero }
 
         return .init(
             x: rect.origin.x,

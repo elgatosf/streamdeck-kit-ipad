@@ -148,26 +148,31 @@ final actor StreamDeckClient: StreamDeckClientProtocol {
 
         let (m11, m12, m21, m22, dx, dy) = rawCaps.imageTransform
 
+        let keyWidth = Int(rawCaps.keyWidth)
+        let displayWidth = Int(rawCaps.displayWidth)
+        let keyAreaWidth = Int(rawCaps.keyAreaWidth)
+        let touchDisplayWidth = Int(rawCaps.touchDisplayWidth)
+
         return DeviceCapabilities(
             keyCount: Int(rawCaps.keyCount),
-            keySize: .init(
-                width: CGFloat(rawCaps.keyWidth),
-                height: CGFloat(rawCaps.keyHeight)
+            keySize: keyWidth == 0 ? nil : .init(
+                width: keyWidth,
+                height: Int(rawCaps.keyHeight)
             ),
             keyRows: Int(rawCaps.keyRows),
             keyColumns: Int(rawCaps.keyColumns),
             dialCount: Int(rawCaps.dialCount),
-            displaySize: .init(
-                width: CGFloat(rawCaps.displayWidth),
-                height: CGFloat(rawCaps.displayHeight)
+            displaySize: displayWidth == 0 ? nil : .init(
+                width: displayWidth,
+                height: Int(rawCaps.displayHeight)
             ),
-            keyAreaRect: .init(
-                x: CGFloat(rawCaps.keyAreaX),
-                y: CGFloat(rawCaps.keyAreaY),
-                width: CGFloat(rawCaps.keyAreaWidth),
-                height: CGFloat(rawCaps.keyAreaHeight)
+            keyAreaRect: keyAreaWidth == 0 ? nil : .init(
+                x: Int(rawCaps.keyAreaX),
+                y: Int(rawCaps.keyAreaY),
+                width: keyAreaWidth,
+                height: Int(rawCaps.keyAreaHeight)
             ),
-            touchDisplayRect: CGRect(
+            touchDisplayRect: touchDisplayWidth == 0 ? nil : CGRect(
                 x: Int(rawCaps.touchDisplayX),
                 y: Int(rawCaps.touchDisplayY),
                 width: Int(rawCaps.touchDisplayWidth),

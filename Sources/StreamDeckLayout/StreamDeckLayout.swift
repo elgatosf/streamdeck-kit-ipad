@@ -36,7 +36,8 @@ public struct StreamDeckLayout<BackgroundView: View, KeyAreaView: View, TouchAre
             VStack(alignment: .leading, spacing: 0) {
                 keyAreaView(context)
 
-                if let touchAreaSize = caps.touchDisplayRect?.size {
+                if !caps.touchDisplayRect.isEmpty {
+                    let touchAreaSize = caps.touchDisplayRect.size
                     let touchAreaContext = context.with(
                         dirtyMarker: .touchArea,
                         size: touchAreaSize,

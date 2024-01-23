@@ -8,6 +8,23 @@
 import CoreGraphics
 
 extension DeviceCapabilities {
+
+    public var keyAreaTopSpacing: CGFloat {
+        keyAreaRect.origin.y
+    }
+
+    public var keyAreaLeadingSpacing: CGFloat {
+        keyAreaRect.origin.x
+    }
+
+    public var keyAreaTrailingSpacing: CGFloat {
+        displaySize.width - (keyAreaLeadingSpacing + keyAreaRect.width)
+    }
+
+    public var keyAreaBottomSpacing: CGFloat {
+        displaySize.height - (keyAreaTopSpacing + keyAreaRect.height + touchDisplayRect.height)
+    }
+
     public func getKeyRect(_ key: Int) -> CGRect {
         let col = CGFloat(key % keyColumns)
         let row = CGFloat(key / keyColumns)
@@ -20,18 +37,28 @@ extension DeviceCapabilities {
         )
     }
 
-    public func getTouchAreaSectionDeviceRect(_ section: Int) -> CGRect? {
-        guard let rect = touchDisplayRect else { return nil }
-        let sectionWidth = Int(rect.width) / dialCount
-        
-        return .init(x: sectionWidth * section, y: 0, width: sectionWidth, height: Int(rect.height))
+    public func getTouchAreaSectionDeviceRect(_ section: Int) -> CGRect {
+        guard !touchDisplayRect.isEmpty else { return .null }
+
+        let sectionWidth = Int(touchDisplayRect.width) / dialCount
+        return .init(
+            x: sectionWidth * section,
+            y: 0,
+            width: sectionWidth,
+            height: Int(touchDisplayRect.height)
+        )
     }
 
-    public func getTouchAreaSectionRect(_ section: Int) -> CGRect? {
-        guard let touchDisplayRect = touchDisplayRect,
-              var rect = getTouchAreaSectionDeviceRect(section)
-        else { return nil }
+    public func getTouchAreaSectionRect(_ section: Int) -> CGRect {
+        let rect = getTouchAreaSectionDeviceRect(section)
 
-        return .init(x: rect.origin.x, y: touchDisplayRect.origin.y, width: rect.width, height: rect.height)
+        guard !rect.isEmpty else { return .null }
+
+        return .init(
+            x: rect.origin.x,
+            y: touchDisplayRect.origin.y,
+            width: rect.width,
+            height: rect.height
+        )
     }
 }

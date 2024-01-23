@@ -58,12 +58,10 @@ typedef struct SDDeviceCapabilities {
     uint16_t touchDisplayY;
     uint16_t touchDisplayWidth;
     uint16_t touchDisplayHeight;
+    uint16_t keyAreaX;
+    uint16_t keyAreaY;
     uint16_t keyAreaWidth;
     uint16_t keyAreaHeight;
-    uint16_t keyAreaTopSpacing;
-    uint16_t keyAreaTrailingSpacing;
-    uint16_t keyAreaBottomSpacing;
-    uint16_t keyAreaLeadingSpacing;
     uint16_t keyHorizontalSpacing;
     uint16_t keyVerticalSpacing;
     affine_t imageTransform;

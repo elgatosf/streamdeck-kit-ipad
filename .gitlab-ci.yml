@@ -1,7 +1,7 @@
 stages:         
   - build
 variables:
-    DEVELOPER_DIR: /Applications/Xcode-15.0.0.app
+    DEVELOPER_DIR: /Applications/Xcode-15.2.0.app
 
 default: 
   tags: 
@@ -10,9 +10,9 @@ default:
 build SDK:     
   stage: build
   script:
-    - xcodebuild -scheme StreamDeckKit -destination 'platform=iOS Simulator,OS=17.0,name=iPad Pro (11-inch) (4th generation)' -sdk iphonesimulator17.0
+    - xcodebuild -scheme StreamDeckKit -destination 'platform=iOS Simulator,OS=17.2,name=iPad Pro (11-inch) (4th generation)' -sdk iphonesimulator17.2
 
 build Simulator:     
   stage: build
   script:
-    - xcodebuild -scheme StreamDeckSimulator -destination 'platform=iOS Simulator,OS=17.0,name=iPad Pro (11-inch) (4th generation)' -sdk iphonesimulator17.0
+    - xcodebuild -scheme StreamDeckSimulator -destination 'platform=iOS Simulator,OS=17.2,name=iPad Pro (11-inch) (4th generation)' -sdk iphonesimulator17.2

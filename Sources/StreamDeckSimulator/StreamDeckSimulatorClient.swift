@@ -23,11 +23,11 @@ public final actor StreamDeckSimulatorClient {
 
     public init(capabilities: DeviceCapabilities) {
         self.capabilities = capabilities
-        backgroundRenderer = (capabilities.touchDisplayRect != nil) ? UIGraphicsImageRenderer(
+        backgroundRenderer = capabilities.touchDisplayRect.isEmpty ? nil : UIGraphicsImageRenderer(
             size: capabilities.displaySize,
             format: .init(for: .init(displayScale: 1))
-        ) : nil
-        touchDisplayOffset = capabilities.touchDisplayRect?.origin ?? .zero
+        )
+        touchDisplayOffset = capabilities.touchDisplayRect.origin
     }
 
     public nonisolated func emit(_ event: InputEvent) {

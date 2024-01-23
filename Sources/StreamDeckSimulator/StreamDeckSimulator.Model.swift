@@ -63,17 +63,18 @@ extension StreamDeckSimulator.Model: Identifiable {
                 keyColumns: 4,
                 dialCount: 4,
                 displaySize: .init(width: 800, height: 480),
+                keyAreaRect: .init(
+                    x: 13,
+                    y: 12,
+                    width: 120 * 4 + 99 * 3,
+                    height: 120 * 2 + 40
+                ),
                 touchDisplayRect: .init(
                     x: 0,
                     y: 380,
                     width: 800,
                     height: 100
                 ),
-                keyAreaSize: .init(width: 120 * 4 + 99 * 3, height: 120 * 2 + 40),
-                keyAreaTopSpacing: 12,
-                keyAreaTrailingSpacing: 10,
-                keyAreaBottomSpacing: 88,
-                keyAreaLeadingSpacing: 13,
                 keyHorizontalSpacing: 99,
                 keyVerticalSpacing: 40,
                 imageFormat: .jpeg,
@@ -88,11 +89,12 @@ extension StreamDeckSimulator.Model: Identifiable {
                 keyRows: 3,
                 keyColumns: 5,
                 displaySize: .init(width: 480, height: 272),
-                keyAreaSize: .init(width: 5 * 72 + 4 * 25, height: 3 * 72 + 2 * 25),
-                keyAreaTopSpacing: 5,
-                keyAreaTrailingSpacing: 9,
-                keyAreaBottomSpacing: 1,
-                keyAreaLeadingSpacing: 11,
+                keyAreaRect: .init(
+                    x: 11,
+                    y: 5,
+                    width: 5 * 72 + 4 * 25,
+                    height: 3 * 72 + 2 * 25
+                ),
                 keyHorizontalSpacing: 25,
                 keyVerticalSpacing: 25,
                 imageFormat: .jpeg,
@@ -106,11 +108,12 @@ extension StreamDeckSimulator.Model: Identifiable {
                 keyRows: 2,
                 keyColumns: 3,
                 displaySize: .init(width: 320, height: 240),
-                keyAreaSize: .init(width: 3 * 80 + 28 + 27, height: 2 * 80 + 28),
-                keyAreaTopSpacing: 26,
-                keyAreaTrailingSpacing: 10, // Is actually 11, but the distance between the keys is unequal
-                keyAreaBottomSpacing: 26,
-                keyAreaLeadingSpacing: 14,
+                keyAreaRect: .init(
+                    x: 14,
+                    y: 26,
+                    width: 3 * 80 + 28 + 27,
+                    height: 2 * 80 + 28
+                ),
                 keyHorizontalSpacing: 28,
                 keyVerticalSpacing: 28,
                 imageFormat: .jpeg
@@ -122,11 +125,12 @@ extension StreamDeckSimulator.Model: Identifiable {
                 keyRows: 4,
                 keyColumns: 8,
                 displaySize: .init(width: 1024, height: 600),
-                keyAreaSize: .init(width: 8 * 96 + 7 * 32, height: 4 * 96 + 3 * 39),
-                keyAreaTopSpacing: 47,
-                keyAreaTrailingSpacing: 16,
-                keyAreaBottomSpacing: 52,
-                keyAreaLeadingSpacing: 14,
+                keyAreaRect: .init(
+                    x: 14,
+                    y: 47,
+                    width: 8 * 96 + 7 * 32,
+                    height: 4 * 96 + 3 * 39
+                ),
                 keyHorizontalSpacing: 32,
                 keyVerticalSpacing: 39,
                 imageFormat: .jpeg,

@@ -15,12 +15,8 @@ public struct DeviceCapabilities {
     public let keyColumns: Int
     public let dialCount: Int
     public let displaySize: CGSize
-    public let touchDisplayRect: CGRect?
-    public let keyAreaSize: CGSize
-    public let keyAreaTopSpacing: CGFloat
-    public let keyAreaTrailingSpacing: CGFloat
-    public let keyAreaBottomSpacing: CGFloat
-    public let keyAreaLeadingSpacing: CGFloat
+    public let keyAreaRect: CGRect
+    public let touchDisplayRect: CGRect
     public let keyHorizontalSpacing: CGFloat
     public let keyVerticalSpacing: CGFloat
     let imageFormat: ImageFormat
@@ -36,12 +32,8 @@ public struct DeviceCapabilities {
         keyColumns: Int = 0,
         dialCount: Int = 0,
         displaySize: CGSize = .zero,
-        touchDisplayRect: CGRect = .zero,
-        keyAreaSize: CGSize = .zero,
-        keyAreaTopSpacing: CGFloat = 0,
-        keyAreaTrailingSpacing: CGFloat = 0,
-        keyAreaBottomSpacing: CGFloat = 0,
-        keyAreaLeadingSpacing: CGFloat = 0,
+        keyAreaRect: CGRect = .null,
+        touchDisplayRect: CGRect = .null,
         keyHorizontalSpacing: CGFloat = 0,
         keyVerticalSpacing: CGFloat = 0,
         imageFormat: ImageFormat = .none,
@@ -56,12 +48,8 @@ public struct DeviceCapabilities {
         self.keyColumns = keyColumns
         self.dialCount = dialCount
         self.displaySize = displaySize
+        self.keyAreaRect = keyAreaRect
         self.touchDisplayRect = touchDisplayRect
-        self.keyAreaSize = keyAreaSize
-        self.keyAreaTopSpacing = keyAreaTopSpacing
-        self.keyAreaTrailingSpacing = keyAreaTrailingSpacing
-        self.keyAreaBottomSpacing = keyAreaBottomSpacing
-        self.keyAreaLeadingSpacing = keyAreaLeadingSpacing
         self.keyHorizontalSpacing = keyHorizontalSpacing
         self.keyVerticalSpacing = keyVerticalSpacing
         self.imageFormat = imageFormat

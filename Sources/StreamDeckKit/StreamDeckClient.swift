@@ -161,20 +161,18 @@ final actor StreamDeckClient: StreamDeckClientProtocol {
                 width: CGFloat(rawCaps.displayWidth),
                 height: CGFloat(rawCaps.displayHeight)
             ),
+            keyAreaRect: .init(
+                x: CGFloat(rawCaps.keyAreaX),
+                y: CGFloat(rawCaps.keyAreaY),
+                width: CGFloat(rawCaps.keyAreaWidth),
+                height: CGFloat(rawCaps.keyAreaHeight)
+            ),
             touchDisplayRect: CGRect(
                 x: Int(rawCaps.touchDisplayX),
                 y: Int(rawCaps.touchDisplayY),
                 width: Int(rawCaps.touchDisplayWidth),
                 height: Int(rawCaps.touchDisplayHeight)
             ),
-            keyAreaSize: .init(
-                width: CGFloat(rawCaps.keyAreaWidth),
-                height: CGFloat(rawCaps.keyAreaHeight)
-            ),
-            keyAreaTopSpacing: CGFloat(rawCaps.keyAreaTopSpacing),
-            keyAreaTrailingSpacing: CGFloat(rawCaps.keyAreaTrailingSpacing),
-            keyAreaBottomSpacing: CGFloat(rawCaps.keyAreaBottomSpacing),
-            keyAreaLeadingSpacing: CGFloat(rawCaps.keyAreaLeadingSpacing),
             keyHorizontalSpacing: CGFloat(rawCaps.keyHorizontalSpacing),
             keyVerticalSpacing: CGFloat(rawCaps.keyVerticalSpacing),
             imageFormat: .init(format: rawCaps.imageFormat),

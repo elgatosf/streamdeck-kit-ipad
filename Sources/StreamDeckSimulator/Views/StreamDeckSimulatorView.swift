@@ -60,7 +60,7 @@ struct StreamDeckSimulatorView: View {
 extension StreamDeckSimulatorView {
 
     static func create(
-        streamDeck model: StreamDeckSimulator.Model,
+        streamDeck product: StreamDeckProduct,
         config: StreamDeckSimulator.Configuration,
         showDeviceBezels: Binding<Bool> = .constant(true),
         showKeyAreaBorders: Binding<Bool> = .constant(true)
@@ -82,7 +82,7 @@ extension StreamDeckSimulatorView {
             )
         }
 
-        switch model {
+        switch product {
         case .mini:
             return create(
                 bezelImageAspectRatio: 1668 / 1206,
@@ -243,7 +243,7 @@ private extension StreamDeckSimulatorView {
 
 #Preview("Square", traits: .fixedLayout(width: 700, height: 700)) {
     Group {
-        let config = StreamDeckSimulator.Model.mini.createConfiguration()
+        let config = StreamDeckProduct.mini.createConfiguration()
         StreamDeckSimulatorView.create(streamDeck: .mini, config: config)
             .frame(width: 400, height: 700)
             .border(.green)
@@ -256,7 +256,7 @@ private extension StreamDeckSimulatorView {
 
 #Preview("Landscape", traits: .landscapeLeft) {
     Group {
-        StreamDeckSimulatorView.create(streamDeck: .plus, config: StreamDeckSimulator.Model.plus.createConfiguration())
+        StreamDeckSimulatorView.create(streamDeck: .plus, config: StreamDeckProduct.plus.createConfiguration())
     }
 }
 #endif

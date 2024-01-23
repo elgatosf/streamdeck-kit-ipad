@@ -68,7 +68,7 @@ private extension StreamDeckPedalSimulatorView {
 #if DEBUG
 #Preview {
     StreamDeckPedalSimulatorView(
-        config: StreamDeckSimulator.Model.pedal.createConfiguration(),
+        config: StreamDeckProduct.pedal.createConfiguration(),
         showTouchAreaBorders: .constant(false)
     )
 }

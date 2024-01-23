@@ -13,30 +13,30 @@ struct SimulatorContainer: View {
 
     public typealias DragValueHandler = (DragGesture.Value) -> Void
     public typealias SizeChangeHandler = (CGFloat) -> Void
-    public typealias DeviceChangeHandler = (StreamDeckSimulator.Model, StreamDeck) -> Void
+    public typealias DeviceChangeHandler = (StreamDeckProduct, StreamDeck) -> Void
 
     let onDragMove: DragValueHandler
     let onSizeChange: SizeChangeHandler
     let onDeviceChange: DeviceChangeHandler
 
-    @State private var model: StreamDeckSimulator.Model
-
     @State private(set) var configuration: StreamDeckSimulator.Configuration
+    @State private var productSelection: StreamDeckProduct
     @State private var showDeviceBezels: Bool = true
     @State private var showKeyAreaBorders: Bool = false
     @State var size: CGFloat
 
     var device: StreamDeck { configuration.device }
+    var product: StreamDeckProduct { configuration.device.info.product! }
 
     public init(
-        model: StreamDeckSimulator.Model = .regular,
+        streamDeck product: StreamDeckProduct = .regular,
         size: CGFloat = 400,
         onDragMove: @escaping DragValueHandler = { _ in },
         onSizeChange: @escaping SizeChangeHandler = { _ in },
         onDeviceChange: @escaping DeviceChangeHandler = { _, _ in }
     ) {
-        self.model = model
-        configuration = model.createConfiguration()
+        productSelection = product
+        configuration = product.createConfiguration()
         self.onDragMove = onDragMove
         self.onSizeChange = onSizeChange
         self.onDeviceChange = onDeviceChange
@@ -58,17 +58,17 @@ struct SimulatorContainer: View {
                 Text("Stream Deck: ")
                 Menu {
                     Section("Stream Deck Model") {
-                        modelPicker
+                        productPicker
                     }
                     Section("Options") {
-                        if model != .pedal {
+                        if product != .pedal {
                             Toggle("Show device bezels", isOn: $showDeviceBezels)
                         }
                         Toggle("Show guides", isOn: $showKeyAreaBorders)
                     }
                 } label: {
                     HStack {
-                        Text(model.formFactorName)
+                        Text(product.formFactorName)
                         Image(systemName: "chevron.up.chevron.down")
                     }
                 }
@@ -79,11 +79,6 @@ struct SimulatorContainer: View {
             simulator
                 .padding([.trailing, .bottom, .leading])
         }
-        .environment(\.streamDeckViewContext, .init(
-            device: device,
-            dirtyMarker: .touchArea,
-            size: device.capabilities.displaySize
-        ))
         .frame(width: size)
         .background(.background)
         .overlay(alignment: .bottomTrailing) { resizeHandle }
@@ -94,13 +89,13 @@ struct SimulatorContainer: View {
         .shadow(radius: 10)
     }
 
-    private var modelPicker: some View {
-        Picker(model.formFactorName, selection: $model) {
-            ForEach(StreamDeckSimulator.Model.allCases) { model in
+    private var productPicker: some View {
+        Picker(productSelection.formFactorName, selection: $productSelection) {
+            ForEach(StreamDeckProduct.allCases) { model in
                 Text(model.formFactorName).tag(model)
             }
         }
-        .onChange(of: model) { _, newValue in
+        .onChange(of: productSelection) { _, newValue in
             let config = newValue.createConfiguration()
             onDeviceChange(newValue, config.device)
             configuration = config
@@ -123,37 +118,49 @@ struct SimulatorContainer: View {
 
     @ViewBuilder
     private var simulator: some View {
-        if model == .pedal {
+        if product == .pedal {
             StreamDeckPedalSimulatorView(config: configuration, showTouchAreaBorders: $showKeyAreaBorders)
+                .environment(for: device)
         } else {
             StreamDeckSimulatorView.create(
-                streamDeck: model,
+                streamDeck: product,
                 config: configuration,
                 showDeviceBezels: $showDeviceBezels,
                 showKeyAreaBorders: $showKeyAreaBorders
             )
+            .environment(for: device)
         }
+    }
+}
+
+private extension View {
+    func environment(for streamDeck: StreamDeck) -> some View {
+        environment(\.streamDeckViewContext, .init(
+            device: streamDeck,
+            dirtyMarker: .touchArea,
+            size: streamDeck.capabilities.displaySize
+        ))
     }
 }
 
 #if DEBUG
 #Preview("Plus", traits: .fixedLayout(width: 600, height: 600)) {
-    SimulatorContainer(model: .plus)
+    SimulatorContainer(streamDeck: .plus)
 }
 
 #Preview("Mini", traits: .fixedLayout(width: 600, height: 600)) {
-    SimulatorContainer(model: .mini)
+    SimulatorContainer(streamDeck: .mini)
 }
 
 #Preview("Regular", traits: .fixedLayout(width: 600, height: 600)) {
-    SimulatorContainer(model: .regular)
+    SimulatorContainer(streamDeck: .regular)
 }
 
 #Preview("XL", traits: .fixedLayout(width: 600, height: 600)) {
-    SimulatorContainer(model: .xl)
+    SimulatorContainer(streamDeck: .xl)
 }
 
 #Preview("Pedal", traits: .fixedLayout(width: 600, height: 600)) {
-    SimulatorContainer(model: .pedal)
+    SimulatorContainer(streamDeck: .pedal)
 }
 #endif

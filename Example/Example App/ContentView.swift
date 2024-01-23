@@ -47,7 +47,7 @@ import StreamDeckSimulator
 #Preview("With simulator attached") {
     VStack {
         ContentView()
-        StreamDeckSimulator.PreviewView(model: .mini)
+        StreamDeckSimulator.PreviewView(streamDeck: .mini)
     }
 }
 #endif

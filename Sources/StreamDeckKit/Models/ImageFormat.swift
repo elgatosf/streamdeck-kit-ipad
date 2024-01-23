@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// The format in which a Stream Deck device expects image data.
 public enum ImageFormat: Hashable {
     case jpeg
     case bmp

@@ -1,5 +1,5 @@
 //
-//  StreamDeckSimulator.Model.swift
+//  StreamDeckProduct+Simulator.swift
 //
 //  Created by Roman Schlagowsky on 14.12.23.
 //
@@ -7,29 +7,19 @@
 import Foundation
 import StreamDeckKit
 
-public extension StreamDeckSimulator {
-    enum Model: CaseIterable {
-        case mini
-        case regular
-        case plus
-        case xl
-        case pedal
-    }
-}
-
-extension StreamDeckSimulator.Model: Identifiable {
+extension StreamDeckProduct: Identifiable {
 
     public var id: Int {
-        productID
+        productID.rawValue
     }
 
-    var productID: Int {
+    var productID: StreamDeckProductId {
         switch self {
-        case .mini: return 0x0090
-        case .regular: return 0x0080
-        case .plus: return 0x0084
-        case .xl: return 0x008F
-        case .pedal: return 0x0086
+        case .mini: return .sd_mini
+        case .regular: return .sd_mk2
+        case .plus: return .sd_plus
+        case .xl: return .sd_xl_2022
+        case .pedal: return .sd_pedal
         }
     }
 
@@ -154,7 +144,7 @@ extension StreamDeckSimulator.Model: Identifiable {
         let device = StreamDeck(
             client: client,
             info: .init(
-                productID: productID,
+                productID: id,
                 productName: productName,
                 serialNumber: DeviceInfo.simulatorSerialPrefix + (serialNumber ?? UUID().uuidString)
             ),

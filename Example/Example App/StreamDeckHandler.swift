@@ -112,11 +112,7 @@ class StreamDeckHandler {
 
 // MARK: - Convenience extension
 
-extension StreamDeck: Identifiable {
-
-    public var id: String {
-        info.serialNumber
-    }
+extension StreamDeck {
 
     var infoText: String {
         "\(info.productName)(\(info.serialNumber))"
@@ -152,5 +148,5 @@ private struct DeckKeyView: View {
 // MARK: - Simulator preview
 
 #Preview(traits: .landscapeLeft) {
-    StreamDeckSimulator.PreviewView(model: .xl, context: { StreamDeckHandler() })
+    StreamDeckSimulator.PreviewView(streamDeck: .xl, context: { StreamDeckHandler() })
 }

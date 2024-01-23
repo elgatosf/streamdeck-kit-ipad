@@ -11,7 +11,7 @@ public extension StreamDeckSimulator {
 
     struct PreviewView: View {
 
-        let model: StreamDeckSimulator.Model
+        let product: StreamDeckProduct
         let configuration: StreamDeckSimulator.Configuration
         let context: Any?
         let showOptions: Bool
@@ -20,15 +20,15 @@ public extension StreamDeckSimulator {
         @State private var showKeyAreaBorders: Bool
 
         public init(
-            model: StreamDeckSimulator.Model = .regular,
+            streamDeck product: StreamDeckProduct = .regular,
             serialNumber: String? = nil,
             showOptions: Bool = true,
             showDeviceBezels: Bool = true,
             showKeyAreaBorders: Bool = false,
             context: (() -> Any)? = nil
         ) {
-            self.model = model
-            configuration = model.createConfiguration(serialNumber: serialNumber)
+            self.product = product
+            configuration = product.createConfiguration(serialNumber: serialNumber)
             self.context = context?()
             self.showOptions = showOptions
             _showDeviceBezels = .init(initialValue: showDeviceBezels)
@@ -61,11 +61,11 @@ public extension StreamDeckSimulator {
 
         @ViewBuilder
         private var simulator: some View {
-            if model == .pedal {
+            if product == .pedal {
                 StreamDeckPedalSimulatorView(config: configuration, showTouchAreaBorders: $showKeyAreaBorders)
             } else {
                 StreamDeckSimulatorView.create(
-                    streamDeck: model,
+                    streamDeck: product,
                     config: configuration,
                     showDeviceBezels: $showDeviceBezels,
                     showKeyAreaBorders: $showKeyAreaBorders

@@ -34,19 +34,19 @@ public final class StreamDeckSimulator {
 
     private var lastSimulatorCenter: CGPoint?
     private var lastSimulatorSize: CGFloat?
-    private var lastSimulatorModel: Model?
+    private var lastSelectedProduct: StreamDeckProduct?
 
     private var activeScene: UIWindowScene? {
         let windowScene = UIApplication.shared.connectedScenes as? Set<UIWindowScene>
         return windowScene?.first { $0.activationState == .foregroundActive }
     }
 
-    public static func show(streamDeck model: Model) {
-        shared.showSimulator(model)
+    public static func show(streamDeck product: StreamDeckProduct) {
+        shared.showSimulator(product)
     }
 
-    public static func show(defaultStreamDeck defaultModel: Model = .regular) {
-        shared.showSimulator(shared.lastSimulatorModel ?? defaultModel)
+    public static func show(defaultStreamDeck defaultProduct: StreamDeckProduct = .regular) {
+        shared.showSimulator(shared.lastSelectedProduct ?? defaultProduct)
     }
 
     public static func close() {
@@ -59,14 +59,14 @@ public final class StreamDeckSimulator {
         window = nil
     }
 
-    private func showSimulator(_ model: Model) {
+    private func showSimulator(_ product: StreamDeckProduct) {
         clearWindow()
 
         guard let scene = activeScene else { return }
 
         let window = PassThroughWindow(windowScene: scene)
         let simulatorContainer = SimulatorContainer(
-            model: model,
+            streamDeck: product,
             size: lastSimulatorSize ?? 400,
             onDragMove: { [weak self] value in
                 guard let rootView = self?.window?.rootViewController?.view else { return }
@@ -81,7 +81,7 @@ public final class StreamDeckSimulator {
             },
             onDeviceChange: { [weak self] newModel, newDevice in
                 self?.updateDevice(newDevice)
-                self?.lastSimulatorModel = newModel
+                self?.lastSelectedProduct = newModel
             }
         )
         let hostViewController = UIHostingController(rootView: simulatorContainer)
@@ -94,7 +94,7 @@ public final class StreamDeckSimulator {
 
         self.window = window
         device = simulatorContainer.device
-        lastSimulatorModel = model
+        lastSelectedProduct = product
     }
 
     private func updateDevice(_ device: StreamDeck) {

@@ -10,9 +10,50 @@ import Foundation
 
 /// A mechanism that enables Stream Deck driver state observation and device detection.
 ///
-/// Using Stream Deck Kit requires the Stream Deck Connect App to be installed and the contained driver to be activated in system settings.
-/// A good approach would be to inform your users about these requirements in some UI part of your app. 
-// TODO: Continue...
+/// To begin interacting with a device, you can start by observing device connections, and then observe the input events of every connected device.
+/// ```swift
+/// let session: StreamDeckSession = .shared
+/// var deviceCancellables: [StreamDeck: AnyCancellable] = [:]
+/// // Subscribe to device connection events.
+/// let cancellable = session.deviceConnectionEventsPublisher.sink { event in
+///     switch event {
+///     case let .attached(device):
+///         // Subscribe to input events of a device.
+///         deviceCancellables[device] = device.inputEventsPublisher.sink { inputEvent in
+///             print("Received \(inputEvent) from \(device.info.productName)")
+///         }
+///         print("\(device.info.productName) attached.")
+///     case let .detached(device):
+///         // Stop observing input events from the device
+///         deviceCancellables.removeValue(forKey: device)
+///         print("\(device.info.productName) detached.")
+///     }
+/// }
+/// // Start the session to begin device observation.
+/// session.start()
+/// ```
+/// You can configure a device by using the instance methods of ``StreamDeck``. Therefore you can hold your own reference to connected devices, or
+/// you can use the ``devices`` property.
+/// ```swift
+/// for device in StreamDeckSession.shared.devices {
+///     device.setImage(UIImage(named: "flower"), to: 4)
+/// }
+/// ```
+/// ## Prerequisites
+/// - Note: Using Stream Deck Kit requires the __Stream Deck Connect__ App to be installed, and the contained driver to be activated in system settings.
+///
+/// You can check if all conditions are met, with the ``state-swift.property`` property.
+/// ```swift
+/// let cancellable = session.$state.sink { state in
+///     if case let .failed(error) = state, error == .driverNotInstalled {
+///         // Ask user to install Stream Deck Connect.
+///     }
+/// }
+/// ```
+/// If ``state-swift.property`` is .``State-swift.enum/ready`` but the ``devices`` collection is empty, It may be that there is no device
+/// connected, or the driver is not activated. As we can currently not distinguish these cases, you can ask the user to check both options.
+///
+/// You can also link them to the Stream Deck Connect app to check if everything is okay. There, the whole setup process is described in detail.
 public final class StreamDeckSession {
 
     /// A singleton instance of the session. Use this for all interactions with the session object.
@@ -54,7 +95,7 @@ public final class StreamDeckSession {
 
     /// Use this to observe the current session state. The `State` info can be used to inform users about courses of action e.g. in case of an error.
     ///
-    /// Optionally use the ``stateHandler`` property to handle this with a closure.
+    /// Optionally use the ``stateHandler-swift.property`` property to handle this with a closure.
     @Published public private(set) var state: State = .idle
 
     /// Provides the current version of the installed driver.
@@ -64,13 +105,11 @@ public final class StreamDeckSession {
     @Published public private(set) var driverVersion: Version?
 
     /// Provides the list of currently connected devices.
-    ///
-    /// Optionally use ``deviceConnectionEventsPublisher`` to handle connects/disconnects via callback.
     @Published public private(set) var devices = [StreamDeck]()
 
     /// Use this to observe attaching/detaching Stream Deck devices.
     ///
-    /// Optionally use the ``deviceConnectionHandler`` property to handle this with a closure.
+    /// Optionally use the ``deviceConnectionHandler-swift.property`` property to handle this with a closure.
     public var deviceConnectionEventsPublisher: AnyPublisher<DeviceConnectionEvent, Never> {
         internalSession
             .deviceConnectionEvents
@@ -80,7 +119,7 @@ public final class StreamDeckSession {
 
     /// Use this to handle the current session state. The `State` info can be used to inform users about courses of action e.g. in case of an error.
     ///
-    /// Optionally use the ``state`` property to observe with Combine.
+    /// Optionally use the ``state-swift.property`` property to observe with Combine.
     public var stateHandler: StateHandler?
 
     /// Use this to handle attaching/detaching Stream Deck devices.
@@ -130,16 +169,17 @@ public final class StreamDeckSession {
     }
 
     /// Stops all observations, disconnects from the driver and clears the device list.
-    ///
-    /// Calling any actions on existing `StreamDeck` instances will have no result after this point.
+    /// - Note: Calling any actions on existing `StreamDeck` instances will have no result after this point.
     public func stop() {
         Task { await internalSession.stop() }
     }
 
+    // Should only be accessed by StreamDeckSimulator to append simulators.
     public func _appendSimulator(device: StreamDeck) {
         Task { await internalSession.appendSimulator(device: device) }
     }
 
+    // Should only be accessed by StreamDeckSimulator to remove simulators.
     public func _removeSimulator(device: StreamDeck) {
         Task { await internalSession.removeSimulator(device: device) }
     }

@@ -131,6 +131,11 @@ final actor InternalStreamDeckSession {
 
             let device = StreamDeck(client: client, info: info, capabilities: capabilities)
             os_log(.debug, "StreamDeck device attached (\(String(reflecting: info))).")
+
+            device.onClose { [weak self] in
+                await self?.removeDevice(device: device)
+            }
+
             devices.value.append(device)
             deviceConnectionEvents.send(.attached(device))
         }
@@ -138,30 +143,27 @@ final actor InternalStreamDeckSession {
 
     private func deviceDisconnected(_ iterator: io_iterator_t) async throws {
         while case let service = IOIteratorNext(iterator), service != 0 {
-            for (index, device) in devices.value.enumerated() where await device.client.service == service {
+            for device in devices.value where await device.client.service == service {
                 try checkState(.ready)
-
                 os_log(.debug, "StreamDeck device detached (\(String(reflecting: device.info))).")
-                devices.value.remove(at: index)
                 device.close()
-                deviceConnectionEvents.send(.detached(device))
                 break
             }
         }
     }
 
-    func appendSimulator(device: StreamDeck) {
+    func addDevice(device: StreamDeck) {
+        guard devices.value.firstIndex(of: device) == nil else { return }
+
         devices.value.append(device)
         deviceConnectionEvents.send(.attached(device))
     }
 
-    func removeSimulator(device: StreamDeck) {
-        guard let index = devices.value.firstIndex(where: {
-            $0.info.serialNumber == device.info.serialNumber
-        }) else { return }
+    func removeDevice(device: StreamDeck) {
+        guard let index = devices.value.firstIndex(of: device) else { return }
 
-        devices.value.remove(at: index)
-        deviceConnectionEvents.send(.detached(device))
+        let original = devices.value.remove(at: index)
+        deviceConnectionEvents.send(.detached(original))
     }
 
     private func checkState(_ expected: StreamDeckSession.State) throws {

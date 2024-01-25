@@ -173,11 +173,11 @@ public final class StreamDeckSession {
 
     // Should only be accessed by StreamDeckSimulator to append simulators.
     public func _appendSimulator(device: StreamDeck) {
-        Task { await internalSession.appendSimulator(device: device) }
+        Task { await internalSession.addDevice(device: device) }
     }
 
     // Should only be accessed by StreamDeckSimulator to remove simulators.
     public func _removeSimulator(device: StreamDeck) {
-        Task { await internalSession.removeSimulator(device: device) }
+        Task { await internalSession.removeDevice(device: device) }
     }
 }

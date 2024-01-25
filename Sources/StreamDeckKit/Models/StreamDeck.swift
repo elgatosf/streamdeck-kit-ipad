@@ -11,6 +11,8 @@ import UIKit
 
 /// An object that represents a physical Stream Deck device.
 public final class StreamDeck {
+    public typealias CloseHandler = () async -> Void
+
     let client: StreamDeckClientProtocol
     /// Basic information about the device.
     public let info: DeviceInfo
@@ -19,6 +21,7 @@ public final class StreamDeck {
 
     var operationsQueue = AsyncQueue<Operation>()
     var operationsTask: Task<Void, Never>?
+    var closeHandler = [CloseHandler]()
 
     /// A publisher of user input events.
     ///
@@ -49,6 +52,11 @@ public final class StreamDeck {
     /// Cancels all running operations and tells the client to drop the connection to the hardware device.
     public func close() {
         enqueueOperation(.close)
+    }
+
+    /// Register a close handler callback that gets called when the Stream Deck device gets detached or manually closed.
+    public func onClose(_ handler: @escaping CloseHandler) {
+        closeHandler.append(handler)
     }
 
     /// Updates the brightness of the device.

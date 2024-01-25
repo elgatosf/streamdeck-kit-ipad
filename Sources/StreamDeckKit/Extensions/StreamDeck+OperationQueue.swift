@@ -36,10 +36,6 @@ extension StreamDeck {
         }
     }
 
-    public func cancelAllOperations() {
-        operationsQueue.removeAll()
-    }
-
     func enqueueOperation(_ operation: Operation) {
         var wasReplaced = false
 
@@ -77,7 +73,7 @@ extension StreamDeck {
         }
     }
 
-    func run(_ operation: Operation) async {
+    private func run(_ operation: Operation) async {
         switch operation {
         case let .setBrightness(brightness):
             await client.setBrightness(brightness)
@@ -122,6 +118,11 @@ extension StreamDeck {
 
         case .close:
             await client.close()
+
+            for handler in closeHandler {
+                await handler()
+            }
+
             operationsTask?.cancel()
         }
     }

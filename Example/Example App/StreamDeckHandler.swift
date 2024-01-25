@@ -14,7 +14,7 @@ import SwiftUI
 @Observable
 class StreamDeckHandler {
 
-    private let session: StreamDeckSession = .shared
+    let session = StreamDeckSession()
     let renderer = StreamDeckLayoutRenderer()
     private var deviceObservations: [StreamDeck: AnyCancellable] = [:]
     private var cancellables = Set<AnyCancellable>()
@@ -52,7 +52,7 @@ class StreamDeckHandler {
     }
 
     func showSimulator() {
-        StreamDeckSimulator.show()
+        StreamDeckSimulator.show(for: session)
     }
 
     private func addDevice(_ device: StreamDeck) {

@@ -12,7 +12,7 @@ import Foundation
 ///
 /// To begin interacting with a device, you can start by observing device connections, and then observe the input events of every connected device.
 /// ```swift
-/// let session: StreamDeckSession = .shared
+/// let session = StreamDeckSession()
 /// var deviceCancellables: [StreamDeck: AnyCancellable] = [:]
 /// // Subscribe to device connection events.
 /// let cancellable = session.deviceConnectionEventsPublisher.sink { event in
@@ -35,7 +35,7 @@ import Foundation
 /// You can configure a device by using the instance methods of ``StreamDeck``. Therefore you can hold your own reference to connected devices, or
 /// you can use the ``devices`` property.
 /// ```swift
-/// for device in StreamDeckSession.shared.devices {
+/// for device in session.devices {
 ///     device.setImage(UIImage(named: "flower"), to: 4)
 /// }
 /// ```
@@ -55,9 +55,6 @@ import Foundation
 ///
 /// You can also link them to the Stream Deck Connect app to check if everything is okay. There, the whole setup process is described in detail.
 public final class StreamDeckSession {
-
-    /// A singleton instance of the session. Use this for all interactions with the session object.
-    public static let shared = StreamDeckSession()
 
     /// Describes possible reasons for a failing driver-connection.
     public enum SessionError: Error, Hashable {
@@ -131,7 +128,7 @@ public final class StreamDeckSession {
 
     private var cancellables = [AnyCancellable]()
 
-    private init() {
+    public init() {
         internalSession.state
             .receive(on: RunLoop.main)
             .assign(to: &$state)

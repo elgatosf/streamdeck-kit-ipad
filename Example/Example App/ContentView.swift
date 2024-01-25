@@ -10,7 +10,11 @@ import StreamDeckKit
 
 struct ContentView: View {
 
-    let streamDeckHandler = StreamDeckHandler()
+    let streamDeckHandler: StreamDeckHandler
+
+    init(streamDeckHandler: StreamDeckHandler = StreamDeckHandler()) {
+        self.streamDeckHandler = streamDeckHandler
+    }
 
     var body: some View {
         VStack {
@@ -45,9 +49,14 @@ struct ContentView: View {
 import StreamDeckSimulator
 
 #Preview("With simulator attached") {
-    VStack {
-        ContentView()
-        StreamDeckSimulator.PreviewView(streamDeck: .mini)
+    let streamDeckHandler = StreamDeckHandler()
+
+    return VStack {
+        ContentView(streamDeckHandler: streamDeckHandler)
+        StreamDeckSimulator.PreviewView(
+            streamDeck: .mini,
+            session: streamDeckHandler.session
+        )
     }
 }
 #endif

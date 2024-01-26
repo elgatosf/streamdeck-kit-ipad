@@ -11,10 +11,9 @@ import StreamDeckCApi
 import StreamDeckKit
 import UIKit
 
-public final actor StreamDeckSimulatorClient {
+public final class StreamDeckSimulatorClient {
 
     private let capabilities: DeviceCapabilities
-    private let inputEventSubject = PassthroughSubject<InputEvent, Never>()
     private let brightnessSubject = CurrentValueSubject<Int, Never>(0)
     private let backgroundImageSubject = CurrentValueSubject<UIImage?, Never>(nil)
     private let buttonImageSubject = CurrentValueSubject<[Int: UIImage], Never>([:])
@@ -27,23 +26,26 @@ public final actor StreamDeckSimulatorClient {
         }
     }
 
-    public nonisolated func emit(_ event: InputEvent) {
-        inputEventSubject.send(event)
+    public var inputEventHandler: InputEventHandler?
+
+    @MainActor
+    public func emit(_ event: InputEvent) {
+        inputEventHandler?(event)
     }
 
-    public nonisolated var brightness: AnyPublisher<Int, Never> {
+    public var brightness: AnyPublisher<Int, Never> {
         brightnessSubject
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
 
-    public nonisolated var backgroundImage: AnyPublisher<UIImage?, Never> {
+    public var backgroundImage: AnyPublisher<UIImage?, Never> {
         backgroundImageSubject
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
 
-    public nonisolated var buttonImages: AnyPublisher<[Int: UIImage], Never> {
+    public var buttonImages: AnyPublisher<[Int: UIImage], Never> {
         buttonImageSubject
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
@@ -54,12 +56,8 @@ public final actor StreamDeckSimulatorClient {
 
 extension StreamDeckSimulatorClient: StreamDeckClientProtocol {
 
-    public nonisolated var inputEventsPublisher: AnyPublisher<InputEvent, Never> {
-        inputEventSubject.eraseToAnyPublisher()
-    }
-
-    public var service: io_service_t {
-        IO_OBJECT_NULL
+    public func setInputEventHandler(_ handler: @escaping @MainActor (InputEvent) -> Void) {
+        inputEventHandler = handler
     }
 
     public func setBrightness(_ brightness: Int) {

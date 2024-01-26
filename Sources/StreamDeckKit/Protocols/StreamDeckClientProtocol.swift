@@ -9,9 +9,10 @@ import Combine
 import Foundation
 import StreamDeckCApi
 
-public protocol StreamDeckClientProtocol: Actor {
-    nonisolated var inputEventsPublisher: AnyPublisher<InputEvent, Never> { get }
-    var service: io_service_t { get }
+public typealias InputEventHandler = @MainActor (InputEvent) -> Void
+
+public protocol StreamDeckClientProtocol {
+    @MainActor func setInputEventHandler(_ handler: @escaping InputEventHandler)
     func setBrightness(_ brightness: Int)
     func setImage(_ data: Data, toButtonAt index: Int)
     func setImage(_ data: Data, x: Int, y: Int, w: Int, h: Int)

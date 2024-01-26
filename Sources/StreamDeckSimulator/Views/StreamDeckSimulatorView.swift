@@ -121,6 +121,8 @@ extension StreamDeckSimulatorView {
 
 private extension StreamDeckSimulatorView {
 
+    @MainActor
+    @ViewBuilder
     var simulatorView: some View {
         GeometryReader { metrics in
             ZStack(alignment: .top) {
@@ -148,6 +150,8 @@ private extension StreamDeckSimulatorView {
         .aspectRatio(bezelImageAspectRatio, contentMode: .fit)
     }
 
+    @MainActor
+    @ViewBuilder
     var touchPad: some View {
         StreamDeckLayout { _ in
             if let backgroundImage = backgroundImage {
@@ -184,6 +188,8 @@ private extension StreamDeckSimulatorView {
         }
     }
 
+    @MainActor
+    @ViewBuilder
     var backplate: some View {
         Image(bezelImageName, bundle: .resourceBundle)
             .resizable()
@@ -191,6 +197,8 @@ private extension StreamDeckSimulatorView {
             .opacity(showDeviceBezels ? 1 : 0)
     }
 
+    @MainActor
+    @ViewBuilder
     var borderOverlay: some View {
         VStack {
             StreamDeckKeypadLayout { _ in
@@ -218,6 +226,8 @@ private extension StreamDeckSimulatorView {
         .allowsHitTesting(false)
     }
 
+    @MainActor
+    @ViewBuilder
     var dialControls: some View {
         GeometryReader { metrics in
             HStack(spacing: metrics.size.width * 0.14) {

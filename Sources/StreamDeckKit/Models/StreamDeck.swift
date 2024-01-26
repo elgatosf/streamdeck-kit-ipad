@@ -11,6 +11,8 @@ import UIKit
 
 /// An object that represents a physical Stream Deck device.
 public final class StreamDeck {
+    public typealias InputEventHandler = @MainActor (InputEvent) -> Void
+
     public typealias CloseHandler = () async -> Void
 
     let client: StreamDeckClientProtocol
@@ -19,16 +21,34 @@ public final class StreamDeck {
     /// Capabilities and features of the device.
     public let capabilities: DeviceCapabilities
 
-    var operationsQueue = AsyncQueue<Operation>()
+    let operationsQueue = AsyncQueue<Operation>()
     var operationsTask: Task<Void, Never>?
-    var closeHandler = [CloseHandler]()
+
+    private let inputEventsSubject = PassthroughSubject<InputEvent, Never>()
 
     /// A publisher of user input events.
     ///
     /// Subscribe here to handle key-presses, touches and other events.
     public var inputEventsPublisher: AnyPublisher<InputEvent, Never> {
-        client.inputEventsPublisher
+        inputEventsSubject
+            .handleEvents(receiveSubscription: { [weak self] _ in
+                self?.subscribeToInputEvents()
+            })
+            .eraseToAnyPublisher()
     }
+
+    /// Handler to receive input events.
+    ///
+    /// Set a handler to handle key-presses, touches and other events.
+    public var inputEventHander: InputEventHandler? {
+        didSet {
+            if inputEventHander != nil {
+                subscribeToInputEvents()
+            }
+        }
+    }
+
+    var closeHandlers = [CloseHandler]()
 
     /// Creates `StreamDeck` instance.
     /// - Parameters:
@@ -49,14 +69,26 @@ public final class StreamDeck {
         startOperationTask()
     }
 
-    /// Cancels all running operations and tells the client to drop the connection to the hardware device.
-    public func close() {
-        enqueueOperation(.close)
+    @MainActor
+    private func handleInputEvent(_ event: InputEvent) {
+        inputEventsSubject.send(event)
+        inputEventHander?(event)
+    }
+
+    private func subscribeToInputEvents() {
+        enqueueOperation(.setInputEventHandler { [weak self] event in
+            self?.handleInputEvent(event)
+        })
     }
 
     /// Register a close handler callback that gets called when the Stream Deck device gets detached or manually closed.
     public func onClose(_ handler: @escaping CloseHandler) {
-        closeHandler.append(handler)
+        closeHandlers.append(handler)
+    }
+
+    /// Cancels all running operations and tells the client to drop the connection to the hardware device.
+    public func close() {
+        enqueueOperation(.close)
     }
 
     /// Updates the brightness of the device.

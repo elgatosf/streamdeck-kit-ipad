@@ -11,15 +11,16 @@ import os
 import OSLog
 import StreamDeckCApi
 
-final actor StreamDeckClient: StreamDeckClientProtocol {
+final class StreamDeckClient: StreamDeckClientProtocol {
 
-    private final class InputEventHandler {
+    private final class InputEventMapper {
         // Previous press states
         private var previousKeyPressState: UInt64 = 0
         private var previousRotaryPressState: UInt32 = 0
 
-        let publisher = PassthroughSubject<InputEvent, Never>()
+        var inputEventHandler: InputEventHandler?
 
+        @MainActor
         func handle(_ event: SDInputEvent) {
             var event = event
 
@@ -33,9 +34,9 @@ final actor StreamDeckClient: StreamDeckClientProtocol {
                     let mask: UInt64 = (1 << key)
 
                     if (previous & mask) == 0, (current & mask) != 0 { // wasn't pressed but is now
-                        publisher.send(.keyPress(index: key, pressed: true))
+                        inputEventHandler?(.keyPress(index: key, pressed: true))
                     } else if (previous & mask) != 0, (current & mask) == 0 { // was pressed but isn't anymore
-                        publisher.send(.keyPress(index: key, pressed: false))
+                        inputEventHandler?(.keyPress(index: key, pressed: false))
                     }
                 }
             case SDInputEventTypeRotary.rawValue:
@@ -48,7 +49,7 @@ final actor StreamDeckClient: StreamDeckClientProtocol {
                     for encoder in 0 ..< Int(event.rotaryEncoders.encoderCount) {
                         let value = buffer.advanced(by: encoder).pointee
                         if value != 0 {
-                            publisher.send(.rotaryEncoderRotation(index: encoder, rotation: Int(value)))
+                            inputEventHandler?(.rotaryEncoderRotation(index: encoder, rotation: Int(value)))
                         }
                     }
                 case SDInputEventRotaryTypePress.rawValue:
@@ -60,9 +61,9 @@ final actor StreamDeckClient: StreamDeckClientProtocol {
                         let mask: UInt32 = (1 << encoder)
 
                         if (previous & mask) == 0, (current & mask) != 0 { // wasn't pressed but is now
-                            publisher.send(.rotaryEncoderPress(index: encoder, pressed: true))
+                            inputEventHandler?(.rotaryEncoderPress(index: encoder, pressed: true))
                         } else if (previous & mask) != 0, (current & mask) == 0 { // was pressed but isn't anymore
-                            publisher.send(.rotaryEncoderPress(index: encoder, pressed: false))
+                            inputEventHandler?(.rotaryEncoderPress(index: encoder, pressed: false))
                         }
                     }
                 default:
@@ -70,29 +71,20 @@ final actor StreamDeckClient: StreamDeckClientProtocol {
                 }
 
             case SDInputEventTypeTouch.rawValue:
-                publisher.send(.touch(x: Int(event.touch.x), y: Int(event.touch.y)))
+                inputEventHandler?(.touch(x: Int(event.touch.x), y: Int(event.touch.y)))
 
             case SDInputEventTypeFling.rawValue:
                 let fling = event.fling
-                publisher.send(.fling(startX: Int(fling.startX), startY: Int(fling.startY), endX: Int(fling.endX), endY: Int(fling.endY)))
+                inputEventHandler?(.fling(startX: Int(fling.startX), startY: Int(fling.startY), endX: Int(fling.endX), endY: Int(fling.endY)))
             default:
                 return
             }
         }
     }
 
-    private let inputEventHandler = InputEventHandler()
+    private let inputEventMapper = InputEventMapper()
 
-    public nonisolated var inputEventsPublisher: AnyPublisher<InputEvent, Never> {
-        inputEventHandler.publisher
-            .handleEvents(receiveSubscription: { [weak self] _ in
-                guard let self = self else { return }
-                Task.detached { await self.subscribeToInputEvents() }
-            })
-            .eraseToAnyPublisher()
-    }
-
-    private(set) var service: io_service_t = IO_OBJECT_NULL
+    private var service: io_service_t
     private var connection: io_connect_t = IO_OBJECT_NULL
 
     private var notificationPort: IONotificationPortRef?
@@ -216,6 +208,12 @@ final actor StreamDeckClient: StreamDeckClientProtocol {
         }
     }
 
+    @MainActor
+    func setInputEventHandler(_ handler: @escaping InputEventHandler) {
+        inputEventMapper.inputEventHandler = handler
+        subscribeToInputEvents()
+    }
+
     func setBrightness(_ brightness: Int) {
         callScalar(SDExternalMethod_setBrightness, UInt64(brightness))
     }
@@ -278,7 +276,8 @@ final actor StreamDeckClient: StreamDeckClientProtocol {
         return ret
     }
 
-    func subscribeToInputEvents() {
+    @MainActor
+    private func subscribeToInputEvents() {
         guard notificationPort == nil else { return }
 
         notificationPort = IONotificationPortCreate(kIOMainPortDefault)
@@ -296,7 +295,7 @@ final actor StreamDeckClient: StreamDeckClientProtocol {
 
             guard result == kIOReturnSuccess else {
                 os_log(.error, "Input event callback received non-success status (\(String(ioReturn: result))) - going to close")
-                Task.detached { await client.close() }
+                client.close()
                 return
             }
 
@@ -304,7 +303,7 @@ final actor StreamDeckClient: StreamDeckClientProtocol {
 
             let pointer = OpaquePointer(args)
             let event = UnsafeMutablePointer<SDInputEvent>(pointer).pointee
-            client.inputEventHandler.handle(event)
+            client.inputEventMapper.handle(event)
         }
 
         let unsafeSelf = Unmanaged.passRetained(self).toOpaque()

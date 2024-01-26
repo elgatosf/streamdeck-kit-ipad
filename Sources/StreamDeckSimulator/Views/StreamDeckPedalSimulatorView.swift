@@ -25,6 +25,8 @@ struct StreamDeckPedalSimulatorView: View {
 
 private extension StreamDeckPedalSimulatorView {
 
+    @MainActor
+    @ViewBuilder
     var simulatorView: some View {
         ZStack {
             backplate
@@ -33,6 +35,8 @@ private extension StreamDeckPedalSimulatorView {
         .aspectRatio(1303 / 924, contentMode: .fit)
     }
 
+    @MainActor
+    @ViewBuilder
     var touchPad: some View {
         GeometryReader { geo in
             HStack(spacing: geo.size.width / 16) {
@@ -57,6 +61,8 @@ private extension StreamDeckPedalSimulatorView {
         }
     }
 
+    @MainActor
+    @ViewBuilder
     var backplate: some View {
         Image("PedalBlackTemplate", bundle: .resourceBundle)
             .resizable()

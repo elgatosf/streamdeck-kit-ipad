@@ -26,11 +26,10 @@ public final class StreamDeckSimulator {
     }
 
     private static let shared = StreamDeckSimulator()
+
+    private var session: StreamDeckSession?
     private var device: StreamDeck?
     private var window: UIWindow?
-    private var session: StreamDeckSession {
-        .shared
-    }
 
     private var lastSimulatorCenter: CGPoint?
     private var lastSimulatorSize: CGFloat?
@@ -41,28 +40,30 @@ public final class StreamDeckSimulator {
         return windowScene?.first { $0.activationState == .foregroundActive }
     }
 
-    public static func show(streamDeck product: StreamDeckProduct) {
-        shared.showSimulator(product)
+    public static func show(
+        streamDeck product: StreamDeckProduct,
+        for session: StreamDeckSession? = nil
+    ) {
+        shared.showSimulator(product, session ?? .init())
     }
 
-    public static func show(defaultStreamDeck defaultProduct: StreamDeckProduct = .regular) {
-        shared.showSimulator(shared.lastSelectedProduct ?? defaultProduct)
+    public static func show(
+        defaultStreamDeck defaultProduct: StreamDeckProduct = .regular,
+        for session: StreamDeckSession? = nil
+    ) {
+        shared.showSimulator(shared.lastSelectedProduct ?? defaultProduct, session ?? .init())
     }
 
     public static func close() {
-        shared.clearWindow()
+        shared.close()
     }
 
-    private func clearWindow() {
-        device.map { session._removeSimulator(device: $0) }
-        window?.isHidden = true
-        window = nil
-    }
-
-    private func showSimulator(_ product: StreamDeckProduct) {
-        clearWindow()
+    private func showSimulator(_ product: StreamDeckProduct, _ session: StreamDeckSession) {
+        close()
 
         guard let scene = activeScene else { return }
+
+        lastSelectedProduct = product
 
         let window = PassThroughWindow(windowScene: scene)
         let simulatorContainer = SimulatorContainer(
@@ -80,26 +81,47 @@ public final class StreamDeckSimulator {
                 self?.lastSimulatorSize = newSize
             },
             onDeviceChange: { [weak self] newModel, newDevice in
-                self?.updateDevice(newDevice)
+                self?.setActiveDevice(newDevice, session)
                 self?.lastSelectedProduct = newModel
             }
         )
-        let hostViewController = UIHostingController(rootView: simulatorContainer)
 
+        let hostViewController = UIHostingController(rootView: simulatorContainer)
         hostViewController.view.backgroundColor = .clear
+
         window.rootViewController = hostViewController
         window.isHidden = false
-        lastSimulatorCenter.map { hostViewController.view.center = $0 }
-        session._appendSimulator(device: simulatorContainer.device)
-
         self.window = window
-        device = simulatorContainer.device
-        lastSelectedProduct = product
+
+        lastSimulatorCenter.map { hostViewController.view.center = $0 }
+
+        setActiveDevice(simulatorContainer.device, session)
     }
 
-    private func updateDevice(_ device: StreamDeck) {
-        self.device.map { session._removeSimulator(device: $0) }
-        session._appendSimulator(device: device)
-        self.device = device
+    private func close() {
+        setActiveDevice(nil)
+        clearWindow()
     }
+
+    private func clearWindow() {
+        window?.isHidden = true
+        window = nil
+    }
+
+    private func setActiveDevice(_ device: StreamDeck?, _ session: StreamDeckSession? = nil) {
+        guard self.device != device else { return }
+
+        if let currentDevice = self.device, let currentSession = self.session {
+            currentSession._removeSimulator(device: currentDevice)
+            self.device = nil
+            self.session = nil
+        }
+
+        if let device = device, let session = session {
+            session._appendSimulator(device: device)
+            self.device = device
+            self.session = session
+        }
+    }
+
 }

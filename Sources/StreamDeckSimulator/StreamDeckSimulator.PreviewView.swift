@@ -4,6 +4,7 @@
 //  Created by Roman Schlagowsky on 03.01.24.
 //
 
+import Combine
 import SwiftUI
 import StreamDeckKit
 
@@ -15,25 +16,39 @@ public extension StreamDeckSimulator {
         let configuration: StreamDeckSimulator.Configuration
         let context: Any?
         let showOptions: Bool
+        let session: StreamDeckSession?
+        private let onDispose: AnyCancellable?
 
         @State private var showDeviceBezels: Bool
         @State private var showKeyAreaBorders: Bool
 
         public init(
             streamDeck product: StreamDeckProduct = .regular,
+            session: StreamDeckSession? = nil,
             serialNumber: String? = nil,
             showOptions: Bool = true,
             showDeviceBezels: Bool = true,
             showKeyAreaBorders: Bool = false,
             context: (() -> Any)? = nil
         ) {
-            self.product = product
             configuration = product.createConfiguration(serialNumber: serialNumber)
+
+            self.product = product
             self.context = context?()
             self.showOptions = showOptions
+            self.session = session
+
             _showDeviceBezels = .init(initialValue: showDeviceBezels)
             _showKeyAreaBorders = .init(initialValue: showKeyAreaBorders)
-            StreamDeckSession.shared._appendSimulator(device: configuration.device)
+
+            if let session = session {
+                session._appendSimulator(device: configuration.device)
+                onDispose = AnyCancellable { [configuration] in
+                    session._removeSimulator(device: configuration.device)
+                }
+            } else {
+                onDispose = nil
+            }
         }
 
         public var body: some View {

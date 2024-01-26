@@ -6,7 +6,11 @@ set -e
 # If no no credentials are given, it just builds the documentation as a static site to the documentation_dir.
 # When `python3` is available. It will start a web server and host the resulting page.
 #
-# Parameters:
+# To publish the documentation to GitHub Pages, run the fillowing
+# `sh  build-documentation.sh -t "<GitHub access token>" -u <GitHub username>`
+#
+# Parameters (For default values, see the definition at the top of the implementation):
+#   -p Hosting base path: If the doc is not hosted at the root of the domain, set the path here.
 #   -r Repository: The path of the GitHub repo (without domain and leading slashes).
 #   -s Scheme: The scheme to build the documentation for. Use `xcodebuild -list` to see a list of possible values.
 #   -t Token: An API token that can be used to authenticate with GitHub.
@@ -22,6 +26,7 @@ documentation_branch="gh-pages"
 documentation_dir="docs"
 initial_branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
 
+# Parsing flags.
 while getopts p:r:s:t:u: flag
 do
     case "${flag}" in

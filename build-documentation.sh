@@ -2,7 +2,9 @@
 set -e
 
 # This script builds the DocC documentation for a specific target of the package and publishes it to the GitHub Pages branch
+#
 # If no no credentials are given, it just builds the documentation as a static site to the documentation_dir.
+# When `python3` is available. It will start a web server and host the resulting page.
 #
 # Parameters:
 #   -r Repository: The path of the GitHub repo (without domain and leading slashes).
@@ -67,6 +69,10 @@ build_documentation() {
 if [ "$publish_documentation" != true ]; then
     rm -rf $documentation_dir
     build_documentation
+    if command -v python3 &> /dev/null; then
+        echo "🌍 Starting web-server. Find the docs at http://localhost:8080/documentation"
+        python3 -m http.server 8080 -d $documentation_dir
+    fi
     exit 0
 fi
 

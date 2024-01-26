@@ -44,6 +44,7 @@ public extension StreamDeckSimulator {
             if let session = session {
                 session._appendSimulator(device: configuration.device)
                 onDispose = AnyCancellable { [configuration] in
+                    configuration.device.close()
                     session._removeSimulator(device: configuration.device)
                 }
             } else {

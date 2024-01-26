@@ -16,8 +16,6 @@ set -e
 #   -t Token: An API token that can be used to authenticate with GitHub.
 #   -u User: A GitHub username that can be used to authenticate with GitHub.
 
-git_name="Documentation Bot"
-git_email="elgato.mobile@corsair.com"
 git_remote="GitHub_docs"
 github_repository="elgatosf/streamdeck-kit-ipad"
 hosting_base_path="streamdeck-kit-ipad"
@@ -89,10 +87,6 @@ cleanup() {
 }
 
 trap cleanup EXIT
-
-# Setup remote and fetch latest.
-git config user.name "$git_name"
-git config user.email "$git_email"
 
 # Add remote to sync with.
 git_remote_url="https://$github_username:$github_api_token@github.com/$github_repository/"

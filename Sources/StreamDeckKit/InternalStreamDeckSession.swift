@@ -16,7 +16,7 @@ final actor InternalStreamDeckSession {
     nonisolated let state = CurrentValueSubject<StreamDeckSession.State, Never>(.idle)
     nonisolated let driverVersion = CurrentValueSubject<Version?, Never>(nil)
     nonisolated let devices = CurrentValueSubject<[StreamDeck], Never>([])
-    nonisolated let deviceConnectionEvents = PassthroughSubject<StreamDeckSession.DeviceConnectionEvent, Never>()
+    nonisolated let newDevice = PassthroughSubject<StreamDeck, Never>()
 
     private var devicesByService = [io_service_t: StreamDeck]()
 
@@ -155,14 +155,13 @@ final actor InternalStreamDeckSession {
         guard devices.value.firstIndex(of: device) == nil else { return }
 
         devices.value.append(device)
-        deviceConnectionEvents.send(.attached(device))
+        newDevice.send(device)
     }
 
     func removeDevice(device: StreamDeck) {
-        guard let index = devices.value.firstIndex(of: device) else { return }
-
-        let original = devices.value.remove(at: index)
-        deviceConnectionEvents.send(.detached(original))
+        _ = devices.value
+            .firstIndex(of: device)
+            .map { devices.value.remove(at: $0) }
     }
 
 }

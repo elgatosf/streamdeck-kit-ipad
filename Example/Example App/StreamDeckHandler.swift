@@ -26,11 +26,9 @@ class StreamDeckHandler {
     private(set) var stateDescription: String = StreamDeckSession.State.idle.debugDescription
 
     init() {
-        session.deviceConnectionHandler = { [weak self] event in
-            switch event {
-            case let .attached(device): self?.addDevice(device)
-            case let .detached(device): self?.removeDevice(device)
-            }
+        session.newDeviceHandler = { [weak self] device in
+            self?.addDevice(device)
+            device.onClose { self?.removeDevice(device) }
         }
 
         session.$state

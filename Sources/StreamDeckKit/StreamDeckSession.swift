@@ -16,20 +16,13 @@ var _queue = DispatchQueue(label: "com.elgato.StreamDeckKit.queue", attributes: 
 /// To begin interacting with a device, you can start by observing device connections, and then observe the input events of every connected device.
 /// ```swift
 /// let session = StreamDeckSession()
-/// var deviceCancellables: [StreamDeck: AnyCancellable] = [:]
-/// // Subscribe to device connection events.
-/// let cancellable = session.deviceConnectionEventsPublisher.sink { event in
-///     switch event {
-///     case let .attached(device):
-///         // Subscribe to input events of a device.
-///         deviceCancellables[device] = device.inputEventsPublisher.sink { inputEvent in
-///             print("Received \(inputEvent) from \(device.info.productName)")
-///         }
-///         print("\(device.info.productName) attached.")
-///     case let .detached(device):
-///         // Stop observing input events from the device
-///         deviceCancellables.removeValue(forKey: device)
-///         print("\(device.info.productName) detached.")
+/// // Add handler to get informed about newly attached devices.
+/// session.newDeviceHandler { device in
+///     print("\(device.info.productName) attached.")
+///
+///     // Handle input events of a device.
+///     device.inputEventHandler { event in
+///         print("Received \(event) from \(device.info.productName)")
 ///     }
 /// }
 /// // Start the session to begin device observation.
@@ -81,15 +74,7 @@ public final class StreamDeckSession {
         case failed(SessionError)
     }
 
-    /// Describes attachment/detachment of Stream Deck devices.
-    @frozen public enum DeviceConnectionEvent {
-        /// A new device is connected.
-        case attached(StreamDeck)
-        /// A device just disconnected.
-        case detached(StreamDeck)
-    }
-
-    public typealias DeviceConnectionHandler = @MainActor (DeviceConnectionEvent) -> Void
+    public typealias NewDeviceHandler = @MainActor (StreamDeck) -> Void
 
     public typealias StateHandler = @MainActor (State) -> Void
 
@@ -107,14 +92,11 @@ public final class StreamDeckSession {
     /// Provides the list of currently connected devices.
     @Published public private(set) var devices = [StreamDeck]()
 
-    /// Use this to observe attaching/detaching Stream Deck devices.
+    /// Use this to observe newly attached Stream Deck devices.
     ///
-    /// Alternatively use the ``deviceConnectionHandler-swift.property`` property to handle this with a closure.
-    public var deviceConnectionEventsPublisher: AnyPublisher<DeviceConnectionEvent, Never> {
-        internalSession
-            .deviceConnectionEvents
-            .receive(on: RunLoop.main)
-            .eraseToAnyPublisher()
+    /// Alternatively use the ``newDeviceHandler-swift.property`` property to handle this with a closure.
+    public var newDevicePublisher: AnyPublisher<StreamDeck, Never> {
+        internalSession.newDevice.eraseToAnyPublisher()
     }
 
     /// Use this to handle the current session state. The `State` info can be used to inform users about courses of action e.g. in case of an error.
@@ -144,19 +126,19 @@ public final class StreamDeckSession {
 
     /// Use this to handle attaching/detaching Stream Deck devices.
     ///
-    /// Alternatively use the ``deviceConnectionEventsPublisher`` to observe with Combine.
-    public var deviceConnectionHandler: DeviceConnectionHandler? {
-        get { _queue.sync { _deviceConnectionHandler } }
+    /// Alternatively use the ``newDevicePublisher`` to observe with Combine.
+    public var newDeviceHandler: NewDeviceHandler? {
+        get { _queue.sync { _newDeviceHandler } }
         set {
             _queue.async(flags: .barrier) {
-                self.deviceConnectionHandlerTask?.cancel()
-                self.deviceConnectionHandlerTask = nil
+                self.newDeviceHandlerTask?.cancel()
+                self.newDeviceHandlerTask = nil
 
                 guard let handler = newValue else { return }
 
-                let sequence = self.internalSession.deviceConnectionEvents.values
+                let sequence = self.internalSession.newDevice.values
 
-                self.deviceConnectionHandlerTask = Task { @MainActor in
+                self.newDeviceHandlerTask = Task { @MainActor in
                     for await state in sequence {
                         handler(state)
                     }
@@ -164,8 +146,8 @@ public final class StreamDeckSession {
             }
         }
     }
-    private var _deviceConnectionHandler: DeviceConnectionHandler?
-    private var deviceConnectionHandlerTask: Task<Void, Error>?
+    private var _newDeviceHandler: NewDeviceHandler?
+    private var newDeviceHandlerTask: Task<Void, Error>?
 
     private let internalSession = InternalStreamDeckSession()
 
@@ -185,9 +167,9 @@ public final class StreamDeckSession {
     }
 
     deinit {
-        _queue.sync { [stateHandlerTask, deviceConnectionHandlerTask] in
+        _queue.sync { [stateHandlerTask, newDeviceHandlerTask] in
             stateHandlerTask?.cancel()
-            deviceConnectionHandlerTask?.cancel()
+            newDeviceHandlerTask?.cancel()
         }
     }
 

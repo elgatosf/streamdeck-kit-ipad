@@ -9,10 +9,9 @@ import Combine
 import Foundation
 import StreamDeckCApi
 
-public final actor StreamDeckClientMock: StreamDeckClientProtocol {
+public final class StreamDeckClientMock: StreamDeckClientProtocol {
     public init() {}
-    public let inputEventsPublisher: AnyPublisher<InputEvent, Never> = .init(PassthroughSubject())
-    public let service: io_service_t = IO_OBJECT_NULL
+    public func setInputEventHandler(_ handler: @escaping InputEventHandler) {}
     public func setBrightness(_ brightness: Int) {}
     public func setImage(_ data: Data, toButtonAt index: Int) {}
     public func setImage(_ data: Data, x: Int, y: Int, w: Int, h: Int) {}

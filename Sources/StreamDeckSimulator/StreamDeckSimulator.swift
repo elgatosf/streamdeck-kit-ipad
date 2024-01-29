@@ -112,6 +112,7 @@ public final class StreamDeckSimulator {
         guard self.device != device else { return }
 
         if let currentDevice = self.device, let currentSession = self.session {
+            currentDevice.close()
             currentSession._removeSimulator(device: currentDevice)
             self.device = nil
             self.session = nil

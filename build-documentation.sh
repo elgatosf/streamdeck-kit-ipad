@@ -91,13 +91,8 @@ trap cleanup EXIT
 # Add remote to sync with.
 git_remote_url="https://$github_username:$github_api_token@github.com/$github_repository/"
 git remote add $git_remote $git_remote_url
-
-# Pull from remote when matching branch exists.
-branches_found=$(git ls-remote --heads GitHub refs/heads/$initial_branch)
-if [ -n "$branches_found" ]; then
-    echo "⬇️ Pulling from ${github_repository}..."
-    git pull $git_remote $initial_branch
-fi
+echo "⬇️ Fetching $git_remote($git_remote_url)..."
+git fetch $git_remote
 
 build_documentation
 

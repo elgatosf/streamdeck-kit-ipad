@@ -23,6 +23,8 @@ build_scheme="StreamDeckKit"
 documentation_branch="gh-pages"
 documentation_dir="docs"
 initial_branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+format_bold=$(tput bold)
+format_normal=$(tput sgr0)
 
 # Parsing flags.
 while getopts p:r:s:t:u: flag
@@ -68,25 +70,38 @@ build_documentation() {
     OTHER_DOCC_FLAGS="--transform-for-static-hosting$base_path_param --output-path $documentation_dir"
 }
 
+cleanup() {
+    echo "🧽 Cleaning up..."
+    current_branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+    
+    if [ "$current_branch" != "$initial_branch" ]; then
+        echo "⤵️ Checking out branch \"$initial_branch\"..."
+        git checkout $initial_branch
+    fi
+
+    if [ -d "./$documentation_dir" ]; then
+        echo "🚮 Deleting \"$documentation_dir\" folder..."
+        rm -rf $documentation_dir
+    fi
+
+    remotes_found=$(git remote | grep $git_remote)
+    if [ -n "$remotes_found" ]; then
+        echo "🚮 Removing remote \"$git_remote\"..."
+        git remote rm $git_remote
+    fi
+}
+
+trap cleanup EXIT
+
 # When no GitHub credentials were given, just build the docs.
 if [ "$publish_documentation" != true ]; then
-    rm -rf $documentation_dir
     build_documentation
     if command -v python3 &> /dev/null; then
-        echo "🌍 Starting web-server. Find the docs at http://localhost:8080/documentation"
+        echo "🌍 Starting web-server. Find the docs at ${format_bold}http://localhost:8080/documentation${format_normal}"
         python3 -m http.server 8080 -d $documentation_dir
     fi
     exit 0
 fi
-
-cleanup() {
-    echo "🧽 Cleaning up..."
-    git checkout $initial_branch
-    rm -rf $documentation_dir
-    git remote rm $git_remote
-}
-
-trap cleanup EXIT
 
 # Add remote to sync with.
 git_remote_url="https://$github_username:$github_api_token@github.com/$github_repository/"
@@ -102,7 +117,7 @@ git stash push -u  -- $documentation_dir
 
 # Move to pages-branch and apply stash.
 echo "⤵️ Checking out branch \"$documentation_branch\"..."
-git checkout $documentation_branch
+git checkout --track  $git_remote/$documentation_branch
 rm -rf $documentation_dir
 echo "🔨 Applying stash..."
 git stash pop

@@ -1,0 +1,390 @@
+{
+  "abstract" : [
+    {
+      "text" : "Stream Deck product type.",
+      "type" : "text"
+    }
+  ],
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProduct"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "s:13StreamDeckKit0aB7ProductO",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "enum"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "StreamDeckProduct"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "StreamDeckKit"
+      }
+    ],
+    "navigatorTitle" : [
+      {
+        "kind" : "identifier",
+        "text" : "StreamDeckProduct"
+      }
+    ],
+    "role" : "symbol",
+    "roleHeading" : "Enumeration",
+    "symbolKind" : "enum",
+    "title" : "StreamDeckProduct"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "iOS"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "enum"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "StreamDeckProduct"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    }
+  ],
+  "relationshipsSections" : [
+    {
+      "identifiers" : [
+        "doc:\/\/StreamDeckKit\/s12CaseIterableP",
+        "doc:\/\/StreamDeckKit\/SQ",
+        "doc:\/\/StreamDeckKit\/SH"
+      ],
+      "kind" : "relationships",
+      "title" : "Conforms To",
+      "type" : "conformsTo"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "topicSections" : [
+    {
+      "identifiers" : [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProduct\/mini",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProduct\/pedal",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProduct\/plus",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProduct\/regular",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProduct\/xl"
+      ],
+      "title" : "Enumeration Cases"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProduct\/init(productId:)"
+      ],
+      "title" : "Initializers"
+    },
+    {
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProduct\/Equatable-Implementations"
+      ],
+      "title" : "Default Implementations"
+    }
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/streamdeckkit\/streamdeckproduct"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://StreamDeckKit/SH": {
+  "identifier" : "doc:\/\/StreamDeckKit\/SH",
+  "title" : "Swift.Hashable",
+  "type" : "unresolvable"
+},
+"doc://StreamDeckKit/SQ": {
+  "identifier" : "doc:\/\/StreamDeckKit\/SQ",
+  "title" : "Swift.Equatable",
+  "type" : "unresolvable"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "StreamDeckKit",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProduct": {
+  "abstract" : [
+    {
+      "text" : "Stream Deck product type.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "enum"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckProduct"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProduct",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckProduct"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckProduct",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckproduct"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProduct/Equatable-Implementations": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProduct\/Equatable-Implementations",
+  "kind" : "article",
+  "role" : "collectionGroup",
+  "title" : "Equatable Implementations",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckproduct\/equatable-implementations"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProduct/init(productId:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "identifier",
+      "text" : "init"
+    },
+    {
+      "kind" : "text",
+      "text" : "?("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "productId"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProduct\/init(productId:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "init(productId:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckproduct\/init(productid:)"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProduct/mini": {
+  "abstract" : [
+    {
+      "text" : "Stream Deck Mini (6 keys)",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "mini"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProduct\/mini",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "StreamDeckProduct.mini",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckproduct\/mini"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProduct/pedal": {
+  "abstract" : [
+    {
+      "text" : "Stream Deck Pedal (3 keys)",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "pedal"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProduct\/pedal",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "StreamDeckProduct.pedal",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckproduct\/pedal"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProduct/plus": {
+  "abstract" : [
+    {
+      "text" : "Stream Deck Plus (8 keys, 4 dials)",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "plus"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProduct\/plus",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "StreamDeckProduct.plus",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckproduct\/plus"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProduct/regular": {
+  "abstract" : [
+    {
+      "text" : "Stream Deck and Stream Deck MK.2 (15 keys)",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "regular"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProduct\/regular",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "StreamDeckProduct.regular",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckproduct\/regular"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProduct/xl": {
+  "abstract" : [
+    {
+      "text" : "Stream Deck XL (32 keys)",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "xl"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProduct\/xl",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "StreamDeckProduct.xl",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckproduct\/xl"
+},
+"doc://StreamDeckKit/s12CaseIterableP": {
+  "identifier" : "doc:\/\/StreamDeckKit\/s12CaseIterableP",
+  "title" : "Swift.CaseIterable",
+  "type" : "unresolvable"
+}
+}
+}

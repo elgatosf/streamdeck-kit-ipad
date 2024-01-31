@@ -1,0 +1,812 @@
+{
+  "abstract" : [
+    {
+      "text" : "A representation of a Stream Deck product id.",
+      "type" : "text"
+    }
+  ],
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "s:13StreamDeckKit0aB9ProductIdV",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "struct"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "StreamDeckProductId"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "StreamDeckKit"
+      }
+    ],
+    "navigatorTitle" : [
+      {
+        "kind" : "identifier",
+        "text" : "StreamDeckProductId"
+      }
+    ],
+    "role" : "symbol",
+    "roleHeading" : "Structure",
+    "symbolKind" : "struct",
+    "title" : "StreamDeckProductId"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "iOS"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "struct"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "StreamDeckProductId"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "overview",
+          "level" : 2,
+          "text" : "Overview",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "Just a wrapper around ",
+              "type" : "text"
+            },
+            {
+              "code" : "Int",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : ". Primarily used to provide constants for comparisons.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
+    }
+  ],
+  "relationshipsSections" : [
+    {
+      "identifiers" : [
+        "doc:\/\/StreamDeckKit\/SQ",
+        "doc:\/\/StreamDeckKit\/s27ExpressibleByIntegerLiteralP",
+        "doc:\/\/StreamDeckKit\/SY"
+      ],
+      "kind" : "relationships",
+      "title" : "Conforms To",
+      "type" : "conformsTo"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "topicSections" : [
+    {
+      "identifiers" : [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/init(integerLiteral:)",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/init(rawValue:)"
+      ],
+      "title" : "Initializers"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/rawValue"
+      ],
+      "title" : "Instance Properties"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_2019",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_mini",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_mini_2022",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_mk2",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_mk2_scissor",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_original",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_pedal",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_plus",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_xl",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_xl_2022"
+      ],
+      "title" : "Type Properties"
+    },
+    {
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/Equatable-Implementations"
+      ],
+      "title" : "Default Implementations"
+    }
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/streamdeckkit\/streamdeckproductid"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://StreamDeckKit/SQ": {
+  "identifier" : "doc:\/\/StreamDeckKit\/SQ",
+  "title" : "Swift.Equatable",
+  "type" : "unresolvable"
+},
+"doc://StreamDeckKit/SY": {
+  "identifier" : "doc:\/\/StreamDeckKit\/SY",
+  "title" : "Swift.RawRepresentable",
+  "type" : "unresolvable"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "StreamDeckKit",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProductId": {
+  "abstract" : [
+    {
+      "text" : "A representation of a Stream Deck product id.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckProductId"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckProductId"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckProductId",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckproductid"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProductId/Equatable-Implementations": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/Equatable-Implementations",
+  "kind" : "article",
+  "role" : "collectionGroup",
+  "title" : "Equatable Implementations",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckproductid\/equatable-implementations"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProductId/init(integerLiteral:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "identifier",
+      "text" : "init"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "integerLiteral"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/init(integerLiteral:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "init(integerLiteral:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckproductid\/init(integerliteral:)"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProductId/init(rawValue:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "identifier",
+      "text" : "init"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "rawValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/init(rawValue:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "init(rawValue:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckproductid\/init(rawvalue:)"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProductId/rawValue": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "rawValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/rawValue",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "rawValue",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckproductid\/rawvalue"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProductId/sd_2019": {
+  "abstract" : [
+    {
+      "text" : "Stream Deck (2019)",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "sd_2019"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB9ProductIdV",
+      "text" : "StreamDeckProductId"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_2019",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "sd_2019",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckproductid\/sd_2019"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProductId/sd_mini": {
+  "abstract" : [
+    {
+      "text" : "Stream Deck Mini",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "sd_mini"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB9ProductIdV",
+      "text" : "StreamDeckProductId"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_mini",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "sd_mini",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckproductid\/sd_mini"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProductId/sd_mini_2022": {
+  "abstract" : [
+    {
+      "text" : "Stream Deck Mini (2022)",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "sd_mini_2022"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB9ProductIdV",
+      "text" : "StreamDeckProductId"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_mini_2022",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "sd_mini_2022",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckproductid\/sd_mini_2022"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProductId/sd_mk2": {
+  "abstract" : [
+    {
+      "text" : "Stream Deck MK.2 (2021)",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "sd_mk2"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB9ProductIdV",
+      "text" : "StreamDeckProductId"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_mk2",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "sd_mk2",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckproductid\/sd_mk2"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProductId/sd_mk2_scissor": {
+  "abstract" : [
+    {
+      "text" : "Stream Deck MK2 Scissor (2023)",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "sd_mk2_scissor"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB9ProductIdV",
+      "text" : "StreamDeckProductId"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_mk2_scissor",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "sd_mk2_scissor",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckproductid\/sd_mk2_scissor"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProductId/sd_original": {
+  "abstract" : [
+    {
+      "text" : "Stream Deck",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "sd_original"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB9ProductIdV",
+      "text" : "StreamDeckProductId"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_original",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "sd_original",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckproductid\/sd_original"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProductId/sd_pedal": {
+  "abstract" : [
+    {
+      "text" : "Stream Deck Pedal",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "sd_pedal"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB9ProductIdV",
+      "text" : "StreamDeckProductId"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_pedal",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "sd_pedal",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckproductid\/sd_pedal"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProductId/sd_plus": {
+  "abstract" : [
+    {
+      "text" : "Stream Deck + (Wave Deck)",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "sd_plus"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB9ProductIdV",
+      "text" : "StreamDeckProductId"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_plus",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "sd_plus",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckproductid\/sd_plus"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProductId/sd_xl": {
+  "abstract" : [
+    {
+      "text" : "Stream Deck XL",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "sd_xl"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB9ProductIdV",
+      "text" : "StreamDeckProductId"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_xl",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "sd_xl",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckproductid\/sd_xl"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProductId/sd_xl_2022": {
+  "abstract" : [
+    {
+      "text" : "Stream Deck XL (2022)",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "sd_xl_2022"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB9ProductIdV",
+      "text" : "StreamDeckProductId"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_xl_2022",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "sd_xl_2022",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckproductid\/sd_xl_2022"
+},
+"doc://StreamDeckKit/s27ExpressibleByIntegerLiteralP": {
+  "identifier" : "doc:\/\/StreamDeckKit\/s27ExpressibleByIntegerLiteralP",
+  "title" : "Swift.ExpressibleByIntegerLiteral",
+  "type" : "unresolvable"
+}
+}
+}

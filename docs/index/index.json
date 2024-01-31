@@ -1,0 +1,1267 @@
+{
+  "interfaceLanguages" : {
+    "swift" : [
+      {
+        "children" : [
+          {
+            "title" : "Classes",
+            "type" : "groupMarker"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Initializers",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeck\/init(client:info:capabilities:)",
+                "title" : "init(client: StreamDeckClientProtocol, info: DeviceInfo, capabilities: DeviceCapabilities)",
+                "type" : "init"
+              },
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeck\/capabilities",
+                "title" : "let capabilities: DeviceCapabilities",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeck\/info",
+                "title" : "let info: DeviceInfo",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeck\/inputeventhander",
+                "title" : "var inputEventHander: InputEventHandler?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeck\/inputeventspublisher",
+                "title" : "var inputEventsPublisher: AnyPublisher<InputEvent, Never>",
+                "type" : "property"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeck\/clear(key:)",
+                "title" : "func clear(key: Int)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeck\/close()",
+                "title" : "func close()",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeck\/filldisplay(_:)",
+                "title" : "func fillDisplay(UIColor)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeck\/onclose(_:)",
+                "title" : "func onClose(CloseHandler)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeck\/set(color:to:)",
+                "title" : "func set(color: Color, to: Int)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeck\/set(uicolor:to:)",
+                "title" : "func set(uiColor: UIColor, to: Int)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeck\/set(view:to:)",
+                "title" : "func set(view: some View, to: Int)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeck\/setbrightness(_:)",
+                "title" : "func setBrightness(Int)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeck\/setfullscreen(view:)",
+                "title" : "func setFullscreen(view: some View)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeck\/setfullscreenimage(_:scaleaspectfit:)",
+                "title" : "func setFullscreenImage(UIImage, scaleAspectFit: Bool)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeck\/setimage(_:to:scaleaspectfit:)",
+                "title" : "func setImage(UIImage, to: Int, scaleAspectFit: Bool)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeck\/settoucharea(view:at:)",
+                "title" : "func setTouchArea(view: some View, at: CGRect)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeck\/settouchareaimage(_:at:scaleaspectfit:)",
+                "title" : "func setTouchAreaImage(UIImage, at: CGRect, scaleAspectFit: Bool)",
+                "type" : "method"
+              },
+              {
+                "title" : "Type Aliases",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeck\/closehandler",
+                "title" : "StreamDeck.CloseHandler",
+                "type" : "typealias"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeck\/inputeventhandler",
+                "title" : "StreamDeck.InputEventHandler",
+                "type" : "typealias"
+              },
+              {
+                "title" : "Type Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeck\/minimumdriverversion",
+                "title" : "static let minimumDriverVersion: Version",
+                "type" : "property"
+              },
+              {
+                "title" : "Default Implementations",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Operators",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/streamdeck\/!=(_:_:)",
+                    "title" : "static func != (Self, Self) -> Bool",
+                    "type" : "op"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/streamdeck\/==(_:_:)",
+                    "title" : "static func == (StreamDeckKit.StreamDeck, StreamDeckKit.StreamDeck) -> Bool",
+                    "type" : "op"
+                  }
+                ],
+                "path" : "\/documentation\/streamdeckkit\/streamdeck\/equatable-implementations",
+                "title" : "Equatable Implementations",
+                "type" : "symbol"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Instance Methods",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/streamdeck\/hash(into:)",
+                    "title" : "func hash(into: inout Hasher)",
+                    "type" : "method"
+                  }
+                ],
+                "path" : "\/documentation\/streamdeckkit\/streamdeck\/hashable-implementations",
+                "title" : "Hashable Implementations",
+                "type" : "symbol"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Instance Properties",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/streamdeck\/id",
+                    "title" : "var id: String",
+                    "type" : "property"
+                  }
+                ],
+                "path" : "\/documentation\/streamdeckkit\/streamdeck\/identifiable-implementations",
+                "title" : "Identifiable Implementations",
+                "type" : "symbol"
+              }
+            ],
+            "path" : "\/documentation\/streamdeckkit\/streamdeck",
+            "title" : "StreamDeck",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Initializers",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckclientmock\/init()",
+                "title" : "init()",
+                "type" : "init"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckclientmock\/close()",
+                "title" : "func close()",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckclientmock\/filldisplay(red:green:blue:)",
+                "title" : "func fillDisplay(red: UInt8, green: UInt8, blue: UInt8)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckclientmock\/setbrightness(_:)",
+                "title" : "func setBrightness(Int)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckclientmock\/setfullscreenimage(_:)",
+                "title" : "func setFullscreenImage(Data)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckclientmock\/setimage(_:tobuttonat:)",
+                "title" : "func setImage(Data, toButtonAt: Int)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckclientmock\/setimage(_:x:y:w:h:)",
+                "title" : "func setImage(Data, x: Int, y: Int, w: Int, h: Int)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckclientmock\/setinputeventhandler(_:)",
+                "title" : "func setInputEventHandler(InputEventHandler)",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/streamdeckkit\/streamdeckclientmock",
+            "title" : "StreamDeckClientMock",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Initializers",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdecksession\/init()",
+                "title" : "init()",
+                "type" : "init"
+              },
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdecksession\/devices",
+                "title" : "var devices: [StreamDeck]",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdecksession\/driverversion",
+                "title" : "var driverVersion: Version?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdecksession\/newdevicehandler-swift.property",
+                "title" : "var newDeviceHandler: NewDeviceHandler?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdecksession\/newdevicepublisher",
+                "title" : "var newDevicePublisher: AnyPublisher<StreamDeck, Never>",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdecksession\/state-swift.property",
+                "title" : "var state: State",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdecksession\/statehandler-swift.property",
+                "title" : "var stateHandler: StateHandler?",
+                "type" : "property"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdecksession\/start()",
+                "title" : "func start()",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdecksession\/stop()",
+                "title" : "func stop()",
+                "type" : "method"
+              },
+              {
+                "title" : "Type Aliases",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdecksession\/newdevicehandler-swift.typealias",
+                "title" : "StreamDeckSession.NewDeviceHandler",
+                "type" : "typealias"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdecksession\/statehandler-swift.typealias",
+                "title" : "StreamDeckSession.StateHandler",
+                "type" : "typealias"
+              },
+              {
+                "title" : "Enumerations",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Enumeration Cases",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/streamdecksession\/sessionerror\/drivernotactive",
+                    "title" : "case driverNotActive",
+                    "type" : "case"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/streamdecksession\/sessionerror\/drivernotinstalled",
+                    "title" : "case driverNotInstalled",
+                    "type" : "case"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/streamdecksession\/sessionerror\/driverversionmismatch",
+                    "title" : "case driverVersionMismatch",
+                    "type" : "case"
+                  },
+                  {
+                    "title" : "Default Implementations",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "children" : [
+                      {
+                        "title" : "Operators",
+                        "type" : "groupMarker"
+                      },
+                      {
+                        "path" : "\/documentation\/streamdeckkit\/streamdecksession\/sessionerror\/!=(_:_:)",
+                        "title" : "static func != (Self, Self) -> Bool",
+                        "type" : "op"
+                      }
+                    ],
+                    "path" : "\/documentation\/streamdeckkit\/streamdecksession\/sessionerror\/equatable-implementations",
+                    "title" : "Equatable Implementations",
+                    "type" : "symbol"
+                  },
+                  {
+                    "children" : [
+                      {
+                        "title" : "Instance Properties",
+                        "type" : "groupMarker"
+                      },
+                      {
+                        "path" : "\/documentation\/streamdeckkit\/streamdecksession\/sessionerror\/localizeddescription",
+                        "title" : "var localizedDescription: String",
+                        "type" : "property"
+                      }
+                    ],
+                    "path" : "\/documentation\/streamdeckkit\/streamdecksession\/sessionerror\/error-implementations",
+                    "title" : "Error Implementations",
+                    "type" : "symbol"
+                  }
+                ],
+                "path" : "\/documentation\/streamdeckkit\/streamdecksession\/sessionerror",
+                "title" : "StreamDeckSession.SessionError",
+                "type" : "enum"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Enumeration Cases",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/streamdecksession\/state-swift.enum\/connecting",
+                    "title" : "case connecting",
+                    "type" : "case"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/streamdecksession\/state-swift.enum\/failed(_:)",
+                    "title" : "case failed(SessionError)",
+                    "type" : "case"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/streamdecksession\/state-swift.enum\/idle",
+                    "title" : "case idle",
+                    "type" : "case"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/streamdecksession\/state-swift.enum\/ready",
+                    "title" : "case ready",
+                    "type" : "case"
+                  },
+                  {
+                    "title" : "Default Implementations",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "children" : [
+                      {
+                        "title" : "Instance Properties",
+                        "type" : "groupMarker"
+                      },
+                      {
+                        "path" : "\/documentation\/streamdeckkit\/streamdecksession\/state-swift.enum\/debugdescription",
+                        "title" : "var debugDescription: String",
+                        "type" : "property"
+                      }
+                    ],
+                    "path" : "\/documentation\/streamdeckkit\/streamdecksession\/state-swift.enum\/customdebugstringconvertible-implementations",
+                    "title" : "CustomDebugStringConvertible Implementations",
+                    "type" : "symbol"
+                  },
+                  {
+                    "children" : [
+                      {
+                        "title" : "Operators",
+                        "type" : "groupMarker"
+                      },
+                      {
+                        "path" : "\/documentation\/streamdeckkit\/streamdecksession\/state-swift.enum\/!=(_:_:)",
+                        "title" : "static func != (Self, Self) -> Bool",
+                        "type" : "op"
+                      }
+                    ],
+                    "path" : "\/documentation\/streamdeckkit\/streamdecksession\/state-swift.enum\/equatable-implementations",
+                    "title" : "Equatable Implementations",
+                    "type" : "symbol"
+                  }
+                ],
+                "path" : "\/documentation\/streamdeckkit\/streamdecksession\/state-swift.enum",
+                "title" : "StreamDeckSession.State",
+                "type" : "enum"
+              }
+            ],
+            "path" : "\/documentation\/streamdeckkit\/streamdecksession",
+            "title" : "StreamDeckSession",
+            "type" : "class"
+          },
+          {
+            "title" : "Protocols",
+            "type" : "groupMarker"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckclientprotocol\/close()",
+                "title" : "func close()",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckclientprotocol\/filldisplay(red:green:blue:)",
+                "title" : "func fillDisplay(red: UInt8, green: UInt8, blue: UInt8)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckclientprotocol\/setbrightness(_:)",
+                "title" : "func setBrightness(Int)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckclientprotocol\/setfullscreenimage(_:)",
+                "title" : "func setFullscreenImage(Data)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckclientprotocol\/setimage(_:tobuttonat:)",
+                "title" : "func setImage(Data, toButtonAt: Int)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckclientprotocol\/setimage(_:x:y:w:h:)",
+                "title" : "func setImage(Data, x: Int, y: Int, w: Int, h: Int)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckclientprotocol\/setinputeventhandler(_:)",
+                "title" : "func setInputEventHandler(InputEventHandler)",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/streamdeckkit\/streamdeckclientprotocol",
+            "title" : "StreamDeckClientProtocol",
+            "type" : "protocol"
+          },
+          {
+            "title" : "Structures",
+            "type" : "groupMarker"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Initializers",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/devicecapabilities\/init(keycount:keysize:keyrows:keycolumns:dialcount:displaysize:keyarearect:touchdisplayrect:keyhorizontalspacing:keyverticalspacing:imageformat:transform:hassetfullscreenimagesupport:hassetimageonxysupport:hasfilldisplaysupport:)",
+                "title" : "init(keyCount: Int, keySize: CGSize?, keyRows: Int, keyColumns: Int, dialCount: Int, displaySize: CGSize?, keyAreaRect: CGRect?, touchDisplayRect: CGRect?, keyHorizontalSpacing: CGFloat, keyVerticalSpacing: CGFloat, imageFormat: ImageFormat, transform: CGAffineTransform, hasSetFullscreenImageSupport: Bool, hasSetImageOnXYSupport: Bool, hasFillDisplaySupport: Bool)",
+                "type" : "init"
+              },
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/devicecapabilities\/dialcount",
+                "title" : "let dialCount: Int",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/devicecapabilities\/displaysize",
+                "title" : "let displaySize: CGSize?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/devicecapabilities\/hasfilldisplaysupport",
+                "title" : "let hasFillDisplaySupport: Bool",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/devicecapabilities\/hassetfullscreenimagesupport",
+                "title" : "let hasSetFullscreenImageSupport: Bool",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/devicecapabilities\/hassetimageonxysupport",
+                "title" : "let hasSetImageOnXYSupport: Bool",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/devicecapabilities\/keyareabottomspacing",
+                "title" : "var keyAreaBottomSpacing: CGFloat",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/devicecapabilities\/keyarealeadingspacing",
+                "title" : "var keyAreaLeadingSpacing: CGFloat",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/devicecapabilities\/keyarearect",
+                "title" : "let keyAreaRect: CGRect?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/devicecapabilities\/keyareatopspacing",
+                "title" : "var keyAreaTopSpacing: CGFloat",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/devicecapabilities\/keyareatrailingspacing",
+                "title" : "var keyAreaTrailingSpacing: CGFloat",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/devicecapabilities\/keycolumns",
+                "title" : "let keyColumns: Int",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/devicecapabilities\/keycount",
+                "title" : "let keyCount: Int",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/devicecapabilities\/keyhorizontalspacing",
+                "title" : "let keyHorizontalSpacing: CGFloat",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/devicecapabilities\/keyrows",
+                "title" : "let keyRows: Int",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/devicecapabilities\/keysize",
+                "title" : "let keySize: CGSize?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/devicecapabilities\/keyverticalspacing",
+                "title" : "let keyVerticalSpacing: CGFloat",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/devicecapabilities\/touchdisplayrect",
+                "title" : "let touchDisplayRect: CGRect?",
+                "type" : "property"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/devicecapabilities\/getkeyrect(_:)",
+                "title" : "func getKeyRect(Int) -> CGRect",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/devicecapabilities\/gettouchareasectiondevicerect(_:)",
+                "title" : "func getTouchAreaSectionDeviceRect(Int) -> CGRect",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/devicecapabilities\/gettouchareasectionrect(_:)",
+                "title" : "func getTouchAreaSectionRect(Int) -> CGRect",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/streamdeckkit\/devicecapabilities",
+            "title" : "DeviceCapabilities",
+            "type" : "struct"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Initializers",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/deviceinfo\/init(vendorid:productid:manufacturer:productname:serialnumber:)",
+                "title" : "init(vendorID: Int, productID: Int, manufacturer: String, productName: String, serialNumber: String)",
+                "type" : "init"
+              },
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/deviceinfo\/manufacturer",
+                "title" : "let manufacturer: String",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/deviceinfo\/product",
+                "title" : "let product: StreamDeckProduct?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/deviceinfo\/productid",
+                "title" : "let productID: Int",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/deviceinfo\/productname",
+                "title" : "let productName: String",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/deviceinfo\/serialnumber",
+                "title" : "let serialNumber: String",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/deviceinfo\/vendorid",
+                "title" : "let vendorID: Int",
+                "type" : "property"
+              },
+              {
+                "title" : "Default Implementations",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Operators",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/deviceinfo\/!=(_:_:)",
+                    "title" : "static func != (Self, Self) -> Bool",
+                    "type" : "op"
+                  }
+                ],
+                "path" : "\/documentation\/streamdeckkit\/deviceinfo\/equatable-implementations",
+                "title" : "Equatable Implementations",
+                "type" : "symbol"
+              }
+            ],
+            "path" : "\/documentation\/streamdeckkit\/deviceinfo",
+            "title" : "DeviceInfo",
+            "type" : "struct"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Initializers",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckproductid\/init(integerliteral:)",
+                "title" : "init(integerLiteral: Int)",
+                "type" : "init"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckproductid\/init(rawvalue:)",
+                "title" : "init(rawValue: Int)",
+                "type" : "init"
+              },
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckproductid\/rawvalue",
+                "title" : "let rawValue: Int",
+                "type" : "property"
+              },
+              {
+                "title" : "Type Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckproductid\/sd_2019",
+                "title" : "static let sd_2019: StreamDeckProductId",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckproductid\/sd_mini",
+                "title" : "static let sd_mini: StreamDeckProductId",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckproductid\/sd_mini_2022",
+                "title" : "static let sd_mini_2022: StreamDeckProductId",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckproductid\/sd_mk2",
+                "title" : "static let sd_mk2: StreamDeckProductId",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckproductid\/sd_mk2_scissor",
+                "title" : "static let sd_mk2_scissor: StreamDeckProductId",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckproductid\/sd_original",
+                "title" : "static let sd_original: StreamDeckProductId",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckproductid\/sd_pedal",
+                "title" : "static let sd_pedal: StreamDeckProductId",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckproductid\/sd_plus",
+                "title" : "static let sd_plus: StreamDeckProductId",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckproductid\/sd_xl",
+                "title" : "static let sd_xl: StreamDeckProductId",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckproductid\/sd_xl_2022",
+                "title" : "static let sd_xl_2022: StreamDeckProductId",
+                "type" : "property"
+              },
+              {
+                "title" : "Default Implementations",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Operators",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/streamdeckproductid\/!=(_:_:)",
+                    "title" : "static func != (Self, Self) -> Bool",
+                    "type" : "op"
+                  }
+                ],
+                "path" : "\/documentation\/streamdeckkit\/streamdeckproductid\/equatable-implementations",
+                "title" : "Equatable Implementations",
+                "type" : "symbol"
+              }
+            ],
+            "path" : "\/documentation\/streamdeckkit\/streamdeckproductid",
+            "title" : "StreamDeckProductId",
+            "type" : "struct"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Initializers",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/version\/init(major:minor:patch:)-7y3qe",
+                "title" : "init(major: Int, minor: Int, patch: Int)",
+                "type" : "init"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/version\/init(major:minor:patch:)-jtk0",
+                "title" : "init?(major: String, minor: String, patch: String)",
+                "type" : "init"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/version\/init(string:)",
+                "title" : "init?(string: String)",
+                "type" : "init"
+              },
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/version\/major",
+                "title" : "let major: Int",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/version\/minor",
+                "title" : "let minor: Int",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/version\/patch",
+                "title" : "let patch: Int",
+                "type" : "property"
+              },
+              {
+                "title" : "Default Implementations",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Operators",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/version\/'...(_:)-38ra2",
+                    "title" : "static func ... (Self) -> PartialRangeThrough<Self>",
+                    "type" : "op"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/version\/'...(_:)-3hzyi",
+                    "title" : "static func ... (Self) -> PartialRangeFrom<Self>",
+                    "type" : "op"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/version\/'...(_:_:)",
+                    "title" : "static func ... (Self, Self) -> ClosedRange<Self>",
+                    "type" : "op"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/version\/'.._(_:)",
+                    "title" : "static func ..< (Self) -> PartialRangeUpTo<Self>",
+                    "type" : "op"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/version\/'.._(_:_:)",
+                    "title" : "static func ..< (Self, Self) -> Range<Self>",
+                    "type" : "op"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/version\/_(_:_:)-23651",
+                    "title" : "static func < (Version, Version) -> Bool",
+                    "type" : "op"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/version\/_(_:_:)-5basv",
+                    "title" : "static func > (Self, Self) -> Bool",
+                    "type" : "op"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/version\/_=(_:_:)-7u940",
+                    "title" : "static func >= (Self, Self) -> Bool",
+                    "type" : "op"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/version\/_=(_:_:)-9mjzw",
+                    "title" : "static func <= (Self, Self) -> Bool",
+                    "type" : "op"
+                  }
+                ],
+                "path" : "\/documentation\/streamdeckkit\/version\/comparable-implementations",
+                "title" : "Comparable Implementations",
+                "type" : "symbol"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Instance Properties",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/version\/description",
+                    "title" : "var description: String",
+                    "type" : "property"
+                  }
+                ],
+                "path" : "\/documentation\/streamdeckkit\/version\/customstringconvertible-implementations",
+                "title" : "CustomStringConvertible Implementations",
+                "type" : "symbol"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Operators",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/version\/!=(_:_:)",
+                    "title" : "static func != (Self, Self) -> Bool",
+                    "type" : "op"
+                  }
+                ],
+                "path" : "\/documentation\/streamdeckkit\/version\/equatable-implementations",
+                "title" : "Equatable Implementations",
+                "type" : "symbol"
+              }
+            ],
+            "path" : "\/documentation\/streamdeckkit\/version",
+            "title" : "Version",
+            "type" : "struct"
+          },
+          {
+            "title" : "Type Aliases",
+            "type" : "groupMarker"
+          },
+          {
+            "path" : "\/documentation\/streamdeckkit\/inputeventhandler",
+            "title" : "InputEventHandler",
+            "type" : "typealias"
+          },
+          {
+            "title" : "Enumerations",
+            "type" : "groupMarker"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Enumeration Cases",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/imageformat\/bmp",
+                "title" : "case bmp",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/imageformat\/jpeg",
+                "title" : "case jpeg",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/imageformat\/none",
+                "title" : "case none",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/imageformat\/unknown(_:)",
+                "title" : "case unknown(UInt32)",
+                "type" : "case"
+              },
+              {
+                "title" : "Default Implementations",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Operators",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/imageformat\/!=(_:_:)",
+                    "title" : "static func != (Self, Self) -> Bool",
+                    "type" : "op"
+                  }
+                ],
+                "path" : "\/documentation\/streamdeckkit\/imageformat\/equatable-implementations",
+                "title" : "Equatable Implementations",
+                "type" : "symbol"
+              }
+            ],
+            "path" : "\/documentation\/streamdeckkit\/imageformat",
+            "title" : "ImageFormat",
+            "type" : "enum"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Enumeration Cases",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/inputevent\/fling(startx:starty:endx:endy:)",
+                "title" : "case fling(startX: Int, startY: Int, endX: Int, endY: Int)",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/inputevent\/keypress(index:pressed:)",
+                "title" : "case keyPress(index: Int, pressed: Bool)",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/inputevent\/rotaryencoderpress(index:pressed:)",
+                "title" : "case rotaryEncoderPress(index: Int, pressed: Bool)",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/inputevent\/rotaryencoderrotation(index:rotation:)",
+                "title" : "case rotaryEncoderRotation(index: Int, rotation: Int)",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/inputevent\/touch(x:y:)",
+                "title" : "case touch(x: Int, y: Int)",
+                "type" : "case"
+              },
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/inputevent\/direction-swift.property",
+                "title" : "var direction: Direction",
+                "type" : "property"
+              },
+              {
+                "title" : "Enumerations",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Enumeration Cases",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/inputevent\/direction-swift.enum\/down",
+                    "title" : "case down",
+                    "type" : "case"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/inputevent\/direction-swift.enum\/left",
+                    "title" : "case left",
+                    "type" : "case"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/inputevent\/direction-swift.enum\/none",
+                    "title" : "case none",
+                    "type" : "case"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/inputevent\/direction-swift.enum\/right",
+                    "title" : "case right",
+                    "type" : "case"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/inputevent\/direction-swift.enum\/up",
+                    "title" : "case up",
+                    "type" : "case"
+                  },
+                  {
+                    "title" : "Default Implementations",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "children" : [
+                      {
+                        "title" : "Operators",
+                        "type" : "groupMarker"
+                      },
+                      {
+                        "path" : "\/documentation\/streamdeckkit\/inputevent\/direction-swift.enum\/!=(_:_:)",
+                        "title" : "static func != (Self, Self) -> Bool",
+                        "type" : "op"
+                      }
+                    ],
+                    "path" : "\/documentation\/streamdeckkit\/inputevent\/direction-swift.enum\/equatable-implementations",
+                    "title" : "Equatable Implementations",
+                    "type" : "symbol"
+                  }
+                ],
+                "path" : "\/documentation\/streamdeckkit\/inputevent\/direction-swift.enum",
+                "title" : "InputEvent.Direction",
+                "type" : "enum"
+              },
+              {
+                "title" : "Default Implementations",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Instance Properties",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/inputevent\/description",
+                    "title" : "var description: String",
+                    "type" : "property"
+                  }
+                ],
+                "path" : "\/documentation\/streamdeckkit\/inputevent\/customstringconvertible-implementations",
+                "title" : "CustomStringConvertible Implementations",
+                "type" : "symbol"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Operators",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/inputevent\/!=(_:_:)",
+                    "title" : "static func != (Self, Self) -> Bool",
+                    "type" : "op"
+                  }
+                ],
+                "path" : "\/documentation\/streamdeckkit\/inputevent\/equatable-implementations",
+                "title" : "Equatable Implementations",
+                "type" : "symbol"
+              }
+            ],
+            "path" : "\/documentation\/streamdeckkit\/inputevent",
+            "title" : "InputEvent",
+            "type" : "enum"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Enumeration Cases",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckproduct\/mini",
+                "title" : "case mini",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckproduct\/pedal",
+                "title" : "case pedal",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckproduct\/plus",
+                "title" : "case plus",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckproduct\/regular",
+                "title" : "case regular",
+                "type" : "case"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckproduct\/xl",
+                "title" : "case xl",
+                "type" : "case"
+              },
+              {
+                "title" : "Initializers",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckproduct\/init(productid:)",
+                "title" : "init?(productId: Int)",
+                "type" : "init"
+              },
+              {
+                "title" : "Default Implementations",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Operators",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/streamdeckproduct\/!=(_:_:)",
+                    "title" : "static func != (Self, Self) -> Bool",
+                    "type" : "op"
+                  }
+                ],
+                "path" : "\/documentation\/streamdeckkit\/streamdeckproduct\/equatable-implementations",
+                "title" : "Equatable Implementations",
+                "type" : "symbol"
+              }
+            ],
+            "path" : "\/documentation\/streamdeckkit\/streamdeckproduct",
+            "title" : "StreamDeckProduct",
+            "type" : "enum"
+          },
+          {
+            "title" : "Extended Modules",
+            "type" : "groupMarker"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Extended Classes",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Type Methods",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/uikit\/uiimage\/colored(_:size:)",
+                    "title" : "static func colored(UIColor, size: CGSize) -> UIImage?",
+                    "type" : "method"
+                  }
+                ],
+                "path" : "\/documentation\/streamdeckkit\/uikit\/uiimage",
+                "title" : "UIImage",
+                "type" : "extension"
+              }
+            ],
+            "path" : "\/documentation\/streamdeckkit\/uikit",
+            "title" : "UIKit",
+            "type" : "extension"
+          }
+        ],
+        "path" : "\/documentation\/streamdeckkit",
+        "title" : "StreamDeckKit",
+        "type" : "module"
+      }
+    ]
+  },
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 1,
+    "patch" : 1
+  }
+}

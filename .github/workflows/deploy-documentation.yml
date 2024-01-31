@@ -1,0 +1,28 @@
+name: "Build documentation page"
+run-name: ${{ github.actor }} is building SDK documentation
+on: [workflow_dispatch]
+jobs:
+  build-documentation-page:
+    runs-on: macos-14
+    environment: documentation-build
+    steps:
+      - name: Print job info
+        run: |
+          echo "The job was automatically triggered by a ${{ github.event_name }} event and is now running on a ${{ runner.os }} server."
+          echo "The repository is ${{ github.repository }} and the branch is ${{ github.ref }}."
+          echo "Available XCode versions:"
+          sudo ls -1 /Applications | grep "Xcode"
+          echo "Selected XCode version:"
+          /usr/bin/xcodebuild -version
+
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: List files in the repository
+        run: ls ${{ github.workspace }}
+
+      - name: Run the build script
+        run: sh build-documentation.sh -u $GIT_ACCOUNT_NAME -t $GIT_API_TOKEN
+        env:
+          GIT_ACCOUNT_NAME: ${{ vars.GIT_ACCOUNT_NAME }}
+          GIT_API_TOKEN: ${{ secrets.GIT_API_TOKEN }}

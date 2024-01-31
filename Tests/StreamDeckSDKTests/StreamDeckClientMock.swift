@@ -106,8 +106,9 @@ public final class StreamDeckClientMock {
         Recorder(mock: self)
     }
 
+    @MainActor
     public func emit(_ event: InputEvent) {
-        Task.detached { @MainActor in self.inputEventHandler?(event) }
+        self.inputEventHandler?(event)
     }
 }
 

@@ -16,6 +16,7 @@ extension StreamDeck {
         case setFullscreenImage(image: UIImage, scaleAspectFit: Bool)
         case setTouchAreaImage(image: UIImage, at: CGRect, scaleAspectFit: Bool)
         case fillDisplay(color: UIColor)
+        case task(() async -> Void)
         case close
 
         var isDrawingOperation: Bool {
@@ -38,10 +39,12 @@ extension StreamDeck {
     }
 
     func enqueueOperation(_ operation: Operation) {
+        guard !isClosed else { return }
+        
         var wasReplaced = false
 
         switch operation {
-        case .setInputEventHandler, .setBrightness:
+        case .setInputEventHandler, .setBrightness, .task:
             break
 
         case let .setImageOnKey(_, key, _):
@@ -77,10 +80,15 @@ extension StreamDeck {
     private func run(_ operation: Operation) async {
         switch operation {
         case let .setInputEventHandler(handler):
-            await MainActor.run { client.setInputEventHandler(handler) }
+            guard !didSetInputEventHandler else { return }
+
+            await MainActor.run {
+                client.setInputEventHandler(handler)
+                didSetInputEventHandler = true
+            }
 
         case let .setBrightness(brightness):
-            client.setBrightness(brightness)
+            client.setBrightness(min(max(brightness, 0), 100))
 
         case let .setImageOnKey(image, key, scaleAspectFit):
             guard let keySize = capabilities.keySize,
@@ -114,19 +122,30 @@ extension StreamDeck {
                 var green: CGFloat = 0
                 var blue: CGFloat = 0
                 var alpha: CGFloat = 0
+
                 color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-                client.fillDisplay(red: UInt8(255 * red), green: UInt8(255 * green), blue: UInt8(255 * blue))
+
+                client.fillDisplay(
+                    red: UInt8(min(255 * red, 255)),
+                    green: UInt8(min(255 * green, 255)),
+                    blue: UInt8(min(255 * blue, 255))
+                )
             } else {
                 fakeFillDisplay(color)
             }
 
-        case .close:
-            client.close()
+        case let .task(task):
+            await task()
 
+        case .close:
             for handler in closeHandlers {
                 await handler()
             }
 
+            client.close()
+            isClosed = true
+
+            operationsQueue.removeAll()
             operationsTask?.cancel()
         }
     }

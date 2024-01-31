@@ -13,6 +13,10 @@ final class AsyncQueue<Element> {
     private var queue = [Element]()
     private var continuations = [UnsafeContinuation<Element, Error>]()
 
+    var count: Int {
+        lock.withLock { queue.count }
+    }
+
     func enqueue(_ element: Element) {
         lock.withLock {
             guard continuations.isEmpty else {

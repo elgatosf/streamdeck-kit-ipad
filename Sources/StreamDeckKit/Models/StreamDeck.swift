@@ -20,9 +20,12 @@ public final class StreamDeck {
     public let info: DeviceInfo
     /// Capabilities and features of the device.
     public let capabilities: DeviceCapabilities
+    /// Check if this device was closed. If true, all operations are silently ignored.
+    public internal(set) var isClosed: Bool = false
 
     let operationsQueue = AsyncQueue<Operation>()
     var operationsTask: Task<Void, Never>?
+    var didSetInputEventHandler = false
 
     private let inputEventsSubject = PassthroughSubject<InputEvent, Never>()
 
@@ -42,9 +45,9 @@ public final class StreamDeck {
     /// Set a handler to handle key-presses, touches and other events.
     public var inputEventHander: InputEventHandler? {
         didSet {
-            if inputEventHander != nil {
-                subscribeToInputEvents()
-            }
+            guard inputEventHander != nil else { return }
+
+            subscribeToInputEvents()
         }
     }
 
@@ -76,6 +79,8 @@ public final class StreamDeck {
     }
 
     private func subscribeToInputEvents() {
+        guard !didSetInputEventHandler else { return }
+
         enqueueOperation(.setInputEventHandler { [weak self] event in
             self?.handleInputEvent(event)
         })
@@ -143,7 +148,12 @@ public final class StreamDeck {
     ///   the image will be scaled to fill the whole `rect`.
     ///
     /// The image will be scaled to fit the dimensions of the given rectangle.
-    public func setTouchAreaImage(_ image: UIImage, at rect: CGRect, scaleAspectFit: Bool = true) {
+    public func setTouchAreaImage(_ image: UIImage, at rect: CGRect? = nil, scaleAspectFit: Bool = true) {
+        guard capabilities.hasSetImageOnXYSupport,
+              let touchDisplayRect = capabilities.touchDisplayRect
+        else { return }
+        
+        let rect = rect ?? .init(origin: .zero, size: touchDisplayRect.size)
         enqueueOperation(.setTouchAreaImage(image: image, at: rect, scaleAspectFit: scaleAspectFit))
     }
 

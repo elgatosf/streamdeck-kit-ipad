@@ -40,7 +40,7 @@ let package = Package(
         ),
         .testTarget(
             name: "StreamDeckSDKTests",
-            dependencies: ["StreamDeckKit"]
+            dependencies: ["StreamDeckKit", "StreamDeckLayout", "StreamDeckSimulator"]
         )
     ]
 )

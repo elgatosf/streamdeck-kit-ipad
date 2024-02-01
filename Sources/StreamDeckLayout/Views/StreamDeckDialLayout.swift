@@ -5,19 +5,23 @@
 //  Created by Alexander Jentz on 27.11.23.
 //
 
+import StreamDeckKit
 import SwiftUI
 
 public struct StreamDeckDialLayout<Dial: View>: View {
+    public typealias TouchHandler = @MainActor (CGPoint) -> Void
+    public typealias FlingHandler = @MainActor (CGPoint, CGPoint, InputEvent.Direction) -> Void
+
     @Environment(\.streamDeckViewContext) private var context
 
     @ViewBuilder let dial: @MainActor (StreamDeckViewContext) -> Dial
 
-    let touch: @MainActor (CGPoint) -> Void
-    let fling: @MainActor (CGPoint, CGPoint) -> Void
+    let touch: TouchHandler
+    let fling: FlingHandler
 
     public init(
-        touch: @escaping (CGPoint) -> Void = { _ in },
-        fling: @escaping (CGPoint, CGPoint) -> Void = { _, _ in },
+        touch: @escaping TouchHandler = { _ in },
+        fling: @escaping FlingHandler = { _, _, _ in },
         @ViewBuilder dial: @escaping @MainActor (StreamDeckViewContext) -> Dial
     ) {
         self.touch = touch
@@ -44,7 +48,7 @@ public struct StreamDeckDialLayout<Dial: View>: View {
             case let .touch(x, y):
                 touch(.init(x: x, y: y))
             case let .fling(startX, startY, endX, endY):
-                fling(.init(x: startX, y: startY), .init(x: endX, y: endY))
+                fling(.init(x: startX, y: startY), .init(x: endX, y: endY), event.direction)
             default: break
             }
         }

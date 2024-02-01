@@ -18,8 +18,7 @@ public struct StreamDeckDialView<Content: View>: View {
     private let rotate: DialRotationHandler?
     private let press: DialPressHandler?
     private let touch: TouchHandler?
-
-    @ViewBuilder let content: @MainActor () -> Content
+    @ViewBuilder private let content: @MainActor () -> Content
 
     public init(
         rotate: DialRotationHandler? = nil,

@@ -7,7 +7,7 @@
 
 import Combine
 import SnapshotTesting
-import StreamDeckKit
+@testable import StreamDeckKit
 import StreamDeckLayout
 @testable import StreamDeckSimulator
 import SwiftUI
@@ -53,6 +53,19 @@ final class StreamDeckRobot {
             try await recorder.$fullscreens.waitFor { !$0.isEmpty }
         } catch {
             XCTFail(error.localizedDescription, file: file, line: line)
+        }
+    }
+
+    func operateDevice(isBusy: Bool = false, block: (StreamDeck) -> Void) async {
+        client.isBusy = isBusy
+        block(device)
+        client.isBusy = false
+        await digest()
+    }
+
+    func digest() async {
+        await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
+            device.enqueueOperation(.task { continuation.resume() })
         }
     }
 

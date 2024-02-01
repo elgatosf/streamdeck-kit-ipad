@@ -91,7 +91,7 @@ final class StreamDeckLayoutTests: XCTestCase {
                     }
                 }) { context in
                     ZStack(alignment: .top) {
-                        StreamDeckDialLayout(
+                        StreamDeckTouchAreaLayout(
                             touch: { point in
                                 model.lastEvent = .touch(point)
                             },

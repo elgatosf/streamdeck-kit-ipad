@@ -168,7 +168,7 @@ private extension StreamDeckSimulatorView {
                 }
             }
         } touchAreaView: { context in
-            StreamDeckDialLayout { context in
+            StreamDeckTouchAreaLayout { context in
                 StreamDeckDialView {
                     SimulatorTouchView { localLocation in
                         let x = CGFloat(context.index) * context.size.width + localLocation.x
@@ -211,7 +211,7 @@ private extension StreamDeckSimulatorView {
             if device.capabilities.dialCount != 0 {
                 Spacer()
 
-                StreamDeckDialLayout { _ in
+                StreamDeckTouchAreaLayout { _ in
                     StreamDeckDialView {
                         SimulatorTouchView { _ in } onFling: { _, _ in }
                             .border(.red)

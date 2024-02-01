@@ -1,5 +1,5 @@
 //
-//  StreamDeckDialLayout.swift
+//  StreamDeckTouchAreaLayout.swift
 //  StreamDeckDriverTest
 //
 //  Created by Alexander Jentz on 27.11.23.
@@ -8,7 +8,7 @@
 import StreamDeckKit
 import SwiftUI
 
-public struct StreamDeckDialLayout<Dial: View>: View {
+public struct StreamDeckTouchAreaLayout<Dial: View>: View {
     public typealias TouchHandler = @MainActor (CGPoint) -> Void
     public typealias FlingHandler = @MainActor (CGPoint, CGPoint, InputEvent.Direction) -> Void
 

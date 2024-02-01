@@ -9,26 +9,34 @@ import Foundation
 import SwiftUI
 
 public struct StreamDeckDialView<Content: View>: View {
+    public typealias DialRotationHandler = @MainActor (Int) -> Void
+    public typealias DialPressHandler = @MainActor (Bool) -> Void
+    public typealias TouchHandler = @MainActor (CGPoint) -> Void
+    
     @Environment(\.streamDeckViewContext) private var context
 
-    let rotate: @MainActor (Int) -> Void
-    let press: @MainActor (Bool) -> Void
+    private let rotate: DialRotationHandler?
+    private let press: DialPressHandler?
+    private let touch: TouchHandler?
 
     @ViewBuilder let content: @MainActor () -> Content
 
     public init(
-        rotate: @escaping @MainActor (Int) -> Void,
-        press: @escaping @MainActor (Bool) -> Void,
+        rotate: DialRotationHandler? = nil,
+        press: DialPressHandler? = nil,
+        touch: TouchHandler? = nil,
         @ViewBuilder content: @escaping @MainActor () -> Content
     ) {
         self.rotate = rotate
         self.press = press
+        self.touch = touch
         self.content = content
     }
 
     public init(
-        rotate: @escaping @MainActor (Int) -> Void = { _ in },
-        press: @escaping @MainActor () -> Void = {},
+        rotate: DialRotationHandler? = nil,
+        press: @escaping @MainActor () -> Void,
+        touch: TouchHandler? = nil,
         @ViewBuilder content: @escaping @MainActor () -> Content
     ) {
         self.init(
@@ -44,11 +52,22 @@ public struct StreamDeckDialView<Content: View>: View {
                 switch event {
                 case let .rotaryEncoderPress(index, pressed):
                     if index == context.index {
-                        press(pressed)
+                        press?(pressed)
                     }
                 case let .rotaryEncoderRotation(index, rotation):
                     if index == context.index {
-                        rotate(rotation)
+                        rotate?(rotation)
+                    }
+                case let .touch(point):
+                    guard let handler = touch else { return }
+                    let caps = context.device.capabilities
+                    let rect = caps.getTouchAreaSectionDeviceRect(context.index)
+                    if rect.contains(point) {
+                        let relativ = CGPoint(
+                            x: point.x - rect.origin.x,
+                            y: point.y - rect.origin.y
+                        )
+                        handler(relativ)
                     }
                 default: break
                 }

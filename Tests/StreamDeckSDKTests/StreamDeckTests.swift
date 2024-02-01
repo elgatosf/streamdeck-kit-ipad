@@ -184,7 +184,7 @@ final class StreamDeckTests: XCTestCase {
         }
     }
 
-    func test_set_touch_area_image_should_be_ignored_when_not_supported_by_device() async throws {
+    func test_set_touch_area_image_should_be_ignored_when_not_supported_by_device() {
         let idleExpectation = expectation(description: "idle")
         device.setTouchAreaImage(.colored(.blue)!)
         device.enqueueOperation(.task { idleExpectation.fulfill() })

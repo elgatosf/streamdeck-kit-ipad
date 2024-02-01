@@ -172,15 +172,13 @@ private extension StreamDeckSimulatorView {
                 StreamDeckDialView {
                     SimulatorTouchView { localLocation in
                         let x = CGFloat(context.index) * context.size.width + localLocation.x
-                        client.emit(.touch(x: Int(x), y: Int(localLocation.y)))
+                        client.emit(.touch(.init(x: x, y: localLocation.y)))
                     } onFling: { startLocation, endLocation in
                         let startX = CGFloat(context.index) * context.size.width + startLocation.x
                         let endX = CGFloat(context.index) * context.size.width + endLocation.x
                         client.emit(.fling(
-                            startX: Int(startX),
-                            startY: Int(startLocation.y),
-                            endX: Int(endX),
-                            endY: Int(endLocation.y)
+                            start: .init(x: startX, y: startLocation.y),
+                            end: .init(x: endX, y: endLocation.y)
                         ))
                     }
                 }

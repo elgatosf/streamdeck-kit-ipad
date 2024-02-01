@@ -43,12 +43,13 @@ public struct StreamDeckDialLayout<Dial: View>: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                     .environment(\.streamDeckViewContext, dialContext)
             }
-        }.onReceive(context.device.inputEventsPublisher) { event in
+        }
+        .onReceive(context.device.inputEventsPublisher) { event in
             switch event {
-            case let .touch(x, y):
-                touch(.init(x: x, y: y))
-            case let .fling(startX, startY, endX, endY):
-                fling(.init(x: startX, y: startY), .init(x: endX, y: endY), event.direction)
+            case let .touch(point):
+                touch(point)
+            case let .fling(start, end):
+                fling(start, end, event.direction)
             default: break
             }
         }

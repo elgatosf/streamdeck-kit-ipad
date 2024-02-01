@@ -62,10 +62,12 @@ final class StreamDeckLayoutTests: XCTestCase {
                 model.lastEvent = .rotate(steps)
             } press: { pressed in
                 model.lastEvent = .press(pressed)
+            } touch: { point in
+                model.lastEvent = .touch(point)
             } content: {
                 VStack {
                     Text("Dial \(context.index)")
-                    Text("Last event \(model.lastEvent.description)")
+                    Text(model.lastEvent.description)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(.white)
@@ -88,7 +90,7 @@ final class StreamDeckLayoutTests: XCTestCase {
                         SimpleKey()
                     }
                 }) { context in
-                    ZStack {
+                    ZStack(alignment: .top) {
                         StreamDeckDialLayout(
                             touch: { point in
                                 model.lastEvent = .touch(point)
@@ -223,6 +225,28 @@ final class StreamDeckLayoutTests: XCTestCase {
         }
     }
 
+    func test_touch_on_dial_section() async throws {
+        try await createDevice(.plus)
+        await render(SimpleLayout())
+
+        let caps = device.capabilities
+
+        for section in 0 ..< caps.dialCount {
+            let rect = caps.getTouchAreaSectionDeviceRect(section)
+            try await touch(x: Int(rect.midX), y: Int(rect.midY))
+        }
+
+        await MainActor.run {
+            for section in 0 ..< caps.dialCount {
+                assertSnapshot(
+                    of: recorder.touchAreaImages[section].image,
+                    as: .image,
+                    named: "section_\(section)"
+                )
+            }
+        }
+    }
+
     // MARK: Helper
 
     private func createDevice(_ product: StreamDeckProduct) async throws {
@@ -288,7 +312,7 @@ final class StreamDeckLayoutTests: XCTestCase {
     private func fling(startX: Int, startY: Int, endX: Int, endY: Int, waitForLayout: Bool = true) async throws {
         let imageCount = recorder.touchAreaImages.count
 
-        try await emit(.fling(startX: startX, startY: startY, endX: endX, endY: endY))
+        try await emit(.fling(start: .init(x: startX, y: startY), end: .init(x: endX, y: endY)))
 
         if waitForLayout {
             let touchDisplayRect = self.device.capabilities.touchDisplayRect!
@@ -303,7 +327,7 @@ final class StreamDeckLayoutTests: XCTestCase {
     private func touch(x: Int, y: Int, waitForLayout: Bool = true) async throws {
         let imageCount = recorder.touchAreaImages.count
 
-        try await emit(.touch(x: x, y: y))
+        try await emit(.touch(.init(x: x, y: y)))
 
         if waitForLayout {
             try await recorder.$touchAreaImages.waitFor(description: "touch area was rendered") {

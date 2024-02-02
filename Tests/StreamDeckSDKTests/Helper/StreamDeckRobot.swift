@@ -44,15 +44,12 @@ final class StreamDeckRobot {
         rendering content: Content,
         file: StaticString = #file,
         line: UInt = #line
-    ) async {
+    ) async throws {
         use(product)
         
         await renderer.render(content, on: device)
-
-        do {
-            try await recorder.$fullscreens.waitFor { !$0.isEmpty }
-        } catch {
-            XCTFail(error.localizedDescription, file: file, line: line)
+        try await recorder.$fullscreens.waitFor(file: file, line: line) {
+            !$0.isEmpty
         }
     }
 
@@ -107,7 +104,11 @@ final class StreamDeckRobot {
 
     // MARK: Events
 
-    private func emit(_ event: InputEvent) async throws {
+    private func emit(
+        _ event: InputEvent,
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) async throws {
         try await client.subscribedToInputEvents.waitFor(description: "Ready for inputs") { $0 }
         await client.emit(event)
     }
@@ -118,19 +119,21 @@ final class StreamDeckRobot {
         waitForLayout: Bool = true,
         file: StaticString = #filePath,
         line: UInt = #line
-    ) async {
+    ) async throws {
         let keysCount = recorder.keys.count
 
-        do {
-            try await emit(.keyPress(index: index, pressed: pressed))
+        try await emit(
+            .keyPress(index: index, pressed: pressed),
+            file: file,
+            line: line
+        )
 
-            if waitForLayout {
-                try await recorder.$keys.waitFor(description: "key press was rendered") {
-                    $0.count == keysCount + 1 && $0.last?.index == index
-                }
-            }
-        } catch {
-            XCTFail(error.localizedDescription, file: file, line: line)
+        if waitForLayout {
+            try await recorder.$keys.waitFor(
+                description: "key press was rendered",
+                file: file,
+                line: line
+            ) { $0.count == keysCount + 1 && $0.last?.index == index }
         }
     }
 
@@ -140,19 +143,21 @@ final class StreamDeckRobot {
         waitForLayout: Bool = true,
         file: StaticString = #filePath,
         line: UInt = #line
-    ) async {
+    ) async throws {
         let imageCount = recorder.touchAreaImages.count
 
-        do {
-            try await emit(.rotaryEncoderRotation(index: index, rotation: steps))
+        try await emit(
+            .rotaryEncoderRotation(index: index, rotation: steps),
+            file: file,
+            line: line
+        )
 
-            if waitForLayout {
-                try await recorder.$touchAreaImages.waitFor(description: "touch area was rendered") {
-                    $0.count == imageCount + 1
-                }
-            }
-        } catch {
-            XCTFail(error.localizedDescription, file: file, line: line)
+        if waitForLayout {
+            try await recorder.$touchAreaImages.waitFor(
+                description: "touch area was rendered",
+                file: file,
+                line: line
+            ) { $0.count == imageCount + 1 }
         }
     }
 
@@ -162,19 +167,19 @@ final class StreamDeckRobot {
         waitForLayout: Bool = true,
         file: StaticString = #filePath,
         line: UInt = #line
-    ) async {
+    ) async throws {
         let imageCount = recorder.touchAreaImages.count
 
-        do {
-            try await emit(.rotaryEncoderPress(index: index, pressed: pressed))
+        try await emit(
+            .rotaryEncoderPress(index: index, pressed: pressed),
+            file: file,
+            line: line
+        )
 
-            if waitForLayout {
-                try await recorder.$touchAreaImages.waitFor(description: "touch area was rendered") {
-                    $0.count == imageCount + 1
-                }
+        if waitForLayout {
+            try await recorder.$touchAreaImages.waitFor(description: "touch area was rendered") {
+                $0.count == imageCount + 1
             }
-        } catch {
-            XCTFail(error.localizedDescription, file: file, line: line)
         }
     }
 
@@ -186,19 +191,21 @@ final class StreamDeckRobot {
         waitForLayout: Bool = true,
         file: StaticString = #filePath,
         line: UInt = #line
-    ) async {
+    ) async throws {
         let imageCount = recorder.touchAreaImages.count
 
-        do {
-            try await emit(.fling(start: .init(x: startX, y: startY), end: .init(x: endX, y: endY)))
+        try await emit(
+            .fling(start: .init(x: startX, y: startY), end: .init(x: endX, y: endY)),
+            file: file,
+            line: line
+        )
 
-            if waitForLayout {
-                try await recorder.$touchAreaImages.waitFor(description: "touch area was rendered") {
-                    $0.count == imageCount + 1
-                }
-            }
-        } catch {
-            XCTFail(error.localizedDescription, file: file, line: line)
+        if waitForLayout {
+            try await recorder.$touchAreaImages.waitFor(
+                description: "touch area was rendered",
+                file: file,
+                line: line
+            ) { $0.count == imageCount + 1 }
         }
     }
 
@@ -208,19 +215,17 @@ final class StreamDeckRobot {
         waitForLayout: Bool = true,
         file: StaticString = #filePath,
         line: UInt = #line
-    ) async {
+    ) async throws {
         let imageCount = recorder.touchAreaImages.count
 
-        do {
-            try await emit(.touch(.init(x: x, y: y)))
+        try await emit(.touch(.init(x: x, y: y)), file: file, line: line)
 
-            if waitForLayout {
-                try await recorder.$touchAreaImages.waitFor(description: "touch area was rendered") {
-                    $0.count == imageCount + 1
-                }
-            }
-        } catch {
-            XCTFail(error.localizedDescription, file: file, line: line)
+        if waitForLayout {
+            try await recorder.$touchAreaImages.waitFor(
+                description: "touch area was rendered",
+                file: file,
+                line: line
+            ) { $0.count == imageCount + 1 }
         }
     }
 

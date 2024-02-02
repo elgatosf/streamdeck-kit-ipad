@@ -71,11 +71,17 @@ final class StreamDeckClient: StreamDeckClientProtocol {
                 }
 
             case SDInputEventTypeTouch.rawValue:
-                inputEventHandler?(.touch(x: Int(event.touch.x), y: Int(event.touch.y)))
+                inputEventHandler?(.touch(.init(
+                    x: Int(event.touch.x),
+                    y: Int(event.touch.y))
+                ))
 
             case SDInputEventTypeFling.rawValue:
                 let fling = event.fling
-                inputEventHandler?(.fling(startX: Int(fling.startX), startY: Int(fling.startY), endX: Int(fling.endX), endY: Int(fling.endY)))
+                inputEventHandler?(.fling(
+                    start: .init(x: Int(fling.startX), y: Int(fling.startY)),
+                    end: .init(x: Int(fling.endX), y: Int(fling.endY))
+                ))
             default:
                 return
             }

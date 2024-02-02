@@ -97,8 +97,8 @@ class StreamDeckHandler {
         case let .rotaryEncoderRotation(index, rotation):
             print("Rotary \(index) rotation \"\(rotation)\" on \(device.infoText).")
 
-        case let .touch(x, y):
-            print("Did touch at (x:\(x), y:\(y)) on \(device.infoText).")
+        case let .touch(point):
+            print("Did touch at (\(point.debugDescription)) on \(device.infoText).")
 
         case .fling:
             print("Did fling to \(event.direction) on \(device.infoText).")

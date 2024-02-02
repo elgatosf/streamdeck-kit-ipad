@@ -1,15 +1,15 @@
 //
-//  File.swift
-//  
+//  StreamDeckClientDummy.swift
+//
 //
 //  Created by Roman Schlagowsky on 05.01.24.
 //
 
 import Combine
 import Foundation
-import StreamDeckCApi
+import StreamDeckKit
 
-public final class StreamDeckClientMock: StreamDeckClientProtocol {
+final class StreamDeckClientDummy: StreamDeckClientProtocol {
     public init() {}
     public func setInputEventHandler(_ handler: @escaping InputEventHandler) {}
     public func setBrightness(_ brightness: Int) {}

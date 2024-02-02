@@ -20,6 +20,12 @@ let package = Package(
             targets: ["StreamDeckSimulator"]
         )
     ],
+    dependencies: [
+        .package(
+            url: "https://github.com/pointfreeco/swift-snapshot-testing",
+            from: "1.12.0"
+          ),
+    ],
     targets: [
         .target(
             name: "StreamDeckSimulator",
@@ -40,7 +46,12 @@ let package = Package(
         ),
         .testTarget(
             name: "StreamDeckSDKTests",
-            dependencies: ["StreamDeckKit"]
+            dependencies: [
+                "StreamDeckKit",
+                "StreamDeckLayout",
+                "StreamDeckSimulator",
+                .product(name: "SnapshotTesting", package: "swift-snapshot-testing")
+            ]
         )
     ]
 )

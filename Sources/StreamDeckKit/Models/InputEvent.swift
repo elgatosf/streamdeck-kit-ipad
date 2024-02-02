@@ -39,33 +39,28 @@ public enum InputEvent: Equatable {
     case rotaryEncoderRotation(index: Int, rotation: Int)
 
     /// Signals a touch on the touch strip of e.g. a Stream Deck Plus.
-    /// - Parameters:
-    ///   - x: The horizontal position  of the touch event.
-    ///   - y: The vertical position  of the touch event.
-    case touch(x: Int, y: Int)
+    case touch(CGPoint)
 
     /// Signals a swipe-like gesture on the touch strip of e.g. a Stream Deck Plus.
     /// - Parameters:
-    ///   - startX: The horizontal start position of the fling.
-    ///   - startY: The vertical start position of the fling.
-    ///   - endX: The horizontal end position of the fling.
-    ///   - endY: The vertical end position of the fling.
+    ///   - start: The start position of the fling.
+    ///   - end: The end position of the fling.
     ///
     /// The intensity of the gesture can be calculated by getting the distance between start and end-point.
-    case fling(startX: Int, startY: Int, endX: Int, endY: Int)
+    case fling(start: CGPoint, end: CGPoint)
 
     /// The direction of a ``fling(startX:startY:endX:endY:)`` event.
     ///
     /// When the event is anything but a fling, ``Direction-swift.enum/none`` will be returned.
     public var direction: Direction {
         switch self {
-        case let .fling(startX, startY, endX, endY):
-            guard startX != endX || startY != endY else {
+        case let .fling(start, end):
+            guard start != end else {
                 return .none
             }
 
-            let diffX = startX - endX
-            let diffY = startY - endY
+            let diffX = start.x - end.x
+            let diffY = start.y - end.y
 
             if abs(diffX) > abs(diffY) {
                 return diffX < 0 ? .right : .left
@@ -89,10 +84,10 @@ extension InputEvent: CustomStringConvertible {
             return "InputEvent.rotaryEncoderPress(index: \(index), pressed: \(pressed))"
         case let .rotaryEncoderRotation(index, rotation):
             return "InputEvent.rotaryEncoderRotation(index: \(index), rotation: \(rotation))"
-        case let .touch(x, y):
-            return "InputEvent.touch(x: \(x), y: \(y))"
-        case let .fling(startX, startY, endX, endY):
-            return "InputEvent.fling(startX: \(startX), startY: \(startY), endX: \(endX), endY: \(endY))"
+        case let .touch(point):
+            return "InputEvent.touch(x: \(point.x), y: \(point.y))"
+        case let .fling(start, end):
+            return "InputEvent.fling(start: \(start.x),\(start.y), end: \(end.x),\(end.y))"
         }
     }
 

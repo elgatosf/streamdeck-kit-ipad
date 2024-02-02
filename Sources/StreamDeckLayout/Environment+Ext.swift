@@ -11,7 +11,11 @@ import SwiftUI
 public struct StreamDeckViewContextKey: EnvironmentKey {
 
     public static var defaultValue: StreamDeckViewContext = .init(
-        device: StreamDeck(client: StreamDeckClientMock(), info: .init(), capabilities: .init()),
+        device: StreamDeck(
+            client: StreamDeckClientDummy(),
+            info: .init(),
+            capabilities: .init()
+        ),
         dirtyMarker: .background,
         size: .zero
     )

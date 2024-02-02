@@ -1,10 +1,9 @@
-name: "Build documentation page"
-run-name: ${{ github.actor }} is building SDK documentation
-on: [workflow_dispatch]
+name: "Run tests"
+run-name: ${{ github.actor }} is running tests
+on: [push]
 jobs:
-  build-documentation-page:
+  run-tests:
     runs-on: macos-14
-    environment: documentation-build
     steps:
       - name: Print job info
         run: |
@@ -18,11 +17,5 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: List files in the repository
-        run: ls ${{ github.workspace }}
-
-      - name: Run the build script
-        run: sh build-documentation.sh -u $GIT_ACCOUNT_NAME -t $GIT_API_TOKEN
-        env:
-          GIT_ACCOUNT_NAME: ${{ vars.GIT_ACCOUNT_NAME }}
-          GIT_API_TOKEN: ${{ secrets.GIT_API_TOKEN }}
+      - name: Run the tests
+        run:  xcodebuild -scheme StreamDeckKit-Package test -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" | xcpretty

@@ -129,7 +129,7 @@ private extension StreamDeckSimulatorView {
                 let baseScale = metrics.size.width / (device.capabilities.displaySize?.width ?? CGFloat(1))
                 let scale = baseScale * baseScaleMultiplier
                 touchPad
-                    .overlay { if showKeyAreaBorders { borderOverlay } }
+                    .overlay(alignment: .top) { if showKeyAreaBorders { borderOverlay } }
                     .frame(width: metrics.size.width, height: metrics.size.height * 0.7)
                     .scaleEffect(.init(width: scale, height: scale), anchor: .center)
                     .transformEffect(.init(translationX: 0, y: baseScale * yTransformBaseScaleMultiplier))

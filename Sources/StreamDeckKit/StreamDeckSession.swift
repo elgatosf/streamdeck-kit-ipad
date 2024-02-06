@@ -54,10 +54,8 @@ public final class StreamDeckSession {
 
     /// Describes possible reasons for a failing driver-connection.
     public enum SessionError: Error, Hashable {
-        /// The driver app is installed, but the driver is not enabled in the settings app.
-        case driverNotActive
-        /// The driver app is missing and therefore needs to be installed on the device.
-        case driverNotInstalled
+        /// An unexpected and non discoverable communication error occurred. This should never happen.
+        case unexpectedDriverError
         /// The driver has a different major version. Either the SDK or the driver app needs an update.
         case driverVersionMismatch
     }
@@ -66,10 +64,8 @@ public final class StreamDeckSession {
     public enum State: Hashable {
         /// Doing nothing. Session can be started.
         case idle
-        /// Trying to establish a connection to the driver.
-        case connecting
-        /// Connection to the driver is established. Devices can be observed.
-        case ready
+        /// Session is started and devices are being observed.
+        case started
         /// Connection to the driver did fail. See `SessionError` for possible reasons.
         case failed(SessionError)
     }

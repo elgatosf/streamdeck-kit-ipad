@@ -1,5 +1,10 @@
 # StreamDeck Kit
 
+<p align="center">
+    <a href="https://github.com/elgatosf/streamdeck-kit-ipad/actions/workflows/run-tests.yml" alt="Run tests">
+        <img src="https://github.com/elgatosf/streamdeck-kit-ipad/actions/workflows/run-tests.yml/badge.svg" /></a>
+</p>
+
 ## Installation
 
 ### SPM 

@@ -92,7 +92,7 @@ enum TestViews {
                         SimpleKey()
                     }
                 }) { context in
-                    StreamDeckTouchAreaLayout { _ in
+                    StreamDeckDialAreaLayout { _ in
                         SimpleDialView()
                     }
                 }
@@ -111,7 +111,7 @@ enum TestViews {
                 }
             ) { context in
                 ZStack {
-                    StreamDeckTouchAreaLayout(
+                    StreamDeckDialAreaLayout(
                         rotate: { _, steps in
                             model.lastEvent = .rotate(steps)
                         },

@@ -1,5 +1,5 @@
 //
-//  StreamDeckTouchAreaLayout.swift
+//  StreamDeckDialAreaLayout.swift
 //  StreamDeckDriverTest
 //
 //  Created by Alexander Jentz on 27.11.23.
@@ -8,7 +8,7 @@
 import StreamDeckKit
 import SwiftUI
 
-public struct StreamDeckTouchAreaLayout<Dial: View>: View {
+public struct StreamDeckDialAreaLayout<Dial: View>: View {
     public typealias DialRotationHandler = @MainActor (Int, Int) -> Void
     public typealias DialPressHandler = @MainActor (Int, Bool) -> Void
     public typealias TouchHandler = @MainActor (CGPoint) -> Void
@@ -57,11 +57,14 @@ public struct StreamDeckTouchAreaLayout<Dial: View>: View {
 
         HStack(spacing: 0) {
             ForEach(0 ..< caps.dialCount, id: \.self) { section in
+                let rect = caps.getDialAreaSectionRect(section)
+
                 let dialContext = context.with(
-                    dirtyMarker: .touchAreaSection(section),
-                    size: .init(width: context.size.width / CGFloat(caps.dialCount), height: context.size.height),
+                    dirtyMarker: .windowArea(rect),
+                    size: rect.size,
                     index: section
                 )
+
                 dial(dialContext)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                     .environment(\.streamDeckViewContext, dialContext)

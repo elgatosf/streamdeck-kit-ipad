@@ -110,7 +110,7 @@ final class StreamDeckLayoutTests: XCTestCase {
         let caps = robot.device.capabilities
 
         for section in 0 ..< caps.dialCount {
-            let rect = caps.getTouchAreaSectionDeviceRect(section)
+            let rect = caps.getDialAreaSectionDeviceRect(section)
 
             try await robot.touch(x: Int(rect.midX), y: Int(rect.midY))
             await robot.assertSnapshot(\.windowImages[section].image, as: .image, named: "section_\(section)")

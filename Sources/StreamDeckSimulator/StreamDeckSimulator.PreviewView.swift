@@ -70,7 +70,7 @@ public extension StreamDeckSimulator {
             }
             .environment(\.streamDeckViewContext, .init(
                 device: configuration.device,
-                dirtyMarker: .touchArea,
+                dirtyMarker: .window,
                 size: configuration.device.capabilities.screenSize ?? .zero
             ))
         }

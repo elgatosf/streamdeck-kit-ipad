@@ -48,8 +48,9 @@ extension DeviceCapabilities {
         )
     }
 
-    public func getTouchAreaSectionDeviceRect(_ section: Int) -> CGRect {
-        guard dialCount > 0, let windowRect = windowRect else { return .zero }
+    public func getDialAreaSectionDeviceRect(_ section: Int) -> CGRect {
+        guard let windowRect = windowRect, dialCount > 0, section >= 0, section < dialCount
+        else { return .zero }
 
         let sectionWidth = Int(windowRect.width) / dialCount
         return .init(
@@ -60,13 +61,13 @@ extension DeviceCapabilities {
         )
     }
 
-    public func getTouchAreaSectionRect(_ section: Int) -> CGRect {
-        let rect = getTouchAreaSectionDeviceRect(section)
+    public func getDialAreaSectionRect(_ section: Int) -> CGRect {
+        let rect = getDialAreaSectionDeviceRect(section)
 
         guard !rect.isEmpty, let windowRect = windowRect else { return .zero }
 
         return .init(
-            x: rect.origin.x,
+            x: windowRect.origin.x + rect.origin.x,
             y: windowRect.origin.y,
             width: rect.width,
             height: rect.height

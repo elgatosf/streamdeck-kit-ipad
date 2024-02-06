@@ -16,7 +16,7 @@ public struct StreamDeckViewContextKey: EnvironmentKey {
             info: .init(),
             capabilities: .init()
         ),
-        dirtyMarker: .background,
+        dirtyMarker: .screen,
         size: .zero
     )
 }

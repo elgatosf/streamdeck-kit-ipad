@@ -39,7 +39,7 @@ public final class StreamDeckLayoutRenderer {
         let context = StreamDeckViewContext(
             device: device,
             dirtyMarker: .background,
-            size: device.capabilities.displaySize ?? .zero
+            size: device.capabilities.screenSize ?? .zero
         ) { [weak self] in
             self?.updateRequired($0)
         }
@@ -85,34 +85,39 @@ public final class StreamDeckLayoutRenderer {
 
         guard !dirtyViews.contains(.background) else {
             print("!!! complete screen required")
-            device.setFullscreenImage(image, scaleAspectFit: false)
+            device.setScreenImage(image, scaleAspectFit: false)
             return
         }
 
         for dirtyView in dirtyViews {
-            if case let .key(key) = dirtyView {
+            if case let .key(location) = dirtyView {
                 print("!!! \(dirtyView) required")
-                let rect = caps.getKeyRect(key)
-                device.setImage(image.cropping(to: rect), to: key, scaleAspectFit: false)
+                let rect = caps.getKeyRect(location)
+                device.setKeyImage(image.cropping(to: rect), at: location, scaleAspectFit: false)
             }
         }
 
-        guard let touchDisplayRect = caps.touchDisplayRect else { return }
+        guard let windowRect = caps.windowRect else { return }
 
         if dirtyViews.contains(.touchArea)  {
             print("!!! complete touch area required")
-            let deviceRect = CGRect(origin: .zero, size: touchDisplayRect.size)
+            device.setWindowImage(image.cropping(to: windowRect), scaleAspectFit: false)
+            return
+        }
 
-            device.setTouchAreaImage(image.cropping(to: touchDisplayRect), at: deviceRect, scaleAspectFit: false)
-        } else {
-            for dirtyView in dirtyViews {
-                if case let .touchAreaSection(section) = dirtyView {
-                    let rect = caps.getTouchAreaSectionRect(section)
-                    let deviceRect = caps.getTouchAreaSectionDeviceRect(section)
-
-                    print("!!! \(dirtyView) required")
-                    device.setTouchAreaImage(image.cropping(to: rect), at: deviceRect, scaleAspectFit: false)
+        for dirtyView in dirtyViews {
+            if case let .touchAreaSection(section) = dirtyView {
+                guard caps.hasSetWindowImageAtXYSupport else {
+                    print("!!! \(dirtyView) required but no setWindowImage(:at:) support")
+                    device.setWindowImage(image.cropping(to: windowRect), scaleAspectFit: false)
+                    return
                 }
+
+                let rect = caps.getTouchAreaSectionRect(section)
+                let deviceRect = caps.getTouchAreaSectionDeviceRect(section)
+
+                print("!!! \(dirtyView) required")
+                device.setWindowImage(image.cropping(to: rect), at: deviceRect, scaleAspectFit: false)
             }
         }
     }

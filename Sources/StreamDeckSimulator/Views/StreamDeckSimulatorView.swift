@@ -49,7 +49,7 @@ struct StreamDeckSimulatorView: View {
             .onReceive(client.backgroundImage) { image in
                 backgroundImage = image
             }
-            .onReceive(client.buttonImages) { images in
+            .onReceive(client.keyImages) { images in
                 buttonImages = images
             }
     }
@@ -126,7 +126,7 @@ private extension StreamDeckSimulatorView {
     var simulatorView: some View {
         GeometryReader { metrics in
             ZStack(alignment: .top) {
-                let baseScale = metrics.size.width / (device.capabilities.displaySize?.width ?? CGFloat(1))
+                let baseScale = metrics.size.width / (device.capabilities.screenSize?.width ?? CGFloat(1))
                 let scale = baseScale * baseScaleMultiplier
                 touchPad
                     .overlay(alignment: .top) { if showKeyAreaBorders { borderOverlay } }
@@ -256,8 +256,8 @@ private extension StreamDeckSimulatorView {
             .frame(width: 400, height: 700)
             .border(.green)
             .onAppear {
-                config.device.setImage(.init(systemName: "gear")!, to: 1)
-                config.device.set(color: .red, to: 3)
+                config.device.setKeyImage(.init(systemName: "gear")!, at: 1)
+                config.device.fillKey(.red, at: 3)
             }
     }
 }

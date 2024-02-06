@@ -52,14 +52,14 @@ extension StreamDeckProduct: Identifiable {
                 keyRows: 2,
                 keyColumns: 4,
                 dialCount: 4,
-                displaySize: .init(width: 800, height: 480),
+                screenSize: .init(width: 800, height: 480),
                 keyAreaRect: .init(
                     x: 13,
                     y: 12,
                     width: 120 * 4 + 99 * 3,
                     height: 120 * 2 + 40
                 ),
-                touchDisplayRect: .init(
+                windowRect: .init(
                     x: 0,
                     y: 380,
                     width: 800,
@@ -68,9 +68,13 @@ extension StreamDeckProduct: Identifiable {
                 keyHorizontalSpacing: 99,
                 keyVerticalSpacing: 40,
                 imageFormat: .jpeg,
-                hasSetFullscreenImageSupport: true,
-                hasSetImageOnXYSupport: true,
-                hasFillDisplaySupport: true
+                hasSetBrightnessSupport: true,
+                hasSetKeyImageSupport: true,
+                hasSetScreenImageSupport: true,
+                hasSetWindowImageSupport: true,
+                hasSetWindowImageAtXYSupport: true,
+                hasFillScreenSupport: true,
+                hasFillKeySupport: true
             )
         case .regular:
             return DeviceCapabilities(
@@ -78,7 +82,7 @@ extension StreamDeckProduct: Identifiable {
                 keySize: .init(width: 72, height: 72),
                 keyRows: 3,
                 keyColumns: 5,
-                displaySize: .init(width: 480, height: 272),
+                screenSize: .init(width: 480, height: 272),
                 keyAreaRect: .init(
                     x: 11,
                     y: 5,
@@ -88,8 +92,11 @@ extension StreamDeckProduct: Identifiable {
                 keyHorizontalSpacing: 25,
                 keyVerticalSpacing: 25,
                 imageFormat: .jpeg,
-                hasSetFullscreenImageSupport: true,
-                hasFillDisplaySupport: true
+                hasSetBrightnessSupport: true,
+                hasSetKeyImageSupport: true,
+                hasSetScreenImageSupport: true,
+                hasFillScreenSupport: true,
+                hasFillKeySupport: true
             )
         case .mini:
             return DeviceCapabilities(
@@ -97,7 +104,7 @@ extension StreamDeckProduct: Identifiable {
                 keySize: .init(width: 80, height: 80),
                 keyRows: 2,
                 keyColumns: 3,
-                displaySize: .init(width: 320, height: 240),
+                screenSize: .init(width: 320, height: 240),
                 keyAreaRect: .init(
                     x: 14,
                     y: 26,
@@ -106,7 +113,9 @@ extension StreamDeckProduct: Identifiable {
                 ),
                 keyHorizontalSpacing: 28,
                 keyVerticalSpacing: 28,
-                imageFormat: .jpeg
+                imageFormat: .jpeg,
+                hasSetBrightnessSupport: true,
+                hasSetKeyImageSupport: true
             )
         case .xl:
             return DeviceCapabilities(
@@ -114,7 +123,7 @@ extension StreamDeckProduct: Identifiable {
                 keySize: .init(width: 96, height: 96),
                 keyRows: 4,
                 keyColumns: 8,
-                displaySize: .init(width: 1024, height: 600),
+                screenSize: .init(width: 1024, height: 600),
                 keyAreaRect: .init(
                     x: 14,
                     y: 47,
@@ -124,8 +133,11 @@ extension StreamDeckProduct: Identifiable {
                 keyHorizontalSpacing: 32,
                 keyVerticalSpacing: 39,
                 imageFormat: .jpeg,
-                hasSetFullscreenImageSupport: true,
-                hasFillDisplaySupport: true
+                hasSetBrightnessSupport: true,
+                hasSetKeyImageSupport: true,
+                hasSetScreenImageSupport: true,
+                hasFillScreenSupport: true,
+                hasFillKeySupport: true
             )
         case .pedal:
             return DeviceCapabilities(
@@ -133,7 +145,7 @@ extension StreamDeckProduct: Identifiable {
                 keySize: .zero,
                 keyRows: 1,
                 keyColumns: 3,
-                displaySize: .zero,
+                screenSize: .zero,
                 imageFormat: .none
             )
         }

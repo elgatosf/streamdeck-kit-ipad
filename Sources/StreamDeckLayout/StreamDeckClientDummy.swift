@@ -12,10 +12,12 @@ import StreamDeckKit
 final class StreamDeckClientDummy: StreamDeckClientProtocol {
     public init() {}
     public func setInputEventHandler(_ handler: @escaping InputEventHandler) {}
-    public func setBrightness(_ brightness: Int) {}
-    public func setImage(_ data: Data, toButtonAt index: Int) {}
-    public func setImage(_ data: Data, x: Int, y: Int, w: Int, h: Int) {}
-    public func setFullscreenImage(_ data: Data) {}
-    public func fillDisplay(red: UInt8, green: UInt8, blue: UInt8) {}
-    public func close() {}
+    func setBrightness(_ brightness: Int) {}
+    func setKeyImage(_ data: Data, at index: Int) {}
+    func setScreenImage(_ data: Data) {}
+    func setWindowImage(_ data: Data) {}
+    func setWindowImage(_ data: Data, at rect: CGRect) {}
+    func fillScreen(red: UInt8, green: UInt8, blue: UInt8) {}
+    func fillKey(red: UInt8, green: UInt8, blue: UInt8, at index: Int) {}
+    func close() {}
 }

@@ -41,47 +41,30 @@ private extension View {
 
 public extension StreamDeck {
 
-    func clear(key: Int) {
-        set(uiColor: .black, to: key)
-    }
-
-    func set(color: Color, to key: Int) {
-        set(uiColor: .init(color), to: key)
-    }
-
-    func set(uiColor: UIColor, to key: Int) {
-        guard let keySize = capabilities.keySize else { return }
-
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self, let image: UIImage = .colored(uiColor, size: keySize) else { return }
-            setImage(image, to: key, scaleAspectFit: false)
-        }
-    }
-
-    func set(view: some View, to key: Int) {
+    func set(view: some View, at key: Int) {
         guard let keySize = capabilities.keySize else { return }
 
         DispatchQueue.main.async { [weak self] in
             guard let self = self, let image = view.renderAsImage(of: keySize) else { return }
-            setImage(image, to: key, scaleAspectFit: false)
+            setKeyImage(image, at: key, scaleAspectFit: false)
         }
     }
 
     func setFullscreen(view: some View) {
-        guard let displaySize = capabilities.displaySize else { return }
+        guard let screenSize = capabilities.screenSize else { return }
 
         DispatchQueue.main.async { [weak self] in
-            guard let self = self, let image = view.renderAsImage(of: displaySize) else { return }
-            setFullscreenImage(image, scaleAspectFit: false)
+            guard let self = self, let image = view.renderAsImage(of: screenSize) else { return }
+            setScreenImage(image, scaleAspectFit: false)
         }
     }
 
-    func setTouchArea(view: some View, at rect: CGRect) {
-        guard capabilities.hasSetImageOnXYSupport else { return }
+    func setWindowImage(view: some View, at rect: CGRect) {
+        guard capabilities.hasSetWindowImageAtXYSupport else { return }
 
         DispatchQueue.main.async { [weak self] in
             guard let self = self, let image = view.renderAsImage(of: rect.size) else { return }
-            setTouchAreaImage(image, at: rect, scaleAspectFit: false)
+            setWindowImage(image, at: rect, scaleAspectFit: false)
         }
     }
 }

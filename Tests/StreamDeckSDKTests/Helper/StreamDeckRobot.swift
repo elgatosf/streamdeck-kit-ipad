@@ -48,7 +48,7 @@ final class StreamDeckRobot {
         use(product)
         
         await renderer.render(content, on: device)
-        try await recorder.$fullscreens.waitFor(file: file, line: line) {
+        try await recorder.$screens.waitFor(file: file, line: line) {
             !$0.isEmpty
         }
     }
@@ -144,7 +144,7 @@ final class StreamDeckRobot {
         file: StaticString = #filePath,
         line: UInt = #line
     ) async throws {
-        let imageCount = recorder.touchAreaImages.count
+        let imageCount = recorder.windowImages.count
 
         try await emit(
             .rotaryEncoderRotation(index: index, rotation: steps),
@@ -153,7 +153,7 @@ final class StreamDeckRobot {
         )
 
         if waitForLayout {
-            try await recorder.$touchAreaImages.waitFor(
+            try await recorder.$windowImages.waitFor(
                 description: "touch area was rendered",
                 file: file,
                 line: line
@@ -168,7 +168,7 @@ final class StreamDeckRobot {
         file: StaticString = #filePath,
         line: UInt = #line
     ) async throws {
-        let imageCount = recorder.touchAreaImages.count
+        let imageCount = recorder.windowImages.count
 
         try await emit(
             .rotaryEncoderPress(index: index, pressed: pressed),
@@ -177,7 +177,7 @@ final class StreamDeckRobot {
         )
 
         if waitForLayout {
-            try await recorder.$touchAreaImages.waitFor(description: "touch area was rendered") {
+            try await recorder.$windowImages.waitFor(description: "touch area was rendered") {
                 $0.count == imageCount + 1
             }
         }
@@ -192,7 +192,7 @@ final class StreamDeckRobot {
         file: StaticString = #filePath,
         line: UInt = #line
     ) async throws {
-        let imageCount = recorder.touchAreaImages.count
+        let imageCount = recorder.windowImages.count
 
         try await emit(
             .fling(start: .init(x: startX, y: startY), end: .init(x: endX, y: endY)),
@@ -201,7 +201,7 @@ final class StreamDeckRobot {
         )
 
         if waitForLayout {
-            try await recorder.$touchAreaImages.waitFor(
+            try await recorder.$windowImages.waitFor(
                 description: "touch area was rendered",
                 file: file,
                 line: line
@@ -216,12 +216,12 @@ final class StreamDeckRobot {
         file: StaticString = #filePath,
         line: UInt = #line
     ) async throws {
-        let imageCount = recorder.touchAreaImages.count
+        let imageCount = recorder.windowImages.count
 
         try await emit(.touch(.init(x: x, y: y)), file: file, line: line)
 
         if waitForLayout {
-            try await recorder.$touchAreaImages.waitFor(
+            try await recorder.$windowImages.waitFor(
                 description: "touch area was rendered",
                 file: file,
                 line: line

@@ -138,7 +138,7 @@ private extension View {
         environment(\.streamDeckViewContext, .init(
             device: streamDeck,
             dirtyMarker: .background,
-            size: streamDeck.capabilities.displaySize ?? .zero
+            size: streamDeck.capabilities.screenSize ?? .zero
         ))
     }
 }

@@ -43,106 +43,129 @@ final class StreamDeckTests: XCTestCase {
 
     // MARK: Set image on key
 
-    func test_set_image_on_key_should_set_scaled_image_on_key() async throws {
-        await robot.operateDevice { $0.setImage(.colored(.blue)!, to: 2, scaleAspectFit: false) }
-
+    func test_set_key_image_should_set_scaled_image_on_key() async throws {
+        await robot.operateDevice { $0.setKeyImage(.colored(.blue)!, at: 2, scaleAspectFit: false) }
         await robot.assertSnapshot(\.keys.first!.image, as: .image)
     }
 
-    func test_set_image_on_key_should_replace_pending_operations_for_the_same_key() async throws {
+    func test_set_key_image_should_replace_pending_operations_for_the_same_key() async throws {
         await robot.operateDevice(isBusy: true) { device in
             let image: UIImage = .colored(.blue)!
 
             for _ in 0 ..< 10 {
-                device.setImage(image, to: 0)
-                device.setImage(image, to: 1)
+                device.setKeyImage(image, at: 0)
+                device.fillKey(.blue, at: 0)
+                device.setKeyImage(image, at: 1)
             }
         }
 
-        XCTAssertEqual(robot.recorder.keys.filter { $0.index == 0 }.count, 2)
+        XCTAssertEqual(robot.recorder.keys.count, 2)
+        XCTAssertEqual(robot.recorder.fillKeys.count, 1)
+
+        XCTAssertEqual(robot.recorder.keys.filter { $0.index == 0 }.count, 1)
         XCTAssertEqual(robot.recorder.keys.filter { $0.index == 1 }.count, 1)
+        XCTAssertEqual(robot.recorder.fillKeys.filter { $0.index == 0 }.count, 1)
     }
 
+    // MARK: Fill key
 
-    // MARK: Fill display
-
-    func test_fill_display_on_device_with_hardware_support() async throws {
+    func test_fill_key_on_device_with_hardware_support() async throws {
         await robot.operateDevice {
-            $0.fillDisplay(.init(red: 0.5, green: 0.4, blue: 0.3, alpha: 1.0))
+            $0.fillKey(.init(red: 0.5, green: 0.4, blue: 0.3, alpha: 1.0), at: 3)
         }
-
-        robot.assertEqual(\.fillDisplays.last?.red, UInt8(255 * 0.5))
-        robot.assertEqual(\.fillDisplays.last?.green, UInt8(255 * 0.4))
-        robot.assertEqual(\.fillDisplays.last?.blue, UInt8(255 * 0.3))
+        robot.assertEqual(\.fillKeys.count, 1)
+        robot.assertEqual(\.fillKeys.last?.color.red, UInt8(255 * 0.5))
+        robot.assertEqual(\.fillKeys.last?.color.green, UInt8(255 * 0.4))
+        robot.assertEqual(\.fillKeys.last?.color.blue, UInt8(255 * 0.3))
     }
 
-    func test_fill_display_with_color_channel_values_larger_than_one() async throws {
-        await robot.operateDevice {
-            $0.fillDisplay(.init(red: 2.0, green: 2.0, blue: 2.0, alpha: 1.0))
-        }
-
-        robot.assertEqual(\.fillDisplays.last?.red, UInt8.max)
-        robot.assertEqual(\.fillDisplays.last?.green, UInt8.max)
-        robot.assertEqual(\.fillDisplays.last?.blue, UInt8.max)
-    }
-
-    func test_fill_display_on_device_without_hardware_support() async throws {
+    func test_fill_key_on_device_without_hardware_support() async throws {
         robot.use(.mini)
 
-        await robot.operateDevice { $0.fillDisplay(.green) }
+        await robot.operateDevice { $0.fillKey(.blue, at: 3) }
+
+        await robot.assertSnapshot(\.keys.last!.image, as: .image)
+    }
+
+    // MARK: Fill screen
+
+    func test_fill_screen_on_device_with_hardware_support() async throws {
+        await robot.operateDevice {
+            $0.fillScreen(.init(red: 0.5, green: 0.4, blue: 0.3, alpha: 1.0))
+        }
+
+        robot.assertEqual(\.fillScreens.last?.red, UInt8(255 * 0.5))
+        robot.assertEqual(\.fillScreens.last?.green, UInt8(255 * 0.4))
+        robot.assertEqual(\.fillScreens.last?.blue, UInt8(255 * 0.3))
+    }
+
+    func test_fill_screen_with_color_channel_values_larger_than_one() async throws {
+        await robot.operateDevice {
+            $0.fillScreen(.init(red: 2.0, green: 2.0, blue: 2.0, alpha: 1.0))
+        }
+
+        robot.assertEqual(\.fillScreens.last?.red, UInt8.max)
+        robot.assertEqual(\.fillScreens.last?.green, UInt8.max)
+        robot.assertEqual(\.fillScreens.last?.blue, UInt8.max)
+    }
+
+    func test_fill_screen_on_device_without_hardware_support() async throws {
+        robot.use(.mini)
+
+        await robot.operateDevice { $0.fillScreen(.green) }
 
         for index in 0 ..< robot.device.capabilities.keyCount {
             await robot.assertSnapshot(\.keys[index].image, as: .image)
         }
     }
 
-    func test_fill_display_should_replace_pending_drawing_operations() async throws {
+    func test_fill_screen_should_replace_pending_drawing_operations() async throws {
         await robot.operateDevice(isBusy: true) { device in
-            device.setImage(.colored(.blue)!, to: 1)
-            device.setFullscreenImage(.colored(.yellow)!)
-            device.fillDisplay(.init(red: 1, green: 1, blue: 1, alpha: 1.0))
+            device.setKeyImage(.colored(.blue)!, at: 1)
+            device.setScreenImage(.colored(.yellow)!)
+            device.fillScreen(.init(red: 1, green: 1, blue: 1, alpha: 1.0))
         }
 
         robot.assertEqual(\.keys.count, 1)
-        robot.assertEqual(\.fullscreens.count, 0)
-        robot.assertEqual(\.fillDisplays.count, 1)
+        robot.assertEqual(\.screens.count, 0)
+        robot.assertEqual(\.fillScreens.count, 1)
     }
 
-    // MARK: Set fullscreen image
+    // MARK: Set screen image
 
-    func test_set_fullscreen_image_should_set_scaled_fullscreen_image() async throws {
-        await robot.operateDevice { $0.setFullscreenImage(.colored(.blue)!, scaleAspectFit: false) }
+    func test_set_screen_image_should_set_scaled_fullscreen_image() async throws {
+        await robot.operateDevice { $0.setScreenImage(.colored(.blue)!, scaleAspectFit: false) }
 
-        await robot.assertSnapshot(\.fullscreens.first!, as: .image)
+        await robot.assertSnapshot(\.screens.first!, as: .image)
     }
 
-    // MARK: Set touch area image
+    // MARK: Set window image
 
-    func test_set_touch_area_image_should_set_scaled_touch_area_image() async throws {
+    func test_set_window_image_should_set_scaled_window_image() async throws {
         robot.use(.plus)
 
-        await robot.operateDevice { $0.setTouchAreaImage(.colored(.blue)!, scaleAspectFit: false) }
+        await robot.operateDevice { $0.setWindowImage(.colored(.blue)!, scaleAspectFit: false) }
 
-        await robot.assertSnapshot(\.touchAreaImages.first!.image, as: .image)
+        await robot.assertSnapshot(\.windowImages.first!.image, as: .image)
     }
 
-    func test_set_touch_area_image_with_rect_should_fill_specified_area() async throws {
+    func test_window_image_with_rect_should_fill_specified_area() async throws {
         robot.use(.plus)
 
         let expectedRect = CGRect(x: 12, y: 12, width: 42, height: 42)
 
         await robot.operateDevice {
-            $0.setTouchAreaImage(.colored(.blue)!, at: expectedRect)
+            $0.setWindowImage(.colored(.blue)!, at: expectedRect)
         }
 
-        robot.assertEqual(\.touchAreaImages.first!.rect, expectedRect)
-        await robot.assertSnapshot(\.touchAreaImages.first!.image, as: .image)
+        robot.assertEqual(\.windowImages.first!.rect, expectedRect)
+        await robot.assertSnapshot(\.windowImages.first!.image, as: .image)
     }
 
-    func test_set_touch_area_image_should_be_ignored_when_not_supported_by_device() async {
-        await robot.operateDevice { $0.setTouchAreaImage(.colored(.blue)!) }
+    func test_set_window_image_should_be_ignored_when_not_supported_by_device() async {
+        await robot.operateDevice { $0.setWindowImage(.colored(.blue)!) }
 
-        robot.assertEqual(\.touchAreaImages.count, 0)
+        robot.assertEqual(\.windowImages.count, 0)
     }
 
     // MARK: Close

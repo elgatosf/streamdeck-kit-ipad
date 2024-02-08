@@ -120,7 +120,7 @@ extension StreamDeck {
         guard let keySize = capabilities.keySize else { return }
         set(
             view: DeckKeyView(index: index, size: keySize, background: isPressed ? .green : .gray),
-            to: index
+            at: index
         )
     }
 }

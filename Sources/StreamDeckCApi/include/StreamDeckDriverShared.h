@@ -18,9 +18,11 @@ typedef enum {
     SDExternalMethod_setBrightness = 2,
     SDExternalMethod_subscribeToKeyActions = 3,
     SDExternalMethod_setKeyImage = 4,
-    SDExternalMethod_setFullscreenImage = 5,
-    SDExternalMethod_setImageOnXY = 6,
-    SDExternalMethod_fillDisplay = 7,
+    SDExternalMethod_setScreenImage = 5,
+    SDExternalMethod_setWindowImage = 6,
+    SDExternalMethod_setWindowImageAtXY = 7,
+    SDExternalMethod_fillScreen = 8,
+    SDExternalMethod_fillKey = 9,
     SDNumberOfExternalMethods // Has to be last
 } SDExternalMethod;
 
@@ -52,12 +54,12 @@ typedef struct SDDeviceCapabilities {
     uint8_t keyRows;
     uint8_t keyColumns;
     uint8_t dialCount;
-    uint16_t displayWidth;
-    uint16_t displayHeight;
-    uint16_t touchDisplayX;
-    uint16_t touchDisplayY;
-    uint16_t touchDisplayWidth;
-    uint16_t touchDisplayHeight;
+    uint16_t screenWidth;
+    uint16_t screenHeight;
+    uint16_t windowX;
+    uint16_t windowY;
+    uint16_t windowWidth;
+    uint16_t windowHeight;
     uint16_t keyAreaX;
     uint16_t keyAreaY;
     uint16_t keyAreaWidth;
@@ -66,9 +68,13 @@ typedef struct SDDeviceCapabilities {
     uint16_t keyVerticalSpacing;
     affine_t imageTransform;
     SDImageFormat imageFormat;
-    bool hasSetFullscreenImageSupport;
-    bool hasSetImageOnXYSupport;
-    bool hasFillDisplaySupport;
+    bool hasSetBrightnessSupport;
+    bool hasSetKeyImageSupport;
+    bool hasSetScreenImageSupport;
+    bool hasSetWindowImageSupport;
+    bool hasSetWindowImageAtXYSupport;
+    bool hasFillScreenSupport;
+    bool hasFillKeySupport;
 } SDDeviceCapabilities;
 
 typedef enum {

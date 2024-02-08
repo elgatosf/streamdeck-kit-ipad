@@ -10,21 +10,21 @@ import Foundation
 import StreamDeckKit
 import SwiftUI
 
-public struct StreamDeckLayout<BackgroundView: View, KeyAreaView: View, TouchAreaView: View>: View {
+public struct StreamDeckLayout<BackgroundView: View, KeyAreaView: View, WindowView: View>: View {
     @Environment(\.streamDeckViewContext) var context
 
     @ViewBuilder let background: (StreamDeckViewContext) -> BackgroundView
     @ViewBuilder let keyAreaView: (StreamDeckViewContext) -> KeyAreaView
-    @ViewBuilder let touchAreaView: (StreamDeckViewContext) -> TouchAreaView
+    @ViewBuilder let windowView: (StreamDeckViewContext) -> WindowView
 
     public init(
         @ViewBuilder background: @escaping (StreamDeckViewContext) -> BackgroundView,
         @ViewBuilder keyAreaView: @escaping (StreamDeckViewContext) -> KeyAreaView,
-        @ViewBuilder touchAreaView: @escaping (StreamDeckViewContext) -> TouchAreaView = { _ in EmptyView() }
+        @ViewBuilder windowView: @escaping (StreamDeckViewContext) -> WindowView = { _ in EmptyView() }
     ) {
         self.background = background
         self.keyAreaView = keyAreaView
-        self.touchAreaView = touchAreaView
+        self.windowView = windowView
     }
 
     public var body: some View {
@@ -36,17 +36,16 @@ public struct StreamDeckLayout<BackgroundView: View, KeyAreaView: View, TouchAre
             VStack(alignment: .leading, spacing: 0) {
                 keyAreaView(context)
 
-                if let touchDisplayRect = caps.touchDisplayRect {
-                    let touchAreaSize = touchDisplayRect.size
-                    let touchAreaContext = context.with(
-                        dirtyMarker: .touchArea,
-                        size: touchAreaSize,
+                if let windowSize = caps.windowRect?.size {
+                    let windowContext = context.with(
+                        dirtyMarker: .window,
+                        size: windowSize,
                         index: -1
                     )
 
-                    touchAreaView(touchAreaContext)
-                        .frame(width: touchAreaSize.width, height: touchAreaSize.height, alignment: .bottom)
-                        .environment(\.streamDeckViewContext, touchAreaContext)
+                    windowView(windowContext)
+                        .frame(width: windowSize.width, height: windowSize.height, alignment: .bottom)
+                        .environment(\.streamDeckViewContext, windowContext)
                 }
             }
         }

@@ -6,22 +6,22 @@
 
 import Foundation
 
-public enum DirtyMarker: Hashable, CustomStringConvertible {
-    case background
+public enum DirtyMarker: Equatable, CustomDebugStringConvertible {
+    case screen
     case key(Int)
-    case touchArea
-    case touchAreaSection(Int)
+    case window
+    case windowArea(CGRect)
 
-    public var description: String {
+    public var debugDescription: String {
         switch self {
-        case .background:
-            ".background"
+        case .screen:
+            ".screen"
         case let .key(int):
             ".key(\(int))"
-        case .touchArea:
-            ".touchArea"
-        case let .touchAreaSection(section):
-            ".touchAreaSection(\(section))"
+        case .window:
+            ".window"
+        case let .windowArea(rect):
+            ".windowArea(\(rect.debugDescription))"
         }
     }
 }

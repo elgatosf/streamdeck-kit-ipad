@@ -11,7 +11,7 @@ import os
 import OSLog
 import StreamDeckCApi
 
-final class StreamDeckClient: StreamDeckClientProtocol {
+final class StreamDeckClient {
 
     private final class InputEventMapper {
         // Previous press states
@@ -147,9 +147,9 @@ final class StreamDeckClient: StreamDeckClientProtocol {
         let (m11, m12, m21, m22, dx, dy) = rawCaps.imageTransform
 
         let keyWidth = Int(rawCaps.keyWidth)
-        let displayWidth = Int(rawCaps.displayWidth)
+        let screenWidth = Int(rawCaps.screenWidth)
         let keyAreaWidth = Int(rawCaps.keyAreaWidth)
-        let touchDisplayWidth = Int(rawCaps.touchDisplayWidth)
+        let windowWidth = Int(rawCaps.windowWidth)
 
         return DeviceCapabilities(
             keyCount: Int(rawCaps.keyCount),
@@ -160,9 +160,9 @@ final class StreamDeckClient: StreamDeckClientProtocol {
             keyRows: Int(rawCaps.keyRows),
             keyColumns: Int(rawCaps.keyColumns),
             dialCount: Int(rawCaps.dialCount),
-            displaySize: displayWidth == 0 ? nil : .init(
-                width: displayWidth,
-                height: Int(rawCaps.displayHeight)
+            screenSize: screenWidth == 0 ? nil : .init(
+                width: screenWidth,
+                height: Int(rawCaps.screenHeight)
             ),
             keyAreaRect: keyAreaWidth == 0 ? nil : .init(
                 x: Int(rawCaps.keyAreaX),
@@ -170,11 +170,11 @@ final class StreamDeckClient: StreamDeckClientProtocol {
                 width: keyAreaWidth,
                 height: Int(rawCaps.keyAreaHeight)
             ),
-            touchDisplayRect: touchDisplayWidth == 0 ? nil : CGRect(
-                x: Int(rawCaps.touchDisplayX),
-                y: Int(rawCaps.touchDisplayY),
-                width: Int(rawCaps.touchDisplayWidth),
-                height: Int(rawCaps.touchDisplayHeight)
+            windowRect: windowWidth == 0 ? nil : CGRect(
+                x: Int(rawCaps.windowX),
+                y: Int(rawCaps.windowY),
+                width: Int(rawCaps.windowWidth),
+                height: Int(rawCaps.windowHeight)
             ),
             keyHorizontalSpacing: CGFloat(rawCaps.keyHorizontalSpacing),
             keyVerticalSpacing: CGFloat(rawCaps.keyVerticalSpacing),
@@ -182,9 +182,13 @@ final class StreamDeckClient: StreamDeckClientProtocol {
             transform: .init(
                 CGFloat(m11), CGFloat(m12), CGFloat(m21), CGFloat(m22), CGFloat(dx), CGFloat(dy)
             ),
-            hasSetFullscreenImageSupport: rawCaps.hasSetFullscreenImageSupport,
-            hasSetImageOnXYSupport: rawCaps.hasFillDisplaySupport,
-            hasFillDisplaySupport: rawCaps.hasFillDisplaySupport
+            hasSetBrightnessSupport: rawCaps.hasSetBrightnessSupport,
+            hasSetKeyImageSupport: rawCaps.hasSetKeyImageSupport,
+            hasSetScreenImageSupport: rawCaps.hasSetScreenImageSupport,
+            hasSetWindowImageSupport: rawCaps.hasSetWindowImageSupport,
+            hasSetWindowImageAtXYSupport: rawCaps.hasSetWindowImageAtXYSupport,
+            hasFillScreenSupport: rawCaps.hasFillScreenSupport,
+            hasFillKeySupport: rawCaps.hasFillKeySupport
         )
     }
 
@@ -218,59 +222,6 @@ final class StreamDeckClient: StreamDeckClientProtocol {
     func setInputEventHandler(_ handler: @escaping InputEventHandler) {
         inputEventMapper.inputEventHandler = handler
         subscribeToInputEvents()
-    }
-
-    func setBrightness(_ brightness: Int) {
-        callScalar(SDExternalMethod_setBrightness, UInt64(brightness))
-    }
-
-    func setImage(_ data: Data, toButtonAt index: Int) {
-        var ret = kIOReturnSuccess
-
-        var buttonIndex = UInt8(index)
-        let inputData = Data(bytes: &buttonIndex, count: MemoryLayout<UInt8>.size) + data
-
-        inputData.withUnsafeBytes { (input: UnsafeRawBufferPointer) in
-            ret = IOConnectCallStructMethod(connection, SDExternalMethod_setKeyImage.rawValue, input.baseAddress, input.count, nil, nil)
-        }
-
-        guard ret == kIOReturnSuccess else {
-            os_log(.error, "Error calling struct method `setKeyImage` (\(String(ioReturn: ret)))")
-            return
-        }
-    }
-
-    func setImage(_ data: Data, x: Int, y: Int, w: Int, h: Int) {
-        var ret = kIOReturnSuccess
-        var header = SDImageOnXYUpload(x: Int16(x), y: Int16(y), w: UInt16(w), h: UInt16(h), imageData: 0)
-
-        let inputData = Data(bytesNoCopy: &header, count: MemoryLayout<SDImageOnXYUpload>.size - 1, deallocator: .none) + data
-
-        inputData.withUnsafeBytes { (input: UnsafeRawBufferPointer) in
-            ret = IOConnectCallStructMethod(connection, SDExternalMethod_setImageOnXY.rawValue, input.baseAddress, input.count, nil, nil)
-        }
-
-        guard ret == kIOReturnSuccess else {
-            os_log(.error, "Error calling struct method `setImageOnXY` (\(String(ioReturn: ret)))")
-            return
-        }
-    }
-
-    func setFullscreenImage(_ data: Data) {
-        var ret = kIOReturnSuccess
-
-        data.withUnsafeBytes { (input: UnsafeRawBufferPointer) in
-            ret = IOConnectCallStructMethod(connection, SDExternalMethod_setFullscreenImage.rawValue, input.baseAddress, input.count, nil, nil)
-        }
-
-        guard ret == kIOReturnSuccess else {
-            os_log(.error, "Error calling setFullscreenImage \(String(format: "0x%08X", ret)) (\(String(ioReturn: ret)))")
-            return
-        }
-    }
-
-    func fillDisplay(red: UInt8, green: UInt8, blue: UInt8) {
-        callScalar(SDExternalMethod_fillDisplay, UInt64(red), UInt64(green), UInt64(blue))
     }
 
     @discardableResult
@@ -334,6 +285,86 @@ final class StreamDeckClient: StreamDeckClientProtocol {
             os_log(.error, "Error subscribing to input events (\(String(ioReturn: ret)))")
             return
         }
+    }
+
+}
+
+extension StreamDeckClient: StreamDeckClientProtocol {
+
+    func setBrightness(_ brightness: Int) {
+        callScalar(SDExternalMethod_setBrightness, UInt64(brightness))
+    }
+
+    func setKeyImage(_ data: Data, at index: Int) {
+        var ret = kIOReturnSuccess
+
+        var buttonIndex = UInt8(index)
+        let inputData = Data(bytes: &buttonIndex, count: MemoryLayout<UInt8>.size) + data
+
+        inputData.withUnsafeBytes { (input: UnsafeRawBufferPointer) in
+            ret = IOConnectCallStructMethod(connection, SDExternalMethod_setKeyImage.rawValue, input.baseAddress, input.count, nil, nil)
+        }
+
+        guard ret == kIOReturnSuccess else {
+            os_log(.error, "Error calling struct method `setKeyImage` (\(String(ioReturn: ret)))")
+            return
+        }
+    }
+    
+    func setScreenImage(_ data: Data) {
+        var ret = kIOReturnSuccess
+
+        data.withUnsafeBytes { (input: UnsafeRawBufferPointer) in
+            ret = IOConnectCallStructMethod(connection, SDExternalMethod_setScreenImage.rawValue, input.baseAddress, input.count, nil, nil)
+        }
+
+        guard ret == kIOReturnSuccess else {
+            os_log(.error, "Error calling setScreenImage \(String(format: "0x%08X", ret)) (\(String(ioReturn: ret)))")
+            return
+        }
+    }
+
+    func setWindowImage(_ data: Data) {
+        var ret = kIOReturnSuccess
+
+        data.withUnsafeBytes { (input: UnsafeRawBufferPointer) in
+            ret = IOConnectCallStructMethod(connection, SDExternalMethod_setWindowImage.rawValue, input.baseAddress, input.count, nil, nil)
+        }
+
+        guard ret == kIOReturnSuccess else {
+            os_log(.error, "Error calling setWindowImage \(String(format: "0x%08X", ret)) (\(String(ioReturn: ret)))")
+            return
+        }
+    }
+
+    func setWindowImage(_ data: Data, at rect: CGRect) {
+        var ret = kIOReturnSuccess
+        var header = SDImageOnXYUpload(
+            x: Int16(rect.origin.x),
+            y: Int16(rect.origin.y),
+            w: UInt16(rect.width),
+            h: UInt16(rect.height),
+            imageData: 0
+        )
+
+        let inputData = Data(bytesNoCopy: &header, count: MemoryLayout<SDImageOnXYUpload>.size - 1, deallocator: .none) + data
+
+        inputData.withUnsafeBytes { (input: UnsafeRawBufferPointer) in
+            ret = IOConnectCallStructMethod(connection, SDExternalMethod_setWindowImageAtXY.rawValue, input.baseAddress, input.count, nil, nil)
+        }
+
+        guard ret == kIOReturnSuccess else {
+            os_log(.error, "Error calling struct method `setWindowImageAtXY` (\(String(ioReturn: ret)))")
+            return
+        }
+    }
+    
+    func fillScreen(red: UInt8, green: UInt8, blue: UInt8) {
+        callScalar(SDExternalMethod_fillScreen, UInt64(red), UInt64(green), UInt64(blue))
+    }
+    
+    func fillKey(red: UInt8, green: UInt8, blue: UInt8, at index: Int) {
+        callScalar(SDExternalMethod_fillKey, UInt64(index), UInt64(red), UInt64(green), UInt64(blue))
     }
 
 }

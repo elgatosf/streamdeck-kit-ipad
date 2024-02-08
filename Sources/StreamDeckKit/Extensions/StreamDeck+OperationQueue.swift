@@ -12,16 +12,19 @@ extension StreamDeck {
     enum Operation {
         case setInputEventHandler(InputEventHandler)
         case setBrightness(Int)
-        case setImageOnKey(image: UIImage, key: Int, scaleAspectFit: Bool)
-        case setFullscreenImage(image: UIImage, scaleAspectFit: Bool)
-        case setTouchAreaImage(image: UIImage, at: CGRect, scaleAspectFit: Bool)
-        case fillDisplay(color: UIColor)
+        case setKeyImage(image: UIImage, key: Int, scaleAspectFit: Bool)
+        case setScreenImage(image: UIImage, scaleAspectFit: Bool)
+        case setWindowImage(image: UIImage, scaleAspectFit: Bool)
+        case setWindowImageAt(image: UIImage, at: CGRect, scaleAspectFit: Bool)
+        case fillScreen(color: UIColor)
+        case fillKey(color: UIColor, key: Int)
         case task(() async -> Void)
         case close
 
         var isDrawingOperation: Bool {
             switch self {
-            case .setImageOnKey, .setFullscreenImage, .setTouchAreaImage, .fillDisplay:
+            case .setKeyImage, .setScreenImage, .setWindowImage,
+                    .setWindowImageAt, .fillScreen, .fillKey:
                 return true
             default: return false
             }
@@ -47,21 +50,42 @@ extension StreamDeck {
         case .setInputEventHandler, .setBrightness, .task:
             break
 
-        case let .setImageOnKey(_, key, _):
+        case let .setKeyImage(_, key, _):
             wasReplaced = operationsQueue.replaceFirst { pending in
-                if case let .setImageOnKey(_, pendingKey, _) = pending, key == pendingKey {
+                if case let .setKeyImage(_, pendingKey, _) = pending, key == pendingKey {
+                    return operation
+                } else if case let .fillKey(_, pendingKey) = pending, key == pendingKey {
                     return operation
                 } else {
                     return nil
                 }
             }
 
-        case .setFullscreenImage, .fillDisplay:
+        case .setScreenImage, .fillScreen:
             operationsQueue.removeAll(where: \.isDrawingOperation)
 
-        case let .setTouchAreaImage(_, rect, _):
+        case .setWindowImage:
             wasReplaced = operationsQueue.replaceFirst { pending in
-                if case let .setTouchAreaImage(_, pendingRect, _) = pending, rect.contains(pendingRect) {
+                switch pending {
+                case .setWindowImage, .setWindowImageAt: return operation
+                default: return nil
+                }
+            }
+
+        case let .setWindowImageAt(_, rect, _):
+            wasReplaced = operationsQueue.replaceFirst { pending in
+                if case let .setWindowImageAt(_, pendingRect, _) = pending, rect.contains(pendingRect) {
+                    return operation
+                } else {
+                    return nil
+                }
+            }
+
+        case let .fillKey(_, key):
+            wasReplaced = operationsQueue.replaceFirst { pending in
+                if case let .fillKey(_, pendingKey) = pending, key == pendingKey {
+                    return operation
+                } else if case let .setKeyImage(_, pendingKey, _) = pending, key == pendingKey {
                     return operation
                 } else {
                     return nil
@@ -88,36 +112,46 @@ extension StreamDeck {
             }
 
         case let .setBrightness(brightness):
+            guard capabilities.hasSetBrightnessSupport else { return }
             client.setBrightness(min(max(brightness, 0), 100))
 
-        case let .setImageOnKey(image, key, scaleAspectFit):
-            guard let keySize = capabilities.keySize,
+        case let .setKeyImage(image, key, scaleAspectFit):
+            guard capabilities.hasSetKeyImageSupport,
+                  let keySize = capabilities.keySize,
                   let data = transform(image, size: keySize, scaleAspectFit: scaleAspectFit)
             else { return }
 
-            client.setImage(data, toButtonAt: key)
+            client.setKeyImage(data, at: key)
 
-        case let .setFullscreenImage(image, scaleAspectFit):
-            guard let displaySize = capabilities.displaySize else { return }
+        case let .setScreenImage(image, scaleAspectFit):
+            guard let displaySize = capabilities.screenSize else { return }
 
-            if capabilities.hasSetFullscreenImageSupport {
+            if capabilities.hasSetScreenImageSupport {
                 guard let data = transform(image, size: displaySize, scaleAspectFit: scaleAspectFit)
                 else { return }
 
-                client.setFullscreenImage(data)
+                client.setScreenImage(data)
             } else {
-                fakeSetFullscreenImage(image, scaleAspectFit: scaleAspectFit)
+                fakeSetScreenImage(image, scaleAspectFit: scaleAspectFit)
             }
 
-        case let .setTouchAreaImage(image, rect, scaleAspectFit):
-            guard capabilities.hasSetImageOnXYSupport,
+        case let .setWindowImage(image, scaleAspectFit):
+            guard capabilities.hasSetWindowImageSupport,
+                  let size = capabilities.windowRect?.size,
+                  let data = transform(image, size: size, scaleAspectFit: scaleAspectFit)
+            else { return }
+
+            client.setWindowImage(data)
+
+        case let .setWindowImageAt(image, rect, scaleAspectFit):
+            guard capabilities.hasSetWindowImageAtXYSupport,
                   let data = transform(image, size: rect.size, scaleAspectFit: scaleAspectFit)
             else { return }
 
-            client.setImage(data, x: Int(rect.origin.x), y: Int(rect.origin.y), w: Int(rect.width), h: Int(rect.height))
+            client.setWindowImage(data, at: rect)
 
-        case let .fillDisplay(color):
-            if capabilities.hasFillDisplaySupport {
+        case let .fillScreen(color):
+            if capabilities.hasFillScreenSupport {
                 var red: CGFloat = 0
                 var green: CGFloat = 0
                 var blue: CGFloat = 0
@@ -125,13 +159,32 @@ extension StreamDeck {
 
                 color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
 
-                client.fillDisplay(
+                client.fillScreen(
                     red: UInt8(min(255 * red, 255)),
                     green: UInt8(min(255 * green, 255)),
                     blue: UInt8(min(255 * blue, 255))
                 )
             } else {
-                fakeFillDisplay(color)
+                fakeFillScreen(color)
+            }
+
+        case let .fillKey(color, index):
+            if capabilities.hasFillKeySupport {
+                var red: CGFloat = 0
+                var green: CGFloat = 0
+                var blue: CGFloat = 0
+                var alpha: CGFloat = 0
+
+                color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+
+                client.fillKey(
+                    red: UInt8(min(255 * red, 255)),
+                    green: UInt8(min(255 * green, 255)),
+                    blue: UInt8(min(255 * blue, 255)),
+                    at: index
+                )
+            } else {
+                fakeFillKey(color, at: index)
             }
 
         case let .task(task):
@@ -155,20 +208,21 @@ extension StreamDeck {
 // MARK: Emulated Stream Deck hardware functions
 private extension StreamDeck {
 
-    func fakeSetFullscreenImage(_ image: UIImage, scaleAspectFit: Bool = true) {
-        guard let displaySize = capabilities.displaySize,
+    func fakeSetScreenImage(_ image: UIImage, scaleAspectFit: Bool = true) {
+        guard capabilities.hasSetKeyImageSupport,
+              let screenSize = capabilities.screenSize,
               let keySize = capabilities.keySize
         else { return }
 
         let newImage: UIImage
-        if image.size == displaySize {
+        if image.size == screenSize {
             newImage = image
         } else {
             let format = UIGraphicsImageRendererFormat(for: .init(displayScale: 1))
-            let renderer = UIGraphicsImageRenderer(size: displaySize, format: format)
+            let renderer = UIGraphicsImageRenderer(size: screenSize, format: format)
             let drawingAction = Self.transformDrawingAction(
                 image: image,
-                size: displaySize,
+                size: screenSize,
                 transform: .identity,
                 scaleAspectFit: scaleAspectFit
             )
@@ -187,12 +241,14 @@ private extension StreamDeck {
             guard let data = transform(keyImage, size: keySize, scaleAspectFit: false)
             else { return }
 
-            client.setImage(data, toButtonAt: index)
+            client.setKeyImage(data, at: index)
         }
     }
 
-    func fakeFillDisplay(_ color: UIColor) {
-        guard let keySize = capabilities.keySize else { return }
+    func fakeFillScreen(_ color: UIColor) {
+        guard capabilities.hasSetKeyImageSupport,
+              let keySize = capabilities.keySize
+        else { return }
 
         let format = UIGraphicsImageRendererFormat(for: .init(displayScale: 1))
         let renderer = UIGraphicsImageRenderer(size: keySize, format: format)
@@ -204,7 +260,21 @@ private extension StreamDeck {
         else { return }
 
         for index in 0 ..< capabilities.keyCount {
-            client.setImage(data, toButtonAt: index)
+            client.setKeyImage(data, at: index)
+        }
+    }
+
+    func fakeFillKey(_ color: UIColor, at index: Int) {
+        guard capabilities.hasSetKeyImageSupport,
+              let keySize = capabilities.keySize,
+              let image = UIImage.colored(color, size: keySize)
+        else { return }
+
+        guard let data = transform(image, size: keySize, scaleAspectFit: false)
+        else { return }
+
+        for index in 0 ..< capabilities.keyCount {
+            client.setKeyImage(data, at: index)
         }
     }
 

@@ -18,20 +18,20 @@ extension DeviceCapabilities {
     }
 
     public var keyAreaTrailingSpacing: CGFloat {
-        guard let displayWidth = displaySize?.width,
+        guard let screenWidth = screenSize?.width,
               let keyAreaWidth = keyAreaRect?.width
         else { return 0 }
 
-        return displayWidth - (keyAreaLeadingSpacing + keyAreaWidth)
+        return screenWidth - (keyAreaLeadingSpacing + keyAreaWidth)
     }
 
     public var keyAreaBottomSpacing: CGFloat {
-        guard let displayHeight = displaySize?.height,
+        guard let screenHeight = screenSize?.height,
               let keyAreaHeight = keyAreaRect?.height,
-              let touchDisplayHeight = touchDisplayRect?.height
+              let windowHeight = windowRect?.height
         else { return 0 }
 
-        return displayHeight - (keyAreaTopSpacing + keyAreaHeight + touchDisplayHeight)
+        return screenHeight - (keyAreaTopSpacing + keyAreaHeight + windowHeight)
     }
 
     public func getKeyRect(_ key: Int) -> CGRect {
@@ -48,28 +48,27 @@ extension DeviceCapabilities {
         )
     }
 
-    public func getTouchAreaSectionDeviceRect(_ section: Int) -> CGRect {
-        guard let touchDisplayRect = touchDisplayRect else { return .zero }
+    public func getDialAreaSectionDeviceRect(_ section: Int) -> CGRect {
+        guard let windowRect = windowRect, dialCount > 0, section >= 0, section < dialCount
+        else { return .zero }
 
-        let sectionWidth = Int(touchDisplayRect.width) / dialCount
+        let sectionWidth = Int(windowRect.width) / dialCount
         return .init(
             x: sectionWidth * section,
             y: 0,
             width: sectionWidth,
-            height: Int(touchDisplayRect.height)
+            height: Int(windowRect.height)
         )
     }
 
-    public func getTouchAreaSectionRect(_ section: Int) -> CGRect {
-        let rect = getTouchAreaSectionDeviceRect(section)
+    public func getDialAreaSectionRect(_ section: Int) -> CGRect {
+        let rect = getDialAreaSectionDeviceRect(section)
 
-        guard !rect.isEmpty,
-              let touchDisplayRect = touchDisplayRect
-        else { return .zero }
+        guard !rect.isEmpty, let windowRect = windowRect else { return .zero }
 
         return .init(
-            x: rect.origin.x,
-            y: touchDisplayRect.origin.y,
+            x: windowRect.origin.x + rect.origin.x,
+            y: windowRect.origin.y,
             width: rect.width,
             height: rect.height
         )

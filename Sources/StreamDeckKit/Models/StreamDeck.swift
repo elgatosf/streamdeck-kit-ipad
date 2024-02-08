@@ -102,59 +102,66 @@ public final class StreamDeck {
         enqueueOperation(.setBrightness(brightness))
     }
 
-    /// Fills the whole display area (all keys and the touch area) with the given color.
-    /// - Parameter color: The color to fill the display with.
+    /// Fills the whole screen (all keys and the touch area) with the given color.
+    /// - Parameter color: The color to fill the screen with.
     ///
-    /// Some devices do not support this feature (See ``DeviceCapabilities/hasFillDisplaySupport``). StreamDeckKit will then
+    /// Some devices do not support this feature (See ``DeviceCapabilities/hasFillScreenSupport``). StreamDeckKit will then
     /// simulate the behavior by setting the color to each button individually.
-    public func fillDisplay(_ color: UIColor) {
-        enqueueOperation(.fillDisplay(color: color))
+    public func fillScreen(_ color: UIColor) {
+        enqueueOperation(.fillScreen(color: color))
     }
-    
+
+    /// Fills a key with the given color.
+    /// - Parameters:
+    ///   - color: The color to fill the key with.
+    ///   - at: The location of the key.
+    public func fillKey(_ color: UIColor, at key: Int) {
+        enqueueOperation(.fillKey(color: color, key: key))
+    }
+
     /// Sets an image to the given key.
     /// - Parameters:
     ///   - image: An image object.
-    ///   - key: The index of the key to set the image on.
+    ///   - at: The index of the key to set the image on.
     ///   - scaleAspectFit: Should the aspect ratio be kept when the image is scaled? Default is `true`. When it is false
     ///   the image will be scaled to fill the whole key area.
     ///
     /// The image will be scaled to fit the dimensions of the key. See ``DeviceCapabilities/keySize`` to get the needed size.
     ///
     /// StreamDeck devices do not support transparency in images. So you will not be able to render transparent images over a possible
-    /// background, set by ``setFullscreenImage(_:scaleAspectFit:)``. Transparent areas will be replaced with black.
-    public func setImage(_ image: UIImage, to key: Int, scaleAspectFit: Bool = true) {
-        enqueueOperation(.setImageOnKey(image: image, key: key, scaleAspectFit: scaleAspectFit))
+    /// background, set by ``setScreenImage(_:scaleAspectFit:)``. Transparent areas will be replaced with black.
+    public func setKeyImage(_ image: UIImage, at key: Int, scaleAspectFit: Bool = true) {
+        enqueueOperation(.setKeyImage(image: image, key: key, scaleAspectFit: scaleAspectFit))
     }
     
     /// Set an image to the whole screen of the Stream Deck.
     /// - Parameters:
     ///   - image: An image object.
     ///   - scaleAspectFit: Should the aspect ratio be kept when the image is scaled? Default is `true`. When it is false
-    ///   the image will be scaled to fill the whole display area.
+    ///   the image will be scaled to fill the whole screen area.
     ///
     /// Setting a fullscreen image will overwrite all keys and the touch strip (when available).
     ///
-    /// Some devices do not support this feature (See ``DeviceCapabilities/hasSetFullscreenImageSupport``). StreamDeckKit will then
+    /// Some devices do not support this feature (See ``DeviceCapabilities/hasSetScreenImageSupport``). StreamDeckKit will then
     /// simulate the behavior by splitting up the image, and set the correct parts to each key individually.
-    public func setFullscreenImage(_ image: UIImage, scaleAspectFit: Bool = true) {
-        enqueueOperation(.setFullscreenImage(image: image, scaleAspectFit: scaleAspectFit))
+    public func setScreenImage(_ image: UIImage, scaleAspectFit: Bool = true) {
+        enqueueOperation(.setScreenImage(image: image, scaleAspectFit: scaleAspectFit))
     }
-    
-    /// Set an image to a given area of the touch strip.
+
+    public func setWindowImage(_ image: UIImage, scaleAspectFit: Bool = true) {
+        enqueueOperation(.setWindowImage(image: image, scaleAspectFit: scaleAspectFit))
+    }
+
+    /// Set an image to a given area of the window.
     /// - Parameters:
     ///   - image: An image object.
-    ///   - rect: The area of the touch strip where the image should be drawn.
+    ///   - rect: The area of the window where the image should be drawn.
     ///   - scaleAspectFit: Should the aspect ratio be kept when the image is scaled? Default is `true`. When it is false
     ///   the image will be scaled to fill the whole `rect`.
     ///
     /// The image will be scaled to fit the dimensions of the given rectangle.
-    public func setTouchAreaImage(_ image: UIImage, at rect: CGRect? = nil, scaleAspectFit: Bool = true) {
-        guard capabilities.hasSetImageOnXYSupport,
-              let touchDisplayRect = capabilities.touchDisplayRect
-        else { return }
-        
-        let rect = rect ?? .init(origin: .zero, size: touchDisplayRect.size)
-        enqueueOperation(.setTouchAreaImage(image: image, at: rect, scaleAspectFit: scaleAspectFit))
+    public func setWindowImage(_ image: UIImage, at rect: CGRect, scaleAspectFit: Bool = true) {
+        enqueueOperation(.setWindowImageAt(image: image, at: rect, scaleAspectFit: scaleAspectFit))
     }
 
 }

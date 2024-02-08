@@ -16,12 +16,12 @@ public final class StreamDeckSimulatorClient {
     private let capabilities: DeviceCapabilities
     private let brightnessSubject = CurrentValueSubject<Int, Never>(0)
     private let backgroundImageSubject = CurrentValueSubject<UIImage?, Never>(nil)
-    private let buttonImageSubject = CurrentValueSubject<[Int: UIImage], Never>([:])
+    private let keyImageSubject = CurrentValueSubject<[Int: UIImage], Never>([:])
     private let backgroundRenderer: UIGraphicsImageRenderer?
 
     public init(capabilities: DeviceCapabilities) {
         self.capabilities = capabilities
-        backgroundRenderer = capabilities.touchDisplayRect.flatMap { rect in
+        backgroundRenderer = capabilities.windowRect.flatMap { rect in
             UIGraphicsImageRenderer(size: rect.size, format: .init(for: .init(displayScale: 1)))
         }
     }
@@ -45,8 +45,8 @@ public final class StreamDeckSimulatorClient {
             .eraseToAnyPublisher()
     }
 
-    public var buttonImages: AnyPublisher<[Int: UIImage], Never> {
-        buttonImageSubject
+    public var keyImages: AnyPublisher<[Int: UIImage], Never> {
+        keyImageSubject
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
@@ -64,29 +64,40 @@ extension StreamDeckSimulatorClient: StreamDeckClientProtocol {
         brightnessSubject.value = brightness
     }
 
-    public func setImage(_ data: Data, toButtonAt index: Int) {
-        buttonImageSubject.value[index] = UIImage(data: data, scale: 1)
+    public func setKeyImage(_ data: Data, at index: Int) {
+        keyImageSubject.value[index] = UIImage(data: data, scale: 1)
     }
 
-    public func setImage(_ data: Data, x: Int, y: Int, w: Int, h: Int) {
+    public func setScreenImage(_ data: Data) {
+        keyImageSubject.value = [:]
+        backgroundImageSubject.value = UIImage(data: data, scale: 1)
+    }
+
+    public func setWindowImage(_ data: Data) {
+        guard let windowRect = capabilities.windowRect else { return }
+        setWindowImage(data, at: .init(origin: .zero, size: windowRect.size))
+    }
+
+    public func setWindowImage(_ data: Data, at rect: CGRect) {
         guard let renderer = backgroundRenderer,
-              let displaySize = capabilities.displaySize,
-              let touchDisplayRect = capabilities.touchDisplayRect
+              let screenSize = capabilities.screenSize,
+              let windowRect = capabilities.windowRect
         else { return }
 
         let image = renderer.image { context in
             let targetRect = CGRect(
-                x: CGFloat(x) + touchDisplayRect.origin.x,
-                y: CGFloat(y) + touchDisplayRect.origin.y,
-                width: CGFloat(w),
-                height: CGFloat(h)
+                origin: .init(
+                    x: rect.origin.x + windowRect.origin.x,
+                    y: rect.origin.y + windowRect.origin.y
+                ),
+                size: rect.size
             )
 
             if let backgroundImage = backgroundImageSubject.value {
-                backgroundImage.draw(in: CGRect(origin: .zero, size: displaySize))
+                backgroundImage.draw(in: CGRect(origin: .zero, size: screenSize))
             } else {
                 context.cgContext.setFillColor(UIColor.black.cgColor)
-                context.cgContext.fill(CGRect(origin: .zero, size: displaySize))
+                context.cgContext.fill(CGRect(origin: .zero, size: screenSize))
             }
 
             if let image = UIImage(data: data) {
@@ -99,14 +110,9 @@ extension StreamDeckSimulatorClient: StreamDeckClientProtocol {
         backgroundImageSubject.value = image
     }
 
-    public func setFullscreenImage(_ data: Data) {
-        buttonImageSubject.value = [:]
-        backgroundImageSubject.value = UIImage(data: data, scale: 1)
-    }
-
-    public func fillDisplay(red: UInt8, green: UInt8, blue: UInt8) {
-        guard let displaySize = capabilities.displaySize else { return }
-        buttonImageSubject.value = [:]
+    public func fillScreen(red: UInt8, green: UInt8, blue: UInt8) {
+        guard let screenSize = capabilities.screenSize else { return }
+        keyImageSubject.value = [:]
         backgroundImageSubject.value = UIImage.colored(
             .init(
                 red: CGFloat(red) / 255,
@@ -114,8 +120,24 @@ extension StreamDeckSimulatorClient: StreamDeckClientProtocol {
                 blue: CGFloat(blue) / 255,
                 alpha: 1
             ),
-            size: displaySize
+            size: screenSize
         )
+    }
+
+    public func fillKey(red: UInt8, green: UInt8, blue: UInt8, at index: Int) {
+        guard let keySize = capabilities.keySize,
+              let image = UIImage.colored(
+                .init(
+                    red: CGFloat(red) / 255,
+                    green: CGFloat(green) / 255,
+                    blue: CGFloat(blue) / 255,
+                    alpha: 1
+                ),
+                size: keySize
+              )
+        else { return }
+        
+        keyImageSubject.value[index] = image
     }
 
     public func close() {}

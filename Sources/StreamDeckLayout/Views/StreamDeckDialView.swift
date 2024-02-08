@@ -60,7 +60,7 @@ public struct StreamDeckDialView<Content: View>: View {
                 case let .touch(point):
                     guard let handler = touch else { return }
                     let caps = context.device.capabilities
-                    let rect = caps.getTouchAreaSectionDeviceRect(context.index)
+                    let rect = caps.getDialAreaSectionDeviceRect(context.index)
                     if rect.contains(point) {
                         let relativ = CGPoint(
                             x: point.x - rect.origin.x,

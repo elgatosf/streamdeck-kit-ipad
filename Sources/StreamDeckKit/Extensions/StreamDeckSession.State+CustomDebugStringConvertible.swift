@@ -10,12 +10,10 @@ extension StreamDeckSession.State: CustomDebugStringConvertible {
     public var debugDescription: String {
         switch self {
         case .idle: return ".idle"
-        case .connecting: return ".connecting"
-        case .ready: return ".ready"
+        case .started: return ".started"
         case .failed(let sessionError):
             switch sessionError {
-            case .driverNotActive: return ".failed(.driverNotActive)"
-            case .driverNotInstalled: return ".failed(.driverNotInstalled)"
+            case .unexpectedDriverError: return ".failed(.unexpectedDriverError)"
             case .driverVersionMismatch: return ".failed(.driverVersionMismatch)"
             }
         }

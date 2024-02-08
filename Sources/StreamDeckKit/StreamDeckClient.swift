@@ -125,6 +125,17 @@ final class StreamDeckClient {
         }
     }
 
+    func getDriverVersion() -> Version? {
+        let (ret, output) = getScalar(SDExternalMethod_getDriverVersion, 3)
+
+        guard let output = output else {
+            os_log(.error, "Error calling scalar method getDriverVersion (\(String(ioReturn: ret))")
+            return nil
+        }
+
+        return .init(major: Int(output[0]), minor: Int(output[1]), patch: Int(output[2]))
+    }
+
     func getDeviceInfo() -> DeviceInfo? {
         guard var rawInfo: SDDeviceInfo = getStruct(SDExternalMethod_getDeviceInfo) else {
             return nil
@@ -231,6 +242,25 @@ final class StreamDeckClient {
             os_log(.error, "Error calling scalar method \(String(describing: method)) (\(String(ioReturn: ret))")
         }
         return ret
+    }
+
+    private func getScalar(_ method: SDExternalMethod, _ size: Int) -> (IOReturn, [UInt64]?) {
+        var ret = kIOReturnSuccess
+        var output: [UInt64] = .init(repeating: 0, count: size)
+        var outputSize = UInt32(size)
+
+        output.withUnsafeMutableBufferPointer { outputPtr in
+            ret = IOConnectCallScalarMethod(connection, method.rawValue, nil, 0, outputPtr.baseAddress, &outputSize)
+        }
+
+        if ret == kIOReturnSuccess {
+            if outputSize != size {
+                output = Array(output[0 ..< Int(outputSize)])
+            }
+            return (ret, output)
+        } else {
+            return (ret, nil)
+        }
     }
 
     @MainActor

@@ -13,23 +13,19 @@
 #pragma pack(push, 1)
 
 typedef enum {
-    SDExternalMethod_getDeviceInfo = 0,
-    SDExternalMethod_getDeviceCapabilities = 1,
-    SDExternalMethod_setBrightness = 2,
-    SDExternalMethod_subscribeToKeyActions = 3,
-    SDExternalMethod_setKeyImage = 4,
-    SDExternalMethod_setScreenImage = 5,
-    SDExternalMethod_setWindowImage = 6,
-    SDExternalMethod_setWindowImageAtXY = 7,
-    SDExternalMethod_fillScreen = 8,
-    SDExternalMethod_fillKey = 9,
+    SDExternalMethod_getDriverVersion = 0, // Don't change; this call must work in all versions
+    SDExternalMethod_getDeviceInfo = 1,
+    SDExternalMethod_getDeviceCapabilities = 2,
+    SDExternalMethod_setBrightness = 3,
+    SDExternalMethod_subscribeToKeyActions = 4,
+    SDExternalMethod_setKeyImage = 5,
+    SDExternalMethod_setScreenImage = 6,
+    SDExternalMethod_setWindowImage = 7,
+    SDExternalMethod_setWindowImageAtXY = 8,
+    SDExternalMethod_fillScreen = 9,
+    SDExternalMethod_fillKey = 10,
     SDNumberOfExternalMethods // Has to be last
 } SDExternalMethod;
-
-typedef enum {
-    SDRootExternalMethod_getDriverVersion = 0, // Don't change; this call must work in all versions
-    SDRootNumberOfExternalMethods // Has to be last
-} SDRootExternalMethod;
 
 typedef struct SDDeviceInfo {
     uint16_t vendorID;

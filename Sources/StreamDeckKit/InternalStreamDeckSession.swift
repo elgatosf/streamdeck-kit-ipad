@@ -24,15 +24,17 @@ final actor InternalStreamDeckSession {
 
     func start() async {
         guard state.value == .idle else { return }
-        await checkDriverAvailabilityAndVersion()
-        guard state.value == .ready else { return }
+        state.value = .started
         startDeviceNotifier()
     }
 
     func stop() {
         state.value = .idle
         driverVersion.value = nil
+        internalStop()
+    }
 
+    private func internalStop() {
         if let notificationPort = notificationPort {
             IONotificationPortDestroy(notificationPort)
             self.notificationPort = nil
@@ -43,36 +45,6 @@ final actor InternalStreamDeckSession {
         }
 
         devices.value = []
-    }
-
-    private func checkDriverAvailabilityAndVersion() async {
-        state.value = .connecting
-
-        let rootClient = StreamDeckDriverRootClient()
-
-        guard rootClient.isOpen else {
-            let isAppInstalled = await UIApplication.shared.canOpenURL(driverAppInstallationCheckURL)
-
-            guard state.value == .connecting else { return }
-
-            if isAppInstalled {
-                state.value = .failed(.driverNotActive)
-            } else {
-                state.value = .failed(.driverNotInstalled)
-            }
-            return
-        }
-
-        guard let version = rootClient.getVersion(),
-              version.major == StreamDeck.minimumDriverVersion.major,
-              version >= StreamDeck.minimumDriverVersion
-        else {
-            state.value = .failed(.driverVersionMismatch)
-            return
-        }
-
-        driverVersion.value = version
-        state.value = .ready
     }
 
     private func startDeviceNotifier() {
@@ -110,6 +82,27 @@ final actor InternalStreamDeckSession {
             guard ret == kIOReturnSuccess else {
                 os_log(.error, "Failed opening service with error: \(String(ioReturn: ret)).")
                 continue
+            }
+
+            guard let version = client.getDriverVersion() else {
+                os_log(.error, "Error fetching driver version - closing session.")
+                state.value = .failed(.unexpectedDriverError)
+                internalStop()
+                return
+            }
+
+            guard version.major == StreamDeck.minimumDriverVersion.major,
+                  version >= StreamDeck.minimumDriverVersion
+            else {
+                os_log(.error, "SDK driver version mismatch (driver version: \(version), SDK minimum version: \(StreamDeck.minimumDriverVersion)")
+                driverVersion.value = version
+                state.value = .failed(.driverVersionMismatch)
+                internalStop()
+                return
+            }
+
+            if driverVersion.value != version {
+                driverVersion.value = version
             }
 
             guard let info = client.getDeviceInfo() else {

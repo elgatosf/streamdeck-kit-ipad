@@ -21,25 +21,25 @@ public extension StreamDeckSession {
     ) -> Self {
         let session = Self()
 
-        var cancellables = [AnyCancellable]()
-
         NotificationCenter
             .default
             .publisher(for: UIApplication.didBecomeActiveNotification)
             .sink { _ in session.start() }
-            .store(in: &cancellables)
+            .store(in: &session._cancellables)
 
         NotificationCenter
             .default
             .publisher(for: UIApplication.willResignActiveNotification)
             .sink { _ in session.stop() }
-            .store(in: &cancellables)
+            .store(in: &session._cancellables)
 
-        session.newDeviceHandler = { device in
-            _ = cancellables // retain
-            let content = content(device)
-            device.render(content)
-        }
+        session.newDevicePublisher
+            .receive(on: DispatchQueue.main)
+            .sink { @MainActor device in
+                let content = content(device)
+                device.render(content)
+            }
+            .store(in: &session._cancellables)
 
         session.start()
 

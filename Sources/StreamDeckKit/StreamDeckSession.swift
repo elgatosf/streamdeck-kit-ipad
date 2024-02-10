@@ -104,6 +104,7 @@ public final class StreamDeckSession {
             _queue.async(flags: .barrier) {
                 self.stateHandlerTask?.cancel()
                 self.stateHandlerTask = nil
+                self._stateHandler = newValue
 
                 guard let handler = newValue else { return }
 
@@ -129,6 +130,7 @@ public final class StreamDeckSession {
             _queue.async(flags: .barrier) {
                 self.newDeviceHandlerTask?.cancel()
                 self.newDeviceHandlerTask = nil
+                self._newDeviceHandler = newValue
 
                 guard let handler = newValue else { return }
 
@@ -146,7 +148,7 @@ public final class StreamDeckSession {
     private var newDeviceHandlerTask: Task<Void, Error>?
 
     private let internalSession = InternalStreamDeckSession()
-
+    public var _cancellables = Set<AnyCancellable>()
 
     public init() {
         internalSession.state

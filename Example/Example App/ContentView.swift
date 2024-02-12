@@ -10,15 +10,12 @@ import StreamDeckKit
 
 struct ContentView: View {
 
-    let streamDeckHandler: StreamDeckHandler
-
-    init(streamDeckHandler: StreamDeckHandler = StreamDeckHandler()) {
-        self.streamDeckHandler = streamDeckHandler
-    }
+    let streamDeckHandler = StreamDeckHandler.instance
 
     var body: some View {
         VStack {
             Text("Session State: \(streamDeckHandler.stateDescription)")
+            
             if streamDeckHandler.devices.isEmpty {
                 Text("Please connect a Stream Deck device!")
                 Text("or")
@@ -49,13 +46,10 @@ struct ContentView: View {
 import StreamDeckSimulator
 
 #Preview("With simulator attached") {
-    let streamDeckHandler = StreamDeckHandler()
-
     return VStack {
-        ContentView(streamDeckHandler: streamDeckHandler)
+        ContentView()
         StreamDeckSimulator.PreviewView(
-            streamDeck: .mini,
-            session: streamDeckHandler.session
+            streamDeck: .mini
         )
     }
 }

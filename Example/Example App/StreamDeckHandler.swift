@@ -13,44 +13,31 @@ import SwiftUI
 
 @Observable
 class StreamDeckHandler {
-
-    let session = StreamDeckSession()
-    let renderer = StreamDeckLayoutRenderer()
+    static let instance = StreamDeckHandler()
+    
     private var deviceObservations: [StreamDeck: AnyCancellable] = [:]
-    private var cancellables = Set<AnyCancellable>()
 
     var devices: [StreamDeck] {
         Array(deviceObservations.keys)
     }
+
     private(set) var pressedKeys: [StreamDeck: Set<Int>] = [:]
     private(set) var stateDescription: String = StreamDeckSession.State.idle.debugDescription
 
-    init() {
-        session.newDeviceHandler = { [weak self] device in
-            self?.addDevice(device)
-            device.onClose { self?.removeDevice(device) }
-        }
-
-        session.$state
-            .map(\.debugDescription)
-            .sink { [weak self] in self?.stateDescription = $0 }
-            .store(in: &cancellables)
-        
-        NotificationCenter
-            .default
-            .publisher(for: UIApplication.didBecomeActiveNotification)
-            .sink { [weak self] _ in self?.session.start() }
-            .store(in: &cancellables)
-
-        NotificationCenter
-            .default
-            .publisher(for: UIApplication.willResignActiveNotification)
-            .sink { [weak self] _ in self?.session.stop() }
-            .store(in: &cancellables)
+    private init() {
+        StreamDeckSession.setUp(
+            stateHandler: { [weak self] state in
+                self?.stateDescription = state.debugDescription
+            },
+            newDeviceHandler: { [weak self] device in
+                self?.addDevice(device)
+                device.onClose { self?.removeDevice(device) }
+            }
+        )
     }
 
     func showSimulator() {
-        StreamDeckSimulator.show(for: session)
+        StreamDeckSimulator.show()
     }
 
     private func addDevice(_ device: StreamDeck) {
@@ -147,5 +134,8 @@ private struct DeckKeyView: View {
 // MARK: - Simulator preview
 
 #Preview(traits: .landscapeLeft) {
-    StreamDeckSimulator.PreviewView(streamDeck: .xl, context: { StreamDeckHandler() })
+    StreamDeckSimulator.PreviewView(
+        streamDeck: .xl,
+        context: { StreamDeckHandler.instance }
+    )
 }

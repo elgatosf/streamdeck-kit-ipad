@@ -16,7 +16,6 @@ public extension StreamDeckSimulator {
         let configuration: StreamDeckSimulator.Configuration
         let context: Any?
         let showOptions: Bool
-        let session: StreamDeckSession?
         private let onDispose: AnyCancellable?
 
         @State private var showDeviceBezels: Bool
@@ -24,7 +23,6 @@ public extension StreamDeckSimulator {
 
         public init(
             streamDeck product: StreamDeckProduct = .regular,
-            session: StreamDeckSession? = nil,
             serialNumber: String? = nil,
             showOptions: Bool = true,
             showDeviceBezels: Bool = true,
@@ -36,19 +34,17 @@ public extension StreamDeckSimulator {
             self.product = product
             self.context = context?()
             self.showOptions = showOptions
-            self.session = session
 
             _showDeviceBezels = .init(initialValue: showDeviceBezels)
             _showKeyAreaBorders = .init(initialValue: showKeyAreaBorders)
 
-            if let session = session {
-                session._appendSimulator(device: configuration.device)
-                onDispose = AnyCancellable { [configuration] in
-                    configuration.device.close()
-                    session._removeSimulator(device: configuration.device)
-                }
-            } else {
-                onDispose = nil
+            let device = configuration.device
+            let session = StreamDeckSession.instance
+
+            session._appendSimulator(device: device)
+            onDispose = AnyCancellable {
+                device.close()
+                session._removeSimulator(device: device)
             }
         }
 

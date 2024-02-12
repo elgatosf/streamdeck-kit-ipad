@@ -18,6 +18,7 @@ extension StreamDeck {
         case setWindowImageAt(image: UIImage, at: CGRect, scaleAspectFit: Bool)
         case fillScreen(color: UIColor)
         case fillKey(color: UIColor, key: Int)
+        case showLogo
         case task(() async -> Void)
         case close
 
@@ -47,7 +48,7 @@ extension StreamDeck {
         var wasReplaced = false
 
         switch operation {
-        case .setInputEventHandler, .setBrightness, .task:
+        case .setInputEventHandler, .setBrightness, .showLogo, .task:
             break
 
         case let .setKeyImage(_, key, _):
@@ -186,6 +187,9 @@ extension StreamDeck {
             } else {
                 fakeFillKey(color, at: index)
             }
+
+        case .showLogo:
+            client.showLogo()
 
         case let .task(task):
             await task()

@@ -20,5 +20,6 @@ public protocol StreamDeckClientProtocol {
     func setWindowImage(_ data: Data, at rect: CGRect)
     func fillScreen(red: UInt8, green: UInt8, blue: UInt8)
     func fillKey(red: UInt8, green: UInt8, blue: UInt8, at index: Int)
+    func showLogo()
     func close()
 }

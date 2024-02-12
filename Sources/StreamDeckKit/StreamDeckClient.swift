@@ -370,6 +370,10 @@ extension StreamDeckClient: StreamDeckClientProtocol {
         callScalar(SDExternalMethod_fillKey, UInt64(index), UInt64(red), UInt64(green), UInt64(blue))
     }
 
+    func showLogo() {
+        callScalar(SDExternalMethod_showLogo)
+    }
+
 }
 
 private extension ImageFormat {

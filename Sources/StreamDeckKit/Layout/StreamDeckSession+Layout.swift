@@ -28,7 +28,7 @@ public extension StreamDeckSession {
                 .sink { $0.render(content($0)) }
                 .store(in: &instance._cancellables)
 
-            await instance.setUp(stateHandler: stateHandler, newDeviceHandler: newDeviceHandler)
+            instance.setUp(stateHandler: stateHandler, newDeviceHandler: newDeviceHandler)
         }
     }
 

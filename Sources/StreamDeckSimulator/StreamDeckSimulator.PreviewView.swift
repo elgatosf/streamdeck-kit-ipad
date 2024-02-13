@@ -11,12 +11,10 @@ import StreamDeckKit
 public extension StreamDeckSimulator {
 
     struct PreviewView: View {
-
-        let product: StreamDeckProduct
-        let configuration: StreamDeckSimulator.Configuration
-        let context: Any?
-        let showOptions: Bool
-        private let onDispose: AnyCancellable?
+        private let product: StreamDeckProduct
+        private let configuration: StreamDeckSimulator.Configuration
+        private let context: Any?
+        private let showOptions: Bool
 
         @State private var showDeviceBezels: Bool
         @State private var showKeyAreaBorders: Bool
@@ -37,15 +35,6 @@ public extension StreamDeckSimulator {
 
             _showDeviceBezels = .init(initialValue: showDeviceBezels)
             _showKeyAreaBorders = .init(initialValue: showKeyAreaBorders)
-
-            let device = configuration.device
-            let session = StreamDeckSession.instance
-
-            session._appendSimulator(device: device)
-            onDispose = AnyCancellable {
-                device.close()
-                session._removeSimulator(device: device)
-            }
         }
 
         public var body: some View {
@@ -63,6 +52,12 @@ public extension StreamDeckSimulator {
                 } else {
                     simulator
                 }
+            }
+            .onAppear {
+                StreamDeckSession.instance._appendSimulator(device: configuration.device)
+            }
+            .onDisappear {
+                StreamDeckSession.instance._removeSimulator(device: configuration.device)
             }
             .environment(\.streamDeckViewContext, .init(
                 device: configuration.device,

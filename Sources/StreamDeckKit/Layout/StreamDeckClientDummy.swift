@@ -7,7 +7,6 @@
 
 import Combine
 import Foundation
-import StreamDeckKit
 
 final class StreamDeckClientDummy: StreamDeckClientProtocol {
     public init() {}

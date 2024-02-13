@@ -7,7 +7,6 @@
 
 import Foundation
 import StreamDeckKit
-import StreamDeckLayout
 import SwiftUI
 
 struct StreamDeckSimulatorView: View {

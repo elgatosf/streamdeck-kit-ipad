@@ -5,7 +5,6 @@
 //  Created by Alexander Jentz on 27.11.23.
 //
 
-import StreamDeckKit
 import SwiftUI
 
 public struct StreamDeckDialAreaLayout<Dial: View>: View {

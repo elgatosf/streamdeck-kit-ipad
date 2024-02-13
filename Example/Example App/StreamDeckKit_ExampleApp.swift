@@ -7,7 +7,6 @@
 
 import SwiftUI
 import StreamDeckKit
-import StreamDeckLayout
 
 @main
 struct StreamDeckKit_ExampleApp: App {

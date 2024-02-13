@@ -5,7 +5,7 @@
 //  Created by Roman Schlagowsky on 02.02.24.
 //
 
-import StreamDeckLayout
+import StreamDeckKit
 import SwiftUI
 
 struct StreamDeckLayoutView: View {

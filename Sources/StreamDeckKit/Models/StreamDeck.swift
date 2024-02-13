@@ -170,4 +170,9 @@ public final class StreamDeck {
         enqueueOperation(.setWindowImageAt(image: image, at: rect, scaleAspectFit: scaleAspectFit))
     }
 
+    /// Show logo on device (resets device content)
+    public func showLogo() {
+        enqueueOperation(.showLogo)
+    }
+
 }

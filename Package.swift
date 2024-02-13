@@ -12,10 +12,6 @@ let package = Package(
             targets: ["StreamDeckKit"]
         ),
         .library(
-            name: "StreamDeckLayout",
-            targets: ["StreamDeckLayout"]
-        ),
-        .library(
             name: "StreamDeckSimulator",
             targets: ["StreamDeckSimulator"]
         )
@@ -29,12 +25,8 @@ let package = Package(
     targets: [
         .target(
             name: "StreamDeckSimulator",
-            dependencies: ["StreamDeckLayout"],
+            dependencies: ["StreamDeckKit"],
             resources: [.process("Resources")]
-        ),
-        .target(
-            name: "StreamDeckLayout",
-            dependencies: ["StreamDeckKit"]
         ),
         .target(
             name: "StreamDeckKit",
@@ -48,7 +40,6 @@ let package = Package(
             name: "StreamDeckSDKTests",
             dependencies: [
                 "StreamDeckKit",
-                "StreamDeckLayout",
                 "StreamDeckSimulator",
                 .product(name: "SnapshotTesting", package: "swift-snapshot-testing")
             ]

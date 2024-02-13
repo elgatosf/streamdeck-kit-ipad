@@ -5,7 +5,6 @@
 //  Created by Alexander Jentz on 29.01.24.
 //
 
-import StreamDeckKit
 import SwiftUI
 
 public extension StreamDeck {
@@ -18,5 +17,4 @@ public extension StreamDeck {
         let renderer = StreamDeckLayoutRenderer(content: content, device: self)
         onClose(renderer.stop)
     }
-
 }

@@ -7,7 +7,6 @@
 
 import Combine
 import Foundation
-import StreamDeckKit
 import SwiftUI
 
 public struct StreamDeckLayout<BackgroundView: View, KeyAreaView: View, WindowView: View>: View {

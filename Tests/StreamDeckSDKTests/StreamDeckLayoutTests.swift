@@ -9,7 +9,6 @@ import SwiftUI
 import XCTest
 import SnapshotTesting
 @testable import StreamDeckKit
-@testable import StreamDeckLayout
 @testable import StreamDeckSimulator
 
 final class StreamDeckLayoutTests: XCTestCase {

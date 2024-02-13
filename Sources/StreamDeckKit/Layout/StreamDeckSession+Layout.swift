@@ -6,7 +6,6 @@
 //
 
 import Combine
-import StreamDeckKit
 import SwiftUI
 
 public extension StreamDeckSession {

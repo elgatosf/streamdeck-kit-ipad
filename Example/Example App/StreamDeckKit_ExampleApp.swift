@@ -6,12 +6,21 @@
 //
 
 import SwiftUI
+import StreamDeckKit
+import StreamDeckLayout
 
 @main
 struct StreamDeckKit_ExampleApp: App {
+
+    init() {
+        StreamDeckSession.setUp { _ in
+            StreamDeckLayoutView()
+        }
+    }
+
     var body: some Scene {
         WindowGroup {
-            ContentView(session: .rendering { _ in StreamDeckLayoutView() })
+            ContentView()
         }
     }
 }

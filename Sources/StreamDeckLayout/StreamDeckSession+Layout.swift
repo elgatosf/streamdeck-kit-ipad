@@ -16,34 +16,20 @@ public extension StreamDeckSession {
     ///
     /// - Parameters:
     ///   - content: A view builder block that creates the view that should be rendered on a connected device.
-    static func rendering<Content: View>(
-        @ViewBuilder _ content: @MainActor @escaping (_ device: StreamDeck) -> Content
-    ) -> Self {
-        let session = Self()
+    static func setUp<Content: View>(
+        stateHandler: StateHandler? = nil,
+        newDeviceHandler: NewDeviceHandler? = nil,
+        @ViewBuilder content: @MainActor @escaping (_ device: StreamDeck) -> Content
+    ) {
+        Task { @MainActor in
+            guard !instance.didSetUp else { return }
 
-        NotificationCenter
-            .default
-            .publisher(for: UIApplication.didBecomeActiveNotification)
-            .sink { _ in session.start() }
-            .store(in: &session._cancellables)
+            instance.newDevicePublisher
+                .sink { $0.render(content($0)) }
+                .store(in: &instance._cancellables)
 
-        NotificationCenter
-            .default
-            .publisher(for: UIApplication.willResignActiveNotification)
-            .sink { _ in session.stop() }
-            .store(in: &session._cancellables)
-
-        session.newDevicePublisher
-            .receive(on: DispatchQueue.main)
-            .sink { @MainActor device in
-                let content = content(device)
-                device.render(content)
-            }
-            .store(in: &session._cancellables)
-
-        session.start()
-
-        return session
+            await instance.setUp(stateHandler: stateHandler, newDeviceHandler: newDeviceHandler)
+        }
     }
 
 }

@@ -11,14 +11,10 @@ import StreamDeckLayout
 
 struct ContentView: View {
 
-    let session: StreamDeckSession
+    let session: StreamDeckSession = .instance
     @State private var stateDescription: String = StreamDeckSession.State.idle.debugDescription
     @State private var devices: [StreamDeck] = []
 
-    init(session: StreamDeckSession) {
-        self.session = session
-        session.start()
-    }
 
     var body: some View {
         VStack {
@@ -27,7 +23,7 @@ struct ContentView: View {
                 Text("Please connect a Stream Deck device!")
                 Text("or")
                 Button("Start the Stream Deck Simulator") {
-                    StreamDeckSimulator.show(streamDeck: .mini, for: session)
+                    StreamDeckSimulator.show(streamDeck: .mini)
                 }
             } else {
                 ForEach(devices) { device in
@@ -55,7 +51,7 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(session: .init())
+    ContentView()
 }
 
 // MARK: - Simulator preview
@@ -64,13 +60,13 @@ struct ContentView: View {
 import StreamDeckSimulator
 
 #Preview("With simulator attached") {
-    let session = StreamDeckSession.rendering { device in
+    StreamDeckSession.setUp { device in
         StreamDeckLayoutView()
     }
 
     return VStack {
-        ContentView(session: session)
-        StreamDeckSimulator.PreviewView(streamDeck: .mini, session: session)
+        ContentView()
+        StreamDeckSimulator.PreviewView(streamDeck: .mini)
     }
 }
 #endif

@@ -27,7 +27,6 @@ public final class StreamDeckSimulator {
 
     private static let shared = StreamDeckSimulator()
 
-    private var session: StreamDeckSession?
     private var device: StreamDeck?
     private var window: UIWindow?
 
@@ -40,25 +39,19 @@ public final class StreamDeckSimulator {
         return windowScene?.first { $0.activationState == .foregroundActive }
     }
 
-    public static func show(
-        streamDeck product: StreamDeckProduct,
-        for session: StreamDeckSession? = nil
-    ) {
-        shared.showSimulator(product, session ?? .init())
+    public static func show(streamDeck product: StreamDeckProduct) {
+        shared.showSimulator(product)
     }
 
-    public static func show(
-        defaultStreamDeck defaultProduct: StreamDeckProduct = .regular,
-        for session: StreamDeckSession? = nil
-    ) {
-        shared.showSimulator(shared.lastSelectedProduct ?? defaultProduct, session ?? .init())
+    public static func show(defaultStreamDeck defaultProduct: StreamDeckProduct = .regular) {
+        shared.showSimulator(shared.lastSelectedProduct ?? defaultProduct)
     }
 
     public static func close() {
         shared.close()
     }
 
-    private func showSimulator(_ product: StreamDeckProduct, _ session: StreamDeckSession) {
+    private func showSimulator(_ product: StreamDeckProduct) {
         close()
 
         guard let scene = activeScene else { return }
@@ -81,7 +74,7 @@ public final class StreamDeckSimulator {
                 self?.lastSimulatorSize = newSize
             },
             onDeviceChange: { [weak self] newModel, newDevice in
-                self?.setActiveDevice(newDevice, session)
+                self?.setActiveDevice(newDevice)
                 self?.lastSelectedProduct = newModel
             }
         )
@@ -95,7 +88,7 @@ public final class StreamDeckSimulator {
 
         lastSimulatorCenter.map { hostViewController.view.center = $0 }
 
-        setActiveDevice(simulatorContainer.device, session)
+        setActiveDevice(simulatorContainer.device)
     }
 
     private func close() {
@@ -108,20 +101,18 @@ public final class StreamDeckSimulator {
         window = nil
     }
 
-    private func setActiveDevice(_ device: StreamDeck?, _ session: StreamDeckSession? = nil) {
+    private func setActiveDevice(_ device: StreamDeck?) {
         guard self.device != device else { return }
 
-        if let currentDevice = self.device, let currentSession = self.session {
+        if let currentDevice = self.device {
             currentDevice.close()
-            currentSession._removeSimulator(device: currentDevice)
+            StreamDeckSession.instance._removeSimulator(device: currentDevice)
             self.device = nil
-            self.session = nil
         }
 
-        if let device = device, let session = session {
-            session._appendSimulator(device: device)
+        if let device = device {
+            StreamDeckSession.instance._appendSimulator(device: device)
             self.device = device
-            self.session = session
         }
     }
 

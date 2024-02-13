@@ -189,6 +189,7 @@ extension StreamDeck {
             }
 
         case .showLogo:
+            guard supports(.showLogo) else { return }
             client.showLogo()
 
         case let .task(task):

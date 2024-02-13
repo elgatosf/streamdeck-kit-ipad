@@ -72,6 +72,12 @@ public final class StreamDeck {
         startOperationTask()
     }
 
+    /// Check if the hardware supports the given feature.
+    /// Note: Some hardware might lack features that are simulated in software.
+    public func supports(_ feature: DeviceCapabilities.Features) -> Bool {
+        capabilities.features.contains(feature)
+    }
+
     @MainActor
     private func handleInputEvent(_ event: InputEvent) {
         inputEventsSubject.send(event)

@@ -24,6 +24,7 @@ typedef enum {
     SDExternalMethod_setWindowImageAtXY = 8,
     SDExternalMethod_fillScreen = 9,
     SDExternalMethod_fillKey = 10,
+    SDExternalMethod_showLogo = 11,
     SDNumberOfExternalMethods // Has to be last
 } SDExternalMethod;
 
@@ -43,46 +44,63 @@ typedef enum {
 
 typedef int affine_t[6]; // m11, m12, m21, m22, dx, dy
 
+typedef struct SDPoint {
+    uint16_t x;
+    uint16_t y;
+} SDPoint;
+
+typedef struct SDSize {
+    uint16_t width;
+    uint16_t height;
+} SDSize;
+
+typedef struct SDRect {
+    SDPoint origin;
+    SDSize size;
+} SDRect;
+
 typedef struct SDDeviceCapabilities {
     uint8_t keyCount;
-    uint8_t keyWidth;
-    uint8_t keyHeight;
     uint8_t keyRows;
     uint8_t keyColumns;
     uint8_t dialCount;
-    uint16_t screenWidth;
-    uint16_t screenHeight;
-    uint16_t windowX;
-    uint16_t windowY;
-    uint16_t windowWidth;
-    uint16_t windowHeight;
-    uint16_t keyAreaX;
-    uint16_t keyAreaY;
-    uint16_t keyAreaWidth;
-    uint16_t keyAreaHeight;
+    SDSize keySize;
+    SDSize screenSize;
+    SDRect windowRect;
+    SDRect keyAreaRect;
     uint16_t keyHorizontalSpacing;
     uint16_t keyVerticalSpacing;
     affine_t imageTransform;
     SDImageFormat imageFormat;
-    bool hasSetBrightnessSupport;
-    bool hasSetKeyImageSupport;
-    bool hasSetScreenImageSupport;
-    bool hasSetWindowImageSupport;
-    bool hasSetWindowImageAtXYSupport;
-    bool hasFillScreenSupport;
-    bool hasFillKeySupport;
+    uint64_t features;
 } SDDeviceCapabilities;
 
 typedef enum {
-    SDInputEventTypeKeyPress = 0,
-    SDInputEventTypeRotary = 1,
-    SDInputEventTypeTouch = 2,
-    SDInputEventTypeFling = 3,
+    SDFeatureFlags_setBrightness        = 1 << 0,
+    SDFeatureFlags_setKeyImage          = 1 << 1,
+    SDFeatureFlags_setScreenImage       = 1 << 2,
+    SDFeatureFlags_setWindowImage       = 1 << 3,
+    SDFeatureFlags_setWindowImageAtXY   = 1 << 4,
+    SDFeatureFlags_fillScreen           = 1 << 5,
+    SDFeatureFlags_fillKey              = 1 << 6,
+    SDFeatureFlags_showLogo             = 1 << 7,
+    SDFeatureFlags_highDPI              = 1 << 8,
+    SDFeatureFlags_keyPressEvents       = 1 << 9,
+    SDFeatureFlags_rotaryEvents         = 1 << 10,
+    SDFeatureFlags_touchEvents          = 1 << 11,
+    SDFeatureFlags_flingEvents          = 1 << 12,
+} SDFeatureFlags;
+
+typedef enum {
+    SDInputEventType_KeyPress = 0,
+    SDInputEventType_Rotary = 1,
+    SDInputEventType_Touch = 2,
+    SDInputEventType_Fling = 3,
 } SDInputEventType;
 
 typedef enum {
-    SDInputEventRotaryTypeRotate = 0,
-    SDInputEventRotaryTypePress = 1,
+    SDInputEventRotaryType_Rotate = 0,
+    SDInputEventRotaryType_Press = 1,
 } SDInputEventRotaryType;
 
 typedef struct {

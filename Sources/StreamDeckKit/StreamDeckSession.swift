@@ -6,32 +6,27 @@
 //
 
 import Combine
-import Foundation
-
-// Internal queue to synchronise access to mutable shared state
-var _queue = DispatchQueue(label: "com.elgato.StreamDeckKit.queue", attributes: .concurrent)
+import UIKit
 
 /// A mechanism that enables Stream Deck driver state observation and device detection.
 ///
-/// To begin interacting with a device, you can start by observing device connections, and then observe the input events of every connected device.
+/// To begin interacting with devices,  set-up the session and observe device connections.
 /// ```swift
-/// let session = StreamDeckSession()
-/// // Add handler to get informed about newly attached devices.
-/// session.newDeviceHandler { device in
-///     print("\(device.info.productName) attached.")
+/// StreamDeckSession.setUp(
+///     newDeviceHandler { device in
+///         print("\(device.info.productName) attached.")
 ///
-///     // Handle input events of a device.
-///     device.inputEventHandler { event in
-///         print("Received \(event) from \(device.info.productName)")
+///         // Handle input events of a device.
+///         device.inputEventHandler { event in
+///             print("Received \(event) from \(device.info.productName)")
+///         }
 ///     }
 /// }
-/// // Start the session to begin device observation.
-/// session.start()
 /// ```
 /// You can configure a device by using the instance methods of ``StreamDeck``. Therefore you can hold your own reference to connected devices, or
 /// you can use the ``devices`` property.
 /// ```swift
-/// for device in session.devices {
+/// for device in StreamDeckSession.instance.devices {
 ///     device.setImage(UIImage(named: "flower"), to: 4)
 /// }
 /// ```
@@ -40,9 +35,8 @@ var _queue = DispatchQueue(label: "com.elgato.StreamDeckKit.queue", attributes: 
 ///
 /// You can check if all conditions are met, with the ``state-swift.property`` property.
 /// ```swift
-/// let cancellable = session.$state.sink { state in
-///     if case let .failed(error) = state, error == .driverNotInstalled {
-///         // Ask user to install Stream Deck Connect.
+/// let cancellable = StreamDeckSession.instance.$state.sink { state in
+///     if case let .failed(error) = state, error == .driverVersionMismatch {
 ///     }
 /// }
 /// ```
@@ -70,9 +64,31 @@ public final class StreamDeckSession {
         case failed(SessionError)
     }
 
+    /// Handler function for newly attached devices.
     public typealias NewDeviceHandler = @MainActor (StreamDeck) -> Void
 
+    /// Handler function for session state updates.
     public typealias StateHandler = @MainActor (State) -> Void
+
+    /// The shared session instance.
+    public static let instance = StreamDeckSession()
+
+    /// Set up this session.
+    ///
+    /// This will start to observe your application lifecycle to internally start/stop the device listeners and to release
+    /// resources when appropriate.
+    ///
+    /// - Parameters:
+    ///  - stateHandler: An optional handler for session state updates.
+    ///  - newDeviceHandler An optional handler to receive newly attached devices.
+    public static func setUp(
+        stateHandler: StateHandler? = nil,
+        newDeviceHandler: NewDeviceHandler? = nil
+    ) {
+        Task { @MainActor in
+            await instance.setUp(stateHandler: stateHandler, newDeviceHandler: newDeviceHandler)
+        }
+    }
 
     /// Use this to observe the current session state. The `State` info can be used to inform users about courses of action e.g. in case of an error.
     ///
@@ -88,6 +104,8 @@ public final class StreamDeckSession {
     /// Provides the list of currently connected devices.
     @Published public private(set) var devices = [StreamDeck]()
 
+    public var _cancellables = [AnyCancellable]()
+
     /// Use this to observe newly attached Stream Deck devices.
     ///
     /// Alternatively use the ``newDeviceHandler-swift.property`` property to handle this with a closure.
@@ -95,60 +113,31 @@ public final class StreamDeckSession {
         internalSession.newDevice.eraseToAnyPublisher()
     }
 
-    /// Use this to handle the current session state. The `State` info can be used to inform users about courses of action e.g. in case of an error.
-    ///
-    /// Alternatively use the ``state-swift.property`` property to observe with Combine.
-    public var stateHandler: StateHandler? {
-        get { _queue.sync { _stateHandler } }
-        set {
-            _queue.async(flags: .barrier) {
-                self.stateHandlerTask?.cancel()
-                self.stateHandlerTask = nil
-
-                guard let handler = newValue else { return }
-
-                let sequence = self.internalSession.state.values
-
-                self.stateHandlerTask = Task { @MainActor in
-                    for await state in sequence {
-                        handler(state)
-                    }
-                }
-            }
-        }
-    }
-    private var _stateHandler: StateHandler?
-    private var stateHandlerTask: Task<Void, Error>?
-
-    /// Use this to handle attaching/detaching Stream Deck devices.
-    ///
-    /// Alternatively use the ``newDevicePublisher`` to observe with Combine.
-    public var newDeviceHandler: NewDeviceHandler? {
-        get { _queue.sync { _newDeviceHandler } }
-        set {
-            _queue.async(flags: .barrier) {
-                self.newDeviceHandlerTask?.cancel()
-                self.newDeviceHandlerTask = nil
-
-                guard let handler = newValue else { return }
-
-                let sequence = self.internalSession.newDevice.values
-
-                self.newDeviceHandlerTask = Task { @MainActor in
-                    for await state in sequence {
-                        handler(state)
-                    }
-                }
-            }
-        }
-    }
-    private var _newDeviceHandler: NewDeviceHandler?
-    private var newDeviceHandlerTask: Task<Void, Error>?
+    public private(set) var didSetUp = false
 
     private let internalSession = InternalStreamDeckSession()
 
+    private init() {}
 
-    public init() {
+    /// Set up this session.
+    ///
+    /// This will start to observe your application lifecycle to internally start/stop the device listeners and to release
+    /// resources when appropriate.
+    ///
+    /// Note: You can use the static method ``setUp(stateHandler:newDeviceHandler:)-swift.type.method``
+    /// if you are not already in an asynchronous context.
+    ///
+    /// - Parameters:
+    ///  - stateHandler: An optional handler for session state updates.
+    ///  - newDeviceHandler An optional handler to receive newly attached devices.
+    @MainActor
+    public func setUp(
+        stateHandler: StateHandler? = nil,
+        newDeviceHandler: NewDeviceHandler? = nil
+    ) async {
+        guard !didSetUp else { return }
+        didSetUp = true
+
         internalSession.state
             .receive(on: RunLoop.main)
             .assign(to: &$state)
@@ -160,33 +149,55 @@ public final class StreamDeckSession {
         internalSession.devices
             .receive(on: RunLoop.main)
             .assign(to: &$devices)
+
+        if let stateHandler = stateHandler {
+            internalSession.state
+                .subscribe(on: RunLoop.main)
+                .sink { stateHandler($0) }
+                .store(in: &_cancellables)
+        }
+
+        if let newDeviceHandler = newDeviceHandler {
+            internalSession.newDevice
+                .subscribe(on: RunLoop.main)
+                .sink { newDeviceHandler($0) }
+                .store(in: &_cancellables)
+        }
+
+        NotificationCenter
+            .default
+            .publisher(for: UIApplication.didBecomeActiveNotification)
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                Task { await self.internalSession.start() }
+            }
+            .store(in: &_cancellables)
+
+        NotificationCenter
+            .default
+            .publisher(for: UIApplication.willResignActiveNotification)
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                Task { await self.internalSession.stop() }
+            }
+            .store(in: &_cancellables)
+
+        await self.internalSession.start()
     }
 
-    deinit {
-        _queue.sync { [stateHandlerTask, newDeviceHandlerTask] in
-            stateHandlerTask?.cancel()
-            newDeviceHandlerTask?.cancel()
+    /// Must only be accessed by StreamDeckSimulator to append simulators.
+    public func _appendSimulator(device: StreamDeck) {
+        // Run on next main loop to ensure that a previous call to `setUp` had time to run.
+        Task.detached { @MainActor in
+            await self.internalSession.addDevice(device: device)
         }
     }
 
-    /// Tries to connect to the driver, to observe connected Stream Deck devices and their state.
-    public func start() {
-        Task { await internalSession.start() }
-    }
-
-    /// Stops all observations, disconnects from the driver and clears the device list.
-    /// - Note: Calling any actions on existing `StreamDeck` instances will have no result after this point.
-    public func stop() {
-        Task { await internalSession.stop() }
-    }
-
-    // Should only be accessed by StreamDeckSimulator to append simulators.
-    public func _appendSimulator(device: StreamDeck) {
-        Task { await internalSession.addDevice(device: device) }
-    }
-
-    // Should only be accessed by StreamDeckSimulator to remove simulators.
+    /// Must only be accessed by StreamDeckSimulator to remove simulators.
     public func _removeSimulator(device: StreamDeck) {
-        Task { await internalSession.removeDevice(device: device) }
+        // Run on next main loop to ensure that a previous call to `setUp` had time to run.
+        Task.detached { @MainActor in
+            await self.internalSession.removeDevice(device: device)
+        }
     }
 }

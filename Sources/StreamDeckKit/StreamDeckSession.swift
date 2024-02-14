@@ -86,7 +86,7 @@ public final class StreamDeckSession {
         newDeviceHandler: NewDeviceHandler? = nil
     ) {
         Task { @MainActor in
-            await instance.setUp(stateHandler: stateHandler, newDeviceHandler: newDeviceHandler)
+            instance.setUp(stateHandler: stateHandler, newDeviceHandler: newDeviceHandler)
         }
     }
 
@@ -125,7 +125,7 @@ public final class StreamDeckSession {
     /// resources when appropriate.
     ///
     /// Note: You can use the static method ``setUp(stateHandler:newDeviceHandler:)-swift.type.method``
-    /// if you are not already in an asynchronous context.
+    /// if you are not already in a main actor isolated context.
     ///
     /// - Parameters:
     ///  - stateHandler: An optional handler for session state updates.
@@ -134,7 +134,7 @@ public final class StreamDeckSession {
     public func setUp(
         stateHandler: StateHandler? = nil,
         newDeviceHandler: NewDeviceHandler? = nil
-    ) async {
+    ) {
         guard !didSetUp else { return }
         didSetUp = true
 
@@ -152,21 +152,21 @@ public final class StreamDeckSession {
 
         if let stateHandler = stateHandler {
             internalSession.state
-                .subscribe(on: RunLoop.main)
+                .receive(on: RunLoop.main)
                 .sink { stateHandler($0) }
                 .store(in: &_cancellables)
         }
 
         if let newDeviceHandler = newDeviceHandler {
             internalSession.newDevice
-                .subscribe(on: RunLoop.main)
+                .receive(on: RunLoop.main)
                 .sink { newDeviceHandler($0) }
                 .store(in: &_cancellables)
         }
 
         NotificationCenter
             .default
-            .publisher(for: UIApplication.didBecomeActiveNotification)
+            .publisher(for: UIApplication.willEnterForegroundNotification)
             .sink { [weak self] _ in
                 guard let self = self else { return }
                 Task { await self.internalSession.start() }
@@ -175,14 +175,14 @@ public final class StreamDeckSession {
 
         NotificationCenter
             .default
-            .publisher(for: UIApplication.willResignActiveNotification)
+            .publisher(for: UIApplication.didEnterBackgroundNotification)
             .sink { [weak self] _ in
                 guard let self = self else { return }
                 Task { await self.internalSession.stop() }
             }
             .store(in: &_cancellables)
 
-        await self.internalSession.start()
+        Task { await self.internalSession.start() }
     }
 
     /// Must only be accessed by StreamDeckSimulator to append simulators.

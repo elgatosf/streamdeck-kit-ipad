@@ -25,6 +25,9 @@ Devices with touch displays:
 
 ## Requirements
 
+> [!IMPORTANT]
+> During the alpha phase, the app is not in available in the App Store. You can load it via the [TestFlight](https://developer.apple.com/testflight/) app. Use [this link [TODO: ADD LINK]](https://add.testflight/link/here) to participate in testing.
+
 1. Install [Elgato Stream Deck Connect](https://itunes.apple.com/de/app/elgato-stream-deck-connect/id6474433828)
 2. Enable the driver in system settings (Follow instructions in the app)
 
@@ -35,10 +38,6 @@ UIApplication.shared.canOpenURL(URL(string: "elgato-device-driver://")!)
 ```
 
 Be sure that you add "elgato-device-driver" to `LSApplicationQueriesSchemes` in your Info.plist file.
-
-> [!NOTE]
-> During the alpha phase, the app is not in available in the App Store. You can load it via the [TestFlight](https://developer.apple.com/testflight/) app. Use [this link [TODO: ADD LINK]](https://add.testflight/link/here) to participate in testing.
-
 
 | iOS Version | Swift Version | XCode Version |
 | ----------- | ------------- | ------------- |

@@ -40,7 +40,7 @@ import UIKit
 ///     }
 /// }
 /// ```
-/// If ``state-swift.property`` is .``State-swift.enum/ready`` but the ``devices`` collection is empty, It may be that there is no device
+/// If ``state-swift.property`` is .``State-swift.enum/started`` but the ``devices`` collection is empty, It may be that there is no device
 /// connected, or the driver is not activated. As we can currently not distinguish these cases, you can ask the user to check both options.
 ///
 /// You can also link them to the Stream Deck Connect app to check if everything is okay. There, the whole setup process is described in detail.
@@ -92,7 +92,7 @@ public final class StreamDeckSession {
 
     /// Use this to observe the current session state. The `State` info can be used to inform users about courses of action e.g. in case of an error.
     ///
-    /// Optionally use the ``stateHandler-swift.property`` property to handle this with a closure.
+    /// Alternatively use the `stateHandler` property of ``setUp(stateHandler:newDeviceHandler:)-swift.type.method`` to handle this with a closure.
     @Published public private(set) var state: State = .idle
 
     /// Provides the current version of the installed driver.
@@ -108,7 +108,7 @@ public final class StreamDeckSession {
 
     /// Use this to observe newly attached Stream Deck devices.
     ///
-    /// Alternatively use the ``newDeviceHandler-swift.property`` property to handle this with a closure.
+    /// Alternatively use the `newDeviceHandler` property of ``setUp(stateHandler:newDeviceHandler:)-swift.type.method`` to handle this with a closure.
     public var newDevicePublisher: AnyPublisher<StreamDeck, Never> {
         internalSession.newDevice.eraseToAnyPublisher()
     }
@@ -124,12 +124,12 @@ public final class StreamDeckSession {
     /// This will start to observe your application lifecycle to internally start/stop the device listeners and to release
     /// resources when appropriate.
     ///
-    /// Note: You can use the static method ``setUp(stateHandler:newDeviceHandler:)-swift.type.method``
+    /// - Note: You can use the static method ``setUp(stateHandler:newDeviceHandler:)-swift.type.method``
     /// if you are not already in an asynchronous context.
     ///
     /// - Parameters:
-    ///  - stateHandler: An optional handler for session state updates.
-    ///  - newDeviceHandler An optional handler to receive newly attached devices.
+    ///   - stateHandler: An optional handler for session state updates.
+    ///   - newDeviceHandler: An optional handler to receive newly attached devices.
     @MainActor
     public func setUp(
         stateHandler: StateHandler? = nil,

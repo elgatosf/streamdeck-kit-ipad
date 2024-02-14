@@ -10,13 +10,13 @@ import Foundation
 /// An Event, triggered by a user interaction with a Stream Deck device.
 public enum InputEvent: Equatable {
 
-    /// The Direction in which a ``fling(startX:startY:endX:endY:)`` event moved.
-    public enum Direction: Equatable { 
+    /// The Direction in which a ``InputEvent/fling(start:end:)`` event moved.
+    public enum Direction: Equatable {
         case left
         case up
         case right
         case down
-        /// Signals that the underlying ``InputEvent`` is no ``InputEvent/fling(startX:startY:endX:endY:)``.
+        /// Signals that the underlying ``InputEvent`` is no ``InputEvent/fling(start:end:)``.
         case none
     }
 
@@ -49,7 +49,7 @@ public enum InputEvent: Equatable {
     /// The intensity of the gesture can be calculated by getting the distance between start and end-point.
     case fling(start: CGPoint, end: CGPoint)
 
-    /// The direction of a ``fling(startX:startY:endX:endY:)`` event.
+    /// The direction of a ``InputEvent/fling(start:end:)`` event.
     ///
     /// When the event is anything but a fling, ``Direction-swift.enum/none`` will be returned.
     public var direction: Direction {

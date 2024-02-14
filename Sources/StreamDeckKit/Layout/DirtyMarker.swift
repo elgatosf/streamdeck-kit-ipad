@@ -6,7 +6,7 @@
 
 import Foundation
 
-public enum DirtyMarker: Equatable, CustomDebugStringConvertible {
+enum DirtyMarker: Equatable, CustomDebugStringConvertible {
     case screen
     case key(Int)
     case window

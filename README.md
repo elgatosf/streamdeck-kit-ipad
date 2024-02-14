@@ -66,8 +66,9 @@ To render content on specific buttons, you can use the Layout system.
 ```swift
 // Listing 1
 import StreamDeckKit
-StreamDeckSession.setUp { _ in
-    StreamDeckLayout { _ in 
+StreamDeckSession.setUp { device in
+    print("Rendering \(device.info.productName)")
+    return StreamDeckLayout { _ in 
         StreamDeckKeypadLayout { context in
             Text("\(context.index)")
                 .padding()

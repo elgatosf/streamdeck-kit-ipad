@@ -13,15 +13,14 @@ import UIKit
 /// To begin interacting with devices,  set-up the session and observe device connections.
 /// ```swift
 /// StreamDeckSession.setUp(
-///     newDeviceHandler { device in
+///     newDeviceHandler: { device in
 ///         print("\(device.info.productName) attached.")
-///
 ///         // Handle input events of a device.
-///         device.inputEventHandler { event in
+///         device.inputEventHandler = { event in
 ///             print("Received \(event) from \(device.info.productName)")
 ///         }
 ///     }
-/// }
+/// )
 /// ```
 /// You can configure a device by using the instance methods of ``StreamDeck``. Therefore you can hold your own reference to connected devices, or
 /// you can use the ``devices`` property.

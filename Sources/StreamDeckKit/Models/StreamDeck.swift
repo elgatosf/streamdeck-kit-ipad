@@ -43,10 +43,9 @@ public final class StreamDeck {
     /// Handler to receive input events.
     ///
     /// Set a handler to handle key-presses, touches and other events.
-    public var inputEventHander: InputEventHandler? {
+    public var inputEventHandler: InputEventHandler? {
         didSet {
-            guard inputEventHander != nil else { return }
-
+            guard inputEventHandler != nil else { return }
             subscribeToInputEvents()
         }
     }
@@ -81,7 +80,7 @@ public final class StreamDeck {
     @MainActor
     private func handleInputEvent(_ event: InputEvent) {
         inputEventsSubject.send(event)
-        inputEventHander?(event)
+        inputEventHandler?(event)
     }
 
     private func subscribeToInputEvents() {

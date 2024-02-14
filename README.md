@@ -36,6 +36,9 @@ UIApplication.shared.canOpenURL(URL(string: "elgato-device-driver://")!)
 
 Be sure that you add "elgato-device-driver" to `LSApplicationQueriesSchemes` in your Info.plist file.
 
+> [!NOTE]
+> During the alpha phase, the app is not in available in the App Store. You can load it via the [TestFlight](https://developer.apple.com/testflight/) app. Use [this link [TODO: ADD LINK]](https://add.testflight/link/here) to participate in testing.
+
 
 | iOS Version | Swift Version | XCode Version |
 | ----------- | ------------- | ------------- |
@@ -55,7 +58,6 @@ This would show a blue color on all buttons and displays on a device.
 
 To render content on specific buttons, you can use the Layout system.
 
-<img src="_images/example_keys.png" alt="A screenshot of a Stream Deck, showing increasing numbers on it's buttons" width="200" style="margin-left:1em;float:right" />
 
 ```swift
 // Listing 1
@@ -71,6 +73,8 @@ StreamDeckSession.setUp { _ in
 }
 ```
 This uses predefined layout views to place content on a Stream Deck. 
+
+<img src="_images/example_keys.png" alt="A screenshot of a Stream Deck, showing increasing numbers on it's buttons" width="200" />
 
 The closure we passed to `StreamDeckLayout` defines the key area of the device. The closure we passed to `StreamDeckKeypadLayout` is a factory, providing a view for each LED key on the device. 
 
@@ -91,11 +95,11 @@ StreamDeckKeyView { isDown in
 }
 ```
 
-Replace the `Text` View in _Listing 1_ with _Listing 2_. This should log to console when you press a button on your Stream Deck.
+Replace the `Text` View in _Listing 1_ with _Listing 2_. This should log to console whenever a button is pressed on your Stream Deck.
 
 ### Using Context
 
-The `StreamDeckViewContext` object provides you with Infos on the current device, it's capabilities and which possible key you are handling. You can access it via the parameter of the builder methods (see above) or the environment variable.
+The `StreamDeckViewContext` object provides you with Infos about the current device, it's capabilities and which possible key you are handling. You can access it via the parameter of the builder methods (see above) or the environment variable.
 
 ```swift
 @Environment(\.streamDeckViewContext) var context
@@ -105,9 +109,9 @@ The `StreamDeckViewContext` object provides you with Infos on the current device
 
 #### Overlay
 
-You can trigger the Stream Deck simulator like this:
+The SDK comes with a fully functional simulator that you can use to check your implementation on different devices. Although, we always recommend to check on a real device.
 
-<img src="_images/simulator.png" alt="A screenshot of the Stream Deck simulator window" width="200" style="margin-left:1em;float:right" />
+You can trigger the Stream Deck simulator like this:
 
 ```swift
 import StreamDeckSimulator
@@ -117,6 +121,8 @@ Button("Show Stream Deck Simulator") {
 ```
 
 This will show an overlay with a simulated Stream Deck. You can switch between different devices with the menu in the upper right. There you can also toggle device bezels. There is also an option to render the exact borders of the button areas.
+
+<img src="_images/simulator.png" alt="A screenshot of the Stream Deck simulator window" width="200" />
 
 #### Preview
 

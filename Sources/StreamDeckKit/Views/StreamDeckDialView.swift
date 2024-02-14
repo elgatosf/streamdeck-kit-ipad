@@ -41,6 +41,7 @@ public struct StreamDeckDialView<Content: View>: View {
         self.init(
             rotate: rotate,
             press: { if $0 { press() } },
+            touch: touch,
             content: content
         )
     }

@@ -106,7 +106,7 @@ public final class StreamDeckLayoutRenderer {
 
         for dirtyView in dirtyViews {
             if case let .windowArea(rect) = dirtyView {
-                guard caps.hasSetWindowImageAtXYSupport, let windowRect = caps.windowRect else {
+                guard device.supports(.setWindowImageAtXY), let windowRect = caps.windowRect else {
                     print("!!! \(dirtyView) required but no setWindowImage(:at:) support")
                     device.setWindowImage(image.cropping(to: windowRect), scaleAspectFit: false)
                     return

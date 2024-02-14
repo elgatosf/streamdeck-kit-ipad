@@ -25,7 +25,7 @@ final class StreamDeckClient {
             var event = event
 
             switch UInt32(event.eventType) {
-            case SDInputEventTypeKeyPress.rawValue:
+            case SDInputEventType_KeyPress.rawValue:
                 let current = event.keys.press
                 let previous = previousKeyPressState
                 previousKeyPressState = current
@@ -39,9 +39,9 @@ final class StreamDeckClient {
                         inputEventHandler?(.keyPress(index: key, pressed: false))
                     }
                 }
-            case SDInputEventTypeRotary.rawValue:
+            case SDInputEventType_Rotary.rawValue:
                 switch UInt32(event.rotaryEncoders.type) {
-                case SDInputEventRotaryTypeRotate.rawValue:
+                case SDInputEventRotaryType_Rotate.rawValue:
                     let buffer = withUnsafeBytes(of: &event.rotaryEncoders.rotate) { rawPtr in
                         rawPtr.baseAddress!.assumingMemoryBound(to: Int8.self)
                     }
@@ -52,7 +52,7 @@ final class StreamDeckClient {
                             inputEventHandler?(.rotaryEncoderRotation(index: encoder, rotation: Int(value)))
                         }
                     }
-                case SDInputEventRotaryTypePress.rawValue:
+                case SDInputEventRotaryType_Press.rawValue:
                     let current = event.rotaryEncoders.press
                     let previous = previousRotaryPressState
                     previousRotaryPressState = current
@@ -70,13 +70,13 @@ final class StreamDeckClient {
                     return
                 }
 
-            case SDInputEventTypeTouch.rawValue:
+            case SDInputEventType_Touch.rawValue:
                 inputEventHandler?(.touch(.init(
                     x: Int(event.touch.x),
                     y: Int(event.touch.y))
                 ))
 
-            case SDInputEventTypeFling.rawValue:
+            case SDInputEventType_Fling.rawValue:
                 let fling = event.fling
                 inputEventHandler?(.fling(
                     start: .init(x: Int(fling.startX), y: Int(fling.startY)),
@@ -157,49 +157,22 @@ final class StreamDeckClient {
 
         let (m11, m12, m21, m22, dx, dy) = rawCaps.imageTransform
 
-        let keyWidth = Int(rawCaps.keyWidth)
-        let screenWidth = Int(rawCaps.screenWidth)
-        let keyAreaWidth = Int(rawCaps.keyAreaWidth)
-        let windowWidth = Int(rawCaps.windowWidth)
-
         return DeviceCapabilities(
             keyCount: Int(rawCaps.keyCount),
-            keySize: keyWidth == 0 ? nil : .init(
-                width: keyWidth,
-                height: Int(rawCaps.keyHeight)
-            ),
+            keySize: rawCaps.keySize.cgSize,
             keyRows: Int(rawCaps.keyRows),
             keyColumns: Int(rawCaps.keyColumns),
             dialCount: Int(rawCaps.dialCount),
-            screenSize: screenWidth == 0 ? nil : .init(
-                width: screenWidth,
-                height: Int(rawCaps.screenHeight)
-            ),
-            keyAreaRect: keyAreaWidth == 0 ? nil : .init(
-                x: Int(rawCaps.keyAreaX),
-                y: Int(rawCaps.keyAreaY),
-                width: keyAreaWidth,
-                height: Int(rawCaps.keyAreaHeight)
-            ),
-            windowRect: windowWidth == 0 ? nil : CGRect(
-                x: Int(rawCaps.windowX),
-                y: Int(rawCaps.windowY),
-                width: Int(rawCaps.windowWidth),
-                height: Int(rawCaps.windowHeight)
-            ),
+            screenSize: rawCaps.screenSize.cgSize,
+            keyAreaRect: rawCaps.keyAreaRect.cgRect,
+            windowRect: rawCaps.windowRect.cgRect,
             keyHorizontalSpacing: CGFloat(rawCaps.keyHorizontalSpacing),
             keyVerticalSpacing: CGFloat(rawCaps.keyVerticalSpacing),
             imageFormat: .init(format: rawCaps.imageFormat),
             transform: .init(
                 CGFloat(m11), CGFloat(m12), CGFloat(m21), CGFloat(m22), CGFloat(dx), CGFloat(dy)
             ),
-            hasSetBrightnessSupport: rawCaps.hasSetBrightnessSupport,
-            hasSetKeyImageSupport: rawCaps.hasSetKeyImageSupport,
-            hasSetScreenImageSupport: rawCaps.hasSetScreenImageSupport,
-            hasSetWindowImageSupport: rawCaps.hasSetWindowImageSupport,
-            hasSetWindowImageAtXYSupport: rawCaps.hasSetWindowImageAtXYSupport,
-            hasFillScreenSupport: rawCaps.hasFillScreenSupport,
-            hasFillKeySupport: rawCaps.hasFillKeySupport
+            features: .init(rawValue: UInt32(clamping: rawCaps.features))
         )
     }
 
@@ -397,6 +370,10 @@ extension StreamDeckClient: StreamDeckClientProtocol {
         callScalar(SDExternalMethod_fillKey, UInt64(index), UInt64(red), UInt64(green), UInt64(blue))
     }
 
+    func showLogo() {
+        callScalar(SDExternalMethod_showLogo)
+    }
+
 }
 
 private extension ImageFormat {
@@ -412,5 +389,23 @@ private extension ImageFormat {
         default:
             self = .unknown(format.rawValue)
         }
+    }
+}
+
+private extension SDPoint {
+    var cgPoint: CGPoint { .init(x: Int(x), y: Int(y)) }
+}
+
+private extension SDSize {
+    var cgSize: CGSize? {
+        guard width > 0, height > 0 else { return nil }
+        return .init(width: Int(width), height: Int(height))
+    }
+}
+
+private extension SDRect {
+    var cgRect: CGRect? {
+        guard let size = size.cgSize else { return nil }
+        return .init(origin: origin.cgPoint, size: size)
     }
 }

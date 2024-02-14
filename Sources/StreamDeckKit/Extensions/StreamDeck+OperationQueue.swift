@@ -18,6 +18,7 @@ extension StreamDeck {
         case setWindowImageAt(image: UIImage, at: CGRect, scaleAspectFit: Bool)
         case fillScreen(color: UIColor)
         case fillKey(color: UIColor, key: Int)
+        case showLogo
         case task(() async -> Void)
         case close
 
@@ -47,7 +48,7 @@ extension StreamDeck {
         var wasReplaced = false
 
         switch operation {
-        case .setInputEventHandler, .setBrightness, .task:
+        case .setInputEventHandler, .setBrightness, .showLogo, .task:
             break
 
         case let .setKeyImage(_, key, _):
@@ -112,11 +113,11 @@ extension StreamDeck {
             }
 
         case let .setBrightness(brightness):
-            guard capabilities.hasSetBrightnessSupport else { return }
+            guard supports(.setBrightness) else { return }
             client.setBrightness(min(max(brightness, 0), 100))
 
         case let .setKeyImage(image, key, scaleAspectFit):
-            guard capabilities.hasSetKeyImageSupport,
+            guard supports(.setKeyImage),
                   let keySize = capabilities.keySize,
                   let data = transform(image, size: keySize, scaleAspectFit: scaleAspectFit)
             else { return }
@@ -126,7 +127,7 @@ extension StreamDeck {
         case let .setScreenImage(image, scaleAspectFit):
             guard let displaySize = capabilities.screenSize else { return }
 
-            if capabilities.hasSetScreenImageSupport {
+            if supports(.setScreenImage) {
                 guard let data = transform(image, size: displaySize, scaleAspectFit: scaleAspectFit)
                 else { return }
 
@@ -136,7 +137,7 @@ extension StreamDeck {
             }
 
         case let .setWindowImage(image, scaleAspectFit):
-            guard capabilities.hasSetWindowImageSupport,
+            guard supports(.setWindowImage),
                   let size = capabilities.windowRect?.size,
                   let data = transform(image, size: size, scaleAspectFit: scaleAspectFit)
             else { return }
@@ -144,14 +145,14 @@ extension StreamDeck {
             client.setWindowImage(data)
 
         case let .setWindowImageAt(image, rect, scaleAspectFit):
-            guard capabilities.hasSetWindowImageAtXYSupport,
+            guard supports(.setWindowImageAtXY),
                   let data = transform(image, size: rect.size, scaleAspectFit: scaleAspectFit)
             else { return }
 
             client.setWindowImage(data, at: rect)
 
         case let .fillScreen(color):
-            if capabilities.hasFillScreenSupport {
+            if supports(.fillScreen) {
                 var red: CGFloat = 0
                 var green: CGFloat = 0
                 var blue: CGFloat = 0
@@ -169,7 +170,7 @@ extension StreamDeck {
             }
 
         case let .fillKey(color, index):
-            if capabilities.hasFillKeySupport {
+            if supports(.fillKey) {
                 var red: CGFloat = 0
                 var green: CGFloat = 0
                 var blue: CGFloat = 0
@@ -186,6 +187,10 @@ extension StreamDeck {
             } else {
                 fakeFillKey(color, at: index)
             }
+
+        case .showLogo:
+            guard supports(.showLogo) else { return }
+            client.showLogo()
 
         case let .task(task):
             await task()
@@ -209,7 +214,7 @@ extension StreamDeck {
 private extension StreamDeck {
 
     func fakeSetScreenImage(_ image: UIImage, scaleAspectFit: Bool = true) {
-        guard capabilities.hasSetKeyImageSupport,
+        guard supports(.setKeyImage),
               let screenSize = capabilities.screenSize,
               let keySize = capabilities.keySize
         else { return }
@@ -246,7 +251,7 @@ private extension StreamDeck {
     }
 
     func fakeFillScreen(_ color: UIColor) {
-        guard capabilities.hasSetKeyImageSupport,
+        guard supports(.setKeyImage),
               let keySize = capabilities.keySize
         else { return }
 
@@ -265,7 +270,7 @@ private extension StreamDeck {
     }
 
     func fakeFillKey(_ color: UIColor, at index: Int) {
-        guard capabilities.hasSetKeyImageSupport,
+        guard supports(.setKeyImage),
               let keySize = capabilities.keySize,
               let image = UIImage.colored(color, size: keySize)
         else { return }

@@ -72,6 +72,12 @@ public final class StreamDeck {
         startOperationTask()
     }
 
+    /// Check if the hardware supports the given feature.
+    /// Note: Some hardware might lack features that are simulated in software.
+    public func supports(_ feature: DeviceCapabilities.Features) -> Bool {
+        capabilities.features.contains(feature)
+    }
+
     @MainActor
     private func handleInputEvent(_ event: InputEvent) {
         inputEventsSubject.send(event)
@@ -162,6 +168,11 @@ public final class StreamDeck {
     /// The image will be scaled to fit the dimensions of the given rectangle.
     public func setWindowImage(_ image: UIImage, at rect: CGRect, scaleAspectFit: Bool = true) {
         enqueueOperation(.setWindowImageAt(image: image, at: rect, scaleAspectFit: scaleAspectFit))
+    }
+
+    /// Show logo on device (resets device content)
+    public func showLogo() {
+        enqueueOperation(.showLogo)
     }
 
 }

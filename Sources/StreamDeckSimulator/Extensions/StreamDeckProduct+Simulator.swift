@@ -68,13 +68,19 @@ extension StreamDeckProduct: Identifiable {
                 keyHorizontalSpacing: 99,
                 keyVerticalSpacing: 40,
                 imageFormat: .jpeg,
-                hasSetBrightnessSupport: true,
-                hasSetKeyImageSupport: true,
-                hasSetScreenImageSupport: true,
-                hasSetWindowImageSupport: true,
-                hasSetWindowImageAtXYSupport: true,
-                hasFillScreenSupport: true,
-                hasFillKeySupport: true
+                features: [
+                    .setBrightness,
+                    .setKeyImage,
+                    .setScreenImage,
+                    .setWindowImage,
+                    .setWindowImageAtXY,
+                    .fillScreen,
+                    .fillKey,
+                    .keyPressEvents,
+                    .rotaryEvents,
+                    .touchEvents,
+                    .flingEvents
+                ]
             )
         case .regular:
             return DeviceCapabilities(
@@ -92,11 +98,14 @@ extension StreamDeckProduct: Identifiable {
                 keyHorizontalSpacing: 25,
                 keyVerticalSpacing: 25,
                 imageFormat: .jpeg,
-                hasSetBrightnessSupport: true,
-                hasSetKeyImageSupport: true,
-                hasSetScreenImageSupport: true,
-                hasFillScreenSupport: true,
-                hasFillKeySupport: true
+                features: [
+                    .setBrightness,
+                    .setKeyImage,
+                    .setScreenImage,
+                    .fillScreen,
+                    .fillKey,
+                    .keyPressEvents
+                ]
             )
         case .mini:
             return DeviceCapabilities(
@@ -114,8 +123,7 @@ extension StreamDeckProduct: Identifiable {
                 keyHorizontalSpacing: 28,
                 keyVerticalSpacing: 28,
                 imageFormat: .jpeg,
-                hasSetBrightnessSupport: true,
-                hasSetKeyImageSupport: true
+                features: [.setBrightness, .setKeyImage, .keyPressEvents]
             )
         case .xl:
             return DeviceCapabilities(
@@ -133,11 +141,14 @@ extension StreamDeckProduct: Identifiable {
                 keyHorizontalSpacing: 32,
                 keyVerticalSpacing: 39,
                 imageFormat: .jpeg,
-                hasSetBrightnessSupport: true,
-                hasSetKeyImageSupport: true,
-                hasSetScreenImageSupport: true,
-                hasFillScreenSupport: true,
-                hasFillKeySupport: true
+                features: [
+                    .setBrightness,
+                    .setKeyImage,
+                    .setScreenImage,
+                    .fillScreen,
+                    .fillKey,
+                    .keyPressEvents
+                ]
             )
         case .pedal:
             return DeviceCapabilities(
@@ -146,7 +157,8 @@ extension StreamDeckProduct: Identifiable {
                 keyRows: 1,
                 keyColumns: 3,
                 screenSize: .zero,
-                imageFormat: .none
+                imageFormat: .none,
+                features: [.keyPressEvents]
             )
         }
     }

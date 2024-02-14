@@ -60,7 +60,7 @@ public extension StreamDeck {
     }
 
     func setWindowImage(view: some View, at rect: CGRect) {
-        guard capabilities.hasSetWindowImageAtXYSupport else { return }
+        guard supports(.setWindowImageAtXY) else { return }
 
         DispatchQueue.main.async { [weak self] in
             guard let self = self, let image = view.renderAsImage(of: rect.size) else { return }

@@ -140,5 +140,9 @@ extension StreamDeckSimulatorClient: StreamDeckClientProtocol {
         keyImageSubject.value[index] = image
     }
 
+    public func showLogo() {
+        fillScreen(red: 0, green: 0, blue: 0)
+    }
+
     public func close() {}
 }

@@ -7,9 +7,57 @@
 
 import CoreGraphics
 import Foundation
+import StreamDeckCApi
 
 /// The capabilities and measurements of Stream Deck device.
 public struct DeviceCapabilities {
+
+    /// Set of features supported by the device
+    public struct Features: OptionSet {
+        public var rawValue: UInt32
+
+        public init(rawValue: UInt32) {
+            self.rawValue = rawValue
+        }
+
+        private init(_ flag: SDFeatureFlags) {
+            self.init(rawValue: UInt32(clamping: flag.rawValue))
+        }
+
+        /// This device supports brightness adjustment.
+        public static let setBrightness = Features(SDFeatureFlags_setBrightness)
+        /// This device supports images on keys.
+        public static let setKeyImage = Features(SDFeatureFlags_setKeyImage)
+        /// The hardware supports the setting of images to the whole screen (See ``StreamDeck/setScreenImage(_:scaleAspectFit:)``).
+        ///
+        /// On devices where the hardware does not support this feature, it will be simulated by StreamDeckKit.
+        public static let setScreenImage = Features(SDFeatureFlags_setScreenImage)
+        /// Supports setting images on the window via ``StreamDeck/setWindowImage(_:scaleAspectFit:)``.
+        public static let setWindowImage = Features(SDFeatureFlags_setWindowImage)
+        /// Supports setting images on the window via ``StreamDeck/setWindowImage(_:at:scaleAspectFit:)``.
+        public static let setWindowImageAtXY = Features(SDFeatureFlags_setWindowImageAtXY)
+        /// The hardware supports the filling of the whole screen with a color (See ``StreamDeck/fillScreen(_:)``).
+        ///
+        /// On devices where the hardware does not support this feature, it will be simulated by StreamDeckKit.
+        public static let fillScreen = Features(SDFeatureFlags_fillScreen)
+        /// The hardware supports the filling of a specific key with a color (See ``StreamDeck/fillKey(_:at:)``).
+        ///
+        /// On devices where the hardware does not support this feature, it will be simulated by StreamDeckKit.
+        public static let fillKey = Features(SDFeatureFlags_fillKey)
+        /// The hardware supports resetting the whole screen with the start logo.
+        public static let showLogo = Features(SDFeatureFlags_showLogo)
+        /// The hardware support high DPI (scale 2)
+        public static let highDPI = Features(SDFeatureFlags_highDPI)
+        /// The hardware reports key press input events.
+        public static let keyPressEvents = Features(SDFeatureFlags_keyPressEvents)
+        /// The hardware reports rotary input events.
+        public static let rotaryEvents = Features(SDFeatureFlags_rotaryEvents)
+        /// The hardware reports touch input events.
+        public static let touchEvents = Features(SDFeatureFlags_touchEvents)
+        /// The hardware reports fling input events.
+        public static let flingEvents = Features(SDFeatureFlags_flingEvents)
+    }
+
     let imageFormat: ImageFormat
     let transform: CGAffineTransform
     
@@ -36,26 +84,8 @@ public struct DeviceCapabilities {
     public let keyHorizontalSpacing: CGFloat
     /// The space between key rows in pixels.
     public let keyVerticalSpacing: CGFloat
-    /// This device supports brightness adjustment.
-    public let hasSetBrightnessSupport: Bool
-    /// This device supports images on keys.
-    public let hasSetKeyImageSupport: Bool
-    /// The hardware supports the setting of images to the whole screen (See ``StreamDeck/setScreenImage(_:scaleAspectFit:)``).
-    ///
-    /// On devices where the hardware does not support this feature, it will be simulated by StreamDeckKit.
-    public let hasSetScreenImageSupport: Bool
-    /// Supports setting images on the window via ``StreamDeck/setWindowImage(_:scaleAspectFit:)``.
-    public let hasSetWindowImageSupport: Bool
-    /// Supports setting images on the window via ``StreamDeck/setWindowImage(_:at:scaleAspectFit:)``.
-    public let hasSetWindowImageAtXYSupport: Bool
-    /// The hardware supports the filling of the whole screen with a color (See ``StreamDeck/fillScreen(_:)``).
-    ///
-    /// On devices where the hardware does not support this feature, it will be simulated by StreamDeckKit.
-    public let hasFillScreenSupport: Bool
-    /// The hardware supports the filling of a specific key with a color (See ``StreamDeck/fillKey(_:at:)``).
-    ///
-    /// On devices where the hardware does not support this feature, it will be simulated by StreamDeckKit.
-    public let hasFillKeySupport: Bool
+    /// Set of features supported by the device.
+    public let features: Features
 
     /// Creates an instance with the given values.
     ///
@@ -73,13 +103,7 @@ public struct DeviceCapabilities {
         keyVerticalSpacing: CGFloat = 0,
         imageFormat: ImageFormat = .none,
         transform: CGAffineTransform = .identity,
-        hasSetBrightnessSupport: Bool = false,
-        hasSetKeyImageSupport: Bool = false,
-        hasSetScreenImageSupport: Bool = false,
-        hasSetWindowImageSupport: Bool = false,
-        hasSetWindowImageAtXYSupport: Bool = false,
-        hasFillScreenSupport: Bool = false,
-        hasFillKeySupport: Bool = false
+        features: Features = .init(rawValue: 0)
     ) {
         self.keyCount = keyCount
         self.keySize = keySize
@@ -93,12 +117,6 @@ public struct DeviceCapabilities {
         self.keyVerticalSpacing = keyVerticalSpacing
         self.imageFormat = imageFormat
         self.transform = transform
-        self.hasSetBrightnessSupport = hasSetBrightnessSupport
-        self.hasSetKeyImageSupport = hasSetKeyImageSupport
-        self.hasSetScreenImageSupport = hasSetScreenImageSupport
-        self.hasSetWindowImageSupport = hasSetWindowImageSupport
-        self.hasSetWindowImageAtXYSupport = hasSetWindowImageAtXYSupport
-        self.hasFillScreenSupport = hasFillScreenSupport
-        self.hasFillKeySupport = hasFillKeySupport
+        self.features = features
     }
 }

@@ -25,23 +25,28 @@ Devices with touch displays:
 
 ## Requirements
 
+If you want to interact with a physical Stream Deck device, you need the following:
+
+- An iPad with USB-C jack
+- Installed [Elgato Stream Deck Connect](https://itunes.apple.com/de/app/elgato-stream-deck-connect/id6474433828) app
+- Enabled Stream Deck driver in iOS settings app (Follow instructions in the app)
+
+However, you don't need anything if you just want to check out your work on the [Stream Deck simulator](#using-the-simulator).
+
 > [!IMPORTANT]
 > During the alpha phase, the app is not in available in the App Store. You can load it via the [TestFlight](https://developer.apple.com/testflight/) app. Use [this link [TODO: ADD LINK]](https://add.testflight/link/here) to participate in testing.
-
-1. Install [Elgato Stream Deck Connect](https://itunes.apple.com/de/app/elgato-stream-deck-connect/id6474433828)
-2. Enable the driver in system settings (Follow instructions in the app)
-
-You can find out if the app is connected by trying to open an URL with its scheme:
-
-```swift
-UIApplication.shared.canOpenURL(URL(string: "elgato-device-driver://")!)
-```
-
-Be sure that you add "elgato-device-driver" to `LSApplicationQueriesSchemes` in your Info.plist file.
 
 | iOS Version | Swift Version | XCode Version |
 | ----------- | ------------- | ------------- |
 | >= 16       | >= 5.8        | >= 15         |
+
+### Check driver-app installation
+
+You can find out if the app is installed by trying to open an URL with its scheme:
+```swift
+UIApplication.shared.canOpenURL(URL(string: "elgato-device-driver://")!)
+```
+Be sure that you add "elgato-device-driver" to `LSApplicationQueriesSchemes` in your Info.plist file. If the app is not installed on the device, you best inform the user that it is required to enable Stream Deck features.
 
 ## Getting started
 

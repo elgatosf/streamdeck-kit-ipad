@@ -9,11 +9,14 @@ import SwiftUI
 import StreamDeckKit
 
 struct ContentView: View {
-
-    let session: StreamDeckSession = .instance
     @State private var stateDescription: String = StreamDeckSession.State.idle.debugDescription
     @State private var devices: [StreamDeck] = []
 
+    init() {
+        StreamDeckSession.setUp { _ in
+            StreamDeckLayoutView()
+        }
+    }
 
     var body: some View {
         VStack {
@@ -44,8 +47,8 @@ struct ContentView: View {
             }
         }
         .padding()
-        .onReceive(session.$state) { stateDescription = $0.debugDescription }
-        .onReceive(session.$devices) { devices = $0 }
+        .onReceive(StreamDeckSession.instance.$state) { stateDescription = $0.debugDescription }
+        .onReceive(StreamDeckSession.instance.$devices) { devices = $0 }
     }
 }
 

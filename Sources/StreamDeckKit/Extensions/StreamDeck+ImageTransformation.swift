@@ -39,7 +39,7 @@ extension StreamDeck {
     }
 
     func transform(_ image: UIImage, size: CGSize, scaleAspectFit: Bool) -> Data? {
-        let format = UIGraphicsImageRendererFormat(for: .init(displayScale: 1))
+        let renderer = renderer(size: size)
         let action = Self.transformDrawingAction(
             image: image,
             size: size,
@@ -49,16 +49,23 @@ extension StreamDeck {
 
         switch capabilities.imageFormat {
         case .jpeg:
-            let renderer = UIGraphicsImageRenderer(size: size, format: format)
             return renderer.jpegData(withCompressionQuality: 0.8, actions: action)
         case .bmp:
-            let renderer = UIGraphicsImageRenderer(size: size, format: format)
             let image = renderer.image(actions: action)
             return image.bitmapData()
         default:
             return nil
         }
     }
+
+    func renderer(size: CGSize) -> UIGraphicsImageRenderer {
+        UIGraphicsImageRenderer(
+            size: size,
+            format: UIGraphicsImageRendererFormat(
+                for: .init(displayScale: capabilities.displayScale)
+            ))
+    }
+
 }
 
 private extension UIImage {

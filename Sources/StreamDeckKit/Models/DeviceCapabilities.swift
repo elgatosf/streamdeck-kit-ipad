@@ -59,7 +59,7 @@ public struct DeviceCapabilities {
     }
 
     let imageFormat: ImageFormat
-    let transform: CGAffineTransform
+    var transform: CGAffineTransform
     
     /// The number of keys.
     public let keyCount: Int
@@ -86,6 +86,8 @@ public struct DeviceCapabilities {
     public let keyVerticalSpacing: CGFloat
     /// Set of features supported by the device.
     public let features: Features
+
+    var displayScale: CGFloat { features.contains(.highDPI) ? 2.0 : 1.0 }
 
     /// Creates an instance with the given values.
     ///

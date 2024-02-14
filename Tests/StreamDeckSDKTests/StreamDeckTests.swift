@@ -168,6 +168,33 @@ final class StreamDeckTests: XCTestCase {
         robot.assertEqual(\.windowImages.count, 0)
     }
 
+    // MARK: Image transformation
+
+    func test_image_rotation() async {
+        var capabilities = StreamDeckProduct.regular.capabilities
+        capabilities.transform = .init(rotationAngle: 180.0 * .pi / 180.0)
+        robot.use(capabilities)
+
+        let image = robot.device!.renderer(size: capabilities.screenSize!).image { context in
+            let colors = [UIColor.red.cgColor, UIColor.green.cgColor]
+            let colorSpace = CGColorSpaceCreateDeviceRGB()
+            let colorLocations: [CGFloat] = [0.0, 1.0]
+            guard let gradient = CGGradient(
+                colorsSpace: colorSpace,
+                colors: colors as CFArray,
+                locations: colorLocations
+            ) else { return }
+
+            let startPoint = CGPoint.zero
+            let endPoint = CGPoint(x: 0, y: capabilities.screenSize!.height)
+            context.cgContext.drawLinearGradient(gradient, start: startPoint, end: endPoint, options: [])
+        }
+
+        await robot.operateDevice { $0.setScreenImage(image) }
+
+        await robot.assertSnapshot(\.screens.first!, as: .image, named: "top_green_bottom_red")
+    }
+
     // MARK: Close
 
     func test_close_should_run_on_close_handler() {

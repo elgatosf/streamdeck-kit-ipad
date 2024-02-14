@@ -28,8 +28,8 @@ public struct StreamDeckViewContext {
 
     /// The index of an input element.
     ///
-    /// The value will be available when the current drawing area represents an input element like a key.
-    public private(set) var index: Int?
+    /// The value will be valid, when the current drawing area represents an input element like a key. Otherwise it will be `-1`.
+    public private(set) var index: Int
     private let onDirty: DirtyHandler?
 
     init(
@@ -77,6 +77,11 @@ public struct StreamDeckViewContext {
         ret.size = size
         ret.index = index
         return ret
+    }
+
+    /// Must only be accessed by StreamDeckSimulator.
+    public static func _createDummyForSimulator(_ device: StreamDeck) -> Self {
+        .init(device: device, dirtyMarker: .screen, size: device.capabilities.screenSize ?? .zero)
     }
 
 }

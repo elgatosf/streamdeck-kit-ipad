@@ -104,7 +104,7 @@ public final class StreamDeckSession {
     /// Provides the list of currently connected devices.
     @Published public private(set) var devices = [StreamDeck]()
 
-    public var _cancellables = [AnyCancellable]()
+    var cancellables = [AnyCancellable]()
 
     /// Use this to observe newly attached Stream Deck devices.
     ///
@@ -154,14 +154,14 @@ public final class StreamDeckSession {
             internalSession.state
                 .receive(on: RunLoop.main)
                 .sink { stateHandler($0) }
-                .store(in: &_cancellables)
+                .store(in: &cancellables)
         }
 
         if let newDeviceHandler = newDeviceHandler {
             internalSession.newDevice
                 .receive(on: RunLoop.main)
                 .sink { newDeviceHandler($0) }
-                .store(in: &_cancellables)
+                .store(in: &cancellables)
         }
 
         NotificationCenter
@@ -171,7 +171,7 @@ public final class StreamDeckSession {
                 guard let self = self else { return }
                 Task { await self.internalSession.start() }
             }
-            .store(in: &_cancellables)
+            .store(in: &cancellables)
 
         NotificationCenter
             .default
@@ -180,7 +180,7 @@ public final class StreamDeckSession {
                 guard let self = self else { return }
                 Task { await self.internalSession.stop() }
             }
-            .store(in: &_cancellables)
+            .store(in: &cancellables)
 
         Task { await self.internalSession.start() }
     }

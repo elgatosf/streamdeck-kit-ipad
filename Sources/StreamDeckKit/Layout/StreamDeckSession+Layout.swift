@@ -26,7 +26,7 @@ public extension StreamDeckSession {
             instance.newDevicePublisher
                 .receive(on: DispatchQueue.main)
                 .sink { $0.render(content($0)) }
-                .store(in: &instance._cancellables)
+                .store(in: &instance.cancellables)
 
             instance.setUp(stateHandler: stateHandler, newDeviceHandler: newDeviceHandler)
         }

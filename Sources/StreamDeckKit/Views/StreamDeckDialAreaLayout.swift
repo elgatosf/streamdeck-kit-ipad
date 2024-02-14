@@ -7,8 +7,20 @@
 
 import SwiftUI
 
+/// A View that draws the layout of a Stream Deck dial window area (The display above the ).
+///
+/// Use this to render the window area of a Stream Deck Plus and handle its events.
+///
+/// The layout depends on the device from the current ``StreamDeckViewContext`` environment.
 public struct StreamDeckDialAreaLayout<Dial: View>: View {
+    /// A handler for rotation events on a rotary encoder(dial).
+    ///
+    /// The first parameter is the index of the dial. The second one is the rotation value. Negative values indicate a rotation to the left.
     public typealias DialRotationHandler = @MainActor (Int, Int) -> Void
+
+    /// A handler for press events on a rotary encoder(dial).
+    ///
+    /// The first parameter is the index of the dial. The second one indicates if the dial is down or not.
     public typealias DialPressHandler = @MainActor (Int, Bool) -> Void
     public typealias TouchHandler = @MainActor (CGPoint) -> Void
     public typealias FlingHandler = @MainActor (CGPoint, CGPoint, InputEvent.Direction) -> Void

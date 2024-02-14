@@ -59,15 +59,15 @@ public struct StreamDeckDialView<Content: View>: View {
                         rotate?(rotation)
                     }
                 case let .touch(point):
-                    guard let handler = touch else { return }
+                    guard let handler = touch, let index = context.index else { return }
                     let caps = context.device.capabilities
-                    let rect = caps.getDialAreaSectionDeviceRect(context.index)
+                    let rect = caps.getDialAreaSectionDeviceRect(index)
                     if rect.contains(point) {
-                        let relativ = CGPoint(
+                        let relative = CGPoint(
                             x: point.x - rect.origin.x,
                             y: point.y - rect.origin.y
                         )
-                        handler(relativ)
+                        handler(relative)
                     }
                 default: break
                 }

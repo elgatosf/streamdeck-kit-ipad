@@ -123,6 +123,8 @@ public final class StreamDeckClientMock {
     public func emit(_ event: InputEvent) {
         self.inputEventHandler?(event)
     }
+
+    public func showLogo() {}
 }
 
 extension StreamDeckClientMock: StreamDeckClientProtocol {

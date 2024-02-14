@@ -135,11 +135,7 @@ struct SimulatorContainer: View {
 
 private extension View {
     func environment(for streamDeck: StreamDeck) -> some View {
-        environment(\.streamDeckViewContext, .init(
-            device: streamDeck,
-            dirtyMarker: .screen,
-            size: streamDeck.capabilities.screenSize ?? .zero
-        ))
+        environment(\.streamDeckViewContext, ._createDummyForSimulator(streamDeck))
     }
 }
 

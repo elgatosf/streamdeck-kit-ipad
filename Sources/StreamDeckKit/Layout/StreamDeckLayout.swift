@@ -17,7 +17,7 @@ public struct StreamDeckLayout<BackgroundView: View, KeyAreaView: View, WindowVi
     @ViewBuilder let windowView: (StreamDeckViewContext) -> WindowView
 
     public init(
-        @ViewBuilder background: @escaping (StreamDeckViewContext) -> BackgroundView,
+        @ViewBuilder background: @escaping (StreamDeckViewContext) -> BackgroundView = { _ in Color.black },
         @ViewBuilder keyAreaView: @escaping (StreamDeckViewContext) -> KeyAreaView,
         @ViewBuilder windowView: @escaping (StreamDeckViewContext) -> WindowView = { _ in EmptyView() }
     ) {

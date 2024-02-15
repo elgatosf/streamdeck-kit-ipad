@@ -93,7 +93,7 @@ We can use the `index` property of the `keyContext` parameter to find out which 
 
 ### Using Context
 
-The `StreamDeckViewContext` object provides you with Infos about the current device, it's capabilities and which possible key you are handling. You can access it via the parameter of the builder methods (see above) or the environment variable.
+The `StreamDeckViewContext` object provides you with Infos about the current device and drawing area. You can access it via the parameter of the builder methods (see above) or the environment variable.
 ```swift
 @Environment(\.streamDeckViewContext) var context
 ```

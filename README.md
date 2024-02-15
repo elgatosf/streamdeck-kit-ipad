@@ -64,15 +64,21 @@ To render content on specific buttons, you can use the Layout system.
 
 
 ```swift
-// Listing 1
 import StreamDeckKit
+// Run session setup to define what should be displayed on every connected device
 StreamDeckSession.setUp { device in
     print("Rendering \(device.info.productName)")
-    return StreamDeckLayout { _ in 
-        StreamDeckKeypadLayout { context in
-            Text("\(context.index)")
-                .padding()
-                .background { Circle().fill(.yellow) }
+    return StreamDeckLayout { keypadContext in // Trailing closure (keyAreaView:) expects content for the keypad
+        StreamDeckKeypadLayout { keyContext in // Trailing closure (keyView:) expects a factory for keys
+            StreamDeckKeyView { isDown in
+                // Handle key down/up events
+                print(isDown ? "Key is down" : "Key is up")
+            } content: {
+                // Provide SwiftUI content for each key
+                Text("\(keyContext.index)") // Use context to distinguish keys
+                    .padding(keyContext.size.width * 0.2) // Use context to get size info
+                    .background { Circle().fill(.yellow) }
+            }
         }
     }
 }
@@ -83,32 +89,15 @@ This uses predefined layout views to place content on a Stream Deck.
 
 The closure we passed to `StreamDeckLayout` defines the key area of the device. The closure we passed to `StreamDeckKeypadLayout` is a factory, providing a view for each LED key on the device. 
 
-We can use the `index` property of the `context` parameter to find out which key is to be rendered.
-
-### Handling actions
-
-To handle presses on keys, you can use the `StreamDeckKeyView` as you would use a regular SwiftUI `Button`.
-
-```swift
-// Listing 2
-StreamDeckKeyView { isDown in
-    print(isDown ? "Key is down" : "Key is up")
-} content: {
-    Text("\(context.index)")
-        .padding()
-        .background { Circle().fill(.yellow) }
-}
-```
-
-Replace the `Text` View in _Listing 1_ with _Listing 2_. This should log to console whenever a button is pressed on your Stream Deck.
+We can use the `index` property of the `keyContext` parameter to find out which key is to be rendered.
 
 ### Using Context
 
 The `StreamDeckViewContext` object provides you with Infos about the current device, it's capabilities and which possible key you are handling. You can access it via the parameter of the builder methods (see above) or the environment variable.
-
 ```swift
 @Environment(\.streamDeckViewContext) var context
 ```
+Depending on which area you are drawing (key, keyArea, window...), the context object will give you the correct canvas `size`.
 
 ### Using the Simulator
 

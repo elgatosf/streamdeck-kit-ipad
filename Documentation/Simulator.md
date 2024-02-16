@@ -5,7 +5,7 @@ Integrate the Stream Deck Simulator into your iPadOS app for convenient testing 
 > The Stream Deck Simulator is specifically designed as a development tool and is not intended to be visible to end-users of your app. Its primary purpose is to assist developers in the development process.
 
 <figure>
-    <img alt="Stream Deck MK.2" src="_images/simulator_devices.gif">
+    <img alt="An animated example of different Stream Deck simulators" src="_images/simulator_devices.gif">
     <figcaption>Different simulators for all supported Stream Deck devices, demonstrated in an example app.</figcaption>
 </figure>
 
@@ -14,16 +14,16 @@ The Stream Deck Simulator replicates the behavior of a hardware Stream Deck, tri
 Moreover, the Stream Deck Simulator employs the same image rendering mechanism used before sending data to a hardware Stream Deck, providing an exact preview of what would be rendered on a real device.
 
 <figure>
-    <img alt="Stream Deck MK.2" src="_images/simulator_events.gif">
+    <img alt="An animated example of simulator-triggered actions" src="_images/simulator_events.gif">
     <figcaption>In this example app, any interaction with the Stream Deck triggers a confetti of the same Emoji on the iPad.</figcaption>
 </figure>
 
-### Capabilities
+## Capabilities
 
 The Stream Deck Simulator is displayed as a window above your app's content, allowing easy movement and resizing.
 
 <figure>
-    <img alt="Stream Deck MK.2" src="_images/simulator_size_position.gif">
+    <img alt="An animation showing how to move and resize a Stream Deck simulator" src="_images/simulator_size_position.gif">
 </figure>
 
 Additionally, you can toggle the visibility of the Simulator bezels and guides.
@@ -32,5 +32,5 @@ Additionally, you can toggle the visibility of the Simulator bezels and guides.
 > The guides illustrate the drawing areas for the keys and the dial areas and are never rendered on a real device.
 
 <figure>
-    <img alt="Stream Deck MK.2" src="_images/simulator_options.gif">
+    <img alt="An animation showing different simulator settings in action" src="_images/simulator_options.gif">
 </figure>

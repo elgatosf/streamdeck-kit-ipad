@@ -59,11 +59,7 @@ public extension StreamDeckSimulator {
             .onDisappear {
                 StreamDeckSession.instance._removeSimulator(device: configuration.device)
             }
-            .environment(\.streamDeckViewContext, .init(
-                device: configuration.device,
-                dirtyMarker: .window,
-                size: configuration.device.capabilities.screenSize ?? .zero
-            ))
+            .environment(\.streamDeckViewContext, ._createDummyForSimulator(configuration.device))
         }
 
         @ViewBuilder

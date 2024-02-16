@@ -9,7 +9,7 @@ import Combine
 import Foundation
 import SwiftUI
 
-public final class StreamDeckLayoutRenderer {
+final class StreamDeckLayoutRenderer {
 
     private var cancellable: AnyCancellable?
 
@@ -62,7 +62,7 @@ public final class StreamDeckLayoutRenderer {
     }
 
     @MainActor
-    public func updateRequired(_ dirty: DirtyMarker) {
+    func updateRequired(_ dirty: DirtyMarker) {
         print("!!! Dirty \(dirty)")
         dirtyViews.append(dirty)
     }

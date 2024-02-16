@@ -1,0 +1,34 @@
+<svg width="585" height="436" viewBox="0 0 585 436" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_50_121)">
+<rect x="0.476446" y="0.652512" width="342.951" height="204.67" transform="matrix(0.952344 0.305025 0.000548181 1 144.4 55.927)" fill="#423C8C" stroke="#505050"/>
+<rect x="0.476446" y="0.652512" width="332.448" height="119.777" transform="matrix(0.952344 0.305025 0.000548181 1 141.907 69.1292)" fill="#8071D8" stroke="#505050"/>
+<rect x="0.476446" y="0.652512" width="51.5116" height="51.5116" transform="matrix(0.952344 0.305025 0.000548181 1 133.577 75.2116)" fill="#06738B" stroke="#505050"/>
+<rect x="0.476446" y="0.652512" width="51.5116" height="51.5116" transform="matrix(0.952344 0.305025 0.000548191 1 133.614 143.477)" fill="#06738B" stroke="#505050"/>
+<rect x="0.476446" y="0.652512" width="51.5116" height="51.5116" transform="matrix(0.952344 0.305025 0.000548191 1 221.964 171.774)" fill="#06738B" stroke="#505050"/>
+<rect x="0.476446" y="0.652512" width="51.5116" height="51.5116" transform="matrix(0.952344 0.305025 0.000548191 1 311.98 200.605)" fill="#06738B" stroke="#505050"/>
+<rect x="0.476446" y="0.652512" width="51.5116" height="51.5116" transform="matrix(0.952344 0.305025 0.000548191 1 401.163 229.169)" fill="#06738B" stroke="#505050"/>
+<rect x="0.476446" y="0.652512" width="51.5116" height="51.5116" transform="matrix(0.952344 0.305025 0.000548191 1 221.926 103.509)" fill="#06738B" stroke="#505050"/>
+<rect x="0.476446" y="0.652512" width="51.5116" height="51.5116" transform="matrix(0.952344 0.305025 0.000548191 1 311.943 132.34)" fill="#06738B" stroke="#505050"/>
+<rect x="0.476446" y="0.652512" width="51.5116" height="51.5116" transform="matrix(0.952344 0.305025 0.000548191 1 401.126 160.904)" fill="#06738B" stroke="#505050"/>
+<rect x="0.476446" y="0.652512" width="342.951" height="41.8844" transform="matrix(0.952344 0.305025 0.000548181 1 136.159 224.795)" fill="#7950AC" stroke="#505050"/>
+<rect x="0.476446" y="0.652512" width="84.7689" height="41.8844" transform="matrix(0.952344 0.305025 0.000548191 1 102.839 249.125)" fill="#3E8C70" stroke="#505050"/>
+<rect x="0.476446" y="0.652512" width="84.7689" height="41.8844" transform="matrix(0.952344 0.305025 0.000548191 1 192.85 269.204)" fill="#3E8C70" stroke="#505050"/>
+<rect x="0.476446" y="0.652512" width="84.7689" height="41.8844" transform="matrix(0.952344 0.305025 0.000548191 1 282.862 289.283)" fill="#3E8C70" stroke="#505050"/>
+<rect x="0.476446" y="0.652512" width="84.7689" height="41.8844" transform="matrix(0.952344 0.305025 0.000548191 1 372.874 309.362)" fill="#3E8C70" stroke="#505050"/>
+<path d="M452.104 309.06C452.104 310.533 453.298 311.727 454.771 311.727C456.244 311.727 457.437 310.533 457.437 309.06C457.437 307.587 456.244 306.393 454.771 306.393C453.298 306.393 452.104 307.587 452.104 309.06ZM454.771 309.56H519.771V308.56H454.771V309.56Z" fill="white"/>
+<path d="M146.437 245.06C146.437 243.587 145.244 242.393 143.771 242.393C142.298 242.393 141.104 243.587 141.104 245.06C141.104 246.533 142.298 247.727 143.771 247.727C145.244 247.727 146.437 246.533 146.437 245.06ZM143.771 244.56L68.7708 244.56L68.7708 245.56L143.771 245.56L143.771 244.56Z" fill="white"/>
+<text fill="white" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="17.7708" y="247.924">Window</tspan></text>
+<text fill="white" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="526.771" y="311.924">Screen</tspan></text>
+<path d="M202.271 105.727C203.744 105.727 204.937 104.533 204.937 103.06C204.937 101.587 203.744 100.393 202.271 100.393C200.798 100.393 199.604 101.587 199.604 103.06C199.604 104.533 200.798 105.727 202.271 105.727ZM202.771 103.06V31.0601H201.771V103.06H202.771Z" fill="white"/>
+<path d="M336.771 163.727C338.244 163.727 339.437 162.533 339.437 161.06C339.437 159.587 338.244 158.393 336.771 158.393C335.298 158.393 334.104 159.587 334.104 161.06C334.104 162.533 335.298 163.727 336.771 163.727ZM337.271 161.06V89.0601H336.271V161.06H337.271Z" fill="white"/>
+<text fill="white" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="325.771" y="78.9237">Key</tspan></text>
+<text fill="white" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="176.771" y="22.9237">Key Area</tspan></text>
+<path d="M410.271 342.393C408.798 342.393 407.604 343.587 407.604 345.06C407.604 346.533 408.798 347.727 410.271 347.727C411.744 347.727 412.937 346.533 412.937 345.06C412.937 343.587 411.744 342.393 410.271 342.393ZM409.771 345.06L409.771 405.06L410.771 405.06L410.771 345.06L409.771 345.06Z" fill="white"/>
+<text fill="white" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="399.771" y="421.924">Dial</tspan></text>
+</g>
+<defs>
+<clipPath id="clip0_50_121">
+<rect width="585" height="436" fill="white"/>
+</clipPath>
+</defs>
+</svg>

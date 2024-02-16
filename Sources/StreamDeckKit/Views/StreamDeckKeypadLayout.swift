@@ -54,9 +54,5 @@ public struct StreamDeckKeypadLayout<Key: View>: View {
                 }
             }
         }
-        .padding(.top, caps.keyAreaTopSpacing)
-        .padding(.leading, caps.keyAreaLeadingSpacing)
-        .padding(.trailing, caps.keyAreaTrailingSpacing)
-        .padding(.bottom, caps.keyAreaBottomSpacing)
     }
 }

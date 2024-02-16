@@ -85,7 +85,7 @@ StreamDeckSession.setUp { device in
 ```
 This uses predefined layout views to place content on a Stream Deck. 
 
-<img src="_images/example_keys.png" alt="A screenshot of a Stream Deck, showing increasing numbers on it's buttons" width="200" />
+<img src="Documentation/_images/example_keys.png" alt="A screenshot of a Stream Deck, showing increasing numbers on it's buttons" width="200" />
 
 The closure we passed to `StreamDeckLayout` defines the key area of the device. The closure we passed to `StreamDeckKeypadLayout` is a factory, providing a view for each LED key on the device. 
 
@@ -116,7 +116,7 @@ Button("Show Stream Deck Simulator") {
 
 This will show an overlay with a simulated Stream Deck. You can switch between different devices with the menu in the upper right. There you can also toggle device bezels. There is also an option to render the exact borders of the button areas.
 
-<img src="_images/simulator.png" alt="A screenshot of the Stream Deck simulator window" width="200" />
+<img src="Documentation/_images/simulator.png" alt="A screenshot of the Stream Deck simulator window" width="200" />
 
 #### Preview
 

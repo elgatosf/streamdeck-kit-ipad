@@ -44,6 +44,10 @@ public struct StreamDeckLayout<BackgroundView: View, KeyAreaView: View, WindowVi
 
             VStack(alignment: .leading, spacing: 0) {
                 keyAreaView(context)
+                    .padding(.top, caps.keyAreaTopSpacing)
+                    .padding(.leading, caps.keyAreaLeadingSpacing)
+                    .padding(.trailing, caps.keyAreaTrailingSpacing)
+                    .padding(.bottom, caps.keyAreaBottomSpacing)
 
                 if let windowSize = caps.windowRect?.size {
                     let windowContext = context.with(

@@ -47,6 +47,7 @@ final class StreamDeckLayoutRenderer {
             .environment(\.streamDeckViewContext, context)
 
         let renderer = ImageRenderer(content: view)
+        renderer.scale = device.capabilities.displayScale
 
         cancellable = renderer
             .objectWillChange.prepend(())
@@ -132,6 +133,12 @@ final class StreamDeckLayoutRenderer {
 extension UIImage {
 
     func cropping(to rect: CGRect) -> UIImage {
+        var rect = rect
+
+        if scale != 1 {
+            rect = rect.applying(CGAffineTransform(scaleX: scale, y: scale))
+        }
+
         guard let cgImage = cgImage,
               let cropped = cgImage.cropping(to: rect)
         else { return self }

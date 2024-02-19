@@ -223,8 +223,7 @@ private extension StreamDeck {
         if image.size == screenSize {
             newImage = image
         } else {
-            let format = UIGraphicsImageRendererFormat(for: .init(displayScale: 1))
-            let renderer = UIGraphicsImageRenderer(size: screenSize, format: format)
+            let renderer = renderer(size: screenSize)
             let drawingAction = Self.transformDrawingAction(
                 image: image,
                 size: screenSize,
@@ -241,7 +240,11 @@ private extension StreamDeck {
 
             guard let cropped = cgImage.cropping(to: rect) else { return }
 
-            let keyImage = UIImage(cgImage: cropped, scale: 1, orientation: newImage.imageOrientation)
+            let keyImage = UIImage(
+                cgImage: cropped,
+                scale: capabilities.displayScale,
+                orientation: newImage.imageOrientation
+            )
 
             guard let data = transform(keyImage, size: keySize, scaleAspectFit: false)
             else { return }
@@ -255,9 +258,7 @@ private extension StreamDeck {
               let keySize = capabilities.keySize
         else { return }
 
-        let format = UIGraphicsImageRendererFormat(for: .init(displayScale: 1))
-        let renderer = UIGraphicsImageRenderer(size: keySize, format: format)
-        let image = renderer.image { context in
+        let image = renderer(size: keySize).image { context in
             color.setFill()
             context.fill(.init(origin: .zero, size: keySize))
         }

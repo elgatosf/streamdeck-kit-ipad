@@ -28,12 +28,16 @@ final class StreamDeckRobot {
     }
 
     func use(_ product: StreamDeckProduct) {
+        use(product.capabilities)
+    }
+
+    func use(_ capabilities: DeviceCapabilities) {
         device?.close()
         client = StreamDeckClientMock()
         device = StreamDeck(
             client: client,
             info: .init(),
-            capabilities: product.capabilities
+            capabilities: capabilities
         )
         recorder = client.record()
     }
@@ -45,7 +49,7 @@ final class StreamDeckRobot {
         line: UInt = #line
     ) async throws {
         use(product)
-        
+
         await renderer.render(content, on: device)
         try await recorder.$screens.waitFor(file: file, line: line) {
             !$0.isEmpty

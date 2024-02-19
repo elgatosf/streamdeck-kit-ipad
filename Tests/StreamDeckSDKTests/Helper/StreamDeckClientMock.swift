@@ -123,8 +123,6 @@ public final class StreamDeckClientMock {
     public func emit(_ event: InputEvent) {
         self.inputEventHandler?(event)
     }
-
-    public func showLogo() {}
 }
 
 extension StreamDeckClientMock: StreamDeckClientProtocol {
@@ -173,6 +171,8 @@ extension StreamDeckClientMock: StreamDeckClientProtocol {
         lock.lock(); defer { lock.unlock() }
         fillKeySubject.send((index: index, color: (red: red, green: green, blue: blue)))
     }
+
+    public func showLogo() {}
 
     public func close() {
         lock.lock(); defer { lock.unlock() }

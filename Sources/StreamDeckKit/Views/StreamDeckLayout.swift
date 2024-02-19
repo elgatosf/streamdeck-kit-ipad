@@ -26,7 +26,7 @@ public struct StreamDeckLayout<KeyAreaView: View, WindowView: View>: View {
     ///   Use ``StreamDeckDialAreaLayout`` to render separate parts of the display. E.g. for each dial on a Stream Deck Plus.
     public init(
         @ViewBuilder keyAreaView: @escaping @MainActor () -> KeyAreaView,
-        @ViewBuilder windowView: @escaping @MainActor () -> WindowView = { EmptyView() }
+        @ViewBuilder windowView: @escaping @MainActor () -> WindowView = { Color.clear }
     ) {
         self.keyAreaView = keyAreaView
         self.windowView = windowView

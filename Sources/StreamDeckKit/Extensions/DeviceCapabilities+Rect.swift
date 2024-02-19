@@ -27,9 +27,12 @@ extension DeviceCapabilities {
 
     public var keyAreaBottomSpacing: CGFloat {
         guard let screenHeight = screenSize?.height,
-              let keyAreaHeight = keyAreaRect?.height,
-              let windowHeight = windowRect?.height
+              let keyAreaHeight = keyAreaRect?.height
         else { return 0 }
+
+        guard let windowHeight = windowRect?.height else { // no window area
+            return screenHeight - (keyAreaTopSpacing + keyAreaHeight)
+        }
 
         return screenHeight - (keyAreaTopSpacing + keyAreaHeight + windowHeight)
     }

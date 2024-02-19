@@ -1,11 +1,12 @@
 name: "Build, Test, Lint"
 run-name: Building, Testing, Linting
-on:
-  push: # pull_request
-    paths:
-      - '.github/workflows/swiftlint.yml'
-      - '.swiftlint.yml'
-      - '**/*.swift'
+on: [pull_request]
+    # uncomment to make this depend on changed files
+    # push:
+    #  paths:
+    #    - '.github/workflows/swiftlint.yml'
+    #    - '.swiftlint.yml'
+    #    - '**/*.swift'
 jobs:
   Test:
     runs-on: macos-14

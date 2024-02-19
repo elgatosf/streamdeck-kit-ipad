@@ -1,6 +1,6 @@
 name: "Run tests"
-run-name: ${{ github.actor }} is running tests
-on: [push]
+run-name: Running tests
+on: [pull_request]
 jobs:
   run-tests:
     runs-on: macos-14

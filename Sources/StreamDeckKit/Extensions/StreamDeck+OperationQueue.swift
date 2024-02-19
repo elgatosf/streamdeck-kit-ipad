@@ -102,6 +102,7 @@ extension StreamDeck {
         }
     }
 
+    // swiftlint:disable:next cyclomatic_complexity function_body_length
     private func run(_ operation: Operation) async {
         switch operation {
         case let .setInputEventHandler(handler):

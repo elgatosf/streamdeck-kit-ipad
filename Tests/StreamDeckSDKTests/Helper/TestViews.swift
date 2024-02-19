@@ -94,7 +94,7 @@ enum TestViews {
                 background: { _ in EmptyView() },
                 keyAreaView: { _ in
                     StreamDeckKeypadLayout { _ in SimpleKey() }
-                }
+                },
                 windowView: { context in
                     ZStack {
                         StreamDeckDialAreaLayout(

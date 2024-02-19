@@ -10,10 +10,10 @@ import SwiftUI
 
 struct StreamDeckLayoutView: View {
     var body: some View {
-        StreamDeckLayout { backgroundContext in
+        StreamDeckLayout { _ in
             LinearGradient(
                 gradient: .init(colors: [.teal, .blue]),
-                startPoint: .topLeading, 
+                startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
         } keyAreaView: { _ in
@@ -31,7 +31,7 @@ struct NumberDisplayKey: StreamDeckView {
     var emoji: String { emojis[context.index] }
 
     var streamDeckBody: some View {
-        StreamDeckKeyView  { isPressed in
+        StreamDeckKeyView { isPressed in
             self.isPressed = isPressed
         } content: {
             ZStack {

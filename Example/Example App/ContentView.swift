@@ -62,7 +62,7 @@ struct ContentView: View {
 import StreamDeckSimulator
 
 #Preview("With simulator attached") {
-    StreamDeckSession.setUp { device in
+    StreamDeckSession.setUp { _ in
         StreamDeckLayoutView()
     }
 

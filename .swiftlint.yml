@@ -3,3 +3,5 @@ opt_in_rules:
 
 disabled_rules:
   - identifier_name
+
+line_length: 150

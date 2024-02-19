@@ -42,9 +42,10 @@ extension StreamDeck {
         }
     }
 
+    // swiftlint:disable:next cyclomatic_complexity
     func enqueueOperation(_ operation: Operation) {
         guard !isClosed else { return }
-        
+
         var wasReplaced = false
 
         switch operation {

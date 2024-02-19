@@ -64,7 +64,7 @@ public struct StreamDeckViewContext {
     }
 
     @MainActor
-    func updateRequired() {
+    public func updateRequired() {
         onDirty?(dirtyMarker)
     }
 

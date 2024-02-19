@@ -29,9 +29,9 @@ enum TestViews {
         @Published var lastEvent: Event = .none
     }
 
-    struct SimpleKey: StreamDeckView {
+    @StreamDeckView
+    struct SimpleKey {
         @StateObject var model = SimpleEventModel()
-        @Environment(\.streamDeckViewContext) var context
 
         var streamDeckBody: some View {
             StreamDeckKeyView { isPressed in
@@ -52,9 +52,9 @@ enum TestViews {
         }
     }
 
-    struct SimpleDialView: StreamDeckView {
+    @StreamDeckView
+    struct SimpleDialView {
         @StateObject var model = SimpleEventModel()
-        @Environment(\.streamDeckViewContext) var context
 
         var streamDeckBody: some View {
             StreamDeckDialView { steps in
@@ -74,10 +74,9 @@ enum TestViews {
         }
     }
 
-    struct SimpleLayout: View {
-        @Environment(\.streamDeckViewContext) var context
-
-        var body: some View {
+    @StreamDeckView
+    struct SimpleLayout {
+        var streamDeckBody: some View {
             StreamDeckLayout(
                 keyAreaView: {
                     StreamDeckKeypadLayout { _ in
@@ -92,9 +91,9 @@ enum TestViews {
     }
 
     struct TouchAreaTestLayout: View {
-        struct WindowLayout: StreamDeckView {
+        @StreamDeckView
+        struct WindowLayout {
             @StateObject var model = SimpleEventModel()
-            @Environment(\.streamDeckViewContext) var context
 
             var streamDeckBody: some View {
                 ZStack {

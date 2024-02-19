@@ -26,8 +26,8 @@ struct StreamDeckLayoutView: View {
     }
 }
 
-struct NumberDisplayKey: StreamDeckView {
-    @Environment(\.streamDeckViewContext) var context
+@StreamDeckView
+struct NumberDisplayKey {
     @State var isPressed: Bool = false
 
     var emoji: String { emojis[context.index] }

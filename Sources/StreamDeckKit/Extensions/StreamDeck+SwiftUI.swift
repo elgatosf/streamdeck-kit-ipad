@@ -8,6 +8,7 @@
 import SwiftUI
 import UIKit
 
+// NOTE: This whole extension may be moved out of the SDK and to the Documentation.
 private extension UIViewController {
 
     func renderAsImage(of size: CGSize) -> UIImage? {
@@ -18,7 +19,7 @@ private extension UIViewController {
         view.setNeedsLayout()
         view.layoutIfNeeded()
 
-        let renderer = UIGraphicsImageRenderer( // TODO: Cache renderer!
+        let renderer = UIGraphicsImageRenderer( // TODO: Cache renderer! // swiftlint:disable:this todo
             size: size,
             format: UIGraphicsImageRendererFormat(for: .init(displayScale: 1))
         )

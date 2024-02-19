@@ -29,11 +29,11 @@ enum TestViews {
         @Published var lastEvent: Event = .none
     }
 
-    struct SimpleKey: View {
+    struct SimpleKey: StreamDeckView {
         @StateObject var model = SimpleEventModel()
         @Environment(\.streamDeckViewContext) var context
 
-        var body: some View {
+        var streamDeckBody: some View {
             StreamDeckKeyView { isPressed in
                 model.lastEvent = .press(isPressed)
             } content: {
@@ -49,17 +49,14 @@ enum TestViews {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            .onChange(of: model.lastEvent) { _, _ in
-                context.updateRequired()
-            }
         }
     }
 
-    struct SimpleDialView: View {
+    struct SimpleDialView: StreamDeckView {
         @StateObject var model = SimpleEventModel()
         @Environment(\.streamDeckViewContext) var context
 
-        var body: some View {
+        var streamDeckBody: some View {
             StreamDeckDialView { steps in
                 model.lastEvent = .rotate(steps)
             } press: { pressed in
@@ -74,9 +71,6 @@ enum TestViews {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(.white)
             }
-            .onChange(of: model.lastEvent) { _, _ in
-                context.updateRequired()
-            }
         }
     }
 
@@ -85,12 +79,11 @@ enum TestViews {
 
         var body: some View {
             StreamDeckLayout(
-                background: { _ in EmptyView() },
-                keyAreaView: { _ in
+                keyAreaView: {
                     StreamDeckKeypadLayout { _ in
                         SimpleKey()
                     }
-                }) { context in
+                }) {
                     StreamDeckDialAreaLayout { _ in
                         SimpleDialView()
                     }
@@ -99,16 +92,11 @@ enum TestViews {
     }
 
     struct TouchAreaTestLayout: View {
-        @StateObject var model = SimpleEventModel()
-        @Environment(\.streamDeckViewContext) var context
+        struct WindowLayout: StreamDeckView {
+            @StateObject var model = SimpleEventModel()
+            @Environment(\.streamDeckViewContext) var context
 
-        var body: some View {
-            StreamDeckLayout(
-                background: { _ in EmptyView() },
-                keyAreaView: { _ in
-                    StreamDeckKeypadLayout { _ in SimpleKey() }
-                }
-            ) { context in
+            var streamDeckBody: some View {
                 ZStack {
                     StreamDeckDialAreaLayout(
                         rotate: { _, steps in
@@ -127,10 +115,14 @@ enum TestViews {
 
                     Text(model.lastEvent.description)
                 }
-                .onChange(of: model.lastEvent) { _, _ in
-                    context.updateRequired()
-                }
             }
+        }
+
+        var body: some View {
+            StreamDeckLayout(
+                keyAreaView: { StreamDeckKeypadLayout { _ in SimpleKey() } },
+                windowView: { WindowLayout() }
+            )
         }
     }
 

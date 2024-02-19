@@ -36,13 +36,21 @@ public struct StreamDeckLayout<KeyAreaView: View, WindowView: View>: View {
         let caps = context.device.capabilities
 
         VStack(alignment: .leading, spacing: 0) {
-            keyAreaView()
-                .padding(.top, caps.keyAreaTopSpacing)
-                .padding(.leading, caps.keyAreaLeadingSpacing)
-                .padding(.trailing, caps.keyAreaTrailingSpacing)
-                .padding(.bottom, caps.keyAreaBottomSpacing)
+            if let keyAreaSize = caps.keyAreaRect?.size {
+                let keyAreaContext = context.with(
+                    dirtyMarker: .screen,
+                    size: keyAreaSize,
+                    index: -1
+                )
 
-            Spacer()
+                keyAreaView()
+                    .frame(width: keyAreaSize.width, height: keyAreaSize.height)
+                    .padding(.top, caps.keyAreaTopSpacing)
+                    .padding(.leading, caps.keyAreaLeadingSpacing)
+                    .padding(.trailing, caps.keyAreaTrailingSpacing)
+                    .padding(.bottom, caps.keyAreaBottomSpacing)
+                    .environment(\.streamDeckViewContext, keyAreaContext)
+            }
 
             if let windowSize = caps.windowRect?.size {
                 let windowContext = context.with(

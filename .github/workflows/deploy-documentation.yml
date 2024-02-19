@@ -22,7 +22,9 @@ jobs:
         run: ls ${{ github.workspace }}
 
       - name: Run the build script
-        run: sh build-documentation.sh -u $GIT_ACCOUNT_NAME -t $GIT_API_TOKEN
+        run: |
+          export TERM=xterm # Bugfix for "tput: No value for $TERM and no -T specified"
+          sh build-documentation.sh -u $GIT_ACCOUNT_NAME -t $GIT_API_TOKEN
         env:
           GIT_ACCOUNT_NAME: ${{ vars.GIT_ACCOUNT_NAME }}
           GIT_API_TOKEN: ${{ secrets.GIT_API_TOKEN }}

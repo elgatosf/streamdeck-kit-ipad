@@ -17,20 +17,20 @@ struct StreamDeckLayoutView: View {
                 endPoint: .bottomTrailing
             )
         } keyAreaView: { _ in
-            StreamDeckKeypadLayout {
-                NumberDisplayKey(context: $0)
+            StreamDeckKeypadLayout { _ in
+                NumberDisplayKey()
             }
         }
     }
 }
 
-struct NumberDisplayKey: View {
-    
-    let context: StreamDeckViewContext
-    var emoji: String { emojis[context.index] }
+struct NumberDisplayKey: StreamDeckView {
+    @Environment(\.streamDeckViewContext) var context
     @State var isPressed: Bool = false
 
-    var body: some View {
+    var emoji: String { emojis[context.index] }
+
+    var streamDeckBody: some View {
         StreamDeckKeyView  { isPressed in
             self.isPressed = isPressed
         } content: {
@@ -39,9 +39,6 @@ struct NumberDisplayKey: View {
                 Text("\(emoji)")
                     .font(isPressed ? .largeTitle : .title)
             }
-        }
-        .onChange(of: isPressed) {
-            context.updateRequired()
         }
     }
 }

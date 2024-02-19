@@ -15,6 +15,17 @@ import Foundation
 /// ```
 public struct StreamDeckViewContext {
 
+    private final class IDGenerator {
+        private var _id: UInt64 = 0
+        var next: UInt64 {
+            if _id == UInt64.max {
+                _id = 0
+            }
+            _id += 1
+            return _id
+        }
+    }
+
     typealias DirtyHandler = (DirtyMarker) -> Void
 
     /// The Stream Deck device object.
@@ -31,6 +42,9 @@ public struct StreamDeckViewContext {
     /// The value will be valid, when the current drawing area represents an input element like a key. Otherwise it will be `-1`.
     public private(set) var index: Int
     private let onDirty: DirtyHandler?
+    private let idGenerator = IDGenerator()
+
+    public var nextID: UInt64 { idGenerator.next }
 
     init(
         device: StreamDeck,

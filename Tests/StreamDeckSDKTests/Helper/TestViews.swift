@@ -109,8 +109,9 @@ enum TestViews {
                             },
                             fling: { _, _, direction in
                                 model.lastEvent = .fling(direction)
-                            }
-                        ) { _ in SimpleDialView() }
+                            },
+                            dial: { _ in SimpleDialView() }
+                        )
 
                         Text(model.lastEvent.description)
                     }
@@ -131,7 +132,7 @@ extension TestViews.SimpleEventModel {
         var description: String {
             switch self {
             case .none: "none"
-            case let .press(pressed): pressed ? "pressed" : "released" // swiftlint:disable:this colon
+            case let .press(pressed): pressed ? "pressed" : "released"
             case let .rotate(steps): "steps \(steps)"
             case let .fling(direction): "fling \(direction.description)"
             case let .touch(point): "touch(\(point.x),\(point.y))"

@@ -152,35 +152,33 @@ private extension StreamDeckSimulatorView {
     @MainActor
     @ViewBuilder
     var touchPad: some View {
-        StreamDeckLayout { _ in
+        StreamDeckLayout {
+            StreamDeckKeypadLayout { context in
+                SimulatorKeyView(image: buttonImages[context.index]) { pressed in
+                    client.emit(.keyPress(index: context.index, pressed: pressed))
+                }
+                .equatable()
+            }
+        } windowView: {
+            StreamDeckDialAreaLayout { context in
+                SimulatorTouchView { localLocation in
+                    let x = CGFloat(context.index) * context.size.width + localLocation.x
+                    client.emit(.touch(.init(x: x, y: localLocation.y)))
+                } onFling: { startLocation, endLocation in
+                    let startX = CGFloat(context.index) * context.size.width + startLocation.x
+                    let endX = CGFloat(context.index) * context.size.width + endLocation.x
+                    client.emit(.fling(
+                        start: .init(x: startX, y: startLocation.y),
+                        end: .init(x: endX, y: endLocation.y)
+                    ))
+                }
+            }
+        }
+        .background {
             if let backgroundImage = backgroundImage {
                 Image(uiImage: backgroundImage)
             } else {
                 Color.black
-            }
-        } keyAreaView: { _ in
-            StreamDeckKeypadLayout { context in
-                StreamDeckKeyView { _ in } content: {
-                    SimulatorKeyView(image: buttonImages[context.index]) { pressed in
-                        client.emit(.keyPress(index: context.index, pressed: pressed))
-                    }
-                }
-            }
-        } windowView: { context in
-            StreamDeckDialAreaLayout { context in
-                StreamDeckDialView {
-                    SimulatorTouchView { localLocation in
-                        let x = CGFloat(context.index) * context.size.width + localLocation.x
-                        client.emit(.touch(.init(x: x, y: localLocation.y)))
-                    } onFling: { startLocation, endLocation in
-                        let startX = CGFloat(context.index) * context.size.width + startLocation.x
-                        let endX = CGFloat(context.index) * context.size.width + endLocation.x
-                        client.emit(.fling(
-                            start: .init(x: startX, y: startLocation.y),
-                            end: .init(x: endX, y: endLocation.y)
-                        ))
-                    }
-                }
             }
         }
     }
@@ -197,23 +195,18 @@ private extension StreamDeckSimulatorView {
     @MainActor
     @ViewBuilder
     var borderOverlay: some View {
-        StreamDeckLayout { _ in
-            Color.clear
-        } keyAreaView: { _ in
+        StreamDeckLayout {
             StreamDeckKeypadLayout { context in
-                StreamDeckKeyView { _ in }
-                    content: {
+                StreamDeckKeyView {} content: {
+                    Color.clear.border(.red)
+                }
+            }
+        } windowView: {
+            StreamDeckDialAreaLayout { _ in
+                SimulatorTouchView { _ in } onFling: { _, _ in }
+                    .background {
                         Color.clear.border(.red)
                     }
-            }
-        } windowView: { context in
-            StreamDeckDialAreaLayout { _ in
-                StreamDeckDialView {
-                    SimulatorTouchView { _ in } onFling: { _, _ in }
-                        .background {
-                            Color.clear.border(.red)
-                        }
-                }
             }
         }
         .allowsHitTesting(false)
@@ -258,7 +251,10 @@ private extension StreamDeckSimulatorView {
 
     #Preview("Landscape", traits: .landscapeLeft) {
         Group {
-            StreamDeckSimulatorView.create(streamDeck: .plus, config: StreamDeckProduct.plus.createConfiguration())
+            StreamDeckSimulatorView.create(
+                streamDeck: .plus,
+                config: StreamDeckProduct.plus.createConfiguration()
+            )
         }
     }
 #endif

@@ -16,7 +16,7 @@ public struct StreamDeckKeyView<Content: View>: View {
 
     public init(
         action: @escaping (Bool) -> Void,
-        content: @escaping () -> Content
+        @ViewBuilder content: @escaping () -> Content
     ) {
         self.action = action
         self.content = content
@@ -24,7 +24,7 @@ public struct StreamDeckKeyView<Content: View>: View {
 
     public init(
         action: @escaping () -> Void,
-        content: @escaping () -> Content
+        @ViewBuilder content: @escaping () -> Content
     ) {
         self.init(
             action: { if $0 { action() } },

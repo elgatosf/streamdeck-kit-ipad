@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import StreamDeckKit
 
 struct SimulatorTouchView: View {
 
@@ -13,18 +14,19 @@ struct SimulatorTouchView: View {
     let onFling: (CGPoint, CGPoint) -> Void
 
     var body: some View {
-        return Rectangle()
-            .foregroundColor(.clear)
-            .contentShape(Rectangle())
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .onTapGesture(coordinateSpace: .local) { location in
-                onTouch(location)
-            }
-            .gesture(
-                DragGesture(minimumDistance: 10, coordinateSpace: .local)
-                    .onEnded { value in
-                        onFling(value.startLocation, value.location)
-                    }
-            )
+        StreamDeckDialView {
+            Color.clear
+        }
+        .contentShape(Rectangle())
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .onTapGesture(coordinateSpace: .local) { location in
+            onTouch(location)
+        }
+        .gesture(
+            DragGesture(minimumDistance: 10, coordinateSpace: .local)
+                .onEnded { value in
+                    onFling(value.startLocation, value.location)
+                }
+        )
     }
 }

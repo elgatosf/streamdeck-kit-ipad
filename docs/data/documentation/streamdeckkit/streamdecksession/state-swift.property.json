@@ -143,16 +143,24 @@
         {
           "inlineContent" : [
             {
-              "text" : "Optionally use the ",
+              "text" : "Alternatively use the ",
               "type" : "text"
             },
             {
-              "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/stateHandler-swift.property",
+              "code" : "stateHandler",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " property of ",
+              "type" : "text"
+            },
+            {
+              "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/setUp(stateHandler:newDeviceHandler:)-swift.type.method",
               "isActive" : true,
               "type" : "reference"
             },
             {
-              "text" : " property to handle this with a closure.",
+              "text" : " to handle this with a closure.",
               "type" : "text"
             }
           ],
@@ -263,6 +271,80 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdecksession\/state-swift.enum"
 },
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/setUp(stateHandler:newDeviceHandler:)-swift.type.method": {
+  "abstract" : [
+    {
+      "text" : "Set up this session.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "setUp"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "stateHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB7SessionC12StateHandlera",
+      "text" : "StateHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "newDeviceHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB7SessionC16NewDeviceHandlera",
+      "text" : "NewDeviceHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : "?)"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/setUp(stateHandler:newDeviceHandler:)-swift.type.method",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "setUp(stateHandler:newDeviceHandler:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/setup(statehandler:newdevicehandler:)-swift.type.method"
+},
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/state-swift.property": {
   "abstract" : [
     {
@@ -307,55 +389,6 @@
   "title" : "state",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdecksession\/state-swift.property"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/stateHandler-swift.property": {
-  "abstract" : [
-    {
-      "text" : "Use this to handle the current session state. The ",
-      "type" : "text"
-    },
-    {
-      "code" : "State",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " info can be used to inform users about courses of action e.g. in case of an error.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "var"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "stateHandler"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:13StreamDeckKit0aB7SessionC12StateHandlera",
-      "text" : "StateHandler"
-    },
-    {
-      "kind" : "text",
-      "text" : "?"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/stateHandler-swift.property",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "stateHandler",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/statehandler-swift.property"
 }
 }
 }

@@ -1,0 +1,240 @@
+{
+  "abstract" : [
+    {
+      "text" : "A handler for rotation events on a rotary encoder(dial).",
+      "type" : "text"
+    }
+  ],
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout\/DialRotationHandler"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "s:13StreamDeckKit0aB14DialAreaLayoutV0D15RotationHandlera",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "typealias"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "DialRotationHandler"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "StreamDeckKit"
+      }
+    ],
+    "navigatorTitle" : [
+      {
+        "kind" : "identifier",
+        "text" : "DialRotationHandler"
+      }
+    ],
+    "role" : "symbol",
+    "roleHeading" : "Type Alias",
+    "symbolKind" : "typealias",
+    "title" : "StreamDeckDialAreaLayout.DialRotationHandler"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "iOS"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "typealias"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "DialRotationHandler"
+            },
+            {
+              "kind" : "text",
+              "text" : " = @"
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:ScM",
+              "text" : "MainActor"
+            },
+            {
+              "kind" : "text",
+              "text" : " ("
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:Si",
+              "text" : "Int"
+            },
+            {
+              "kind" : "text",
+              "text" : ", "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:Si",
+              "text" : "Int"
+            },
+            {
+              "kind" : "text",
+              "text" : ") -> "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:s4Voida",
+              "text" : "Void"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "discussion",
+          "level" : 2,
+          "text" : "Discussion",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "The first parameter is the index of the dial. The second one is the rotation value. Negative values indicate a rotation to the left.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/streamdeckkit\/streamdeckdialarealayout\/dialrotationhandler"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://StreamDeckKit/documentation/StreamDeckKit": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "StreamDeckKit",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialAreaLayout": {
+  "abstract" : [
+    {
+      "text" : "A View that draws the layout of a Stream Deck dial window area (The display above the ).",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckDialAreaLayout"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckDialAreaLayout"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckDialAreaLayout",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckdialarealayout"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialAreaLayout/DialRotationHandler": {
+  "abstract" : [
+    {
+      "text" : "A handler for rotation events on a rotary encoder(dial).",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "typealias"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "DialRotationHandler"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout\/DialRotationHandler",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "DialRotationHandler"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckDialAreaLayout.DialRotationHandler",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckdialarealayout\/dialrotationhandler"
+}
+}
+}

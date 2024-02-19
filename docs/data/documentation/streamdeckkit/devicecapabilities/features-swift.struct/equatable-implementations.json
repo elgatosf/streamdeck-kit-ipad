@@ -1,0 +1,198 @@
+{
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/Features-swift.struct"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/Features-swift.struct\/Equatable-Implementations"
+  },
+  "kind" : "article",
+  "metadata" : {
+    "modules" : [
+      {
+        "name" : "StreamDeckKit"
+      }
+    ],
+    "role" : "collectionGroup",
+    "title" : "Equatable Implementations"
+  },
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "topicSections" : [
+    {
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/Features-swift.struct\/!=(_:_:)"
+      ],
+      "title" : "Operators"
+    }
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/streamdeckkit\/devicecapabilities\/features-swift.struct\/equatable-implementations"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://StreamDeckKit/documentation/StreamDeckKit": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "StreamDeckKit",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities": {
+  "abstract" : [
+    {
+      "text" : "The capabilities and measurements of Stream Deck device.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "DeviceCapabilities"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "DeviceCapabilities"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "DeviceCapabilities",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/devicecapabilities"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/Features-swift.struct": {
+  "abstract" : [
+    {
+      "text" : "Set of features supported by the device",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "Features"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/Features-swift.struct",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Features"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "DeviceCapabilities.Features",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/features-swift.struct"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/Features-swift.struct/!=(_:_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "!="
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "Self"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "Self"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/Features-swift.struct\/!=(_:_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "!=(_:_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/features-swift.struct\/!=(_:_:)"
+}
+}
+}

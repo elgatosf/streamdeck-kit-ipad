@@ -96,7 +96,7 @@
         {
           "inlineContent" : [
             {
-              "text" : "To begin interacting with a device, you can start by observing device connections, and then observe the input events of every connected device.",
+              "text" : "To begin interacting with devices,  set-up the session and observe device connections.",
               "type" : "text"
             }
           ],
@@ -104,18 +104,15 @@
         },
         {
           "code" : [
-            "let session = StreamDeckSession()",
-            "\/\/ Add handler to get informed about newly attached devices.",
-            "session.newDeviceHandler { device in",
-            "    print(\"\\(device.info.productName) attached.\")",
-            "",
-            "    \/\/ Handle input events of a device.",
-            "    device.inputEventHandler { event in",
-            "        print(\"Received \\(event) from \\(device.info.productName)\")",
+            "StreamDeckSession.setUp(",
+            "    newDeviceHandler: { device in",
+            "        print(\"\\(device.info.productName) attached.\")",
+            "        \/\/ Handle input events of a device.",
+            "        device.inputEventHandler = { event in",
+            "            print(\"Received \\(event) from \\(device.info.productName)\")",
+            "        }",
             "    }",
-            "}",
-            "\/\/ Start the session to begin device observation.",
-            "session.start()"
+            ")"
           ],
           "syntax" : "swift",
           "type" : "codeListing"
@@ -157,7 +154,7 @@
         },
         {
           "code" : [
-            "for device in session.devices {",
+            "for device in StreamDeckSession.instance.devices {",
             "    device.setImage(UIImage(named: \"flower\"), to: 4)",
             "}"
           ],
@@ -219,9 +216,8 @@
         },
         {
           "code" : [
-            "let cancellable = session.$state.sink { state in",
-            "    if case let .failed(error) = state, error == .driverNotInstalled {",
-            "        \/\/ Ask user to install Stream Deck Connect.",
+            "let cancellable = StreamDeckSession.instance.$state.sink { state in",
+            "    if case let .failed(error) = state, error == .driverVersionMismatch {",
             "    }",
             "}"
           ],
@@ -244,7 +240,7 @@
               "type" : "text"
             },
             {
-              "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/State-swift.enum\/ready",
+              "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/State-swift.enum\/started",
               "isActive" : true,
               "type" : "reference"
             },
@@ -296,34 +292,39 @@
   "topicSections" : [
     {
       "identifiers" : [
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/init()"
-      ],
-      "title" : "Initializers"
-    },
-    {
-      "identifiers" : [
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/devices",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/didSetUp",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/driverVersion",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/newDeviceHandler-swift.property",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/newDevicePublisher",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/state-swift.property",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/stateHandler-swift.property"
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/state-swift.property"
       ],
       "title" : "Instance Properties"
     },
     {
       "identifiers" : [
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/start()",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/stop()"
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/setUp(stateHandler:newDeviceHandler:)-swift.method"
       ],
       "title" : "Instance Methods"
     },
     {
       "identifiers" : [
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/NewDeviceHandler-swift.typealias",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/StateHandler-swift.typealias"
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/NewDeviceHandler",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/StateHandler"
       ],
       "title" : "Type Aliases"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/instance"
+      ],
+      "title" : "Type Properties"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/setUp(stateHandler:newDeviceHandler:)-swift.type.method",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/setUp(stateHandler:newDeviceHandler:content:)"
+      ],
+      "title" : "Type Methods"
     },
     {
       "identifiers" : [
@@ -426,9 +427,12 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdecksession"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/NewDeviceHandler-swift.typealias": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/NewDeviceHandler": {
   "abstract" : [
-
+    {
+      "text" : "Handler function for newly attached devices.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -444,7 +448,7 @@
       "text" : "NewDeviceHandler"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/NewDeviceHandler-swift.typealias",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/NewDeviceHandler",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
@@ -455,7 +459,7 @@
   "role" : "symbol",
   "title" : "StreamDeckSession.NewDeviceHandler",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/newdevicehandler-swift.typealias"
+  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/newdevicehandler"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/SessionError": {
   "abstract" : [
@@ -525,10 +529,10 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdecksession\/state-swift.enum"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/State-swift.enum/ready": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/State-swift.enum/started": {
   "abstract" : [
     {
-      "text" : "Connection to the driver is established. Devices can be observed.",
+      "text" : "Session is started and devices are being observed.",
       "type" : "text"
     }
   ],
@@ -543,19 +547,22 @@
     },
     {
       "kind" : "identifier",
-      "text" : "ready"
+      "text" : "started"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/State-swift.enum\/ready",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/State-swift.enum\/started",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "StreamDeckSession.State.ready",
+  "title" : "StreamDeckSession.State.started",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/state-swift.enum\/ready"
+  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/state-swift.enum\/started"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/StateHandler-swift.typealias": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/StateHandler": {
   "abstract" : [
-
+    {
+      "text" : "Handler function for session state updates.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -571,7 +578,7 @@
       "text" : "StateHandler"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/StateHandler-swift.typealias",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/StateHandler",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
@@ -582,7 +589,7 @@
   "role" : "symbol",
   "title" : "StreamDeckSession.StateHandler",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/statehandler-swift.typealias"
+  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/statehandler"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/devices": {
   "abstract" : [
@@ -625,6 +632,40 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdecksession\/devices"
 },
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/didSetUp": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "didSetUp"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/didSetUp",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "didSetUp",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/didsetup"
+},
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/driverVersion": {
   "abstract" : [
     {
@@ -666,38 +707,25 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdecksession\/driverversion"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/init()": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
-    {
-      "kind" : "identifier",
-      "text" : "init"
-    },
-    {
-      "kind" : "text",
-      "text" : "()"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/init()",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "init()",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/init()"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/newDeviceHandler-swift.property": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/instance": {
   "abstract" : [
     {
-      "text" : "Use this to handle attaching\/detaching Stream Deck devices.",
+      "text" : "The shared session instance.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "var"
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "let"
     },
     {
       "kind" : "text",
@@ -705,7 +733,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "newDeviceHandler"
+      "text" : "instance"
     },
     {
       "kind" : "text",
@@ -713,20 +741,16 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:13StreamDeckKit0aB7SessionC16NewDeviceHandlera",
-      "text" : "NewDeviceHandler"
-    },
-    {
-      "kind" : "text",
-      "text" : "?"
+      "preciseIdentifier" : "s:13StreamDeckKit0aB7SessionC",
+      "text" : "StreamDeckSession"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/newDeviceHandler-swift.property",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/instance",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "newDeviceHandler",
+  "title" : "instance",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/newdevicehandler-swift.property"
+  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/instance"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/newDevicePublisher": {
   "abstract" : [
@@ -787,10 +811,10 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdecksession\/newdevicepublisher"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/start()": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/setUp(stateHandler:newDeviceHandler:)-swift.method": {
   "abstract" : [
     {
-      "text" : "Tries to connect to the driver, to observe connected Stream Deck devices and their state.",
+      "text" : "Set up this session.",
       "type" : "text"
     }
   ],
@@ -805,19 +829,268 @@
     },
     {
       "kind" : "identifier",
-      "text" : "start"
+      "text" : "setUp"
     },
     {
       "kind" : "text",
-      "text" : "()"
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "stateHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB7SessionC12StateHandlera",
+      "text" : "StateHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "newDeviceHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB7SessionC16NewDeviceHandlera",
+      "text" : "NewDeviceHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : "?)"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/start()",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/setUp(stateHandler:newDeviceHandler:)-swift.method",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "start()",
+  "title" : "setUp(stateHandler:newDeviceHandler:)",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/start()"
+  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/setup(statehandler:newdevicehandler:)-swift.method"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/setUp(stateHandler:newDeviceHandler:)-swift.type.method": {
+  "abstract" : [
+    {
+      "text" : "Set up this session.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "setUp"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "stateHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB7SessionC12StateHandlera",
+      "text" : "StateHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "newDeviceHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB7SessionC16NewDeviceHandlera",
+      "text" : "NewDeviceHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : "?)"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/setUp(stateHandler:newDeviceHandler:)-swift.type.method",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "setUp(stateHandler:newDeviceHandler:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/setup(statehandler:newdevicehandler:)-swift.type.method"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/setUp(stateHandler:newDeviceHandler:content:)": {
+  "abstract" : [
+    {
+      "text" : "Creates a session, associates it with the necessary application life cycle events,",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "and renders the content supplied by the view builder content block on every connected device.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "setUp"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "genericParameter",
+      "text" : "Content"
+    },
+    {
+      "kind" : "text",
+      "text" : ">("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "stateHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB7SessionC12StateHandlera",
+      "text" : "StateHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "newDeviceHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB7SessionC16NewDeviceHandlera",
+      "text" : "NewDeviceHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "content"
+    },
+    {
+      "kind" : "text",
+      "text" : ": @"
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ScM",
+      "text" : "MainActor"
+    },
+    {
+      "kind" : "text",
+      "text" : " ("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "_"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "internalParam",
+      "text" : "device"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB0C",
+      "text" : "StreamDeck"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB7SessionC5setUp12stateHandler09newDeviceH07contentyyAC5StateOScMYccSg_yAA0aB0CScMYccSgxALScMYcct7SwiftUI4ViewRzlFZ7ContentL_xmfp",
+      "text" : "Content"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/setUp(stateHandler:newDeviceHandler:content:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "setUp(stateHandler:newDeviceHandler:content:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/setup(statehandler:newdevicehandler:content:)"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/state-swift.property": {
   "abstract" : [
@@ -863,87 +1136,6 @@
   "title" : "state",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdecksession\/state-swift.property"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/stateHandler-swift.property": {
-  "abstract" : [
-    {
-      "text" : "Use this to handle the current session state. The ",
-      "type" : "text"
-    },
-    {
-      "code" : "State",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " info can be used to inform users about courses of action e.g. in case of an error.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "var"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "stateHandler"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:13StreamDeckKit0aB7SessionC12StateHandlera",
-      "text" : "StateHandler"
-    },
-    {
-      "kind" : "text",
-      "text" : "?"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/stateHandler-swift.property",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "stateHandler",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/statehandler-swift.property"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/stop()": {
-  "abstract" : [
-    {
-      "text" : "Stops all observations, disconnects from the driver and clears the device list.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "stop"
-    },
-    {
-      "kind" : "text",
-      "text" : "()"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/stop()",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "stop()",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/stop()"
 }
 }
 }

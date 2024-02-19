@@ -89,17 +89,20 @@
   "topicSections" : [
     {
       "identifiers" : [
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/init(keyCount:keySize:keyRows:keyColumns:dialCount:displaySize:keyAreaRect:touchDisplayRect:keyHorizontalSpacing:keyVerticalSpacing:imageFormat:transform:hasSetFullscreenImageSupport:hasSetImageOnXYSupport:hasFillDisplaySupport:)"
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/Features-swift.struct"
+      ],
+      "title" : "Structures"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/init(keyCount:keySize:keyRows:keyColumns:dialCount:screenSize:keyAreaRect:windowRect:keyHorizontalSpacing:keyVerticalSpacing:imageFormat:transform:features:)"
       ],
       "title" : "Initializers"
     },
     {
       "identifiers" : [
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/dialCount",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/displaySize",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/hasFillDisplaySupport",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/hasSetFullscreenImageSupport",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/hasSetImageOnXYSupport",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/features-swift.property",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/keyAreaBottomSpacing",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/keyAreaLeadingSpacing",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/keyAreaRect",
@@ -111,15 +114,16 @@
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/keyRows",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/keySize",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/keyVerticalSpacing",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/touchDisplayRect"
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/screenSize",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/windowRect"
       ],
       "title" : "Instance Properties"
     },
     {
       "identifiers" : [
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/getKeyRect(_:)",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/getTouchAreaSectionDeviceRect(_:)",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/getTouchAreaSectionRect(_:)"
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/getDialAreaSectionDeviceRect(_:)",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/getDialAreaSectionRect(_:)",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/getKeyRect(_:)"
       ],
       "title" : "Instance Methods"
     }
@@ -183,6 +187,40 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/devicecapabilities"
 },
+"doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/Features-swift.struct": {
+  "abstract" : [
+    {
+      "text" : "Set of features supported by the device",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "Features"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/Features-swift.struct",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Features"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "DeviceCapabilities.Features",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/features-swift.struct"
+},
 "doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/dialCount": {
   "abstract" : [
     {
@@ -220,10 +258,10 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/dialcount"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/displaySize": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/features-swift.property": {
   "abstract" : [
     {
-      "text" : "The size in pixels of the physical display that sits behind all keys.",
+      "text" : "Set of features supported by the device.",
       "type" : "text"
     }
   ],
@@ -238,7 +276,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "displaySize"
+      "text" : "features"
     },
     {
       "kind" : "text",
@@ -246,20 +284,102 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "c:@S@CGSize",
-      "text" : "CGSize"
+      "preciseIdentifier" : "s:13StreamDeckKit18DeviceCapabilitiesV8FeaturesV",
+      "text" : "Features"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/features-swift.property",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "features",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/features-swift.property"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/getDialAreaSectionDeviceRect(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
     },
     {
       "kind" : "text",
-      "text" : "?"
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "getDialAreaSectionDeviceRect"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:@S@CGRect",
+      "text" : "CGRect"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/displaySize",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/getDialAreaSectionDeviceRect(_:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "displaySize",
+  "title" : "getDialAreaSectionDeviceRect(_:)",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/displaysize"
+  "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/getdialareasectiondevicerect(_:)"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/getDialAreaSectionRect(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "getDialAreaSectionRect"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:@S@CGRect",
+      "text" : "CGRect"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/getDialAreaSectionRect(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "getDialAreaSectionRect(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/getdialareasectionrect(_:)"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/getKeyRect(_:)": {
   "abstract" : [
@@ -304,231 +424,7 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/getkeyrect(_:)"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/getTouchAreaSectionDeviceRect(_:)": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "getTouchAreaSectionDeviceRect"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Si",
-      "text" : "Int"
-    },
-    {
-      "kind" : "text",
-      "text" : ") -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "c:@S@CGRect",
-      "text" : "CGRect"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/getTouchAreaSectionDeviceRect(_:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "getTouchAreaSectionDeviceRect(_:)",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/gettouchareasectiondevicerect(_:)"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/getTouchAreaSectionRect(_:)": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "getTouchAreaSectionRect"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Si",
-      "text" : "Int"
-    },
-    {
-      "kind" : "text",
-      "text" : ") -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "c:@S@CGRect",
-      "text" : "CGRect"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/getTouchAreaSectionRect(_:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "getTouchAreaSectionRect(_:)",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/gettouchareasectionrect(_:)"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/hasFillDisplaySupport": {
-  "abstract" : [
-    {
-      "text" : "The hardware supports the filling of the whole display with a color (See ",
-      "type" : "text"
-    },
-    {
-      "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/fillDisplay(_:)",
-      "isActive" : true,
-      "type" : "reference"
-    },
-    {
-      "text" : ").",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "let"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "hasFillDisplaySupport"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/hasFillDisplaySupport",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "hasFillDisplaySupport",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/hasfilldisplaysupport"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/hasSetFullscreenImageSupport": {
-  "abstract" : [
-    {
-      "text" : "The hardware supports the setting of images to the whole display (See ",
-      "type" : "text"
-    },
-    {
-      "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setFullscreenImage(_:scaleAspectFit:)",
-      "isActive" : true,
-      "type" : "reference"
-    },
-    {
-      "text" : ").",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "let"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "hasSetFullscreenImageSupport"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/hasSetFullscreenImageSupport",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "hasSetFullscreenImageSupport",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/hassetfullscreenimagesupport"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/hasSetImageOnXYSupport": {
-  "abstract" : [
-    {
-      "text" : "Supports setting images on the touch strip via ",
-      "type" : "text"
-    },
-    {
-      "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setTouchAreaImage(_:at:scaleAspectFit:)",
-      "isActive" : true,
-      "type" : "reference"
-    },
-    {
-      "text" : ".",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "let"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "hasSetImageOnXYSupport"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/hasSetImageOnXYSupport",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "hasSetImageOnXYSupport",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/hassetimageonxysupport"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/init(keyCount:keySize:keyRows:keyColumns:dialCount:displaySize:keyAreaRect:touchDisplayRect:keyHorizontalSpacing:keyVerticalSpacing:imageFormat:transform:hasSetFullscreenImageSupport:hasSetImageOnXYSupport:hasFillDisplaySupport:)": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/init(keyCount:keySize:keyRows:keyColumns:dialCount:screenSize:keyAreaRect:windowRect:keyHorizontalSpacing:keyVerticalSpacing:imageFormat:transform:features:)": {
   "abstract" : [
     {
       "text" : "Creates an instance with the given values.",
@@ -631,7 +527,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "displaySize"
+      "text" : "screenSize"
     },
     {
       "kind" : "text",
@@ -665,7 +561,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "touchDisplayRect"
+      "text" : "windowRect"
     },
     {
       "kind" : "text",
@@ -750,7 +646,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "hasSetFullscreenImageSupport"
+      "text" : "features"
     },
     {
       "kind" : "text",
@@ -758,54 +654,20 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "hasSetImageOnXYSupport"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "hasFillDisplaySupport"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
+      "preciseIdentifier" : "s:13StreamDeckKit18DeviceCapabilitiesV8FeaturesV",
+      "text" : "Features"
     },
     {
       "kind" : "text",
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/init(keyCount:keySize:keyRows:keyColumns:dialCount:displaySize:keyAreaRect:touchDisplayRect:keyHorizontalSpacing:keyVerticalSpacing:imageFormat:transform:hasSetFullscreenImageSupport:hasSetImageOnXYSupport:hasFillDisplaySupport:)",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/init(keyCount:keySize:keyRows:keyColumns:dialCount:screenSize:keyAreaRect:windowRect:keyHorizontalSpacing:keyVerticalSpacing:imageFormat:transform:features:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "init(keyCount:keySize:keyRows:keyColumns:dialCount:displaySize:keyAreaRect:touchDisplayRect:keyHorizontalSpacing:keyVerticalSpacing:imageFormat:transform:hasSetFullscreenImageSupport:hasSetImageOnXYSupport:hasFillDisplaySupport:)",
+  "title" : "init(keyCount:keySize:keyRows:keyColumns:dialCount:screenSize:keyAreaRect:windowRect:keyHorizontalSpacing:keyVerticalSpacing:imageFormat:transform:features:)",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/init(keycount:keysize:keyrows:keycolumns:dialcount:displaysize:keyarearect:touchdisplayrect:keyhorizontalspacing:keyverticalspacing:imageformat:transform:hassetfullscreenimagesupport:hassetimageonxysupport:hasfilldisplaysupport:)"
+  "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/init(keycount:keysize:keyrows:keycolumns:dialcount:screensize:keyarearect:windowrect:keyhorizontalspacing:keyverticalspacing:imageformat:transform:features:)"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/keyAreaBottomSpacing": {
   "abstract" : [
@@ -878,7 +740,7 @@
 "doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/keyAreaRect": {
   "abstract" : [
     {
-      "text" : "The position and dimension of the key area inside the main display.",
+      "text" : "The position and dimension of the key area inside the main screen.",
       "type" : "text"
     }
   ],
@@ -1210,10 +1072,10 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/keyverticalspacing"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/touchDisplayRect": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/screenSize": {
   "abstract" : [
     {
-      "text" : "The position and dimension of the touch strip area inside the main display.",
+      "text" : "The size in pixels of the physical screen that sits behind all keys.",
       "type" : "text"
     }
   ],
@@ -1228,7 +1090,48 @@
     },
     {
       "kind" : "identifier",
-      "text" : "touchDisplayRect"
+      "text" : "screenSize"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:@S@CGSize",
+      "text" : "CGSize"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/screenSize",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "screenSize",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/screensize"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/windowRect": {
+  "abstract" : [
+    {
+      "text" : "The position and dimension of the window area inside the main screen.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "windowRect"
     },
     {
       "kind" : "text",
@@ -1244,186 +1147,12 @@
       "text" : "?"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/touchDisplayRect",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/windowRect",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "touchDisplayRect",
+  "title" : "windowRect",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/touchdisplayrect"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/fillDisplay(_:)": {
-  "abstract" : [
-    {
-      "text" : "Fills the whole display area (all keys and the touch area) with the given color.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "fillDisplay"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "c:objc(cs)UIColor",
-      "text" : "UIColor"
-    },
-    {
-      "kind" : "text",
-      "text" : ")"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/fillDisplay(_:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "fillDisplay(_:)",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeck\/filldisplay(_:)"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/setFullscreenImage(_:scaleAspectFit:)": {
-  "abstract" : [
-    {
-      "text" : "Set an image to the whole screen of the Stream Deck.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "setFullscreenImage"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "c:objc(cs)UIImage",
-      "text" : "UIImage"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "scaleAspectFit"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
-    },
-    {
-      "kind" : "text",
-      "text" : ")"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setFullscreenImage(_:scaleAspectFit:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "setFullscreenImage(_:scaleAspectFit:)",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeck\/setfullscreenimage(_:scaleaspectfit:)"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/setTouchAreaImage(_:at:scaleAspectFit:)": {
-  "abstract" : [
-    {
-      "text" : "Set an image to a given area of the touch strip.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "setTouchAreaImage"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "c:objc(cs)UIImage",
-      "text" : "UIImage"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "at"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "c:@S@CGRect",
-      "text" : "CGRect"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "scaleAspectFit"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
-    },
-    {
-      "kind" : "text",
-      "text" : ")"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setTouchAreaImage(_:at:scaleAspectFit:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "setTouchAreaImage(_:at:scaleAspectFit:)",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeck\/settouchareaimage(_:at:scaleaspectfit:)"
+  "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/windowrect"
 }
 }
 }

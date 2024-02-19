@@ -1,0 +1,234 @@
+{
+  "abstract" : [
+    {
+      "text" : "Set of features supported by the device.",
+      "type" : "text"
+    }
+  ],
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/features-swift.property"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "s:13StreamDeckKit18DeviceCapabilitiesV8featuresAC8FeaturesVvp",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "let"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "features"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:13StreamDeckKit18DeviceCapabilitiesV8FeaturesV",
+        "text" : "Features"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "StreamDeckKit"
+      }
+    ],
+    "role" : "symbol",
+    "roleHeading" : "Instance Property",
+    "symbolKind" : "property",
+    "title" : "features"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "iOS"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "let"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "features"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/Features-swift.struct",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:13StreamDeckKit18DeviceCapabilitiesV8FeaturesV",
+              "text" : "Features"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/streamdeckkit\/devicecapabilities\/features-swift.property"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://StreamDeckKit/documentation/StreamDeckKit": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "StreamDeckKit",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities": {
+  "abstract" : [
+    {
+      "text" : "The capabilities and measurements of Stream Deck device.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "DeviceCapabilities"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "DeviceCapabilities"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "DeviceCapabilities",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/devicecapabilities"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/Features-swift.struct": {
+  "abstract" : [
+    {
+      "text" : "Set of features supported by the device",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "Features"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/Features-swift.struct",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Features"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "DeviceCapabilities.Features",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/features-swift.struct"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/features-swift.property": {
+  "abstract" : [
+    {
+      "text" : "Set of features supported by the device.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "features"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit18DeviceCapabilitiesV8FeaturesV",
+      "text" : "Features"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/features-swift.property",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "features",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/features-swift.property"
+}
+}
+}

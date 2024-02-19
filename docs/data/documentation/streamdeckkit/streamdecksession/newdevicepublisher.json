@@ -158,12 +158,20 @@
               "type" : "text"
             },
             {
-              "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/newDeviceHandler-swift.property",
+              "code" : "newDeviceHandler",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " property of ",
+              "type" : "text"
+            },
+            {
+              "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/setUp(stateHandler:newDeviceHandler:)-swift.type.method",
               "isActive" : true,
               "type" : "reference"
             },
             {
-              "text" : " property to handle this with a closure.",
+              "text" : " to handle this with a closure.",
               "type" : "text"
             }
           ],
@@ -274,47 +282,6 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdecksession"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/newDeviceHandler-swift.property": {
-  "abstract" : [
-    {
-      "text" : "Use this to handle attaching\/detaching Stream Deck devices.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "var"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "newDeviceHandler"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:13StreamDeckKit0aB7SessionC16NewDeviceHandlera",
-      "text" : "NewDeviceHandler"
-    },
-    {
-      "kind" : "text",
-      "text" : "?"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/newDeviceHandler-swift.property",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "newDeviceHandler",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/newdevicehandler-swift.property"
-},
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/newDevicePublisher": {
   "abstract" : [
     {
@@ -373,6 +340,80 @@
   "title" : "newDevicePublisher",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdecksession\/newdevicepublisher"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/setUp(stateHandler:newDeviceHandler:)-swift.type.method": {
+  "abstract" : [
+    {
+      "text" : "Set up this session.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "setUp"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "stateHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB7SessionC12StateHandlera",
+      "text" : "StateHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "newDeviceHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB7SessionC16NewDeviceHandlera",
+      "text" : "NewDeviceHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : "?)"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/setUp(stateHandler:newDeviceHandler:)-swift.type.method",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "setUp(stateHandler:newDeviceHandler:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/setup(statehandler:newdevicehandler:)-swift.type.method"
 }
 }
 }

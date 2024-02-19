@@ -142,7 +142,7 @@
       "type" : "text"
     },
     {
-      "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/InputEvent\/fling(startX:startY:endX:endY:)",
+      "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/InputEvent\/fling(start:end:)",
       "isActive" : true,
       "type" : "reference"
     },
@@ -203,7 +203,7 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/inputevent\/direction-swift.enum\/down"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/InputEvent/fling(startX:startY:endX:endY:)": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/InputEvent/fling(start:end:)": {
   "abstract" : [
     {
       "text" : "Signals a swipe-like gesture on the touch strip of e.g. a Stream Deck Plus.",
@@ -229,7 +229,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "startX"
+      "text" : "start"
     },
     {
       "kind" : "text",
@@ -237,8 +237,8 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Si",
-      "text" : "Int"
+      "preciseIdentifier" : "c:@S@CGPoint",
+      "text" : "CGPoint"
     },
     {
       "kind" : "text",
@@ -246,7 +246,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "startY"
+      "text" : "end"
     },
     {
       "kind" : "text",
@@ -254,54 +254,20 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Si",
-      "text" : "Int"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "endX"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Si",
-      "text" : "Int"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "endY"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Si",
-      "text" : "Int"
+      "preciseIdentifier" : "c:@S@CGPoint",
+      "text" : "CGPoint"
     },
     {
       "kind" : "text",
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/InputEvent\/fling(startX:startY:endX:endY:)",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/InputEvent\/fling(start:end:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "InputEvent.fling(startX:startY:endX:endY:)",
+  "title" : "InputEvent.fling(start:end:)",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/inputevent\/fling(startx:starty:endx:endy:)"
+  "url" : "\/documentation\/streamdeckkit\/inputevent\/fling(start:end:)"
 }
 }
 }

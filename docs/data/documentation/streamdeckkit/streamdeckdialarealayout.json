@@ -1,0 +1,749 @@
+{
+  "abstract" : [
+    {
+      "text" : "A View that draws the layout of a Stream Deck dial window area (The display above the ).",
+      "type" : "text"
+    }
+  ],
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "s:13StreamDeckKit0aB14DialAreaLayoutV",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "struct"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "StreamDeckDialAreaLayout"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "StreamDeckKit"
+      }
+    ],
+    "navigatorTitle" : [
+      {
+        "kind" : "identifier",
+        "text" : "StreamDeckDialAreaLayout"
+      }
+    ],
+    "role" : "symbol",
+    "roleHeading" : "Structure",
+    "symbolKind" : "struct",
+    "title" : "StreamDeckDialAreaLayout"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "iOS"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "struct"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "StreamDeckDialAreaLayout"
+            },
+            {
+              "kind" : "text",
+              "text" : "<"
+            },
+            {
+              "kind" : "genericParameter",
+              "text" : "Dial"
+            },
+            {
+              "kind" : "text",
+              "text" : "> "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "where"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "text" : "Dial"
+            },
+            {
+              "kind" : "text",
+              "text" : " : "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:7SwiftUI4ViewP",
+              "text" : "View"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "overview",
+          "level" : 2,
+          "text" : "Overview",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "Use this to render the window area of a Stream Deck Plus and handle its events.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "The layout depends on the device from the current ",
+              "type" : "text"
+            },
+            {
+              "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckViewContext",
+              "isActive" : true,
+              "type" : "reference"
+            },
+            {
+              "text" : " environment.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
+    }
+  ],
+  "relationshipsSections" : [
+    {
+      "identifiers" : [
+        "doc:\/\/StreamDeckKit\/7SwiftUI4ViewP"
+      ],
+      "kind" : "relationships",
+      "title" : "Conforms To",
+      "type" : "conformsTo"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "topicSections" : [
+    {
+      "identifiers" : [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout\/init(rotate:press:touch:fling:dial:)-5emav",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout\/init(rotate:press:touch:fling:dial:)-9r331"
+      ],
+      "title" : "Initializers"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout\/body"
+      ],
+      "title" : "Instance Properties"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout\/DialPressHandler",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout\/DialRotationHandler",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout\/FlingHandler",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout\/TouchHandler"
+      ],
+      "title" : "Type Aliases"
+    },
+    {
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout\/View-Implementations"
+      ],
+      "title" : "Default Implementations"
+    }
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/streamdeckkit\/streamdeckdialarealayout"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://StreamDeckKit/7SwiftUI4ViewP": {
+  "identifier" : "doc:\/\/StreamDeckKit\/7SwiftUI4ViewP",
+  "title" : "SwiftUI.View",
+  "type" : "unresolvable"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "StreamDeckKit",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialAreaLayout": {
+  "abstract" : [
+    {
+      "text" : "A View that draws the layout of a Stream Deck dial window area (The display above the ).",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckDialAreaLayout"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckDialAreaLayout"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckDialAreaLayout",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckdialarealayout"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialAreaLayout/DialPressHandler": {
+  "abstract" : [
+    {
+      "text" : "A handler for press events on a rotary encoder(dial).",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "typealias"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "DialPressHandler"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout\/DialPressHandler",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "DialPressHandler"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckDialAreaLayout.DialPressHandler",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckdialarealayout\/dialpresshandler"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialAreaLayout/DialRotationHandler": {
+  "abstract" : [
+    {
+      "text" : "A handler for rotation events on a rotary encoder(dial).",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "typealias"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "DialRotationHandler"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout\/DialRotationHandler",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "DialRotationHandler"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckDialAreaLayout.DialRotationHandler",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckdialarealayout\/dialrotationhandler"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialAreaLayout/FlingHandler": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "typealias"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "FlingHandler"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout\/FlingHandler",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "FlingHandler"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckDialAreaLayout.FlingHandler",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckdialarealayout\/flinghandler"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialAreaLayout/TouchHandler": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "typealias"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "TouchHandler"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout\/TouchHandler",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "TouchHandler"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckDialAreaLayout.TouchHandler",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckdialarealayout\/touchhandler"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialAreaLayout/View-Implementations": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout\/View-Implementations",
+  "kind" : "article",
+  "role" : "collectionGroup",
+  "title" : "View Implementations",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckdialarealayout\/view-implementations"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialAreaLayout/body": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "body"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "some"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7SwiftUI4ViewP",
+      "text" : "View"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout\/body",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "body",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckdialarealayout\/body"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialAreaLayout/init(rotate:press:touch:fling:dial:)-5emav": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "identifier",
+      "text" : "init"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "rotate"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB14DialAreaLayoutV0D15RotationHandlera",
+      "text" : "DialRotationHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "press"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB14DialAreaLayoutV0D12PressHandlera",
+      "text" : "DialPressHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "touch"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB14DialAreaLayoutV12TouchHandlera",
+      "text" : "TouchHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "fling"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB14DialAreaLayoutV12FlingHandlera",
+      "text" : "FlingHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "dial"
+    },
+    {
+      "kind" : "text",
+      "text" : ": @"
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ScM",
+      "text" : "MainActor"
+    },
+    {
+      "kind" : "text",
+      "text" : " ("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB11ViewContextV",
+      "text" : "StreamDeckViewContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB14DialAreaLayoutV0D0xmfp",
+      "text" : "Dial"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout\/init(rotate:press:touch:fling:dial:)-5emav",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "init(rotate:press:touch:fling:dial:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckdialarealayout\/init(rotate:press:touch:fling:dial:)-5emav"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialAreaLayout/init(rotate:press:touch:fling:dial:)-9r331": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "identifier",
+      "text" : "init"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "rotate"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB14DialAreaLayoutV0D15RotationHandlera",
+      "text" : "DialRotationHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "press"
+    },
+    {
+      "kind" : "text",
+      "text" : ": @"
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ScM",
+      "text" : "MainActor"
+    },
+    {
+      "kind" : "text",
+      "text" : " ("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s4Voida",
+      "text" : "Void"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "touch"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB14DialAreaLayoutV12TouchHandlera",
+      "text" : "TouchHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "fling"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB14DialAreaLayoutV12FlingHandlera",
+      "text" : "FlingHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "dial"
+    },
+    {
+      "kind" : "text",
+      "text" : ": @"
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ScM",
+      "text" : "MainActor"
+    },
+    {
+      "kind" : "text",
+      "text" : " ("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB11ViewContextV",
+      "text" : "StreamDeckViewContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB14DialAreaLayoutV0D0xmfp",
+      "text" : "Dial"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout\/init(rotate:press:touch:fling:dial:)-9r331",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "init(rotate:press:touch:fling:dial:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckdialarealayout\/init(rotate:press:touch:fling:dial:)-9r331"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckViewContext": {
+  "abstract" : [
+    {
+      "text" : "Provides information about the current device\/key context in SwiftUI environments.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckViewContext"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckViewContext",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckViewContext"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckViewContext",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckviewcontext"
+}
+}
+}

@@ -117,33 +117,36 @@
       "identifiers" : [
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/capabilities",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/info",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/inputEventHander",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/inputEventsPublisher"
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/inputEventHandler-swift.property",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/inputEventsPublisher",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/isClosed"
       ],
       "title" : "Instance Properties"
     },
     {
       "identifiers" : [
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/clear(key:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/close()",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/fillDisplay(_:)",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/fillKey(_:at:)",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/fillScreen(_:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/onClose(_:)",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/set(color:to:)",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/set(uiColor:to:)",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/set(view:to:)",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/render(_:)",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/set(view:at:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setBrightness(_:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setFullscreen(view:)",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setFullscreenImage(_:scaleAspectFit:)",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setImage(_:to:scaleAspectFit:)",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setTouchArea(view:at:)",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setTouchAreaImage(_:at:scaleAspectFit:)"
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setKeyImage(_:at:scaleAspectFit:)",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setScreenImage(_:scaleAspectFit:)",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setWindowImage(_:at:scaleAspectFit:)",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setWindowImage(_:scaleAspectFit:)",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setWindowImage(view:at:)",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/showLogo()",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/supports(_:)"
       ],
       "title" : "Instance Methods"
     },
     {
       "identifiers" : [
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/CloseHandler",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/InputEventHandler"
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/InputEventHandler-swift.typealias"
       ],
       "title" : "Type Aliases"
     },
@@ -296,7 +299,7 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeck\/identifiable-implementations"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/InputEventHandler": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/InputEventHandler-swift.typealias": {
   "abstract" : [
 
   ],
@@ -314,7 +317,7 @@
       "text" : "InputEventHandler"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/InputEventHandler",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/InputEventHandler-swift.typealias",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
@@ -325,7 +328,7 @@
   "role" : "symbol",
   "title" : "StreamDeck.InputEventHandler",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeck\/inputeventhandler"
+  "url" : "\/documentation\/streamdeckkit\/streamdeck\/inputeventhandler-swift.typealias"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/capabilities": {
   "abstract" : [
@@ -364,52 +367,6 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeck\/capabilities"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/clear(key:)": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "clear"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "key"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Si",
-      "text" : "Int"
-    },
-    {
-      "kind" : "text",
-      "text" : ")"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/clear(key:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "clear(key:)",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeck\/clear(key:)"
-},
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/close()": {
   "abstract" : [
     {
@@ -442,10 +399,10 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeck\/close()"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/fillDisplay(_:)": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/fillKey(_:at:)": {
   "abstract" : [
     {
-      "text" : "Fills the whole display area (all keys and the touch area) with the given color.",
+      "text" : "Fills a key with the given color.",
       "type" : "text"
     }
   ],
@@ -460,7 +417,65 @@
     },
     {
       "kind" : "identifier",
-      "text" : "fillDisplay"
+      "text" : "fillKey"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)UIColor",
+      "text" : "UIColor"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "at"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/fillKey(_:at:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "fillKey(_:at:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeck\/fillkey(_:at:)"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/fillScreen(_:)": {
+  "abstract" : [
+    {
+      "text" : "Fills the whole screen (all keys and the touch area) with the given color.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "fillScreen"
     },
     {
       "kind" : "text",
@@ -476,12 +491,12 @@
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/fillDisplay(_:)",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/fillScreen(_:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "fillDisplay(_:)",
+  "title" : "fillScreen(_:)",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeck\/filldisplay(_:)"
+  "url" : "\/documentation\/streamdeckkit\/streamdeck\/fillscreen(_:)"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/info": {
   "abstract" : [
@@ -603,7 +618,7 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeck\/init(client:info:capabilities:)"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/inputEventHander": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/inputEventHandler-swift.property": {
   "abstract" : [
     {
       "text" : "Handler to receive input events.",
@@ -621,7 +636,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "inputEventHander"
+      "text" : "inputEventHandler"
     },
     {
       "kind" : "text",
@@ -637,12 +652,12 @@
       "text" : "?"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/inputEventHander",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/inputEventHandler-swift.property",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "inputEventHander",
+  "title" : "inputEventHandler",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeck\/inputeventhander"
+  "url" : "\/documentation\/streamdeckkit\/streamdeck\/inputeventhandler-swift.property"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/inputEventsPublisher": {
   "abstract" : [
@@ -702,6 +717,43 @@
   "title" : "inputEventsPublisher",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeck\/inputeventspublisher"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/isClosed": {
+  "abstract" : [
+    {
+      "text" : "Check if this device was closed. If true, all operations are silently ignored.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "isClosed"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/isClosed",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "isClosed",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeck\/isclosed"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/minimumDriverVersion": {
   "abstract" : [
@@ -789,9 +841,12 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeck\/onclose(_:)"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/set(color:to:)": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/render(_:)": {
   "abstract" : [
-
+    {
+      "text" : "Render the provided content on this device as long as the device remains open.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -804,118 +859,38 @@
     },
     {
       "kind" : "identifier",
-      "text" : "set"
+      "text" : "render"
     },
     {
       "kind" : "text",
-      "text" : "("
+      "text" : "<"
     },
     {
-      "kind" : "externalParam",
-      "text" : "color"
+      "kind" : "genericParameter",
+      "text" : "Content"
     },
     {
       "kind" : "text",
-      "text" : ": "
+      "text" : ">("
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:7SwiftUI5ColorV",
-      "text" : "Color"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "to"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Si",
-      "text" : "Int"
+      "preciseIdentifier" : "s:13StreamDeckKit0aB0C6renderyyx7SwiftUI4ViewRzlF7ContentL_xmfp",
+      "text" : "Content"
     },
     {
       "kind" : "text",
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/set(color:to:)",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/render(_:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "set(color:to:)",
+  "title" : "render(_:)",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeck\/set(color:to:)"
+  "url" : "\/documentation\/streamdeckkit\/streamdeck\/render(_:)"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/set(uiColor:to:)": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "set"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "uiColor"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "c:objc(cs)UIColor",
-      "text" : "UIColor"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "to"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Si",
-      "text" : "Int"
-    },
-    {
-      "kind" : "text",
-      "text" : ")"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/set(uiColor:to:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "set(uiColor:to:)",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeck\/set(uicolor:to:)"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/set(view:to:)": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/set(view:at:)": {
   "abstract" : [
 
   ],
@@ -963,7 +938,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "to"
+      "text" : "at"
     },
     {
       "kind" : "text",
@@ -979,12 +954,12 @@
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/set(view:to:)",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/set(view:at:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "set(view:to:)",
+  "title" : "set(view:at:)",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeck\/set(view:to:)"
+  "url" : "\/documentation\/streamdeckkit\/streamdeck\/set(view:at:)"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/setBrightness(_:)": {
   "abstract" : [
@@ -1081,65 +1056,7 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeck\/setfullscreen(view:)"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/setFullscreenImage(_:scaleAspectFit:)": {
-  "abstract" : [
-    {
-      "text" : "Set an image to the whole screen of the Stream Deck.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "setFullscreenImage"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "c:objc(cs)UIImage",
-      "text" : "UIImage"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "scaleAspectFit"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
-    },
-    {
-      "kind" : "text",
-      "text" : ")"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setFullscreenImage(_:scaleAspectFit:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "setFullscreenImage(_:scaleAspectFit:)",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeck\/setfullscreenimage(_:scaleaspectfit:)"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/setImage(_:to:scaleAspectFit:)": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/setKeyImage(_:at:scaleAspectFit:)": {
   "abstract" : [
     {
       "text" : "Sets an image to the given key.",
@@ -1157,7 +1074,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "setImage"
+      "text" : "setKeyImage"
     },
     {
       "kind" : "text",
@@ -1174,7 +1091,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "to"
+      "text" : "at"
     },
     {
       "kind" : "text",
@@ -1207,14 +1124,147 @@
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setImage(_:to:scaleAspectFit:)",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setKeyImage(_:at:scaleAspectFit:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "setImage(_:to:scaleAspectFit:)",
+  "title" : "setKeyImage(_:at:scaleAspectFit:)",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeck\/setimage(_:to:scaleaspectfit:)"
+  "url" : "\/documentation\/streamdeckkit\/streamdeck\/setkeyimage(_:at:scaleaspectfit:)"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/setTouchArea(view:at:)": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/setScreenImage(_:scaleAspectFit:)": {
+  "abstract" : [
+    {
+      "text" : "Set an image to the whole screen of the Stream Deck.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "setScreenImage"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)UIImage",
+      "text" : "UIImage"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "scaleAspectFit"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setScreenImage(_:scaleAspectFit:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "setScreenImage(_:scaleAspectFit:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeck\/setscreenimage(_:scaleaspectfit:)"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/setWindowImage(_:at:scaleAspectFit:)": {
+  "abstract" : [
+    {
+      "text" : "Set an image to a given area of the window.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "setWindowImage"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)UIImage",
+      "text" : "UIImage"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "at"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:@S@CGRect",
+      "text" : "CGRect"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "scaleAspectFit"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setWindowImage(_:at:scaleAspectFit:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "setWindowImage(_:at:scaleAspectFit:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeck\/setwindowimage(_:at:scaleaspectfit:)"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/setWindowImage(_:scaleAspectFit:)": {
   "abstract" : [
 
   ],
@@ -1229,7 +1279,62 @@
     },
     {
       "kind" : "identifier",
-      "text" : "setTouchArea"
+      "text" : "setWindowImage"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)UIImage",
+      "text" : "UIImage"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "scaleAspectFit"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setWindowImage(_:scaleAspectFit:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "setWindowImage(_:scaleAspectFit:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeck\/setwindowimage(_:scaleaspectfit:)"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/setWindowImage(view:at:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "setWindowImage"
     },
     {
       "kind" : "text",
@@ -1278,17 +1383,17 @@
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setTouchArea(view:at:)",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setWindowImage(view:at:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "setTouchArea(view:at:)",
+  "title" : "setWindowImage(view:at:)",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeck\/settoucharea(view:at:)"
+  "url" : "\/documentation\/streamdeckkit\/streamdeck\/setwindowimage(view:at:)"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/setTouchAreaImage(_:at:scaleAspectFit:)": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/showLogo()": {
   "abstract" : [
     {
-      "text" : "Set an image to a given area of the touch strip.",
+      "text" : "Show logo on device (resets device content)",
       "type" : "text"
     }
   ],
@@ -1303,7 +1408,47 @@
     },
     {
       "kind" : "identifier",
-      "text" : "setTouchAreaImage"
+      "text" : "showLogo"
+    },
+    {
+      "kind" : "text",
+      "text" : "()"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/showLogo()",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "showLogo()",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeck\/showlogo()"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/supports(_:)": {
+  "abstract" : [
+    {
+      "text" : "Check if the hardware supports the given feature.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "Note: Some hardware might lack features that are simulated in software.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "supports"
     },
     {
       "kind" : "text",
@@ -1311,54 +1456,34 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "c:objc(cs)UIImage",
-      "text" : "UIImage"
+      "preciseIdentifier" : "s:13StreamDeckKit18DeviceCapabilitiesV",
+      "text" : "DeviceCapabilities"
     },
     {
       "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "at"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
+      "text" : "."
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "c:@S@CGRect",
-      "text" : "CGRect"
+      "preciseIdentifier" : "s:13StreamDeckKit18DeviceCapabilitiesV8FeaturesV",
+      "text" : "Features"
     },
     {
       "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "scaleAspectFit"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
+      "text" : ") -> "
     },
     {
       "kind" : "typeIdentifier",
       "preciseIdentifier" : "s:Sb",
       "text" : "Bool"
-    },
-    {
-      "kind" : "text",
-      "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setTouchAreaImage(_:at:scaleAspectFit:)",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/supports(_:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "setTouchAreaImage(_:at:scaleAspectFit:)",
+  "title" : "supports(_:)",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeck\/settouchareaimage(_:at:scaleaspectfit:)"
+  "url" : "\/documentation\/streamdeckkit\/streamdeck\/supports(_:)"
 },
 "doc://StreamDeckKit/s12IdentifiableP": {
   "identifier" : "doc:\/\/StreamDeckKit\/s12IdentifiableP",

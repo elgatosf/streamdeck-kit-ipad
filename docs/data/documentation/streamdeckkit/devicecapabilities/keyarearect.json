@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "The position and dimension of the key area inside the main display.",
+      "text" : "The position and dimension of the key area inside the main screen.",
       "type" : "text"
     }
   ],
@@ -169,7 +169,7 @@
 "doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/keyAreaRect": {
   "abstract" : [
     {
-      "text" : "The position and dimension of the key area inside the main display.",
+      "text" : "The position and dimension of the key area inside the main screen.",
       "type" : "text"
     }
   ],

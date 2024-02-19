@@ -1,0 +1,207 @@
+{
+  "abstract" : [
+    {
+      "text" : "An unexpected and non discoverable communication error occurred. This should never happen.",
+      "type" : "text"
+    }
+  ],
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/SessionError"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/SessionError\/unexpectedDriverError"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "s:13StreamDeckKit0aB7SessionC0D5ErrorO016unexpectedDriverE0yA2EmF",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "case"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "unexpectedDriverError"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "StreamDeckKit"
+      }
+    ],
+    "role" : "symbol",
+    "roleHeading" : "Case",
+    "symbolKind" : "case",
+    "title" : "StreamDeckSession.SessionError.unexpectedDriverError"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "iOS"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "case"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "unexpectedDriverError"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/streamdeckkit\/streamdecksession\/sessionerror\/unexpecteddrivererror"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://StreamDeckKit/documentation/StreamDeckKit": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "StreamDeckKit",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession": {
+  "abstract" : [
+    {
+      "text" : "A mechanism that enables Stream Deck driver state observation and device detection.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckSession"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckSession"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckSession",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdecksession"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/SessionError": {
+  "abstract" : [
+    {
+      "text" : "Describes possible reasons for a failing driver-connection.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "enum"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "SessionError"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/SessionError",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "SessionError"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckSession.SessionError",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/sessionerror"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/SessionError/unexpectedDriverError": {
+  "abstract" : [
+    {
+      "text" : "An unexpected and non discoverable communication error occurred. This should never happen.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "unexpectedDriverError"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/SessionError\/unexpectedDriverError",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "StreamDeckSession.SessionError.unexpectedDriverError",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/sessionerror\/unexpecteddrivererror"
+}
+}
+}

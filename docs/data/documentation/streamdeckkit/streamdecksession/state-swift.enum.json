@@ -102,10 +102,9 @@
   "topicSections" : [
     {
       "identifiers" : [
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/State-swift.enum\/connecting",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/State-swift.enum\/failed(_:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/State-swift.enum\/idle",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/State-swift.enum\/ready"
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/State-swift.enum\/started"
       ],
       "title" : "Enumeration Cases"
     },
@@ -243,34 +242,6 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdecksession\/state-swift.enum\/equatable-implementations"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/State-swift.enum/connecting": {
-  "abstract" : [
-    {
-      "text" : "Trying to establish a connection to the driver.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "case"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "connecting"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/State-swift.enum\/connecting",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "StreamDeckSession.State.connecting",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/state-swift.enum\/connecting"
-},
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/State-swift.enum/failed(_:)": {
   "abstract" : [
     {
@@ -348,10 +319,10 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdecksession\/state-swift.enum\/idle"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/State-swift.enum/ready": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/State-swift.enum/started": {
   "abstract" : [
     {
-      "text" : "Connection to the driver is established. Devices can be observed.",
+      "text" : "Session is started and devices are being observed.",
       "type" : "text"
     }
   ],
@@ -366,15 +337,15 @@
     },
     {
       "kind" : "identifier",
-      "text" : "ready"
+      "text" : "started"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/State-swift.enum\/ready",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/State-swift.enum\/started",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "StreamDeckSession.State.ready",
+  "title" : "StreamDeckSession.State.started",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/state-swift.enum\/ready"
+  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/state-swift.enum\/started"
 },
 "doc://StreamDeckKit/s28CustomDebugStringConvertibleP": {
   "identifier" : "doc:\/\/StreamDeckKit\/s28CustomDebugStringConvertibleP",

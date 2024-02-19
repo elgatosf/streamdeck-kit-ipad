@@ -72,16 +72,6 @@
       "kind" : "declarations"
     }
   ],
-  "relationshipsSections" : [
-    {
-      "identifiers" : [
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientMock"
-      ],
-      "kind" : "relationships",
-      "title" : "Conforming Types",
-      "type" : "conformingTypes"
-    }
-  ],
   "schemaVersion" : {
     "major" : 0,
     "minor" : 3,
@@ -94,12 +84,15 @@
     {
       "identifiers" : [
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/close()",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/fillDisplay(red:green:blue:)",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/fillKey(red:green:blue:at:)",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/fillScreen(red:green:blue:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/setBrightness(_:)",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/setFullscreenImage(_:)",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/setImage(_:toButtonAt:)",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/setImage(_:x:y:w:h:)",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/setInputEventHandler(_:)"
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/setInputEventHandler(_:)",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/setKeyImage(_:at:)",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/setScreenImage(_:)",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/setWindowImage(_:)",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/setWindowImage(_:at:)",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/showLogo()"
       ],
       "title" : "Instance Methods"
     }
@@ -128,37 +121,6 @@
   "title" : "StreamDeckKit",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckClientMock": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "class"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "StreamDeckClientMock"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientMock",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "StreamDeckClientMock"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "StreamDeckClientMock",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeckclientmock"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckClientProtocol": {
   "abstract" : [
@@ -221,7 +183,7 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeckclientprotocol\/close()"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckClientProtocol/fillDisplay(red:green:blue:)": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckClientProtocol/fillKey(red:green:blue:at:)": {
   "abstract" : [
 
   ],
@@ -236,7 +198,105 @@
     },
     {
       "kind" : "identifier",
-      "text" : "fillDisplay"
+      "text" : "fillKey"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "red"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s5UInt8V",
+      "text" : "UInt8"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "green"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s5UInt8V",
+      "text" : "UInt8"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "blue"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s5UInt8V",
+      "text" : "UInt8"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "at"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/fillKey(red:green:blue:at:)",
+  "kind" : "symbol",
+  "required" : true,
+  "role" : "symbol",
+  "title" : "fillKey(red:green:blue:at:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckclientprotocol\/fillkey(red:green:blue:at:)"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckClientProtocol/fillScreen(red:green:blue:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "fillScreen"
     },
     {
       "kind" : "text",
@@ -294,13 +354,13 @@
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/fillDisplay(red:green:blue:)",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/fillScreen(red:green:blue:)",
   "kind" : "symbol",
   "required" : true,
   "role" : "symbol",
-  "title" : "fillDisplay(red:green:blue:)",
+  "title" : "fillScreen(red:green:blue:)",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeckclientprotocol\/filldisplay(red:green:blue:)"
+  "url" : "\/documentation\/streamdeckkit\/streamdeckclientprotocol\/fillscreen(red:green:blue:)"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckClientProtocol/setBrightness(_:)": {
   "abstract" : [
@@ -341,208 +401,6 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeckclientprotocol\/setbrightness(_:)"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckClientProtocol/setFullscreenImage(_:)": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "setFullscreenImage"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:10Foundation4DataV",
-      "text" : "Data"
-    },
-    {
-      "kind" : "text",
-      "text" : ")"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/setFullscreenImage(_:)",
-  "kind" : "symbol",
-  "required" : true,
-  "role" : "symbol",
-  "title" : "setFullscreenImage(_:)",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeckclientprotocol\/setfullscreenimage(_:)"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckClientProtocol/setImage(_:toButtonAt:)": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "setImage"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:10Foundation4DataV",
-      "text" : "Data"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "toButtonAt"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Si",
-      "text" : "Int"
-    },
-    {
-      "kind" : "text",
-      "text" : ")"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/setImage(_:toButtonAt:)",
-  "kind" : "symbol",
-  "required" : true,
-  "role" : "symbol",
-  "title" : "setImage(_:toButtonAt:)",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeckclientprotocol\/setimage(_:tobuttonat:)"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckClientProtocol/setImage(_:x:y:w:h:)": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "setImage"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:10Foundation4DataV",
-      "text" : "Data"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "x"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Si",
-      "text" : "Int"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "y"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Si",
-      "text" : "Int"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "w"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Si",
-      "text" : "Int"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "h"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Si",
-      "text" : "Int"
-    },
-    {
-      "kind" : "text",
-      "text" : ")"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/setImage(_:x:y:w:h:)",
-  "kind" : "symbol",
-  "required" : true,
-  "role" : "symbol",
-  "title" : "setImage(_:x:y:w:h:)",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeckclientprotocol\/setimage(_:x:y:w:h:)"
-},
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckClientProtocol/setInputEventHandler(_:)": {
   "abstract" : [
 
@@ -581,6 +439,226 @@
   "title" : "setInputEventHandler(_:)",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeckclientprotocol\/setinputeventhandler(_:)"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckClientProtocol/setKeyImage(_:at:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "setKeyImage"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10Foundation4DataV",
+      "text" : "Data"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "at"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/setKeyImage(_:at:)",
+  "kind" : "symbol",
+  "required" : true,
+  "role" : "symbol",
+  "title" : "setKeyImage(_:at:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckclientprotocol\/setkeyimage(_:at:)"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckClientProtocol/setScreenImage(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "setScreenImage"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10Foundation4DataV",
+      "text" : "Data"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/setScreenImage(_:)",
+  "kind" : "symbol",
+  "required" : true,
+  "role" : "symbol",
+  "title" : "setScreenImage(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckclientprotocol\/setscreenimage(_:)"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckClientProtocol/setWindowImage(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "setWindowImage"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10Foundation4DataV",
+      "text" : "Data"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/setWindowImage(_:)",
+  "kind" : "symbol",
+  "required" : true,
+  "role" : "symbol",
+  "title" : "setWindowImage(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckclientprotocol\/setwindowimage(_:)"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckClientProtocol/setWindowImage(_:at:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "setWindowImage"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10Foundation4DataV",
+      "text" : "Data"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "at"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:@S@CGRect",
+      "text" : "CGRect"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/setWindowImage(_:at:)",
+  "kind" : "symbol",
+  "required" : true,
+  "role" : "symbol",
+  "title" : "setWindowImage(_:at:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckclientprotocol\/setwindowimage(_:at:)"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckClientProtocol/showLogo()": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "showLogo"
+    },
+    {
+      "kind" : "text",
+      "text" : "()"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/showLogo()",
+  "kind" : "symbol",
+  "required" : true,
+  "role" : "symbol",
+  "title" : "showLogo()",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckclientprotocol\/showlogo()"
 }
 }
 }

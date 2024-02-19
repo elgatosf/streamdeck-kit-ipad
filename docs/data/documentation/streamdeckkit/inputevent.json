@@ -100,11 +100,11 @@
   "topicSections" : [
     {
       "identifiers" : [
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/InputEvent\/fling(startX:startY:endX:endY:)",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/InputEvent\/fling(start:end:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/InputEvent\/keyPress(index:pressed:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/InputEvent\/rotaryEncoderPress(index:pressed:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/InputEvent\/rotaryEncoderRotation(index:rotation:)",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/InputEvent\/touch(x:y:)"
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/InputEvent\/touch(_:)"
       ],
       "title" : "Enumeration Cases"
     },
@@ -211,7 +211,7 @@
       "type" : "text"
     },
     {
-      "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/InputEvent\/fling(startX:startY:endX:endY:)",
+      "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/InputEvent\/fling(start:end:)",
       "isActive" : true,
       "type" : "reference"
     },
@@ -265,7 +265,7 @@
       "type" : "text"
     },
     {
-      "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/InputEvent\/fling(startX:startY:endX:endY:)",
+      "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/InputEvent\/fling(start:end:)",
       "isActive" : true,
       "type" : "reference"
     },
@@ -304,7 +304,7 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/inputevent\/direction-swift.property"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/InputEvent/fling(startX:startY:endX:endY:)": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/InputEvent/fling(start:end:)": {
   "abstract" : [
     {
       "text" : "Signals a swipe-like gesture on the touch strip of e.g. a Stream Deck Plus.",
@@ -330,7 +330,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "startX"
+      "text" : "start"
     },
     {
       "kind" : "text",
@@ -338,8 +338,8 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Si",
-      "text" : "Int"
+      "preciseIdentifier" : "c:@S@CGPoint",
+      "text" : "CGPoint"
     },
     {
       "kind" : "text",
@@ -347,7 +347,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "startY"
+      "text" : "end"
     },
     {
       "kind" : "text",
@@ -355,54 +355,20 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Si",
-      "text" : "Int"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "endX"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Si",
-      "text" : "Int"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "endY"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Si",
-      "text" : "Int"
+      "preciseIdentifier" : "c:@S@CGPoint",
+      "text" : "CGPoint"
     },
     {
       "kind" : "text",
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/InputEvent\/fling(startX:startY:endX:endY:)",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/InputEvent\/fling(start:end:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "InputEvent.fling(startX:startY:endX:endY:)",
+  "title" : "InputEvent.fling(start:end:)",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/inputevent\/fling(startx:starty:endx:endy:)"
+  "url" : "\/documentation\/streamdeckkit\/inputevent\/fling(start:end:)"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/InputEvent/keyPress(index:pressed:)": {
   "abstract" : [
@@ -602,7 +568,7 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/inputevent\/rotaryencoderrotation(index:rotation:)"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/InputEvent/touch(x:y:)": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/InputEvent/touch(_:)": {
   "abstract" : [
     {
       "text" : "Signals a touch on the touch strip of e.g. a Stream Deck Plus.",
@@ -627,46 +593,21 @@
       "text" : "("
     },
     {
-      "kind" : "externalParam",
-      "text" : "x"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Si",
-      "text" : "Int"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "y"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Si",
-      "text" : "Int"
+      "preciseIdentifier" : "c:@S@CGPoint",
+      "text" : "CGPoint"
     },
     {
       "kind" : "text",
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/InputEvent\/touch(x:y:)",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/InputEvent\/touch(_:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "InputEvent.touch(x:y:)",
+  "title" : "InputEvent.touch(_:)",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/inputevent\/touch(x:y:)"
+  "url" : "\/documentation\/streamdeckkit\/inputevent\/touch(_:)"
 },
 "doc://StreamDeckKit/s23CustomStringConvertibleP": {
   "identifier" : "doc:\/\/StreamDeckKit\/s23CustomStringConvertibleP",

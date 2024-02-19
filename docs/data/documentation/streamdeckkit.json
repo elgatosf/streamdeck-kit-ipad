@@ -35,7 +35,6 @@
     {
       "identifiers" : [
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientMock",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession"
       ],
       "title" : "Classes"
@@ -50,7 +49,14 @@
       "identifiers" : [
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceInfo",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialView",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeypadLayout",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckLayout",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckViewContext",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckViewContextKey",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/Version"
       ],
       "title" : "Structures"
@@ -71,6 +77,7 @@
     },
     {
       "identifiers" : [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/SwiftUI",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/UIKit"
       ],
       "title" : "Extended Modules"
@@ -302,37 +309,6 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeck"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckClientMock": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "class"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "StreamDeckClientMock"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientMock",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "StreamDeckClientMock"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "StreamDeckClientMock",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeckclientmock"
-},
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckClientProtocol": {
   "abstract" : [
 
@@ -363,6 +339,170 @@
   "title" : "StreamDeckClientProtocol",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeckclientprotocol"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialAreaLayout": {
+  "abstract" : [
+    {
+      "text" : "A View that draws the layout of a Stream Deck dial window area (The display above the ).",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckDialAreaLayout"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckDialAreaLayout"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckDialAreaLayout",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckdialarealayout"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialView": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckDialView"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialView",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckDialView"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckDialView",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckdialview"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckKeyView": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckKeyView"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckKeyView"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckKeyView",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckkeyview"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckKeypadLayout": {
+  "abstract" : [
+    {
+      "text" : "A View that draws the layout of a Stream Deck keypad.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckKeypadLayout"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeypadLayout",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckKeypadLayout"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckKeypadLayout",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckkeypadlayout"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckLayout": {
+  "abstract" : [
+    {
+      "text" : "The basic view to build a layout for Stream Deck from.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckLayout"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckLayout",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckLayout"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckLayout",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdecklayout"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProduct": {
   "abstract" : [
@@ -465,6 +605,82 @@
   "title" : "StreamDeckSession",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdecksession"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckViewContext": {
+  "abstract" : [
+    {
+      "text" : "Provides information about the current device\/key context in SwiftUI environments.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckViewContext"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckViewContext",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckViewContext"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckViewContext",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckviewcontext"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckViewContextKey": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckViewContextKey"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckViewContextKey",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckViewContextKey"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckViewContextKey",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckviewcontextkey"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/SwiftUI": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/SwiftUI",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "SwiftUI",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/swiftui"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/UIKit": {
   "abstract" : [

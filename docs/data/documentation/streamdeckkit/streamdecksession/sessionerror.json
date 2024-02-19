@@ -103,9 +103,8 @@
   "topicSections" : [
     {
       "identifiers" : [
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/SessionError\/driverNotActive",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/SessionError\/driverNotInstalled",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/SessionError\/driverVersionMismatch"
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/SessionError\/driverVersionMismatch",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/SessionError\/unexpectedDriverError"
       ],
       "title" : "Enumeration Cases"
     },
@@ -243,62 +242,6 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdecksession\/sessionerror\/error-implementations"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/SessionError/driverNotActive": {
-  "abstract" : [
-    {
-      "text" : "The driver app is installed, but the driver is not enabled in the settings app.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "case"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "driverNotActive"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/SessionError\/driverNotActive",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "StreamDeckSession.SessionError.driverNotActive",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/sessionerror\/drivernotactive"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/SessionError/driverNotInstalled": {
-  "abstract" : [
-    {
-      "text" : "The driver app is missing and therefore needs to be installed on the device.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "case"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "driverNotInstalled"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/SessionError\/driverNotInstalled",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "StreamDeckSession.SessionError.driverNotInstalled",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/sessionerror\/drivernotinstalled"
-},
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/SessionError/driverVersionMismatch": {
   "abstract" : [
     {
@@ -326,6 +269,34 @@
   "title" : "StreamDeckSession.SessionError.driverVersionMismatch",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdecksession\/sessionerror\/driverversionmismatch"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/SessionError/unexpectedDriverError": {
+  "abstract" : [
+    {
+      "text" : "An unexpected and non discoverable communication error occurred. This should never happen.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "unexpectedDriverError"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/SessionError\/unexpectedDriverError",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "StreamDeckSession.SessionError.unexpectedDriverError",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/sessionerror\/unexpecteddrivererror"
 },
 "doc://StreamDeckKit/s5ErrorP": {
   "identifier" : "doc:\/\/StreamDeckKit\/s5ErrorP",

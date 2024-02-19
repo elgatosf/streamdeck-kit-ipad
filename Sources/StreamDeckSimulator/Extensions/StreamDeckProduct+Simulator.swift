@@ -76,7 +76,6 @@ extension StreamDeckProduct: Identifiable {
                     .setWindowImageAtXY,
                     .fillScreen,
                     .fillKey,
-                    .highDPI,
                     .keyPressEvents,
                     .rotaryEvents,
                     .touchEvents,
@@ -148,7 +147,6 @@ extension StreamDeckProduct: Identifiable {
                     .setScreenImage,
                     .fillScreen,
                     .fillKey,
-                    .highDPI,
                     .keyPressEvents
                 ]
             )

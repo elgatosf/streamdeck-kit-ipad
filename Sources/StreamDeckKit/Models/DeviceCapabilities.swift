@@ -46,8 +46,6 @@ public struct DeviceCapabilities {
         public static let fillKey = Features(SDFeatureFlags_fillKey)
         /// The hardware supports resetting the whole screen with the start logo.
         public static let showLogo = Features(SDFeatureFlags_showLogo)
-        /// The hardware support high DPI (scale 2)
-        public static let highDPI = Features(SDFeatureFlags_highDPI)
         /// The hardware reports key press input events.
         public static let keyPressEvents = Features(SDFeatureFlags_keyPressEvents)
         /// The hardware reports rotary input events.
@@ -87,7 +85,7 @@ public struct DeviceCapabilities {
     /// Set of features supported by the device.
     public let features: Features
 
-    var displayScale: CGFloat { features.contains(.highDPI) ? 2.0 : 1.0 }
+    let displayScale: CGFloat = 1.0
 
     /// Creates an instance with the given values.
     ///

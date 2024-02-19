@@ -1,0 +1,43 @@
+name: "Build, Test, Lint"
+run-name: Building, Testing, Linting
+on:
+  push: # pull_request
+    paths:
+      - '.github/workflows/swiftlint.yml'
+      - '.swiftlint.yml'
+      - '**/*.swift'
+jobs:
+  Test:
+    runs-on: macos-14
+    steps:
+      - name: Print job info
+        run: |
+          echo "The job was triggered by a ${{ github.event_name }} event and is now running on a ${{ runner.os }} server."
+          echo "The repository is ${{ github.repository }} and the branch is ${{ github.ref }}."
+          echo "Available XCode versions:"
+          sudo ls -1 /Applications | grep "Xcode"
+          echo "Selected XCode version:"
+          /usr/bin/xcodebuild -version
+
+      - uses: actions/checkout@v4
+
+      - name: Build Simulator
+        run: xcodebuild -scheme StreamDeckSimulator -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" | xcpretty
+
+      - name: Build Example 
+        run: |
+          cd Example
+          xcodebuild -scheme "Example App" -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" | xcpretty
+
+      - name: Test StreamDeckKit
+        run: xcodebuild -scheme StreamDeckKit-Package test -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" | xcpretty
+
+  Lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: GitHub Action for SwiftLint
+        uses: norio-nomura/action-swiftlint@3.2.1
+        with:
+          args: --strict

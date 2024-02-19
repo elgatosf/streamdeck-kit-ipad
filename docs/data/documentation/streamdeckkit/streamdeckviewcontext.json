@@ -118,6 +118,7 @@
       "identifiers" : [
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckViewContext\/device",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckViewContext\/index",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckViewContext\/nextID",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckViewContext\/size"
       ],
       "title" : "Instance Properties"
@@ -261,6 +262,40 @@
   "title" : "index",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeckviewcontext\/index"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckViewContext/nextID": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "nextID"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s6UInt64V",
+      "text" : "UInt64"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckViewContext\/nextID",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "nextID",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckviewcontext\/nextid"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckViewContext/size": {
   "abstract" : [

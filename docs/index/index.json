@@ -482,6 +482,56 @@
             "type" : "protocol"
           },
           {
+            "children" : [
+              {
+                "title" : "Associated Types",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckview\/content",
+                "title" : "Content",
+                "type" : "associatedtype"
+              },
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckview\/context",
+                "title" : "var context: StreamDeckViewContext",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckview\/streamdeckbody",
+                "title" : "var streamDeckBody: Self.Content",
+                "type" : "property"
+              },
+              {
+                "title" : "Default Implementations",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Instance Properties",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/streamdeckkit\/streamdeckview\/body",
+                    "title" : "var body: some View",
+                    "type" : "property"
+                  }
+                ],
+                "path" : "\/documentation\/streamdeckkit\/streamdeckview\/view-implementations",
+                "title" : "View Implementations",
+                "type" : "symbol"
+              }
+            ],
+            "path" : "\/documentation\/streamdeckkit\/streamdeckview",
+            "title" : "StreamDeckView",
+            "type" : "protocol"
+          },
+          {
             "title" : "Structures",
             "type" : "groupMarker"
           },
@@ -528,11 +578,6 @@
                   {
                     "path" : "\/documentation\/streamdeckkit\/devicecapabilities\/features-swift.struct\/flingevents",
                     "title" : "static let flingEvents: DeviceCapabilities.Features",
-                    "type" : "property"
-                  },
-                  {
-                    "path" : "\/documentation\/streamdeckkit\/devicecapabilities\/features-swift.struct\/highdpi",
-                    "title" : "static let highDPI: DeviceCapabilities.Features",
                     "type" : "property"
                   },
                   {
@@ -16176,6 +16221,11 @@
               {
                 "path" : "\/documentation\/streamdeckkit\/streamdeckviewcontext\/index",
                 "title" : "var index: Int",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/streamdeckkit\/streamdeckviewcontext\/nextid",
+                "title" : "var nextID: UInt64",
                 "type" : "property"
               },
               {

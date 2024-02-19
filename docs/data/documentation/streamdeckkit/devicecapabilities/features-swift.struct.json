@@ -119,7 +119,6 @@
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/Features-swift.struct\/fillKey",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/Features-swift.struct\/fillScreen",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/Features-swift.struct\/flingEvents",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/Features-swift.struct\/highDPI",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/Features-swift.struct\/keyPressEvents",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/Features-swift.struct\/rotaryEvents",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/Features-swift.struct\/setBrightness",
@@ -457,60 +456,6 @@
   "title" : "flingEvents",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/features-swift.struct\/flingevents"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/Features-swift.struct/highDPI": {
-  "abstract" : [
-    {
-      "text" : "The hardware support high DPI (scale 2)",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "static"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "let"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "highDPI"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:13StreamDeckKit18DeviceCapabilitiesV",
-      "text" : "DeviceCapabilities"
-    },
-    {
-      "kind" : "text",
-      "text" : "."
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:13StreamDeckKit18DeviceCapabilitiesV8FeaturesV",
-      "text" : "Features"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/Features-swift.struct\/highDPI",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "highDPI",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/features-swift.struct\/highdpi"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/Features-swift.struct/init(rawValue:)": {
   "abstract" : [

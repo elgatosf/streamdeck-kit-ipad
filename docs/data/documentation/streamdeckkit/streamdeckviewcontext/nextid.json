@@ -1,0 +1,202 @@
+{
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckViewContext"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckViewContext\/nextID"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "s:13StreamDeckKit0aB11ViewContextV6nextIDs6UInt64Vvp",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "var"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "nextID"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:s6UInt64V",
+        "text" : "UInt64"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "StreamDeckKit"
+      }
+    ],
+    "role" : "symbol",
+    "roleHeading" : "Instance Property",
+    "symbolKind" : "property",
+    "title" : "nextID"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "iOS"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "var"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "nextID"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:s6UInt64V",
+              "text" : "UInt64"
+            },
+            {
+              "kind" : "text",
+              "text" : " { "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "get"
+            },
+            {
+              "kind" : "text",
+              "text" : " }"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/streamdeckkit\/streamdeckviewcontext\/nextid"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://StreamDeckKit/documentation/StreamDeckKit": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "StreamDeckKit",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckViewContext": {
+  "abstract" : [
+    {
+      "text" : "Provides information about the current device\/key context in SwiftUI environments.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckViewContext"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckViewContext",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckViewContext"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckViewContext",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckviewcontext"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckViewContext/nextID": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "nextID"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s6UInt64V",
+      "text" : "UInt64"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckViewContext\/nextID",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "nextID",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckviewcontext\/nextid"
+}
+}
+}

@@ -41,7 +41,8 @@
     },
     {
       "identifiers" : [
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol"
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView"
       ],
       "title" : "Protocols"
     },
@@ -605,6 +606,48 @@
   "title" : "StreamDeckSession",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdecksession"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckView": {
+  "abstract" : [
+    {
+      "text" : "Protocol for views rendered on StreamDeck.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "This automatically tells StreamDeckLayout that the drawing area of this view needs to be updated on the device.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "protocol"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckView"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckView"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckView",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckview"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckViewContext": {
   "abstract" : [

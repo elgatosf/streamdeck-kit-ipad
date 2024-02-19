@@ -43,10 +43,9 @@ public final class StreamDeck {
     /// Handler to receive input events.
     ///
     /// Set a handler to handle key-presses, touches and other events.
-    public var inputEventHander: InputEventHandler? {
+    public var inputEventHandler: InputEventHandler? {
         didSet {
-            guard inputEventHander != nil else { return }
-
+            guard inputEventHandler != nil else { return }
             subscribeToInputEvents()
         }
     }
@@ -81,7 +80,7 @@ public final class StreamDeck {
     @MainActor
     private func handleInputEvent(_ event: InputEvent) {
         inputEventsSubject.send(event)
-        inputEventHander?(event)
+        inputEventHandler?(event)
     }
 
     private func subscribeToInputEvents() {
@@ -111,7 +110,7 @@ public final class StreamDeck {
     /// Fills the whole screen (all keys and the touch area) with the given color.
     /// - Parameter color: The color to fill the screen with.
     ///
-    /// Some devices do not support this feature (See ``DeviceCapabilities/hasFillScreenSupport``). StreamDeckKit will then
+    /// Some devices do not support this feature (See ``DeviceCapabilities/Features-swift.struct/fillScreen``). StreamDeckKit will then
     /// simulate the behavior by setting the color to each button individually.
     public func fillScreen(_ color: UIColor) {
         enqueueOperation(.fillScreen(color: color))
@@ -148,7 +147,7 @@ public final class StreamDeck {
     ///
     /// Setting a fullscreen image will overwrite all keys and the touch strip (when available).
     ///
-    /// Some devices do not support this feature (See ``DeviceCapabilities/hasSetScreenImageSupport``). StreamDeckKit will then
+    /// Some devices do not support this feature (See ``DeviceCapabilities/Features-swift.struct/setScreenImage``). StreamDeckKit will then
     /// simulate the behavior by splitting up the image, and set the correct parts to each key individually.
     public func setScreenImage(_ image: UIImage, scaleAspectFit: Bool = true) {
         enqueueOperation(.setScreenImage(image: image, scaleAspectFit: scaleAspectFit))

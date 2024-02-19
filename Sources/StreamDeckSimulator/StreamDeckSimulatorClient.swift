@@ -21,8 +21,8 @@ public final class StreamDeckSimulatorClient {
 
     public init(capabilities: DeviceCapabilities) {
         self.capabilities = capabilities
-        backgroundRenderer = capabilities.windowRect.flatMap { rect in
-            UIGraphicsImageRenderer(size: rect.size, format: .init(for: .init(displayScale: 1)))
+        backgroundRenderer = capabilities.screenSize.flatMap { size in
+            UIGraphicsImageRenderer(size: size, format: .init(for: .init(displayScale: 1)))
         }
     }
 

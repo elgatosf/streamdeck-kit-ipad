@@ -63,11 +63,11 @@ public struct StreamDeckDialView<Content: View>: View {
                     let caps = context.device.capabilities
                     let rect = caps.getDialAreaSectionDeviceRect(context.index)
                     if rect.contains(point) {
-                        let relativ = CGPoint(
+                        let relative = CGPoint(
                             x: point.x - rect.origin.x,
                             y: point.y - rect.origin.y
                         )
-                        handler(relativ)
+                        handler(relative)
                     }
                 default: break
                 }

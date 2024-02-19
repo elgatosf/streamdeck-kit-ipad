@@ -128,7 +128,7 @@ private extension StreamDeckSimulatorView {
                 let baseScale = metrics.size.width / (device.capabilities.screenSize?.width ?? CGFloat(1))
                 let scale = baseScale * baseScaleMultiplier
                 touchPad
-                    .overlay(alignment: .top) { if showKeyAreaBorders { borderOverlay } }
+                    .overlay { if showKeyAreaBorders { borderOverlay } }
                     .frame(width: metrics.size.width, height: metrics.size.height * 0.7)
                     .scaleEffect(.init(width: scale, height: scale), anchor: .center)
                     .transformEffect(.init(translationX: 0, y: baseScale * yTransformBaseScaleMultiplier))
@@ -197,27 +197,23 @@ private extension StreamDeckSimulatorView {
     @MainActor
     @ViewBuilder
     var borderOverlay: some View {
-        VStack {
-            StreamDeckKeypadLayout { _ in
-                StreamDeckKeyView { _ in
-                } content: {
-                    SimulatorKeyView { _ in
+        StreamDeckLayout { _ in
+            Color.clear
+        } keyAreaView: { _ in
+            StreamDeckKeypadLayout { context in
+                StreamDeckKeyView { _ in }
+                    content: {
+                        Color.clear.border(.red)
                     }
-                    .border(.red)
-                    .background(.clear)
-                }
             }
-            if device.capabilities.dialCount != 0 {
-                Spacer()
-
-                StreamDeckDialAreaLayout { _ in
-                    StreamDeckDialView {
-                        SimulatorTouchView { _ in } onFling: { _, _ in }
-                            .border(.red)
-                            .background(.clear)
-                    }
+        } windowView: { context in
+            StreamDeckDialAreaLayout { _ in
+                StreamDeckDialView {
+                    SimulatorTouchView { _ in } onFling: { _, _ in }
+                        .background {
+                            Color.clear.border(.red)
+                        }
                 }
-                .frame(maxHeight: 100, alignment: .bottom)
             }
         }
         .allowsHitTesting(false)
@@ -246,24 +242,23 @@ private extension StreamDeckSimulatorView {
 
 #if DEBUG
 
-// MARK: - Preview
+    // MARK: - Preview
 
-#Preview("Square", traits: .fixedLayout(width: 700, height: 700)) {
-    Group {
-        let config = StreamDeckProduct.mini.createConfiguration()
-        StreamDeckSimulatorView.create(streamDeck: .mini, config: config)
-            .frame(width: 400, height: 700)
-            .border(.green)
-            .onAppear {
-                config.device.setKeyImage(.init(systemName: "gear")!, at: 1)
-                config.device.fillKey(.red, at: 3)
-            }
+    #Preview("Square", traits: .fixedLayout(width: 700, height: 700)) {
+        Group {
+            let config = StreamDeckProduct.mini.createConfiguration()
+            StreamDeckSimulatorView.create(streamDeck: .mini, config: config)
+                .frame(width: 400, height: 700)
+                .onAppear {
+                    config.device.setKeyImage(.init(systemName: "gear")!, at: 1)
+                    config.device.fillKey(.red, at: 3)
+                }
+        }
     }
-}
 
-#Preview("Landscape", traits: .landscapeLeft) {
-    Group {
-        StreamDeckSimulatorView.create(streamDeck: .plus, config: StreamDeckProduct.plus.createConfiguration())
+    #Preview("Landscape", traits: .landscapeLeft) {
+        Group {
+            StreamDeckSimulatorView.create(streamDeck: .plus, config: StreamDeckProduct.plus.createConfiguration())
+        }
     }
-}
 #endif

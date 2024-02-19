@@ -23,15 +23,15 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build Simulator
-        run: xcodebuild -scheme StreamDeckSimulator -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" | xcpretty
+        run: set -o pipefail && xcodebuild -scheme StreamDeckSimulator -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" | xcpretty
 
       - name: Build Example 
         run: |
           cd Example
-          xcodebuild -scheme "Example App" -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" | xcpretty
+          set -o pipefail && xcodebuild -scheme "Example App" -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" | xcpretty
 
       - name: Test StreamDeckKit
-        run: xcodebuild -scheme StreamDeckKit-Package test -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" | xcpretty
+        run: set -o pipefail && xcodebuild -scheme StreamDeckKit-Package test -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" | xcpretty
 
   Lint:
     runs-on: ubuntu-latest

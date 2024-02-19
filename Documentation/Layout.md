@@ -1,9 +1,126 @@
 # Layout
 
+## Overview
+
+The `StreamDeckLayout` struct is a fundamental component for building layouts for Stream Deck devices using SwiftUI. It provides a way to define the key area view with its keys and window view with its dials for a Stream Deck layout. This layout can be used to draw a customized layout onto a Stream Deck device and to recognize Stream Deck interactions in the SwiftUI way.
+
+The general structure of `StreamDeckLayout` is as follows:
+```
+StreamDeckLayout
+└───keyArea: StreamDeckKeyAreaLayout
+│   └───StreamDeckKeyView
+└───windowArea: StreamDeckDialAreaLayout
+    └───StreamDeckDialView
+```
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="_images/StreamDeckLayout.dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="_images/StreamDeckLayout.light.svg">
   <img alt="An illustration of how layers are arranged in StreamDeckLayout" src="_images/StreamDeckLayout.light.svg">
 </picture>
 
-[...] Values will differ, depending on which view is the next parent in hierarchy. So in a `keyAreaView` of `StreamDeckLayout`, the `size` will reflect the size of the whole area. While in the `keyView` of a `StreamDeckKeypadLayout`, the `size` will reflect the size of the key canvas.
+> [!NOTE]
+> The window area is only available for the Stream Deck +.
+
+### Usage
+To use `StreamDeckLayout`, create an instance of it by specifying the key area and window views. Then, provide this instance to either the `StreamDeckSession/setUp` method or the `StreamDeck/render` method.
+
+## Example
+
+Here's an example of how to create a basic `StreamDeckLayout`:
+
+```swift
+import SwiftUI 
+import StreamDeckKit
+
+struct MyStreamDeckLayout: View {
+
+    var body: some View {
+        StreamDeckLayout {
+            // Define key area view
+            // Use StreamDeckKeypadLayout for rendering separate keys
+            StreamDeckKeypadLayout { context in
+                // Define content for each key.
+                // StreamDeckKeyView provides a callback for the key action, and the view content
+                // Example:
+                StreamDeckKeyView { pressed in
+                    print("pressed \(pressed)")
+                } content: {
+                    Text("\(context.index)")
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(.teal)
+                }
+            }.background(.purple)
+        } windowView: {
+            // Define window view
+            // Use StreamDeckDialAreaLayout for rendering separate parts of the display
+            StreamDeckDialAreaLayout { context in
+                // Define content for each dial
+                // StreamDeckDialView provides callbacks for the dial actions, and the view content
+                // Example:
+                StreamDeckDialView { rotations in
+                    print("dial rotated \(rotations)")
+                } press: { pressed in
+                    print("pressed \(pressed)")
+                } touch: { location in
+                    print("touched at \(location)")
+                } content: {
+                    Text("\(context.index)")
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(Array(
+                            repeating: Color(red: Double.random(in: 0 ... 1), green: Double.random(in: 0 ... 1), blue: Double.random(in: 0 ... 1)),
+                            count: context.device.capabilities.dialCount
+                        )[context.index])
+                }
+            }
+        }.background(.indigo)
+    }
+
+}
+
+```
+
+Depending on the device, the outcome will look like this:
+
+<table>
+<tr>
+    <td>Mini</td>
+    <td><img src="_images/layout_sd_mini.png"></td>
+    <td><img src="_images/layout_sd_mini_device.png"></td>
+   </tr> 
+  <tr>
+    <td>Classic</td>
+    <td><img src="_images/layout_sd_classic.png"></td>
+    <td><img src="_images/layout_sd_classic_device.png"></td>
+   </tr> 
+  </tr>
+    <tr>
+        <td>XL</td>
+        <td><img src="_images/layout_sd_xl.png"></td>
+    <td><img src="_images/layout_sd_xl_device.png"></td>
+   </tr> 
+   <tr>
+    <td>Plus</td>
+    <td><img src="_images/layout_sd_plus.png"></td>
+    <td><img src="_images/layout_sd_plus_device.png"></td>
+   </tr> 
+  </tr>
+</table>
+
+> [!NOTE]
+> On the Stream Deck Mini device, you can not apply a background to the entire layout.
+
+### SwiftUI Preview
+
+You can use the provided `StreamDeckSimulator/PreviewView` to view your layouts in the SwiftUI Preview canvas. 
+```swift
+import StreamDeckSimulator 
+
+#Preview {
+    StreamDeckSimulator.PreviewView(streamDeck: .plus) {
+        StreamDeckSession.setUp { device in
+          MyStreamDeckLayout()
+        }
+    }
+}
+```

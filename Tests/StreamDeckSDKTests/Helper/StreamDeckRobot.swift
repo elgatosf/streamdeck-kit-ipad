@@ -231,6 +231,4 @@ final class StreamDeckRobot {
             ) { $0.count == imageCount + 1 }
         }
     }
-
-
 }

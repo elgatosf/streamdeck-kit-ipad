@@ -11,21 +11,6 @@ import SwiftUI
 enum TestViews {
 
     final class SimpleEventModel: ObservableObject {
-        enum Event: Equatable, CustomStringConvertible {
-            case none, press(Bool), rotate(Int), fling(InputEvent.Direction), touch(CGPoint)
-
-            var description: String {
-                switch self {
-                case .none: "none"
-                case let .press(pressed): pressed ? "pressed" : "released"
-                case let .rotate(steps): "steps \(steps)"
-                case let .fling(direction): "fling \(direction.description)"
-                case let .touch(point): "touch(\(point.x),\(point.y))"
-                }
-            }
-
-        }
-
         @Published var lastEvent: Event = .none
     }
 
@@ -83,41 +68,17 @@ enum TestViews {
                     StreamDeckKeypadLayout { _ in
                         SimpleKey()
                     }
-                }) {
+                },
+                windowView: {
                     StreamDeckDialAreaLayout { _ in
                         SimpleDialView()
                     }
                 }
+            )
         }
     }
 
     struct TouchAreaTestLayout: View {
-        struct WindowLayout: StreamDeckView {
-            @StateObject var model = SimpleEventModel()
-            @Environment(\.streamDeckViewContext) var context
-
-            var streamDeckBody: some View {
-                ZStack {
-                    StreamDeckDialAreaLayout(
-                        rotate: { _, steps in
-                            model.lastEvent = .rotate(steps)
-                        },
-                        press: { _, isPressed in
-                            model.lastEvent = .press(isPressed)
-                        },
-                        touch: { point in
-                            model.lastEvent = .touch(point)
-                        },
-                        fling: { _, _, direction in
-                            model.lastEvent = .fling(direction)
-                        }
-                    ) { _ in SimpleDialView() }
-
-                    Text(model.lastEvent.description)
-                }
-            }
-        }
-
         var body: some View {
             StreamDeckLayout(
                 keyAreaView: { StreamDeckKeypadLayout { _ in SimpleKey() } },
@@ -125,7 +86,53 @@ enum TestViews {
             )
         }
     }
+}
 
+// MARK: - Nested types
+
+extension TestViews.SimpleEventModel {
+    enum Event: Equatable, CustomStringConvertible {
+        case none, press(Bool), rotate(Int), fling(InputEvent.Direction), touch(CGPoint)
+
+        var description: String {
+            switch self {
+            case .none: "none"
+            case let .press(pressed): pressed ? "pressed" : "released"
+            case let .rotate(steps): "steps \(steps)"
+            case let .fling(direction): "fling \(direction.description)"
+            case let .touch(point): "touch(\(point.x),\(point.y))"
+            }
+        }
+    }
+}
+
+extension TestViews.TouchAreaTestLayout {
+    struct WindowLayout: StreamDeckView {
+        @StateObject var model = SimpleEventModel()
+        @Environment(\.streamDeckViewContext) var context
+
+        var streamDeckBody: some View {
+            ZStack {
+                StreamDeckDialAreaLayout(
+                    rotate: { _, steps in
+                        model.lastEvent = .rotate(steps)
+                    },
+                    press: { _, isPressed in
+                        model.lastEvent = .press(isPressed)
+                    },
+                    touch: { point in
+                        model.lastEvent = .touch(point)
+                    },
+                    fling: { _, _, direction in
+                        model.lastEvent = .fling(direction)
+                    },
+                    dial: { _ in SimpleDialView() }
+                )
+
+                Text(model.lastEvent.description)
+            }
+        }
+    }
 }
 
 extension InputEvent.Direction: CustomStringConvertible {

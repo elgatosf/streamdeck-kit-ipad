@@ -42,9 +42,10 @@ extension StreamDeck {
         }
     }
 
+    // swiftlint:disable:next cyclomatic_complexity
     func enqueueOperation(_ operation: Operation) {
         guard !isClosed else { return }
-        
+
         var wasReplaced = false
 
         switch operation {
@@ -102,6 +103,7 @@ extension StreamDeck {
         }
     }
 
+    // swiftlint:disable:next cyclomatic_complexity function_body_length
     private func run(_ operation: Operation) async {
         switch operation {
         case let .setInputEventHandler(handler):

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		30303E232B6CDEF500DC3084 /* StreamDeckLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30303E222B6CDEF500DC3084 /* StreamDeckLayoutView.swift */; };
-		3073016D2B3DB70000C5F5B4 /* StreamDeckKit_ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3073016C2B3DB70000C5F5B4 /* StreamDeckKit_ExampleApp.swift */; };
+		3073016D2B3DB70000C5F5B4 /* StreamDeckKitExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3073016C2B3DB70000C5F5B4 /* StreamDeckKitExampleApp.swift */; };
 		3073016F2B3DB70000C5F5B4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3073016E2B3DB70000C5F5B4 /* ContentView.swift */; };
 		307301712B3DB70100C5F5B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 307301702B3DB70100C5F5B4 /* Assets.xcassets */; };
 		307301742B3DB70100C5F5B4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 307301732B3DB70100C5F5B4 /* Preview Assets.xcassets */; };
@@ -22,7 +22,7 @@
 		21DE1EAA2B46E86600B18417 /* Example-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Example-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		30303E222B6CDEF500DC3084 /* StreamDeckLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamDeckLayoutView.swift; sourceTree = "<group>"; };
 		307301692B3DB70000C5F5B4 /* StreamDeckKit Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "StreamDeckKit Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3073016C2B3DB70000C5F5B4 /* StreamDeckKit_ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamDeckKit_ExampleApp.swift; sourceTree = "<group>"; };
+		3073016C2B3DB70000C5F5B4 /* StreamDeckKitExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamDeckKitExampleApp.swift; sourceTree = "<group>"; };
 		3073016E2B3DB70000C5F5B4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		307301702B3DB70100C5F5B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		307301732B3DB70100C5F5B4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -67,7 +67,7 @@
 			children = (
 				21DE1EAA2B46E86600B18417 /* Example-App-Info.plist */,
 				307301852B3DBC7600C5F5B4 /* Example App.entitlements */,
-				3073016C2B3DB70000C5F5B4 /* StreamDeckKit_ExampleApp.swift */,
+				3073016C2B3DB70000C5F5B4 /* StreamDeckKitExampleApp.swift */,
 				3073016E2B3DB70000C5F5B4 /* ContentView.swift */,
 				30303E222B6CDEF500DC3084 /* StreamDeckLayoutView.swift */,
 				307301702B3DB70100C5F5B4 /* Assets.xcassets */,
@@ -99,6 +99,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 307301772B3DB70100C5F5B4 /* Build configuration list for PBXNativeTarget "Example App" */;
 			buildPhases = (
+				30DED3452B8390000042BCA8 /* SwiftLint */,
 				307301652B3DB70000C5F5B4 /* Sources */,
 				307301662B3DB70000C5F5B4 /* Frameworks */,
 				307301672B3DB70000C5F5B4 /* Resources */,
@@ -166,13 +167,35 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		30DED3452B8390000042BCA8 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint lint ../Sources\n  swiftlint lint ../Tests\n  swiftlint ../Package.swift\n  swiftlint lint \"Example App\" --config ../.swiftlint.yml\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n  exit 0\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		307301652B3DB70000C5F5B4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				3073016F2B3DB70000C5F5B4 /* ContentView.swift in Sources */,
-				3073016D2B3DB70000C5F5B4 /* StreamDeckKit_ExampleApp.swift in Sources */,
+				3073016D2B3DB70000C5F5B4 /* StreamDeckKitExampleApp.swift in Sources */,
 				30303E232B6CDEF500DC3084 /* StreamDeckLayoutView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,6 +333,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Example App/Preview Content\"";
 				DEVELOPMENT_TEAM = Y93VXCB8Q5;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Example-App-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -341,6 +365,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Example App/Preview Content\"";
 				DEVELOPMENT_TEAM = Y93VXCB8Q5;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Example-App-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

@@ -1,14 +1,8 @@
-name: "Build, Test, Lint"
-run-name: Building, Testing, Linting
+name: "Build all targets"
+run-name: Building all targets
 on: [pull_request]
-    # uncomment to make this depend on changed files
-    # push:
-    #  paths:
-    #    - '.github/workflows/swiftlint.yml'
-    #    - '.swiftlint.yml'
-    #    - '**/*.swift'
 jobs:
-  Test:
+  Build:
     runs-on: macos-14
     steps:
       - name: Print job info
@@ -29,16 +23,3 @@ jobs:
         run: |
           cd Example
           set -o pipefail && xcodebuild -scheme "Example App" -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" | xcpretty
-
-      - name: Test StreamDeckKit
-        run: set -o pipefail && xcodebuild -scheme StreamDeckKit-Package test -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" | xcpretty
-
-  Lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: GitHub Action for SwiftLint
-        uses: norio-nomura/action-swiftlint@3.2.1
-        with:
-          args: --strict

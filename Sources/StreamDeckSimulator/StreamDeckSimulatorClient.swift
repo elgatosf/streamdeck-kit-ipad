@@ -136,7 +136,7 @@ extension StreamDeckSimulatorClient: StreamDeckClientProtocol {
                 size: keySize
               )
         else { return }
-        
+
         keyImageSubject.value[index] = image
     }
 

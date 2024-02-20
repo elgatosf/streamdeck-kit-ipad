@@ -1,0 +1,7 @@
+opt_in_rules:
+  - overridden_super_call
+
+disabled_rules:
+  - identifier_name
+
+line_length: 150

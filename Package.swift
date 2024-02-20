@@ -21,11 +21,11 @@ let package = Package(
         .package(
             url: "https://github.com/pointfreeco/swift-snapshot-testing",
             from: "1.12.0"
-          ),
+        ),
         .package(
             url: "https://github.com/apple/swift-syntax.git",
             from: "509.0.0"
-        ),
+        )
     ],
     targets: [
         .target(
@@ -55,7 +55,7 @@ let package = Package(
                 "StreamDeckMacro",
                 "StreamDeckSimulator",
                 .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
-                .product(name: "SwiftSyntaxMacrosTestSupport", package: "swift-syntax"),
+                .product(name: "SwiftSyntaxMacrosTestSupport", package: "swift-syntax")
             ]
         )
     ]

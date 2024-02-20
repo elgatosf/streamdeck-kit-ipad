@@ -196,7 +196,7 @@ private extension StreamDeckSimulatorView {
     @ViewBuilder
     var borderOverlay: some View {
         StreamDeckLayout {
-            StreamDeckKeypadLayout { context in
+            StreamDeckKeypadLayout { _ in
                 StreamDeckKeyView {} content: {
                     Color.clear.border(.red)
                 }

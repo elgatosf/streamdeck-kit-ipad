@@ -33,7 +33,7 @@ struct NumberDisplayKey {
     var emoji: String { emojis[context.index] }
 
     var streamDeckBody: some View {
-        StreamDeckKeyView  { isPressed in
+        StreamDeckKeyView { isPressed in
             self.isPressed = isPressed
         } content: {
             ZStack {

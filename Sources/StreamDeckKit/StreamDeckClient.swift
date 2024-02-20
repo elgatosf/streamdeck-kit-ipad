@@ -21,6 +21,7 @@ final class StreamDeckClient {
         var inputEventHandler: InputEventHandler?
 
         @MainActor
+        // swiftlint:disable:next cyclomatic_complexity function_body_length
         func handle(_ event: SDInputEvent) {
             var event = event
 
@@ -313,7 +314,7 @@ extension StreamDeckClient: StreamDeckClientProtocol {
             return
         }
     }
-    
+
     func setScreenImage(_ data: Data) {
         var ret = kIOReturnSuccess
 
@@ -361,11 +362,11 @@ extension StreamDeckClient: StreamDeckClientProtocol {
             return
         }
     }
-    
+
     func fillScreen(red: UInt8, green: UInt8, blue: UInt8) {
         callScalar(SDExternalMethod_fillScreen, UInt64(red), UInt64(green), UInt64(blue))
     }
-    
+
     func fillKey(red: UInt8, green: UInt8, blue: UInt8, at index: Int) {
         callScalar(SDExternalMethod_fillKey, UInt64(index), UInt64(red), UInt64(green), UInt64(blue))
     }
@@ -409,3 +410,4 @@ private extension SDRect {
         return .init(origin: origin.cgPoint, size: size)
     }
 }
+// swiftlint:disable:this file_length

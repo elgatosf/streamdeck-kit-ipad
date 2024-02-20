@@ -12,7 +12,7 @@ import UIKit
 public final class StreamDeckClientMock {
     public typealias Key = (index: Int, image: UIImage)
     public typealias WindowImage = (rect: CGRect, image: UIImage)
-    public typealias Color = (red: UInt8, green: UInt8, blue: UInt8)
+    public typealias Color = (red: UInt8, green: UInt8, blue: UInt8) // swiftlint:disable:this large_tuple
     public typealias FillKey = (index: Int, color: Color)
 
     final class Recorder {
@@ -31,7 +31,7 @@ public final class StreamDeckClientMock {
                     self?.brightnesses.append(brightness)
                 }
                 .store(in: &cancellables)
-            
+
             mock.keys
                 .sink { [weak self] key in
                     self?.keys.append(key)
@@ -132,12 +132,12 @@ extension StreamDeckClientMock: StreamDeckClientProtocol {
         inputEventHandler = handler
         subscribedToInputEventsSubject.send(true)
     }
-    
+
     public func setBrightness(_ brightness: Int) {
         lock.lock(); defer { lock.unlock() }
         brightnessSubject.send(brightness)
     }
-    
+
     public func setKeyImage(_ data: Data, at index: Int) {
         lock.lock(); defer { lock.unlock() }
         guard let image = UIImage(data: data, scale: 1) else { return }
@@ -155,13 +155,13 @@ extension StreamDeckClientMock: StreamDeckClientProtocol {
         guard let image = UIImage(data: data, scale: 1) else { return }
         windowSubject.send((rect: rect, image: image))
     }
-    
+
     public func setScreenImage(_ data: Data) {
         lock.lock(); defer { lock.unlock() }
         guard let image = UIImage(data: data, scale: 1) else { return }
         screenSubject.send(image)
     }
-    
+
     public func fillScreen(red: UInt8, green: UInt8, blue: UInt8) {
         lock.lock(); defer { lock.unlock() }
         fillScreenSubject.send((red: red, green: green, blue: blue))

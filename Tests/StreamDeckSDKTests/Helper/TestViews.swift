@@ -11,7 +11,7 @@ import SwiftUI
 enum TestViews {
 
     final class SimpleEventModel: ObservableObject {
-        enum Event: Equatable, CustomStringConvertible {
+        enum Event: Equatable, CustomStringConvertible { // swiftlint:disable:this nesting
             case none, press(Bool), rotate(Int), fling(InputEvent.Direction), touch(CGPoint)
 
             var description: String {
@@ -82,17 +82,19 @@ enum TestViews {
                     StreamDeckKeypadLayout { _ in
                         SimpleKey()
                     }
-                }) {
+                },
+                windowView: {
                     StreamDeckDialAreaLayout { _ in
                         SimpleDialView()
                     }
                 }
+            )
         }
     }
 
     struct TouchAreaTestLayout: View {
         @StreamDeckView
-        struct WindowLayout {
+        struct WindowLayout { // swiftlint:disable:this nesting
             @StateObject var model = SimpleEventModel()
 
             var streamDeckBody: some View {
@@ -109,9 +111,9 @@ enum TestViews {
                         },
                         fling: { _, _, direction in
                             model.lastEvent = .fling(direction)
-                        }
-                    ) { _ in SimpleDialView() }
-
+                        },
+                        dial: { _ in SimpleDialView() }
+                    )
                     Text(model.lastEvent.description)
                 }
             }

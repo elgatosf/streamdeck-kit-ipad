@@ -108,7 +108,7 @@ final class StreamDeckLayoutRenderer {
                     at: .init(
                         x: rect.origin.x - windowRect.origin.x,
                         y: rect.origin.y - windowRect.origin.y,
-                        width: rect.width, 
+                        width: rect.width,
                         height: rect.height
                     ),
                     scaleAspectFit: false

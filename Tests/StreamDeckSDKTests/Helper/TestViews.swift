@@ -108,7 +108,7 @@ extension TestViews.SimpleEventModel {
 
 extension TestViews.TouchAreaTestLayout {
     struct WindowLayout: StreamDeckView {
-        @StateObject var model = SimpleEventModel()
+        @StateObject var model = TestViews.SimpleEventModel()
         @Environment(\.streamDeckViewContext) var context
 
         var streamDeckBody: some View {
@@ -126,7 +126,7 @@ extension TestViews.TouchAreaTestLayout {
                     fling: { _, _, direction in
                         model.lastEvent = .fling(direction)
                     },
-                    dial: { _ in SimpleDialView() }
+                    dial: { _ in TestViews.SimpleDialView() }
                 )
 
                 Text(model.lastEvent.description)

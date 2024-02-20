@@ -6,20 +6,22 @@
 //
 
 import StreamDeckKit
+import StreamDeckSimulator
 import SwiftUI
 
 struct StreamDeckLayoutView: View {
     var body: some View {
-        StreamDeckLayout { _ in
+        StreamDeckLayout {
+            StreamDeckKeypadLayout { _ in
+                NumberDisplayKey()
+            }
+        }
+        .background {
             LinearGradient(
                 gradient: .init(colors: [.teal, .blue]),
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
-        } keyAreaView: { _ in
-            StreamDeckKeypadLayout { _ in
-                NumberDisplayKey()
-            }
         }
     }
 }
@@ -39,6 +41,14 @@ struct NumberDisplayKey: StreamDeckView {
                 Text("\(emoji)")
                     .font(isPressed ? .largeTitle : .title)
             }
+        }
+    }
+}
+
+#Preview {
+    StreamDeckSimulator.PreviewView(streamDeck: .regular) {
+        StreamDeckSession.setUp { _ in
+            StreamDeckLayoutView()
         }
     }
 }

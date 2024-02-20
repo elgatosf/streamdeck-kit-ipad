@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import StreamDeckKit
 
 struct SimulatorKeyView: View {
 
@@ -25,7 +26,7 @@ struct SimulatorKeyView: View {
                 isPressed = true
             }
 
-        return Group {
+        StreamDeckKeyView {} content: {
             if let image = image {
                 Image(uiImage: image)
                     .resizable()
@@ -40,5 +41,11 @@ struct SimulatorKeyView: View {
         .onChange(of: isPressed) {
             onPress(isPressed)
         }
+    }
+}
+
+extension SimulatorKeyView: Equatable {
+    static func == (lhs: SimulatorKeyView, rhs: SimulatorKeyView) -> Bool {
+        lhs.image === rhs.image
     }
 }

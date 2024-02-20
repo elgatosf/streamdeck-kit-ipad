@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// Provides information about the current device/key context in SwiftUI environments.
+/// Provides information about the current context (screen, key-area, key, window, dial) in SwiftUI environments.
 ///
 /// You can access the current context via the environment like this:
 /// ```swift
@@ -30,6 +30,7 @@ public struct StreamDeckViewContext {
 
     /// The Stream Deck device object.
     public let device: StreamDeck
+
     private(set) var dirtyMarker: DirtyMarker
 
     /// The size of the current drawing area.
@@ -41,7 +42,9 @@ public struct StreamDeckViewContext {
     ///
     /// The value will be valid, when the current drawing area represents an input element like a key. Otherwise it will be `-1`.
     public private(set) var index: Int
+
     private let onDirty: DirtyHandler?
+
     private let idGenerator = IDGenerator()
 
     public var nextID: UInt64 { idGenerator.next }
@@ -60,28 +63,8 @@ public struct StreamDeckViewContext {
         self.onDirty = onDirty
     }
 
-    /// Tells StreamDeckLayout that the current drawing area needs to be re-rendered.
-    ///
-    /// Call this when the layout of your view changes. E.g. due to a change of state.
-    /// ```swift
-    /// struct NumberDisplayKey: View {
-    ///     let context: StreamDeckViewContext
-    ///     @State var isPressed: Bool = false
-    ///
-    ///     var body: some View {
-    ///         StreamDeckKeyView  { isPressed in
-    ///             self.isPressed = isPressed
-    ///         } content: {
-    ///             isPressed ? Color.orange : Color.clear
-    ///         }
-    ///         .onChange(of: isPressed) {
-    ///             context.updateRequired()
-    ///         }
-    ///     }
-    /// }
-    /// ```
     @MainActor
-    public func updateRequired() {
+    func updateRequired() {
         onDirty?(dirtyMarker)
     }
 

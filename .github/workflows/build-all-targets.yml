@@ -1,0 +1,25 @@
+name: "Build all targets"
+run-name: Building all targets
+on: [pull_request]
+jobs:
+  Build:
+    runs-on: macos-14
+    steps:
+      - name: Print job info
+        run: |
+          echo "The job was triggered by a ${{ github.event_name }} event and is now running on a ${{ runner.os }} server."
+          echo "The repository is ${{ github.repository }} and the branch is ${{ github.ref }}."
+          echo "Available XCode versions:"
+          sudo ls -1 /Applications | grep "Xcode"
+          echo "Selected XCode version:"
+          /usr/bin/xcodebuild -version
+
+      - uses: actions/checkout@v4
+
+      - name: Build Simulator
+        run: set -o pipefail && xcodebuild -scheme StreamDeckSimulator -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" | xcpretty
+
+      - name: Build Example 
+        run: |
+          cd Example
+          set -o pipefail && xcodebuild -scheme "Example App" -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" | xcpretty

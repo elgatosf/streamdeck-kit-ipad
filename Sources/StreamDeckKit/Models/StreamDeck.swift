@@ -138,7 +138,7 @@ public final class StreamDeck {
     public func setKeyImage(_ image: UIImage, at key: Int, scaleAspectFit: Bool = true) {
         enqueueOperation(.setKeyImage(image: image, key: key, scaleAspectFit: scaleAspectFit))
     }
-    
+
     /// Set an image to the whole screen of the Stream Deck.
     /// - Parameters:
     ///   - image: An image object.

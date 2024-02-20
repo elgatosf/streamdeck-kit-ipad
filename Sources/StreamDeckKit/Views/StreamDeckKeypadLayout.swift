@@ -20,7 +20,7 @@ public struct StreamDeckKeypadLayout<Key: View>: View {
     @Environment(\.streamDeckViewContext) private var context
 
     @ViewBuilder let keyView: KeyViewProvider
-    
+
     /// Creates an instance of the view.
     /// - Parameter keyView: A factory function that provides a view for a key.
     public init(@ViewBuilder keyView: @escaping KeyViewProvider) {

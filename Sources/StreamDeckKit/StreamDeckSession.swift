@@ -30,7 +30,8 @@ import UIKit
 /// }
 /// ```
 /// ## Prerequisites
-/// - Note: Using Stream Deck Kit requires the __Stream Deck Connect__ App to be installed, and the contained driver to be activated in system settings.
+/// - Note: Using Stream Deck Kit requires the __Stream Deck Connect__ App to be installed,
+/// and the contained driver to be activated in system settings.
 ///
 /// You can check if all conditions are met, with the ``state-swift.property`` property.
 /// ```swift
@@ -107,7 +108,8 @@ public final class StreamDeckSession {
 
     /// Use this to observe newly attached Stream Deck devices.
     ///
-    /// Alternatively use the `newDeviceHandler` property of ``setUp(stateHandler:newDeviceHandler:)-swift.type.method`` to handle this with a closure.
+    /// Alternatively use the `newDeviceHandler` property of ``setUp(stateHandler:newDeviceHandler:)-swift.type.method``
+    /// to handle this with a closure.
     public var newDevicePublisher: AnyPublisher<StreamDeck, Never> {
         internalSession.newDevice.eraseToAnyPublisher()
     }

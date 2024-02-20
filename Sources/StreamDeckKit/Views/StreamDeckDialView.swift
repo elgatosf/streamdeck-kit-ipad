@@ -12,7 +12,7 @@ public struct StreamDeckDialView<Content: View>: View {
     public typealias DialRotationHandler = @MainActor (Int) -> Void
     public typealias DialPressHandler = @MainActor (Bool) -> Void
     public typealias TouchHandler = @MainActor (CGPoint) -> Void
-    
+
     @Environment(\.streamDeckViewContext) private var context
 
     private let rotate: DialRotationHandler?

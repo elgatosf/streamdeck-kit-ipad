@@ -202,7 +202,7 @@ final class StreamDeckTests: XCTestCase {
         let closeExpectation = expectation(description: "closed")
         device.onClose { closeExpectation.fulfill() }
         device.close()
-        
+
         wait(for: [closeExpectation], timeout: 1)
 
         XCTAssertTrue(device.isClosed)

@@ -54,4 +54,4 @@ public protocol StreamDeckView: View {
 /// Defines and implements conformance of the StreamDeckView protocol.
 @attached(extension, conformances: StreamDeckView)
 @attached(member, names: named(_$streamDeckViewContext), named(body), named(streamDeck), named(viewSize), named(viewIndex))
-public macro StreamDeckView() = #externalMacro(module: "StreamDeckMacro", type: "StreamDeckMacro")
+public macro StreamDeckView() = #externalMacro(module: "StreamDeckMacros", type: "StreamDeckViewMacro")

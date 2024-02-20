@@ -4,17 +4,18 @@ import XCTest
 
 // Macro implementations build for the host, so the corresponding module is not available when cross-compiling. 
 // Cross-compiled tests may still make use of the macro itself in end-to-end tests.
-#if canImport(StreamDeckMacro)
-@testable import StreamDeckMacro
+#if canImport(StreamDeckMacros)
+@testable import StreamDeckMacros
 
 let testMacros: [String: Macro.Type] = [
-    "StreamDeckView": StreamDeckMacro.self
+    "StreamDeckView": StreamDeckViewMacro.self
 ]
 #endif
 
-final class StreamDeckMacroTests: XCTestCase {
+final class StreamDeckViewMacroTests: XCTestCase {
 
     func test_macro() throws {
+        #if canImport(StreamDeckMacros)
         assertMacroExpansion(
             #"""
             @StreamDeckView
@@ -64,9 +65,11 @@ final class StreamDeckMacroTests: XCTestCase {
             }
             """#,
             macros: testMacros)
+        #endif
     }
 
     func test_macro_with_body_implementation() throws {
+        #if canImport(StreamDeckMacros)
         assertMacroExpansion(
             #"""
             @StreamDeckView
@@ -88,15 +91,17 @@ final class StreamDeckMacroTests: XCTestCase {
             """#,
             diagnostics: [
                 .init(
-                    message: StreamDeckDeclError.bodyMustNotBeImplemented.description,
+                    message: StreamDeckViewDeclError.bodyMustNotBeImplemented.description,
                     line: 1,
                     column: 1
                 )
             ],
             macros: testMacros)
+        #endif
     }
 
     func test_macro_without_streamDeckBody() throws {
+        #if canImport(StreamDeckMacros)
         assertMacroExpansion(
             #"""
             @StreamDeckView
@@ -112,12 +117,13 @@ final class StreamDeckMacroTests: XCTestCase {
             """#,
             diagnostics: [
                 .init(
-                    message: StreamDeckDeclError.streamDeckBodyRequired.description,
+                    message: StreamDeckViewDeclError.streamDeckBodyRequired.description,
                     line: 1,
                     column: 1
                 )
             ],
             macros: testMacros)
+        #endif
     }
 
 }

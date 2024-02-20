@@ -3,7 +3,7 @@ import SwiftSyntax
 import SwiftSyntaxBuilder
 import SwiftSyntaxMacros
 
-enum StreamDeckDeclError: CustomStringConvertible, Error {
+enum StreamDeckViewDeclError: CustomStringConvertible, Error {
     case onlyStructs
     case streamDeckBodyRequired
     case bodyMustNotBeImplemented
@@ -20,17 +20,17 @@ enum StreamDeckDeclError: CustomStringConvertible, Error {
     }
 }
 
-public struct StreamDeckMacro: MemberMacro {
+struct StreamDeckViewMacro: MemberMacro {
 
     static let contextAccessor = "_$streamDeckViewContext"
 
-    public static func expansion(
+    static func expansion(
         of node: SwiftSyntax.AttributeSyntax,
         providingMembersOf declaration: some SwiftSyntax.DeclGroupSyntax,
         in context: some SwiftSyntaxMacros.MacroExpansionContext
     ) throws -> [SwiftSyntax.DeclSyntax] {
         guard let identified = declaration.as(StructDeclSyntax.self) else {
-            throw StreamDeckDeclError.onlyStructs
+            throw StreamDeckViewDeclError.onlyStructs
         }
 
         let vars = identified.memberBlock.members
@@ -40,11 +40,11 @@ public struct StreamDeckMacro: MemberMacro {
             .compactMap { $0.as(IdentifierPatternSyntax.self)?.identifier.text }
 
         guard !vars.contains(where: { $0 == "body" }) else {
-            throw StreamDeckDeclError.bodyMustNotBeImplemented
+            throw StreamDeckViewDeclError.bodyMustNotBeImplemented
         }
 
         guard vars.contains(where: { $0 == "streamDeckBody" }) else {
-            throw StreamDeckDeclError.streamDeckBodyRequired
+            throw StreamDeckViewDeclError.streamDeckBodyRequired
         }
 
         let context: DeclSyntax =
@@ -101,8 +101,8 @@ public struct StreamDeckMacro: MemberMacro {
     }
 }
 
-extension StreamDeckMacro: ExtensionMacro {
-  public static func expansion(
+extension StreamDeckViewMacro: ExtensionMacro {
+  static func expansion(
     of node: AttributeSyntax,
     attachedTo declaration: some DeclGroupSyntax,
     providingExtensionsOf type: some TypeSyntaxProtocol,
@@ -114,8 +114,8 @@ extension StreamDeckMacro: ExtensionMacro {
 }
 
 @main
-struct StreamDeckMacroPlugin: CompilerPlugin {
+struct StreamDeckMacrosPlugin: CompilerPlugin {
     public let providingMacros: [Macro.Type] = [
-        StreamDeckMacro.self
+        StreamDeckViewMacro.self
     ]
 }

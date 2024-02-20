@@ -8,6 +8,8 @@
 import Foundation
 
 /// Provides information about the current context (screen, key-area, key, window, dial) in SwiftUI environments.
+///
+/// This is used internally by the ``StreamDeckView`` macro and the ``StreamDeckLayout`` system.
 public struct StreamDeckViewContext {
 
     /// The Stream Deck device object.

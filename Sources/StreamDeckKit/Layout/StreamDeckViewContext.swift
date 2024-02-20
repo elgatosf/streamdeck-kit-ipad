@@ -16,12 +16,12 @@ public struct StreamDeckViewContext {
     /// The size of the current drawing area.
     ///
     /// Depending on if you access this value in a key area, a window or a key.
-    public private(set) var size: CGSize
+    public var size: CGSize
 
     /// The index of an input element.
     ///
     /// The value will be valid, when the current drawing area represents an input element like a key. Otherwise it will be `-1`.
-    public private(set) var index: Int
+    public var index: Int
 
     private(set) var dirtyMarker: DirtyMarker
 

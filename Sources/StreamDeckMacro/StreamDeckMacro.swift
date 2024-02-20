@@ -21,6 +21,9 @@ enum StreamDeckDeclError: CustomStringConvertible, Error {
 }
 
 public struct StreamDeckMacro: MemberMacro {
+
+    static let contextAccessor = "_$streamDeckViewContext"
+
     public static func expansion(
         of node: SwiftSyntax.AttributeSyntax,
         providingMembersOf declaration: some SwiftSyntax.DeclGroupSyntax,
@@ -46,7 +49,28 @@ public struct StreamDeckMacro: MemberMacro {
 
         let context: DeclSyntax =
               """
-              @Environment(\\.streamDeckViewContext) var context
+              @Environment(\\.streamDeckViewContext) var \(raw: contextAccessor)
+              """
+
+        let streamDeck: DeclSyntax =
+              """
+              var streamDeck: StreamDeck {
+                  \(raw: contextAccessor).device
+              }
+              """
+
+        let viewSize: DeclSyntax =
+              """
+              var viewSize: CGSize {
+                  \(raw: contextAccessor).size
+              }
+              """
+
+        let viewIndex: DeclSyntax =
+              """
+              var viewIndex: Int {
+                  \(raw: contextAccessor).index
+              }
               """
 
         let body: DeclSyntax =
@@ -56,12 +80,12 @@ public struct StreamDeckMacro: MemberMacro {
                   if #available(iOS 17, *) {
                       return streamDeckBody
                           .onChange(of: StreamDeckKit._nextID) {
-                              context.updateRequired()
+                              \(raw: contextAccessor).updateRequired()
                           }
                   } else {
                       return streamDeckBody
                           .onChange(of: StreamDeckKit._nextID) { _ in
-                              context.updateRequired()
+                              \(raw: contextAccessor).updateRequired()
                           }
                   }
               }
@@ -69,6 +93,9 @@ public struct StreamDeckMacro: MemberMacro {
 
         return [
             context,
+            streamDeck,
+            viewSize,
+            viewIndex,
             body
         ]
     }

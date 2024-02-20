@@ -30,19 +30,31 @@ final class StreamDeckMacroTests: XCTestCase {
                     Text("Hello World!")
                 }
 
-                @Environment(\.streamDeckViewContext) var context
+                @Environment(\.streamDeckViewContext) var _$streamDeckViewContext
+
+                var streamDeck: StreamDeck {
+                    _$streamDeckViewContext.device
+                }
+
+                var viewSize: CGSize {
+                    _$streamDeckViewContext.size
+                }
+
+                var viewIndex: Int {
+                    _$streamDeckViewContext.index
+                }
 
                 @MainActor
                 var body: some View {
                     if #available (iOS 17, *) {
                         return streamDeckBody
                             .onChange(of: StreamDeckKit._nextID) {
-                                context.updateRequired()
+                                _$streamDeckViewContext.updateRequired()
                             }
                     } else {
                         return streamDeckBody
                             .onChange(of: StreamDeckKit._nextID) { _ in
-                                context.updateRequired()
+                                _$streamDeckViewContext.updateRequired()
                             }
                     }
                 }

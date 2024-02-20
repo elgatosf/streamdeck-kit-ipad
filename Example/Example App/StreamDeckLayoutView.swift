@@ -30,7 +30,7 @@ struct StreamDeckLayoutView: View {
 struct NumberDisplayKey {
     @State var isPressed: Bool = false
 
-    var emoji: String { emojis[context.index] }
+    var emoji: String { emojis[viewIndex] }
 
     var streamDeckBody: some View {
         StreamDeckKeyView { isPressed in

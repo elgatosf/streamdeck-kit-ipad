@@ -9,8 +9,10 @@ import StreamDeckKit
 import StreamDeckSimulator
 import SwiftUI
 
+@StreamDeckView
 struct StreamDeckLayoutView: View {
-    var body: some View {
+
+    var streamDeckBody: some View {
         StreamDeckLayout {
             StreamDeckKeypadLayout { _ in
                 NumberDisplayKey()
@@ -47,8 +49,6 @@ struct NumberDisplayKey {
 
 #Preview {
     StreamDeckSimulator.PreviewView(streamDeck: .regular) {
-        StreamDeckSession.setUp { _ in
-            StreamDeckLayoutView()
-        }
+        StreamDeckLayoutView()
     }
 }

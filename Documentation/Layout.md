@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `StreamDeckLayout` struct is a fundamental component for building layouts for Stream Deck devices using SwiftUI. It provides a way to define the key area view with its keys and window view with its dials for a Stream Deck layout. This layout can be used to draw a customized layout onto a Stream Deck device and to recognize Stream Deck interactions in the SwiftUI way.
+The `StreamDeckLayout` view is a fundamental component for building layouts for Stream Deck devices using SwiftUI. It provides a way to define the key area view with its keys and window view with its dials for a Stream Deck layout. This layout can be used to draw a customized layout onto a Stream Deck device and to recognize Stream Deck interactions in the SwiftUI way.
 
 The general structure of `StreamDeckLayout` is as follows:
 ```
@@ -23,7 +23,7 @@ StreamDeckLayout
 > The window area is only available for the Stream Deck +.
 
 ### Usage
-To use `StreamDeckLayout`, create an instance of it by specifying the key area and window views. Then, provide this instance to either the `StreamDeckSession/setUp` method or the `StreamDeck/render` method.
+To use `StreamDeckLayout`, create an instance of it by specifying the key area and window views. Then, provide this instance to either the `StreamDeckSession.setUp` method or the `StreamDeck.render` method.
 
 ## Example
 
@@ -38,8 +38,8 @@ struct MyStreamDeckLayout: View {
     var body: some View {
         StreamDeckLayout {
             // Define key area view
-            // Use StreamDeckKeypadLayout for rendering separate keys
-            StreamDeckKeypadLayout { context in
+            // Use StreamDeckKeyAreaLayout for rendering separate keys
+            StreamDeckKeyAreaLayout { context in
                 // Define content for each key.
                 // StreamDeckKeyView provides a callback for the key action, and the view content
                 // Example:
@@ -85,7 +85,9 @@ Depending on the device, the outcome will look like this:
 <table>
 <tr>
     <td>Mini</td>
-    <td><img src="_images/layout_sd_mini.png"></td>
+    <td><img src="_images/layout_sd_mini.png"><br>
+    Note: On the Stream Deck Mini device, you can not set a complete screen image. The purple background on the key area would be visible if the keys had transparent areas.
+    </td>
     <td><img src="_images/layout_sd_mini_device.png"></td>
    </tr> 
   <tr>
@@ -95,8 +97,8 @@ Depending on the device, the outcome will look like this:
    </tr> 
   </tr>
     <tr>
-        <td>XL</td>
-        <td><img src="_images/layout_sd_xl.png"></td>
+    <td>XL</td>
+    <td><img src="_images/layout_sd_xl.png"></td>
     <td><img src="_images/layout_sd_xl_device.png"></td>
    </tr> 
    <tr>
@@ -107,12 +109,10 @@ Depending on the device, the outcome will look like this:
   </tr>
 </table>
 
-> [!NOTE]
-> On the Stream Deck Mini device, you can not apply a background to the entire layout.
 
 ### SwiftUI Preview
 
-You can use the provided `StreamDeckSimulator/PreviewView` to view your layouts in the SwiftUI Preview canvas. 
+You can use the provided `StreamDeckSimulator/PreviewView`  (see [Simulator](Simulator.md)) to view your layouts in the SwiftUI Preview canvas. 
 ```swift
 import StreamDeckSimulator 
 

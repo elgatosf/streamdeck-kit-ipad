@@ -13,23 +13,23 @@ import SwiftUI
 ///
 /// Provide this to the `content` parameter of ``StreamDeckSession/setUp(stateHandler:newDeviceHandler:content:)`` or ``StreamDeck/render(_:)``
 /// to draw a layout  onto a Stream Deck device.
-public struct StreamDeckLayout<KeyAreaView: View, WindowView: View>: View {
+public struct StreamDeckLayout<KeyArea: View, WindowArea: View>: View {
     @Environment(\.streamDeckViewContext) var context
 
-    @ViewBuilder let keyAreaView: @MainActor () -> KeyAreaView
-    @ViewBuilder let windowView: @MainActor () -> WindowView
+    @ViewBuilder let keyArea: @MainActor () -> KeyArea
+    @ViewBuilder let windowArea: @MainActor () -> WindowArea
 
     /// Creates a new instance.
     /// - Parameters:
-    ///   - keyAreaView: A view to be rendered on the key area of the layout. Use ``StreamDeckKeypadLayout`` to render separate keys.
-    ///   - windowView: A view to be rendered in in a possible window area of the layout.
+    ///   - keyArea: A view to be rendered on the key area of the layout. Use ``StreamDeckKeyAreaLayout`` to render separate keys.
+    ///   - windowArea: A view to be rendered in in a possible window area of the layout.
     ///   Use ``StreamDeckDialAreaLayout`` to render separate parts of the display. E.g. for each dial on a Stream Deck Plus.
     public init(
-        @ViewBuilder keyAreaView: @escaping @MainActor () -> KeyAreaView,
-        @ViewBuilder windowView: @escaping @MainActor () -> WindowView = { Color.clear }
+        @ViewBuilder keyArea: @escaping @MainActor () -> KeyArea,
+        @ViewBuilder windowArea: @escaping @MainActor () -> WindowArea = { Color.clear }
     ) {
-        self.keyAreaView = keyAreaView
-        self.windowView = windowView
+        self.keyArea = keyArea
+        self.windowArea = windowArea
     }
 
     public var body: some View {
@@ -43,7 +43,7 @@ public struct StreamDeckLayout<KeyAreaView: View, WindowView: View>: View {
                     index: -1
                 )
 
-                keyAreaView()
+                keyArea()
                     .frame(width: keyAreaSize.width, height: keyAreaSize.height)
                     .padding(.top, caps.keyAreaTopSpacing)
                     .padding(.leading, caps.keyAreaLeadingSpacing)
@@ -59,7 +59,7 @@ public struct StreamDeckLayout<KeyAreaView: View, WindowView: View>: View {
                     index: -1
                 )
 
-                windowView()
+                windowArea()
                     .frame(width: windowSize.width, height: windowSize.height, alignment: .bottom)
                     .environment(\.streamDeckViewContext, windowContext)
             }

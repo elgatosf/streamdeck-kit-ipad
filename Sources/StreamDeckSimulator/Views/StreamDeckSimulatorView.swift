@@ -153,13 +153,13 @@ private extension StreamDeckSimulatorView {
     @ViewBuilder
     var touchPad: some View {
         StreamDeckLayout {
-            StreamDeckKeypadLayout { context in
+            StreamDeckKeyAreaLayout { context in
                 SimulatorKeyView(image: buttonImages[context.index]) { pressed in
                     client.emit(.keyPress(index: context.index, pressed: pressed))
                 }
                 .equatable()
             }
-        } windowView: {
+        } windowArea: {
             StreamDeckDialAreaLayout { context in
                 SimulatorTouchView { localLocation in
                     let x = CGFloat(context.index) * context.size.width + localLocation.x
@@ -196,12 +196,12 @@ private extension StreamDeckSimulatorView {
     @ViewBuilder
     var borderOverlay: some View {
         StreamDeckLayout {
-            StreamDeckKeypadLayout { _ in
+            StreamDeckKeyAreaLayout { _ in
                 StreamDeckKeyView {} content: {
                     Color.clear.border(.red)
                 }
             }
-        } windowView: {
+        } windowArea: {
             StreamDeckDialAreaLayout { _ in
                 SimulatorTouchView { _ in } onFling: { _, _ in }
                     .background {

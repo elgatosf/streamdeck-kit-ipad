@@ -14,7 +14,7 @@ struct StreamDeckLayoutView: View {
 
     var streamDeckBody: some View {
         StreamDeckLayout {
-            StreamDeckKeypadLayout { _ in
+            StreamDeckKeyAreaLayout { _ in
                 NumberDisplayKey()
             }
         }

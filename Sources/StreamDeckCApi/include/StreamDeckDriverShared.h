@@ -84,11 +84,10 @@ typedef enum {
     SDFeatureFlags_fillScreen           = 1 << 5,
     SDFeatureFlags_fillKey              = 1 << 6,
     SDFeatureFlags_showLogo             = 1 << 7,
-    SDFeatureFlags_highDPI              = 1 << 8,
-    SDFeatureFlags_keyPressEvents       = 1 << 9,
-    SDFeatureFlags_rotaryEvents         = 1 << 10,
-    SDFeatureFlags_touchEvents          = 1 << 11,
-    SDFeatureFlags_flingEvents          = 1 << 12,
+    SDFeatureFlags_keyPressEvents       = 1 << 8,
+    SDFeatureFlags_rotaryEvents         = 1 << 9,
+    SDFeatureFlags_touchEvents          = 1 << 10,
+    SDFeatureFlags_flingEvents          = 1 << 11,
 } SDFeatureFlags;
 
 typedef enum {

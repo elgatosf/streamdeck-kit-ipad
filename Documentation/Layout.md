@@ -1,7 +1,5 @@
 # Layout
 
-## Overview
-
 The `StreamDeckLayout` view is a fundamental component for building layouts for Stream Deck devices using SwiftUI. It provides a way to define the key area view with its keys and window view with its dials for a Stream Deck layout. This layout can be used to draw a customized layout onto a Stream Deck device and to recognize Stream Deck interactions in the SwiftUI way.
 
 The general structure of `StreamDeckLayout` is as follows:
@@ -20,12 +18,12 @@ StreamDeckLayout
 </picture>
 
 > [!NOTE]
-> The window area is only available for the Stream Deck +.
+> The window area is only available for the Stream Deck + and will be ignored for other device types.
 
-### Usage
+## Usage
 To use `StreamDeckLayout`, create an instance of it by specifying the key area and window views. Then, provide this instance to either the `StreamDeckSession.setUp` method or the `StreamDeck.render` method.
 
-## Example
+### Example
 
 Here's an example of how to create a basic `StreamDeckLayout`:
 
@@ -33,11 +31,12 @@ Here's an example of how to create a basic `StreamDeckLayout`:
 import SwiftUI 
 import StreamDeckKit
 
-struct MyStreamDeckLayout: View {
+@StreamDeckView
+struct StatelessStreamDeckView: View {
 
-    var body: some View {
+    var streamDeckBody: some View {
         StreamDeckLayout {
-            // Define key area view
+            // Define key area
             // Use StreamDeckKeyAreaLayout for rendering separate keys
             StreamDeckKeyAreaLayout { context in
                 // Define content for each key.
@@ -51,8 +50,8 @@ struct MyStreamDeckLayout: View {
                         .background(.teal)
                 }
             }.background(.purple)
-        } windowView: {
-            // Define window view
+        } windowArea: {
+            // Define window area
             // Use StreamDeckDialAreaLayout for rendering separate parts of the display
             StreamDeckDialAreaLayout { context in
                 // Define content for each dial
@@ -68,7 +67,11 @@ struct MyStreamDeckLayout: View {
                     Text("\(context.index)")
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .background(Array(
-                            repeating: Color(red: Double.random(in: 0 ... 1), green: Double.random(in: 0 ... 1), blue: Double.random(in: 0 ... 1)),
+                            repeating: Color(
+                                red: Double.random(in: 0 ... 1),
+                                green: Double.random(in: 0 ... 1),
+                                blue: Double.random(in: 0 ... 1)
+                            ),
                             count: context.device.capabilities.dialCount
                         )[context.index])
                 }
@@ -86,7 +89,7 @@ Depending on the device, the outcome will look like this:
 <tr>
     <td>Mini</td>
     <td><img src="_images/layout_sd_mini.png"><br>
-    Note: On the Stream Deck Mini device, you can not set a complete screen image. The purple background on the key area would be visible if the keys had transparent areas.
+    Note: On the Stream Deck Mini device, you can not set a complete screen image. However, the purple background on the key area would be visible if the keys had transparent areas.
     </td>
     <td><img src="_images/layout_sd_mini_device.png"></td>
    </tr> 
@@ -116,11 +119,15 @@ You can use the provided `StreamDeckSimulator/PreviewView`  (see [Simulator](Sim
 ```swift
 import StreamDeckSimulator 
 
-#Preview {
+#Preview("Stream Deck +") {
     StreamDeckSimulator.PreviewView(streamDeck: .plus) {
-        StreamDeckSession.setUp { device in
-          MyStreamDeckLayout()
-        }
+        StatelessStreamDeckView()
     }
 }
+
+#Preview("Stream Deck Classic") {
+    StreamDeckSimulator.PreviewView(streamDeck: .regular) {
+        StatelessStreamDeckView()
+    }
+}V
 ```

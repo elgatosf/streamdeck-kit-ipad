@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B063EFA2B84D51E00778376 /* StatelessStreamDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B063EF92B84D51E00778376 /* StatelessStreamDeckView.swift */; };
+		0B063EFC2B84DBF800778376 /* StatefulStreamDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B063EFB2B84DBF800778376 /* StatefulStreamDeckView.swift */; };
 		30303E232B6CDEF500DC3084 /* StreamDeckLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30303E222B6CDEF500DC3084 /* StreamDeckLayoutView.swift */; };
 		3073016D2B3DB70000C5F5B4 /* StreamDeckKitExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3073016C2B3DB70000C5F5B4 /* StreamDeckKitExampleApp.swift */; };
 		3073016F2B3DB70000C5F5B4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3073016E2B3DB70000C5F5B4 /* ContentView.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B063EF92B84D51E00778376 /* StatelessStreamDeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatelessStreamDeckView.swift; sourceTree = "<group>"; };
+		0B063EFB2B84DBF800778376 /* StatefulStreamDeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulStreamDeckView.swift; sourceTree = "<group>"; };
 		21DE1EAA2B46E86600B18417 /* Example-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Example-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		30303E222B6CDEF500DC3084 /* StreamDeckLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamDeckLayoutView.swift; sourceTree = "<group>"; };
 		307301692B3DB70000C5F5B4 /* StreamDeckKit Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "StreamDeckKit Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +73,8 @@
 				307301852B3DBC7600C5F5B4 /* Example App.entitlements */,
 				3073016C2B3DB70000C5F5B4 /* StreamDeckKitExampleApp.swift */,
 				3073016E2B3DB70000C5F5B4 /* ContentView.swift */,
+				0B063EF92B84D51E00778376 /* StatelessStreamDeckView.swift */,
+				0B063EFB2B84DBF800778376 /* StatefulStreamDeckView.swift */,
 				30303E222B6CDEF500DC3084 /* StreamDeckLayoutView.swift */,
 				307301702B3DB70100C5F5B4 /* Assets.xcassets */,
 				307301722B3DB70100C5F5B4 /* Preview Content */,
@@ -196,6 +202,8 @@
 			files = (
 				3073016F2B3DB70000C5F5B4 /* ContentView.swift in Sources */,
 				3073016D2B3DB70000C5F5B4 /* StreamDeckKitExampleApp.swift in Sources */,
+				0B063EFC2B84DBF800778376 /* StatefulStreamDeckView.swift in Sources */,
+				0B063EFA2B84D51E00778376 /* StatelessStreamDeckView.swift in Sources */,
 				30303E232B6CDEF500DC3084 /* StreamDeckLayoutView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

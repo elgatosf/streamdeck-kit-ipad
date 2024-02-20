@@ -38,6 +38,13 @@ do
     esac
 done
 
+echo "Running documentation build script with parameters:"
+echo " - p) hosting_base_path: ${hosting_base_path}"
+echo " - r) github_repository: ${github_repository}"
+echo " - s) build_scheme: ${build_scheme}"
+echo " - t) github_api_token: ${github_api_token}"
+echo " - u) github_username: ${github_username}"
+
 if [ ! -z ${github_username+x} ] && [ ! -z ${github_api_token+x} ]; then
     publish_documentation=true
 fi
@@ -64,10 +71,10 @@ build_documentation() {
 
     echo "📙 Building documentation for scheme ${build_scheme}..."
     xcodebuild docbuild \
-    -quiet \
     -scheme $build_scheme \
     -destination generic/platform=iOS \
-    OTHER_DOCC_FLAGS="--transform-for-static-hosting$base_path_param --output-path $documentation_dir"
+    OTHER_DOCC_FLAGS="--transform-for-static-hosting$base_path_param --output-path $documentation_dir" \
+    | xcpretty
 }
 
 cleanup() {

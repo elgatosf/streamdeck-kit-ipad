@@ -200,13 +200,13 @@ private extension StreamDeckSimulatorView {
         StreamDeckLayout { _ in
             Color.clear
         } keyAreaView: { _ in
-            StreamDeckKeypadLayout { context in
+            StreamDeckKeypadLayout { _ in
                 StreamDeckKeyView { _ in }
                     content: {
                         Color.clear.border(.red)
                     }
             }
-        } windowView: { context in
+        } windowView: { _ in
             StreamDeckDialAreaLayout { _ in
                 StreamDeckDialView {
                     SimulatorTouchView { _ in } onFling: { _, _ in }

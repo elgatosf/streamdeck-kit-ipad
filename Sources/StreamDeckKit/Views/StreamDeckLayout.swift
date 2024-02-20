@@ -19,7 +19,7 @@ public struct StreamDeckLayout<BackgroundView: View, KeyAreaView: View, WindowVi
     @ViewBuilder let background: (StreamDeckViewContext) -> BackgroundView
     @ViewBuilder let keyAreaView: (StreamDeckViewContext) -> KeyAreaView
     @ViewBuilder let windowView: (StreamDeckViewContext) -> WindowView
-    
+
     /// Creates a new instance.
     /// - Parameters:
     ///   - background: The background view behind the complete layout. Default is `Color.black`.

@@ -19,7 +19,7 @@ public struct Version {
     public let major: Int
     public let minor: Int
     public let patch: Int
-    
+
     /// Creates a version from the given parts.
     /// - Parameters:
     ///   - major: Major version part.
@@ -45,7 +45,7 @@ public struct Version {
 
         self.init(major: major, minor: minor, patch: patch)
     }
-    
+
     /// Creates a version by parsing the given string.
     /// - Parameter version: A String conforming the semantic versioning pattern (e.g. 1.2.0).
     public init?(string version: String) {
@@ -60,7 +60,7 @@ public struct Version {
 extension Version: Hashable {}
 
 extension Version: Comparable {
-    public static func <(lhs: Version, rhs: Version) -> Bool {
+    public static func < (lhs: Version, rhs: Version) -> Bool {
         return (lhs.major < rhs.major)
         || (lhs.major == rhs.major && lhs.minor < rhs.minor)
         || (lhs.major == rhs.major && lhs.minor == rhs.minor && lhs.patch < rhs.patch)

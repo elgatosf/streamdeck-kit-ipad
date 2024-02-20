@@ -58,7 +58,7 @@ public struct DeviceCapabilities {
 
     let imageFormat: ImageFormat
     var transform: CGAffineTransform
-    
+
     /// The number of keys.
     public let keyCount: Int
     /// The size of the display on a key in pixels.

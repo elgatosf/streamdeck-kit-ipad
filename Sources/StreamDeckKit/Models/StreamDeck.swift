@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import SwiftUI
 import UIKit
 
 /// An object that represents a physical Stream Deck device.
@@ -26,6 +27,8 @@ public final class StreamDeck {
     let operationsQueue = AsyncQueue<Operation>()
     var operationsTask: Task<Void, Never>?
     var didSetInputEventHandler = false
+
+    let renderer = StreamDeckLayoutRenderer()
 
     private let inputEventsSubject = PassthroughSubject<InputEvent, Never>()
 
@@ -68,7 +71,10 @@ public final class StreamDeck {
         self.client = client
         self.info = info
         self.capabilities = capabilities
+        
         startOperationTask()
+
+        onClose(renderer.stop)
     }
 
     /// Check if the hardware supports the given feature.
@@ -172,6 +178,13 @@ public final class StreamDeck {
     /// Show logo on device (resets device content)
     public func showLogo() {
         enqueueOperation(.showLogo)
+    }
+
+    /// Render the provided content on this device as long as the device remains open.
+    /// - Parameter content: The SwiftUI view to render on this device.
+    @MainActor
+    func render<Content: View>(_ content: Content) {
+        renderer.render(content, on: self)
     }
 
 }

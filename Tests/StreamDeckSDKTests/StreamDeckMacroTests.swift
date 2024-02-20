@@ -33,10 +33,17 @@ final class StreamDeckMacroTests: XCTestCase {
 
                 @MainActor
                 var body: some View {
-                    streamDeckBody
-                        .onChange(of: context.nextID) { _ in
-                            context.updateRequired()
-                        }
+                    if #available (iOS 17, *) {
+                        return streamDeckBody
+                            .onChange(of: StreamDeckKit._nextID) {
+                                context.updateRequired()
+                            }
+                    } else {
+                        return streamDeckBody
+                            .onChange(of: StreamDeckKit._nextID) { _ in
+                                context.updateRequired()
+                            }
+                    }
                 }
             }
 

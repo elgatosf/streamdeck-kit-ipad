@@ -14,8 +14,6 @@ import UIKit
 import XCTest
 
 final class StreamDeckRobot {
-    private let renderer = StreamDeckLayoutRenderer()
-
     var device: StreamDeck!
     var client: StreamDeckClientMock!
     var recorder: StreamDeckClientMock.Recorder!
@@ -50,7 +48,8 @@ final class StreamDeckRobot {
     ) async throws {
         use(product)
 
-        await renderer.render(content, on: device)
+        await device.render(content)
+
         try await recorder.$screens.waitFor(file: file, line: line) {
             !$0.isEmpty
         }

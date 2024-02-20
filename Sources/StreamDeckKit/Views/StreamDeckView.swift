@@ -7,6 +7,16 @@
 
 import SwiftUI
 
+private var _id: UInt64 = 0
+
+public var _nextID: UInt64 {
+    if _id == UInt64.max {
+        _id = 0
+    }
+    _id += 1
+    return _id
+}
+
 /// Protocol for views rendered on StreamDeck.
 /// This automatically tells StreamDeckLayout that the drawing area of this view needs to be updated on the device.
 ///

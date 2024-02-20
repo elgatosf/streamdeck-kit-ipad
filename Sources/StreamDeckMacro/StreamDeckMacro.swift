@@ -13,7 +13,7 @@ enum StreamDeckDeclError: CustomStringConvertible, Error {
         case .onlyStructs:
             "@StreamDeckView can only be used with SwiftUI view structs."
         case .streamDeckBodyRequired:
-            "@StreamDeckView requires the view to implement hookyBody."
+            "@StreamDeckView requires the view to implement streamDeckBody."
         case .bodyMustNotBeImplemented:
             "@StreamDeckView view must not implement `body`"
         }
@@ -53,10 +53,17 @@ public struct StreamDeckMacro: MemberMacro {
               """
               @MainActor
               var body: some View {
-                  streamDeckBody
-                      .onChange(of: context.nextID) { _ in
-                          context.updateRequired()
-                      }
+                  if #available(iOS 17, *) {
+                      return streamDeckBody
+                          .onChange(of: StreamDeckKit._nextID) {
+                              context.updateRequired()
+                          }
+                  } else {
+                      return streamDeckBody
+                          .onChange(of: StreamDeckKit._nextID) { _ in
+                              context.updateRequired()
+                          }
+                  }
               }
               """
 

@@ -37,7 +37,6 @@ final class StreamDeckLayoutTests: XCTestCase {
         robot.assertEqual(\.screens.count, 1)
         robot.assertEqual(\.keys.count, 2)
 
-
         await robot.assertSnapshot(\.screens[0], as: .image, named: "fullscreen")
         await robot.assertSnapshot(\.keys[0].image, as: .image, named: "key_down")
         await robot.assertSnapshot(\.keys[1].image, as: .image, named: "key_up")

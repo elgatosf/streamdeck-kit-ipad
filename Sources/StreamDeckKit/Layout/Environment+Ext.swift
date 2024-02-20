@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-public struct StreamDeckViewContextKey: EnvironmentKey {
+struct StreamDeckViewContextKey: EnvironmentKey {
 
-    public static var defaultValue: StreamDeckViewContext = .init(
+    static var defaultValue: StreamDeckViewContext = .init(
         device: StreamDeck(
             client: StreamDeckClientDummy(),
             info: .init(),

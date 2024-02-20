@@ -13,24 +13,17 @@ final class StreamDeckLayoutRenderer {
 
     private var cancellable: AnyCancellable?
 
-    private let imageSubject = PassthroughSubject<UIImage, Never>()
-
-    public var imagePublisher: AnyPublisher<UIImage, Never> {
-        imageSubject.eraseToAnyPublisher()
-    }
-
     private var dirtyViews = [DirtyMarker]()
 
-    public init() {
-    }
+    init() {}
 
     @MainActor
-    public init<Content: View>(content: Content, device: StreamDeck) {
+    init<Content: View>(content: Content, device: StreamDeck) {
         render(content, on: device)
     }
 
     @MainActor
-    public func render<Content: View>(_ content: Content, on device: StreamDeck) {
+    func render<Content: View>(_ content: Content, on device: StreamDeck) {
         cancellable?.cancel()
 
         dirtyViews = .init([.screen])
@@ -39,9 +32,7 @@ final class StreamDeckLayoutRenderer {
             device: device,
             dirtyMarker: .screen,
             size: device.capabilities.screenSize ?? .zero
-        ) { [weak self] in
-            self?.updateRequired($0)
-        }
+        )
 
         let view = content
             .environment(\.streamDeckViewContext, context)
@@ -58,7 +49,7 @@ final class StreamDeckLayoutRenderer {
             }
     }
 
-    public func stop() {
+    func stop() {
         cancellable?.cancel()
     }
 
@@ -71,8 +62,6 @@ final class StreamDeckLayoutRenderer {
     private func updateLayout(_ image: UIImage, on device: StreamDeck) {
         print("!!! Layout did change")
         let caps = device.capabilities
-
-        imageSubject.send(image)
 
         guard !dirtyViews.isEmpty else {
             print("!!! no dirty views")

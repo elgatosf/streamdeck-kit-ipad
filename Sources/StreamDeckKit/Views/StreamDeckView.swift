@@ -7,15 +7,27 @@
 
 import SwiftUI
 
+private var _id: UInt64 = 0
+
+public var _nextID: UInt64 {
+    if _id == UInt64.max {
+        _id = 0
+    }
+    _id += 1
+    return _id
+}
+
 /// Protocol for views rendered on StreamDeck.
 /// This automatically tells StreamDeckLayout that the drawing area of this view needs to be updated on the device.
 ///
+/// - Note: Use this implicitly by applying the ``StreamDeckView()`` macro.
+///
 /// ```swift
-/// struct NumberDisplayKey: StreamDeckView {
-///     @Environment(\.streamDeckViewContext) var context
+/// @StreamDeckView
+/// struct NumberDisplayKey {
 ///     @State var isPressed: Bool = false
 ///
-///     var body: some View {
+///     var streamDeckBody: some View {
 ///         StreamDeckKeyView  { isPressed in
 ///             self.isPressed = isPressed
 ///         } content: {
@@ -32,12 +44,6 @@ public protocol StreamDeckView: View {
     @MainActor @ViewBuilder var streamDeckBody: Self.Content { get }
 }
 
-extension StreamDeckView {
-    @MainActor
-    public var body: some View {
-        streamDeckBody
-            .onChange(of: context.nextID) { _, _ in
-                context.updateRequired()
-            }
-    }
-}
+@attached(extension, conformances: StreamDeckView)
+@attached(member, names: named(context), named(body))
+public macro StreamDeckView() = #externalMacro(module: "StreamDeckMacro", type: "StreamDeckMacro")

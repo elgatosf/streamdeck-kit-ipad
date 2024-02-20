@@ -10,9 +10,20 @@ import StreamDeckKit
 
 @main
 struct StreamDeckKitExampleApp: App {
+    let exampleDataModel = ExampleDataModel()
+
+    init() {
+        let model = exampleDataModel
+        StreamDeckSession.setUp { _ in
+            BaseStreamDeckLayout()
+                .environment(model)
+        }
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(exampleDataModel)
         }
     }
 }

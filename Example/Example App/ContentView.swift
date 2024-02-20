@@ -8,19 +8,15 @@
 import StreamDeckKit
 import SwiftUI
 
-enum Example {
-    case stateless
-    case stateful
-}
-
 struct ContentView: View {
     @State private var stateDescription: String = StreamDeckSession.State.idle.debugDescription
     @State private var devices: [StreamDeck] = []
 
-    @State private var selectedExample: Example = .stateless
+    @Environment(ExampleDataModel.self) var dataModel
 
     var body: some View {
-        TabView(selection: $selectedExample) {
+        @Bindable var dataModel = dataModel
+        TabView(selection: $dataModel.selectedExample) {
             VStack {
                 Text("Session State: \(stateDescription)")
                 if devices.isEmpty {
@@ -67,19 +63,16 @@ struct ContentView: View {
                 }
                 .tag(Example.stateful)
         }
-        .onAppear {
-            StreamDeckSession.setUp { _ in
-                BaseStreamDeckLayout(example: $selectedExample)
-            }
-        }
     }
 }
 
+@StreamDeckView
 struct BaseStreamDeckLayout: View {
-    @Binding var example: Example
+    @Environment(ExampleDataModel.self) var dataModel
 
-    var body: some View {
-        switch example {
+    @ViewBuilder
+    var streamDeckBody: some View {
+        switch dataModel.selectedExample {
         case .stateless:
             StatelessStreamDeckView()
         case .stateful:
@@ -91,6 +84,7 @@ struct BaseStreamDeckLayout: View {
 
 #Preview {
     ContentView()
+        .environment(ExampleDataModel())
 }
 
 // MARK: - Simulator preview
@@ -99,12 +93,16 @@ struct BaseStreamDeckLayout: View {
     import StreamDeckSimulator
 
     #Preview("With simulator attached") {
+        let model = ExampleDataModel()
+
         StreamDeckSession.setUp { _ in
             StreamDeckLayoutView()
+                .environment(model)
         }
 
         return VStack {
             ContentView()
+                .environment(model)
         }
     }
 #endif

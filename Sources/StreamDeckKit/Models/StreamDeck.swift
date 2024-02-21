@@ -183,7 +183,7 @@ public final class StreamDeck {
     /// Render the provided content on this device as long as the device remains open.
     /// - Parameter content: The SwiftUI view to render on this device.
     @MainActor
-    func render<Content: View>(_ content: Content) {
+    public func render<Content: View>(_ content: Content) {
         renderer.render(content, on: self)
     }
 

@@ -10,20 +10,16 @@ import SwiftUI
 
 @main
 struct StreamDeckKitExampleApp: App {
-    let exampleDataModel = ExampleDataModel()
 
     init() {
-        let model = exampleDataModel
         StreamDeckSession.setUp { _ in
             BaseStreamDeckView()
-                .environment(model)
         }
     }
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(exampleDataModel)
         }
     }
 }

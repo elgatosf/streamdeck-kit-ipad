@@ -10,7 +10,7 @@ import SwiftUI
 
 @StreamDeckView
 struct BaseStreamDeckView: View {
-    @Environment(ExampleDataModel.self) var dataModel
+    @Environment(\.exampleDataModel) var dataModel
 
     @ViewBuilder
     var streamDeckBody: some View {

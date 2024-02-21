@@ -13,7 +13,7 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @Environment(ExampleDataModel.self) var dataModel
+    @Environment(\.exampleDataModel) var dataModel
 
     @State private var stateDescription: String = StreamDeckSession.State.idle.debugDescription
     @State private var devices: [StreamDeck] = []
@@ -77,14 +77,6 @@ struct ContentView: View {
     }
 }
 
-#Preview("Test") {
-    let model = ExampleDataModel()
-
-    StreamDeckSession.setUp { _ in
-        BaseStreamDeckView()
-            .environment(model)
-    }
-
-    return ContentView()
-        .environment(model)
+#Preview {
+    ContentView()
 }

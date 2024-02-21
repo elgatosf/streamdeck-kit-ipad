@@ -10,7 +10,7 @@ import StreamDeckSimulator
 import SwiftUI
 
 @StreamDeckView
-struct AnimatedStreamDeckLayout: View {
+struct AnimatedStreamDeckLayout {
 
     var streamDeckBody: some View {
         StreamDeckLayout {
@@ -29,7 +29,7 @@ struct AnimatedStreamDeckLayout: View {
     }
 
     @StreamDeckView
-    struct MyKeyView: View {
+    struct MyKeyView {
 
         @State private var isPressed: Bool?
         @State private var scale: CGFloat = 1.0
@@ -40,7 +40,7 @@ struct AnimatedStreamDeckLayout: View {
                 self.isPressed = pressed
             } content: {
                 VStack {
-                    Text("\(context.index)")
+                    Text("\(viewIndex)")
                     Text(isPressed == true ? "Key down" : "Key up")
                 }
                 .scaleEffect(scale)
@@ -90,7 +90,7 @@ struct AnimatedStreamDeckLayout: View {
     }
 
     @StreamDeckView
-    struct MyDialView: View {
+    struct MyDialView {
 
         @State private var isPressed: Bool?
 
@@ -105,10 +105,10 @@ struct AnimatedStreamDeckLayout: View {
             } touch: { location in
                 self.targetPosition = location
             } content: {
-                Text("\(context.index)")
+                Text("\(viewIndex)")
                     .position(position)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color(white: Double(context.index) / 5 + 0.5))
+                    .background(Color(white: Double(viewIndex) / 5 + 0.5))
             }
             .task(id: targetPosition) {
                 // Animate the change of the position by applying different position values over time
@@ -136,8 +136,8 @@ struct AnimatedStreamDeckLayout: View {
                 // Resets position to center initially, and when pressed
                 if isPressed == nil || isPressed == true {
                     self.position = CGPoint(
-                        x: context.size.width / 2,
-                        y: context.size.height / 2
+                        x: viewSize.width / 2,
+                        y: viewSize.height / 2
                     )
                 }
             }

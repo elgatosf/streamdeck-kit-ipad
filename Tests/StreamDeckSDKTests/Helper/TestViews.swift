@@ -43,7 +43,7 @@ enum TestViews {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
 
                     VStack {
-                        Text("Key \(context.index)")
+                        Text("Key \(viewIndex)")
                         Text("\(model.lastEvent.description)")
                     }
                 }
@@ -65,7 +65,7 @@ enum TestViews {
                 model.lastEvent = .touch(point)
             } content: {
                 VStack {
-                    Text("Dial \(context.index)")
+                    Text("Dial \(viewIndex)")
                     Text(model.lastEvent.description)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)

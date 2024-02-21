@@ -35,14 +35,14 @@ let package = Package(
         ),
         .target(
             name: "StreamDeckKit",
-            dependencies: ["StreamDeckCApi", "StreamDeckMacro"]
+            dependencies: ["StreamDeckCApi", "StreamDeckMacros"]
         ),
         .target(
             name: "StreamDeckCApi",
             linkerSettings: [.linkedFramework("IOKit")]
         ),
         .macro(
-            name: "StreamDeckMacro",
+            name: "StreamDeckMacros",
             dependencies: [
                 .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
                 .product(name: "SwiftCompilerPlugin", package: "swift-syntax")
@@ -52,7 +52,7 @@ let package = Package(
             name: "StreamDeckSDKTests",
             dependencies: [
                 "StreamDeckKit",
-                "StreamDeckMacro",
+                "StreamDeckMacros",
                 "StreamDeckSimulator",
                 .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
                 .product(name: "SwiftSyntaxMacrosTestSupport", package: "swift-syntax")

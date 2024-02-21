@@ -4,17 +4,18 @@ import XCTest
 
 // Macro implementations build for the host, so the corresponding module is not available when cross-compiling. 
 // Cross-compiled tests may still make use of the macro itself in end-to-end tests.
-#if canImport(StreamDeckMacro)
-@testable import StreamDeckMacro
+#if canImport(StreamDeckMacros)
+@testable import StreamDeckMacros
 
 let testMacros: [String: Macro.Type] = [
-    "StreamDeckView": StreamDeckMacro.self
+    "StreamDeckView": StreamDeckViewMacro.self
 ]
 #endif
 
-final class StreamDeckMacroTests: XCTestCase {
+final class StreamDeckViewMacroTests: XCTestCase {
 
-    func test_macro() throws {
+    func test_macro() throws { // swiftlint:disable:this function_body_length
+        #if canImport(StreamDeckMacros)
         assertMacroExpansion(
             #"""
             @StreamDeckView
@@ -26,23 +27,39 @@ final class StreamDeckMacroTests: XCTestCase {
             """#
             , expandedSource: #"""
             struct ContentView {
+                @MainActor @ViewBuilder
                 var streamDeckBody: some View {
                     Text("Hello World!")
                 }
 
-                @Environment(\.streamDeckViewContext) var context
+                @Environment(\.streamDeckViewContext) var _$streamDeckViewContext
+
+                /// The Stream Deck device object.
+                var streamDeck: StreamDeck {
+                    _$streamDeckViewContext.device
+                }
+
+                /// The size of the current drawing area.
+                var viewSize: CGSize {
+                    _$streamDeckViewContext.size
+                }
+
+                /// The index of this input element if this is a key or dial view otherwise -1.
+                var viewIndex: Int {
+                    _$streamDeckViewContext.index
+                }
 
                 @MainActor
                 var body: some View {
                     if #available (iOS 17, *) {
                         return streamDeckBody
                             .onChange(of: StreamDeckKit._nextID) {
-                                context.updateRequired()
+                                _$streamDeckViewContext.updateRequired()
                             }
                     } else {
                         return streamDeckBody
                             .onChange(of: StreamDeckKit._nextID) { _ in
-                                context.updateRequired()
+                                _$streamDeckViewContext.updateRequired()
                             }
                     }
                 }
@@ -52,9 +69,11 @@ final class StreamDeckMacroTests: XCTestCase {
             }
             """#,
             macros: testMacros)
+        #endif
     }
 
     func test_macro_with_body_implementation() throws {
+        #if canImport(StreamDeckMacros)
         assertMacroExpansion(
             #"""
             @StreamDeckView
@@ -76,15 +95,17 @@ final class StreamDeckMacroTests: XCTestCase {
             """#,
             diagnostics: [
                 .init(
-                    message: StreamDeckDeclError.bodyMustNotBeImplemented.description,
+                    message: StreamDeckViewDeclError.bodyMustNotBeImplemented.description,
                     line: 1,
                     column: 1
                 )
             ],
             macros: testMacros)
+        #endif
     }
 
     func test_macro_without_streamDeckBody() throws {
+        #if canImport(StreamDeckMacros)
         assertMacroExpansion(
             #"""
             @StreamDeckView
@@ -100,12 +121,13 @@ final class StreamDeckMacroTests: XCTestCase {
             """#,
             diagnostics: [
                 .init(
-                    message: StreamDeckDeclError.streamDeckBodyRequired.description,
+                    message: StreamDeckViewDeclError.streamDeckBodyRequired.description,
                     line: 1,
                     column: 1
                 )
             ],
             macros: testMacros)
+        #endif
     }
 
 }

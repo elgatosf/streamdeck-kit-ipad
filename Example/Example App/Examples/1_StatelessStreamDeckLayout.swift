@@ -10,7 +10,7 @@ import StreamDeckSimulator
 import SwiftUI
 
 @StreamDeckView
-struct StatelessStreamDeckLayout: View {
+struct StatelessStreamDeckLayout {
 
     var streamDeckBody: some View {
         StreamDeckLayout {

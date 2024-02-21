@@ -32,7 +32,7 @@ public extension StreamDeckSimulator {
             self.product = product
             self.showOptions = showOptions
             self.streamDeckView = streamDeckView
-            
+
             _showDeviceBezels = .init(initialValue: showDeviceBezels)
             _showKeyAreaBorders = .init(initialValue: showKeyAreaBorders)
         }

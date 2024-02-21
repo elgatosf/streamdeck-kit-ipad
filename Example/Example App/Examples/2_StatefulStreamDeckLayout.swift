@@ -10,7 +10,7 @@ import StreamDeckSimulator
 import SwiftUI
 
 @StreamDeckView
-struct StatefulStreamDeckLayout: View {
+struct StatefulStreamDeckLayout {
 
     var streamDeckBody: some View {
         StreamDeckLayout {
@@ -29,7 +29,7 @@ struct StatefulStreamDeckLayout: View {
     }
 
     @StreamDeckView
-    struct MyKeyView: View {
+    struct MyKeyView {
 
         @State private var isPressed: Bool = false
 
@@ -38,7 +38,7 @@ struct StatefulStreamDeckLayout: View {
                 self.isPressed = pressed
             } content: {
                 VStack {
-                    Text("\(context.index)")
+                    Text("\(viewIndex)")
                     Text(isPressed ? "Key down" : "Key up")
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -48,7 +48,7 @@ struct StatefulStreamDeckLayout: View {
     }
 
     @StreamDeckView
-    struct MyDialView: View {
+    struct MyDialView {
 
         @State private var offset: CGSize = .zero
         @State private var scale: CGFloat = 1
@@ -63,15 +63,15 @@ struct StatefulStreamDeckLayout: View {
                 }
             } touch: { location in
                 self.offset = CGSize(
-                    width: location.x - context.size.width / 2,
-                    height: location.y - context.size.height / 2
+                    width: location.x - viewSize.width / 2,
+                    height: location.y - viewSize.height / 2
                 )
             } content: {
-                Text("\(context.index)")
+                Text("\(viewIndex)")
                     .scaleEffect(scale)
                     .offset(offset)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color(white: Double(context.index) / 5 + 0.5))
+                    .background(Color(white: Double(viewIndex) / 5 + 0.5))
             }
         }
     }

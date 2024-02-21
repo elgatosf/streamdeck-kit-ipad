@@ -13,7 +13,7 @@ import SwiftUI
 struct StreamDeckKitExampleApp: App {
     init() {
         // Remove to disable logging
-        StreamDeckLogger.setHandler { type, message in
+        streamDeckLoggingHandler = { type, message in
             os_log(type, "\(message)")
         }
     }

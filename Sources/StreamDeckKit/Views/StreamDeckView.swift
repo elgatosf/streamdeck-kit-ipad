@@ -23,16 +23,6 @@ public var _nextID: UInt64 {
 public protocol StreamDeckView: View {
     /// The type of view representing the streamDeckBody of this view.
     associatedtype StreamDeckBody: View
-
-    /// The Stream Deck device object.
-    var streamDeck: StreamDeck { get }
-
-    /// The size of the current drawing area.
-    var viewSize: CGSize { get }
-
-    /// The index of this input element if this is a key or dial view otherwise -1.
-    var viewIndex: Int { get }
-
     /// The content of the view.
     @MainActor @ViewBuilder var streamDeckBody: Self.StreamDeckBody { get }
 }

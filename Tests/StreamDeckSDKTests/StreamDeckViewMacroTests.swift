@@ -34,14 +34,17 @@ final class StreamDeckViewMacroTests: XCTestCase {
 
                 @Environment(\.streamDeckViewContext) var _$streamDeckViewContext
 
+                /// The Stream Deck device object.
                 var streamDeck: StreamDeck {
                     _$streamDeckViewContext.device
                 }
 
+                /// The size of the current drawing area.
                 var viewSize: CGSize {
                     _$streamDeckViewContext.size
                 }
 
+                /// The index of this input element if this is a key or dial view otherwise -1.
                 var viewIndex: Int {
                     _$streamDeckViewContext.index
                 }

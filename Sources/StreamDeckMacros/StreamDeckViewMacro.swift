@@ -54,6 +54,7 @@ struct StreamDeckViewMacro: MemberMacro {
 
         let streamDeck: DeclSyntax =
               """
+              /// The Stream Deck device object.
               var streamDeck: StreamDeck {
                   \(raw: contextAccessor).device
               }
@@ -61,6 +62,7 @@ struct StreamDeckViewMacro: MemberMacro {
 
         let viewSize: DeclSyntax =
               """
+              /// The size of the current drawing area.
               var viewSize: CGSize {
                   \(raw: contextAccessor).size
               }
@@ -68,6 +70,7 @@ struct StreamDeckViewMacro: MemberMacro {
 
         let viewIndex: DeclSyntax =
               """
+              /// The index of this input element if this is a key or dial view otherwise -1.
               var viewIndex: Int {
                   \(raw: contextAccessor).index
               }

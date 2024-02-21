@@ -186,13 +186,6 @@ public final class StreamDeckSession {
         Task { await self.internalSession.start() }
     }
 
-    /// Set an optional handler to receive logging output from StreamDeckKit.
-    ///
-    /// See ``LoggingHandler`` for parameters.
-    public static func setLoggingHandler(_ loggingHandler: @escaping LoggingHandler) {
-        Logger.instance.handler = loggingHandler
-    }
-
     /// Must only be accessed by StreamDeckSimulator to append simulators.
     public func _appendSimulator(device: StreamDeck) {
         // Run on next main loop to ensure that a previous call to `setUp` had time to run.

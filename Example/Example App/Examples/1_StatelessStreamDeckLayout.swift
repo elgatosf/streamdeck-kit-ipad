@@ -44,14 +44,7 @@ struct StatelessStreamDeckLayout: View {
                 } content: {
                     Text("\(context.index)")
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background(Array(
-                            repeating: Color(
-                                red: Double.random(in: 0 ... 1),
-                                green: Double.random(in: 0 ... 1),
-                                blue: Double.random(in: 0 ... 1)
-                            ),
-                            count: context.device.capabilities.dialCount
-                        )[context.index])
+                        .background(Color(white: Double(context.index) / 5 + 0.5))
                 }
             }
         }.background(.indigo)

@@ -24,7 +24,7 @@ struct AnimatedStreamDeckLayout: View {
                 // To react to state changes within each StreamDeckDialView, extract the view, just as you normally would in SwiftUI
                 // Example:
                 MyDialView()
-            }.background(.orange)
+            }
         }
     }
 
@@ -108,6 +108,7 @@ struct AnimatedStreamDeckLayout: View {
                 Text("\(context.index)")
                     .position(position)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color(white: Double(context.index) / 5 + 0.5))
             }
             .task(id: targetPosition) {
                 // Animate the change of the position by applying different position values over time

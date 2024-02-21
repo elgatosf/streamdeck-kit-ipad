@@ -53,12 +53,6 @@ struct StatefulStreamDeckLayout: View {
         @State private var offset: CGSize = .zero
         @State private var scale: CGFloat = 1
 
-        private let backgroundColor = Color(
-            red: Double.random(in: 0 ... 1),
-            green: Double.random(in: 0 ... 1),
-            blue: Double.random(in: 0 ... 1)
-        )
-
         var streamDeckBody: some View {
             StreamDeckDialView { rotations in
                 self.scale = min(max(scale + CGFloat(rotations) / 10, 0.5), 5)
@@ -77,6 +71,7 @@ struct StatefulStreamDeckLayout: View {
                     .scaleEffect(scale)
                     .offset(offset)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color(white: Double(context.index) / 5 + 0.5))
             }
         }
     }

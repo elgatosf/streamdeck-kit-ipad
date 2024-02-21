@@ -5,7 +5,7 @@
 //  Created by Alexander Jentz on 20.02.24.
 //
 
-import Foundation
+import SwiftUI
 
 enum Example {
     case stateless

@@ -1,5 +1,5 @@
 //
-//  StatelessStreamDeckView.swift
+//  StatelessStreamDeckLayout.swift
 //  Example App
 //
 //  Created by Christiane Göhring on 20.02.24.
@@ -10,7 +10,7 @@ import StreamDeckSimulator
 import SwiftUI
 
 @StreamDeckView
-struct StatelessStreamDeckView: View {
+struct StatelessStreamDeckLayout: View {
 
     var streamDeckBody: some View {
         StreamDeckLayout {
@@ -61,12 +61,12 @@ struct StatelessStreamDeckView: View {
 
 #Preview("Stream Deck +") {
     StreamDeckSimulator.PreviewView(streamDeck: .plus) {
-        StatelessStreamDeckView()
+        StatelessStreamDeckLayout()
     }
 }
 
 #Preview("Stream Deck Classic") {
     StreamDeckSimulator.PreviewView(streamDeck: .regular) {
-        StatelessStreamDeckView()
+        StatelessStreamDeckLayout()
     }
 }

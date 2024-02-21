@@ -1,5 +1,5 @@
 //
-//  StatefulStreamDeckView.swift
+//  StatefulStreamDeckLayout.swift
 //  Example App
 //
 //  Created by Christiane Göhring on 20.02.24.
@@ -10,7 +10,7 @@ import StreamDeckSimulator
 import SwiftUI
 
 @StreamDeckView
-struct StatefulStreamDeckView: View {
+struct StatefulStreamDeckLayout: View {
 
     var streamDeckBody: some View {
         StreamDeckLayout {
@@ -42,7 +42,7 @@ struct StatefulStreamDeckView: View {
                     Text(isPressed ? "Key down" : "Key up")
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(isPressed ? .teal.opacity(0.5) : .teal)
+                .background(isPressed ? .purple.opacity(0.5) : .purple)
             }
             .background(.red)
         }
@@ -77,9 +77,6 @@ struct StatefulStreamDeckView: View {
                     .offset(offset)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-//            .background(
-//                isPressed ? backgroundColor.opacity(0.5) : backgroundColor
-//            )
         }
     }
 
@@ -87,12 +84,12 @@ struct StatefulStreamDeckView: View {
 
 #Preview("Stream Deck +") {
     StreamDeckSimulator.PreviewView(streamDeck: .plus) {
-        StatefulStreamDeckView()
+        StatefulStreamDeckLayout()
     }
 }
 
 #Preview("Stream Deck Classic") {
     StreamDeckSimulator.PreviewView(streamDeck: .regular) {
-        StatefulStreamDeckView()
+        StatefulStreamDeckLayout()
     }
 }

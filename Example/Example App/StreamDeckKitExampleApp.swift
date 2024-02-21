@@ -5,8 +5,8 @@
 //  Created by Roman Schlagowsky on 28.12.23.
 //
 
-import SwiftUI
 import StreamDeckKit
+import SwiftUI
 
 @main
 struct StreamDeckKitExampleApp: App {
@@ -15,7 +15,7 @@ struct StreamDeckKitExampleApp: App {
     init() {
         let model = exampleDataModel
         StreamDeckSession.setUp { _ in
-            BaseStreamDeckLayout()
+            BaseStreamDeckView()
                 .environment(model)
         }
     }
@@ -27,11 +27,3 @@ struct StreamDeckKitExampleApp: App {
         }
     }
 }
-
-var emojis: [String] = {
-    var res = [String]()
-    for index in 0x1F600 ... 0x1F64F {
-        res.append(String(UnicodeScalar(index) ?? "-"))
-    }
-    return res
-}()

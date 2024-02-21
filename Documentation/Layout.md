@@ -32,7 +32,7 @@ import SwiftUI
 import StreamDeckKit
 
 @StreamDeckView
-struct StatelessStreamDeckView: View {
+struct StatelessStreamDeckLayout: View {
 
     var streamDeckBody: some View {
         StreamDeckLayout {
@@ -121,13 +121,13 @@ import StreamDeckSimulator
 
 #Preview("Stream Deck +") {
     StreamDeckSimulator.PreviewView(streamDeck: .plus) {
-        StatelessStreamDeckView()
+        StatelessStreamDeckLayout()
     }
 }
 
 #Preview("Stream Deck Classic") {
     StreamDeckSimulator.PreviewView(streamDeck: .regular) {
-        StatelessStreamDeckView()
+        StatelessStreamDeckLayout()
     }
 }V
 ```

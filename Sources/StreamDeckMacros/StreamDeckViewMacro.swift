@@ -24,7 +24,7 @@ struct StreamDeckViewMacro: MemberMacro {
 
     static let contextAccessor = "_$streamDeckViewContext"
 
-    static func expansion(
+    static func expansion( // swiftlint:disable:this function_body_length
         of node: SwiftSyntax.AttributeSyntax,
         providingMembersOf declaration: some SwiftSyntax.DeclGroupSyntax,
         in context: some SwiftSyntaxMacros.MacroExpansionContext

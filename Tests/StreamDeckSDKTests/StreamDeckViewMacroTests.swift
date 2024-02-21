@@ -14,7 +14,7 @@ let testMacros: [String: Macro.Type] = [
 
 final class StreamDeckViewMacroTests: XCTestCase {
 
-    func test_macro() throws {
+    func test_macro() throws { // swiftlint:disable:this function_body_length
         #if canImport(StreamDeckMacros)
         assertMacroExpansion(
             #"""

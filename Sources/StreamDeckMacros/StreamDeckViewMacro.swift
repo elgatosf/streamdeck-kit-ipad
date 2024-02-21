@@ -113,6 +113,35 @@ extension StreamDeckViewMacro: ExtensionMacro {
   }
 }
 
+extension StreamDeckViewMacro: MemberAttributeMacro {
+    static func expansion(
+        of node: SwiftSyntax.AttributeSyntax,
+        attachedTo declaration: some SwiftSyntax.DeclGroupSyntax,
+        providingAttributesFor member: some SwiftSyntax.DeclSyntaxProtocol,
+        in context: some SwiftSyntaxMacros.MacroExpansionContext
+    ) throws -> [SwiftSyntax.AttributeSyntax] {
+        guard let variableDecl = member.as(VariableDeclSyntax.self),
+              variableDecl.isStreamDeckBody
+        else { return [] }
+
+        return ["@MainActor", "@ViewBuilder"]
+    }
+
+}
+
+extension VariableDeclSyntax {
+    var isStreamDeckBody: Bool {
+        bindings
+            .contains(where: { syntax in
+                syntax
+                    .as(PatternBindingSyntax.self)?
+                    .pattern
+                    .as(IdentifierPatternSyntax.self)?
+                    .identifier.text == "streamDeckBody"
+            })
+    }
+}
+
 @main
 struct StreamDeckMacrosPlugin: CompilerPlugin {
     public let providingMacros: [Macro.Type] = [

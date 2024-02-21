@@ -27,6 +27,7 @@ final class StreamDeckViewMacroTests: XCTestCase {
             """#
             , expandedSource: #"""
             struct ContentView {
+                @MainActor @ViewBuilder
                 var streamDeckBody: some View {
                     Text("Hello World!")
                 }

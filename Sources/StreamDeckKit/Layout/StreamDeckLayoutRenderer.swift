@@ -55,32 +55,32 @@ final class StreamDeckLayoutRenderer {
 
     @MainActor
     func updateRequired(_ dirty: DirtyMarker) {
-        print("!!! Dirty \(dirty)")
+        log("Dirty \(dirty)")
         dirtyViews.append(dirty)
     }
 
     private func updateLayout(_ image: UIImage, on device: StreamDeck) {
-        print("!!! Layout did change")
+        log("Layout did change")
         let caps = device.capabilities
 
         guard !dirtyViews.isEmpty else {
-            print("!!! no dirty views")
+            log("no dirty views")
             return
         }
 
         defer { dirtyViews.removeAll(keepingCapacity: true) }
 
-        print("!!! requires updates of \(Array(dirtyViews))")
+        log("requires updates of \(Array(dirtyViews))")
 
         guard !dirtyViews.contains(.screen) else {
-            print("!!! complete screen required")
+            log("complete screen required")
             device.setScreenImage(image, scaleAspectFit: false)
             return
         }
 
         for dirtyView in dirtyViews {
             if case let .key(location) = dirtyView {
-                print("!!! \(dirtyView) required")
+                log("\(dirtyView) required")
                 let rect = caps.getKeyRect(location)
                 device.setKeyImage(image.cropping(to: rect), at: location, scaleAspectFit: false)
             }
@@ -89,7 +89,7 @@ final class StreamDeckLayoutRenderer {
         guard let windowRect = caps.windowRect else { return }
 
         guard !dirtyViews.contains(.window) else {
-            print("!!! complete window required")
+            log("complete window required")
             device.setWindowImage(image.cropping(to: windowRect), scaleAspectFit: false)
             return
         }
@@ -97,12 +97,12 @@ final class StreamDeckLayoutRenderer {
         for dirtyView in dirtyViews {
             if case let .windowArea(rect) = dirtyView {
                 guard device.supports(.setWindowImageAtXY), let windowRect = caps.windowRect else {
-                    print("!!! \(dirtyView) required but no setWindowImage(:at:) support")
+                    log("\(dirtyView) required but no setWindowImage(:at:) support")
                     device.setWindowImage(image.cropping(to: windowRect), scaleAspectFit: false)
                     return
                 }
 
-                print("!!! \(dirtyView) required")
+                log("\(dirtyView) required")
                 device.setWindowImage(
                     image.cropping(to: rect),
                     at: .init(
@@ -117,6 +117,9 @@ final class StreamDeckLayoutRenderer {
         }
     }
 
+    private func log(_ message: String) {
+        StreamDeckKit.log(.debug, "SDRender: \(message)")
+    }
 }
 
 extension UIImage {

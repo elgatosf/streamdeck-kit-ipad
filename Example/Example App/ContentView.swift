@@ -27,12 +27,17 @@ struct ContentView: View {
                 }
                 .tag(Example.stateless)
 
-            Text("2. Example - Stateful")
             sessionStateView
                 .tabItem {
-                    Label("2. Example - Stateful", systemImage: "figure.stairs")
+                    Label("2. Example - Stateful", systemImage: "figure.walk")
                 }
                 .tag(Example.stateful)
+
+            sessionStateView
+                .tabItem {
+                    Label("3. Example - Animated", systemImage: "figure.stairs")
+                }
+                .tag(Example.animated)
         }
     }
 
@@ -41,6 +46,7 @@ struct ContentView: View {
             switch dataModel.selectedExample {
             case .stateless: Text("1. Example - Stateless").font(.title).padding()
             case .stateful: Text("2. Example - Stateful").font(.title).padding()
+            case .animated: Text("3. Example - Animated").font(.title).padding()
             }
             Text("Session State: \(stateDescription)")
             if devices.isEmpty {

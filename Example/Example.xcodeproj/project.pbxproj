@@ -10,6 +10,7 @@
 		0B063EFA2B84D51E00778376 /* 1_StatelessStreamDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B063EF92B84D51E00778376 /* 1_StatelessStreamDeckView.swift */; };
 		0B063EFC2B84DBF800778376 /* 2_StatefulStreamDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B063EFB2B84DBF800778376 /* 2_StatefulStreamDeckView.swift */; };
 		0B9B65D52B85E4CD001C06F4 /* BaseStreamDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9B65D42B85E4CD001C06F4 /* BaseStreamDeckView.swift */; };
+		0BD459DE2B86038800964743 /* 3_AnimatedStreamDeckLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD459DD2B86038800964743 /* 3_AnimatedStreamDeckLayout.swift */; };
 		0BD459E02B86093300964743 /* EnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD459DF2B86093300964743 /* EnvironmentValues.swift */; };
 		2153E38F2B850CD0001E37B5 /* ExampleDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153E38E2B850CD0001E37B5 /* ExampleDataModel.swift */; };
 		3073016D2B3DB70000C5F5B4 /* StreamDeckKitExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3073016C2B3DB70000C5F5B4 /* StreamDeckKitExampleApp.swift */; };
@@ -26,6 +27,7 @@
 		0B063EF92B84D51E00778376 /* 1_StatelessStreamDeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 1_StatelessStreamDeckView.swift; sourceTree = "<group>"; };
 		0B063EFB2B84DBF800778376 /* 2_StatefulStreamDeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2_StatefulStreamDeckView.swift; sourceTree = "<group>"; };
 		0B9B65D42B85E4CD001C06F4 /* BaseStreamDeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStreamDeckView.swift; sourceTree = "<group>"; };
+		0BD459DD2B86038800964743 /* 3_AnimatedStreamDeckLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 3_AnimatedStreamDeckLayout.swift; sourceTree = "<group>"; };
 		0BD459DF2B86093300964743 /* EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValues.swift; sourceTree = "<group>"; };
 		2153E38E2B850CD0001E37B5 /* ExampleDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleDataModel.swift; sourceTree = "<group>"; };
 		21DE1EAA2B46E86600B18417 /* Example-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Example-App-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -60,6 +62,7 @@
 				0B9B65D42B85E4CD001C06F4 /* BaseStreamDeckView.swift */,
 				0B063EF92B84D51E00778376 /* 1_StatelessStreamDeckView.swift */,
 				0B063EFB2B84DBF800778376 /* 2_StatefulStreamDeckView.swift */,
+				0BD459DD2B86038800964743 /* 3_AnimatedStreamDeckLayout.swift */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BD459DE2B86038800964743 /* 3_AnimatedStreamDeckLayout.swift in Sources */,
 				3073016F2B3DB70000C5F5B4 /* ContentView.swift in Sources */,
 				3073016D2B3DB70000C5F5B4 /* StreamDeckKitExampleApp.swift in Sources */,
 				2153E38F2B850CD0001E37B5 /* ExampleDataModel.swift in Sources */,

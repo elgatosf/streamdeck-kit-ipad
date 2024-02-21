@@ -44,14 +44,12 @@ struct StatefulStreamDeckLayout: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(isPressed ? .purple.opacity(0.5) : .purple)
             }
-            .background(.red)
         }
     }
 
     @StreamDeckView
     struct MyDialView: View {
 
-        @State private var isPressed: Bool = false
         @State private var offset: CGSize = .zero
         @State private var scale: CGFloat = 1
 
@@ -65,7 +63,10 @@ struct StatefulStreamDeckLayout: View {
             StreamDeckDialView { rotations in
                 self.scale = min(max(scale + CGFloat(rotations) / 10, 0.5), 5)
             } press: { pressed in
-                self.isPressed = pressed
+                if pressed {
+                    self.scale = 1
+                    self.offset = .zero
+                }
             } touch: { location in
                 self.offset = CGSize(
                     width: location.x - context.size.width / 2,
@@ -89,7 +90,7 @@ struct StatefulStreamDeckLayout: View {
 }
 
 #Preview("Stream Deck Classic") {
-    StreamDeckSimulator.PreviewView(streamDeck: .regular) {
+    StreamDeckSimulator.PreviewView(streamDeck: .xl) {
         StatefulStreamDeckLayout()
     }
 }

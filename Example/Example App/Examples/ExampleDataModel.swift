@@ -10,6 +10,7 @@ import SwiftUI
 enum Example {
     case stateless
     case stateful
+    case animated
 }
 
 @Observable

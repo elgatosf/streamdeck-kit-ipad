@@ -19,6 +19,8 @@ struct BaseStreamDeckView: View {
             StatelessStreamDeckLayout()
         case .stateful:
             StatefulStreamDeckLayout()
+        case .animated:
+            AnimatedStreamDeckLayout()
         }
     }
 

@@ -129,7 +129,7 @@ final class StreamDeckLayoutRenderer {
     }
 
     private func log(_ message: String) {
-        StreamDeckLogger.log(.debug, "SDRender: \(message)")
+        StreamDeckKit.log(.debug, "SDRender: \(message)")
     }
 }
 

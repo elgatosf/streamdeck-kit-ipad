@@ -6,7 +6,6 @@
 //
 
 import StreamDeckKit
-import StreamDeckSimulator
 import SwiftUI
 
 @StreamDeckView
@@ -24,7 +23,7 @@ struct StatefulStreamDeckLayout {
                 // To react to state changes within each StreamDeckDialView, extract the view, just as you normally would in SwiftUI
                 // Example:
                 MyDialView()
-            }.background(.orange)
+            }
         }
     }
 
@@ -38,11 +37,11 @@ struct StatefulStreamDeckLayout {
                 self.isPressed = pressed
             } content: {
                 VStack {
-                    Text("\(viewIndex)")
+                    Text("\(viewIndex)") // `viewIndex` is a property `StreamDeckView`
                     Text(isPressed ? "Key down" : "Key up")
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(isPressed ? .purple.opacity(0.5) : .purple)
+                .background(isPressed ? .purple.opacity(0.5) : .purple) // Updating the background depending on the state
             }
         }
     }
@@ -64,12 +63,12 @@ struct StatefulStreamDeckLayout {
             } touch: { location in
                 self.offset = CGSize(
                     width: location.x - viewSize.width / 2,
-                    height: location.y - viewSize.height / 2
+                    height: location.y - viewSize.height / 2 // `viewSize` is a property `StreamDeckView`
                 )
             } content: {
                 Text("\(viewIndex)")
-                    .scaleEffect(scale)
-                    .offset(offset)
+                    .scaleEffect(scale) // Updating the scale depending on the state
+                    .offset(offset) // Updating the offset depending on the state
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color(white: Double(viewIndex) / 5 + 0.5))
             }
@@ -78,14 +77,20 @@ struct StatefulStreamDeckLayout {
 
 }
 
-#Preview("Stream Deck +") {
-    StreamDeckSimulator.PreviewView(streamDeck: .plus) {
-        StatefulStreamDeckLayout()
-    }
-}
+#if DEBUG
 
-#Preview("Stream Deck Classic") {
-    StreamDeckSimulator.PreviewView(streamDeck: .xl) {
-        StatefulStreamDeckLayout()
+    import StreamDeckSimulator
+
+    #Preview("Stream Deck +") {
+        StreamDeckSimulator.PreviewView(streamDeck: .plus) {
+            StatefulStreamDeckLayout()
+        }
     }
-}
+
+    #Preview("Stream Deck Classic") {
+        StreamDeckSimulator.PreviewView(streamDeck: .xl) {
+            StatefulStreamDeckLayout()
+        }
+    }
+
+#endif

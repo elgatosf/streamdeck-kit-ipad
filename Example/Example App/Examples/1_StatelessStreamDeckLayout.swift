@@ -6,7 +6,6 @@
 //
 
 import StreamDeckKit
-import StreamDeckSimulator
 import SwiftUI
 
 @StreamDeckView
@@ -18,7 +17,8 @@ struct StatelessStreamDeckLayout {
             // Use StreamDeckKeyAreaLayout for rendering separate keys
             StreamDeckKeyAreaLayout { context in
                 // Define content for each key.
-                // StreamDeckKeyView provides a callback for the key action, and the view content
+                // StreamDeckKeyAreaLayout provides a context for each available key,
+                // and StreamDeckKeyView provides a callback for the key action
                 // Example:
                 StreamDeckKeyView { pressed in
                     print("pressed \(pressed)")
@@ -33,7 +33,8 @@ struct StatelessStreamDeckLayout {
             // Use StreamDeckDialAreaLayout for rendering separate parts of the display
             StreamDeckDialAreaLayout { context in
                 // Define content for each dial
-                // StreamDeckDialView provides callbacks for the dial actions, and the view content
+                // StreamDeckDialAreaLayout provides a context for each available dial,
+                // and StreamDeckDialView provides callbacks for the dial actions
                 // Example:
                 StreamDeckDialView { rotations in
                     print("dial rotated \(rotations)")
@@ -52,14 +53,20 @@ struct StatelessStreamDeckLayout {
 
 }
 
-#Preview("Stream Deck +") {
-    StreamDeckSimulator.PreviewView(streamDeck: .plus) {
-        StatelessStreamDeckLayout()
-    }
-}
+#if DEBUG
 
-#Preview("Stream Deck Classic") {
-    StreamDeckSimulator.PreviewView(streamDeck: .regular) {
-        StatelessStreamDeckLayout()
+    import StreamDeckSimulator
+
+    #Preview("Stream Deck +") {
+        StreamDeckSimulator.PreviewView(streamDeck: .plus) {
+            StatelessStreamDeckLayout()
+        }
     }
-}
+
+    #Preview("Stream Deck Classic") {
+        StreamDeckSimulator.PreviewView(streamDeck: .regular) {
+            StatelessStreamDeckLayout()
+        }
+    }
+
+#endif

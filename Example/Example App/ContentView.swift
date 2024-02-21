@@ -6,9 +6,6 @@
 //
 
 import StreamDeckKit
-#if DEBUG
-    import StreamDeckSimulator
-#endif
 import SwiftUI
 
 struct ContentView: View {
@@ -83,6 +80,11 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
-}
+#if DEBUG
+    import StreamDeckSimulator
+
+    #Preview {
+        ContentView()
+    }
+
+#endif

@@ -1,6 +1,8 @@
-# Layout
+# Layout Basics
 
-The `StreamDeckLayout` view is a fundamental component for building layouts for Stream Deck devices using SwiftUI. It provides a way to define the key area view with its keys and window view with its dials for a Stream Deck layout. This layout can be used to draw a customized layout onto a Stream Deck device and to recognize Stream Deck interactions in the SwiftUI way.
+The `StreamDeckLayout` view is a fundamental component for building layouts for Stream Deck devices using SwiftUI. It provides a way to define the key area view with its keys and window view with its dials for a Stream Deck layout. This layout can be used to draw a customized layout onto a Stream Deck device and to recognize Stream Deck interactions in the SwiftUI way. 
+
+A `StreamDeckLayout` combined with the `@StreamDeckView` Macro does the heavy lifting for you by automatically recognizing view updates, and triggering an update of the rendered image on your Stream Deck device.
 
 The general structure of `StreamDeckLayout` is as follows:
 ```
@@ -25,14 +27,14 @@ To use `StreamDeckLayout`, create an instance of it by specifying the key area a
 
 ### Example
 
-Here's an example of how to create a basic `StreamDeckLayout`:
+Here's an example of how to create a basic static `StreamDeckLayout`. For examples on how to create a stateful and an animated layout, see [Stateful Layout](Layout_Stateful.md) and [Animated Layout](Layout_Animated.md), respectively.
 
 ```swift
 import SwiftUI 
 import StreamDeckKit
 
 @StreamDeckView
-struct StatelessStreamDeckLayout: View {
+struct StatelessStreamDeckLayout {
 
     var streamDeckBody: some View {
         StreamDeckLayout {
@@ -40,7 +42,8 @@ struct StatelessStreamDeckLayout: View {
             // Use StreamDeckKeyAreaLayout for rendering separate keys
             StreamDeckKeyAreaLayout { context in
                 // Define content for each key.
-                // StreamDeckKeyView provides a callback for the key action, and the view content
+                // StreamDeckKeyAreaLayout provides a context for each available key,
+                // and StreamDeckKeyView provides a callback for the key action
                 // Example:
                 StreamDeckKeyView { pressed in
                     print("pressed \(pressed)")
@@ -55,7 +58,8 @@ struct StatelessStreamDeckLayout: View {
             // Use StreamDeckDialAreaLayout for rendering separate parts of the display
             StreamDeckDialAreaLayout { context in
                 // Define content for each dial
-                // StreamDeckDialView provides callbacks for the dial actions, and the view content
+                // StreamDeckDialAreaLayout provides a context for each available dial,
+                // and StreamDeckDialView provides callbacks for the dial actions
                 // Example:
                 StreamDeckDialView { rotations in
                     print("dial rotated \(rotations)")
@@ -66,14 +70,7 @@ struct StatelessStreamDeckLayout: View {
                 } content: {
                     Text("\(context.index)")
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background(Array(
-                            repeating: Color(
-                                red: Double.random(in: 0 ... 1),
-                                green: Double.random(in: 0 ... 1),
-                                blue: Double.random(in: 0 ... 1)
-                            ),
-                            count: context.device.capabilities.dialCount
-                        )[context.index])
+                        .background(Color(white: Double(context.index) / 5 + 0.5))
                 }
             }
         }.background(.indigo)
@@ -129,5 +126,5 @@ import StreamDeckSimulator
     StreamDeckSimulator.PreviewView(streamDeck: .regular) {
         StatelessStreamDeckLayout()
     }
-}V
+}
 ```

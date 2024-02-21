@@ -6,7 +6,6 @@
 //
 
 import StreamDeckKit
-import StreamDeckSimulator
 import SwiftUI
 
 @StreamDeckView
@@ -40,11 +39,11 @@ struct AnimatedStreamDeckLayout {
                 self.isPressed = pressed
             } content: {
                 VStack {
-                    Text("\(viewIndex)")
+                    Text("\(viewIndex)") // `viewIndex` is a property `StreamDeckView`
                     Text(isPressed == true ? "Key down" : "Key up")
                 }
-                .scaleEffect(scale)
-                .rotationEffect(.degrees(rotationDegree))
+                .scaleEffect(scale) // Updating the scale depending on the state
+                .rotationEffect(.degrees(rotationDegree)) // Updating the rotation depending on the state
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(isPressed == true ? .yellow.opacity(0.5) : .yellow)
             }
@@ -68,7 +67,7 @@ struct AnimatedStreamDeckLayout {
                 }
             }
             .task(id: isPressed) {
-                // Animate the rotation effect by applying different scale values over time
+                // Animate the rotation effect by applying different rotation degree values over time
                 func apply(_ degree: Double) async {
                     guard !Task.isCancelled else { return }
                     self.rotationDegree = degree
@@ -106,7 +105,7 @@ struct AnimatedStreamDeckLayout {
                 self.targetPosition = location
             } content: {
                 Text("\(viewIndex)")
-                    .position(position)
+                    .position(position) // Updating the position depending on the state
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color(white: Double(viewIndex) / 5 + 0.5))
             }
@@ -137,7 +136,7 @@ struct AnimatedStreamDeckLayout {
                 if isPressed == nil || isPressed == true {
                     self.position = CGPoint(
                         x: viewSize.width / 2,
-                        y: viewSize.height / 2
+                        y: viewSize.height / 2 // `viewSize` is a property `StreamDeckView`
                     )
                 }
             }
@@ -146,14 +145,20 @@ struct AnimatedStreamDeckLayout {
 
 }
 
-#Preview("Stream Deck +") {
-    StreamDeckSimulator.PreviewView(streamDeck: .plus) {
-        AnimatedStreamDeckLayout()
-    }
-}
+#if DEBUG
 
-#Preview("Stream Deck Classic") {
-    StreamDeckSimulator.PreviewView(streamDeck: .mini) {
-        AnimatedStreamDeckLayout()
+    import StreamDeckSimulator
+
+    #Preview("Stream Deck +") {
+        StreamDeckSimulator.PreviewView(streamDeck: .plus) {
+            AnimatedStreamDeckLayout()
+        }
     }
-}
+
+    #Preview("Stream Deck Classic") {
+        StreamDeckSimulator.PreviewView(streamDeck: .mini) {
+            AnimatedStreamDeckLayout()
+        }
+    }
+
+#endif

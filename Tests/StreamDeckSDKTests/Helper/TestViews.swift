@@ -78,12 +78,12 @@ enum TestViews {
     struct SimpleLayout {
         var streamDeckBody: some View {
             StreamDeckLayout(
-                keyAreaView: {
-                    StreamDeckKeypadLayout { _ in
+                keyArea: {
+                    StreamDeckKeyAreaLayout { _ in
                         SimpleKey()
                     }
                 },
-                windowView: {
+                windowArea: {
                     StreamDeckDialAreaLayout { _ in
                         SimpleDialView()
                     }
@@ -121,12 +121,11 @@ enum TestViews {
 
         var body: some View {
             StreamDeckLayout(
-                keyAreaView: { StreamDeckKeypadLayout { _ in SimpleKey() } },
-                windowView: { WindowLayout() }
+                keyArea: { StreamDeckKeyAreaLayout { _ in SimpleKey() } },
+                windowArea: { WindowLayout() }
             )
         }
     }
-
 }
 
 extension InputEvent.Direction: CustomStringConvertible {

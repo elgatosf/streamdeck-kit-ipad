@@ -68,8 +68,8 @@ import StreamDeckKit
 // Run session setup to define what should be displayed on every connected device
 StreamDeckSession.setUp { device in
     print("Rendering \(device.info.productName)")
-    return StreamDeckLayout { keypadContext in // Trailing closure (keyAreaView:) expects content for the keypad
-        StreamDeckKeypadLayout { keyContext in // Trailing closure (keyView:) expects a factory for keys
+    return StreamDeckLayout { keypadContext in // Trailing closure (keyArea:) expects content for the keypad
+        StreamDeckKeyAreaLayout { keyContext in // Trailing closure (keyView:) expects a factory for keys
             StreamDeckKeyView { isDown in
                 // Handle key down/up events
                 print(isDown ? "Key is down" : "Key is up")
@@ -87,7 +87,7 @@ This uses predefined layout views to place content on a Stream Deck.
 
 <img src="Documentation/_images/example_keys.png" alt="A screenshot of a Stream Deck, showing increasing numbers on it's buttons" width="200" />
 
-The closure we passed to `StreamDeckLayout` defines the key area of the device. The closure we passed to `StreamDeckKeypadLayout` is a factory, providing a view for each LED key on the device. 
+The closure we passed to `StreamDeckLayout` defines the key area of the device. The closure we passed to `StreamDeckKeyAreaLayout` is a factory, providing a view for each LED key on the device. 
 
 We can use the `index` property of the `keyContext` parameter to find out which key is to be rendered.
 

@@ -5,16 +5,16 @@
 //
 
 import Combine
-import SwiftUI
 import StreamDeckKit
+import SwiftUI
 
 public extension StreamDeckSimulator {
 
-    struct PreviewView: View {
+    struct PreviewView<SDView: StreamDeckView>: View {
         private let product: StreamDeckProduct
         private let configuration: StreamDeckSimulator.Configuration
-        private let context: Any?
         private let showOptions: Bool
+        private let streamDeckView: () -> SDView
 
         @State private var showDeviceBezels: Bool
         @State private var showKeyAreaBorders: Bool
@@ -25,13 +25,13 @@ public extension StreamDeckSimulator {
             showOptions: Bool = true,
             showDeviceBezels: Bool = true,
             showKeyAreaBorders: Bool = false,
-            context: (() -> Any)? = nil
+            streamDeckView: @escaping () -> SDView
         ) {
             configuration = product.createConfiguration(serialNumber: serialNumber)
 
             self.product = product
-            self.context = context?()
             self.showOptions = showOptions
+            self.streamDeckView = streamDeckView
 
             _showDeviceBezels = .init(initialValue: showDeviceBezels)
             _showKeyAreaBorders = .init(initialValue: showKeyAreaBorders)
@@ -54,10 +54,7 @@ public extension StreamDeckSimulator {
                 }
             }
             .onAppear {
-                StreamDeckSession.instance._appendSimulator(device: configuration.device)
-            }
-            .onDisappear {
-                StreamDeckSession.instance._removeSimulator(device: configuration.device)
+                configuration.device.render(streamDeckView())
             }
             .environment(\.streamDeckViewContext, ._createDummyForSimulator(configuration.device))
         }

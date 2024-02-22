@@ -1,5 +1,5 @@
 //
-//  StreamDeckKeypadLayout.swift
+//  StreamDeckKeyAreaLayout.swift
 //  StreamDeckDriverTest
 //
 //  Created by Alexander Jentz on 27.11.23.
@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-/// A View that draws the layout of a Stream Deck keypad.
+/// A View that draws the layout of a Stream Deck key area.
 ///
 /// The layout depends on the device from the current ``StreamDeckViewContext`` environment.
-public struct StreamDeckKeypadLayout<Key: View>: View {
+public struct StreamDeckKeyAreaLayout<Key: View>: View {
 
     /// A factory function that provides a view for a key.
     ///

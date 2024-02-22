@@ -11,10 +11,13 @@ import SwiftUI
 
 @main
 struct StreamDeckKitExampleApp: App {
+
     init() {
-        // Remove to disable logging
-        streamDeckLoggingHandler = { type, message in
-            os_log(type, "\(message)")
+        // Uncomment the next line to enable StreamDeckKit internal logging.
+        // streamDeckLoggingHandler = { os_log($0, "\($1)") }
+
+        StreamDeckSession.setUp { _ in
+            BaseStreamDeckView()
         }
     }
 
@@ -24,11 +27,3 @@ struct StreamDeckKitExampleApp: App {
         }
     }
 }
-
-var emojis: [String] = {
-    var res = [String]()
-    for index in 0x1F600 ... 0x1F64F {
-        res.append(String(UnicodeScalar(index) ?? "-"))
-    }
-    return res
-}()

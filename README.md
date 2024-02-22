@@ -53,7 +53,7 @@ Be sure that you add "elgato-device-driver" to `LSApplicationQueriesSchemes` in 
 To render content on a Stream Deck, you can use SwiftUI as you would in a regular app UI.
 
 ```swift
-StreamDeckSession.setUp { _ in Color.blue }
+StreamDeckSession.setUp(newDeviceHandler: { $0.render(Color.blue) })
 ```
 
 This would show a blue color on all buttons and displays on a device.
@@ -66,22 +66,24 @@ To render content on specific buttons, you can use the Layout system.
 ```swift
 import StreamDeckKit
 // Run session setup to define what should be displayed on every connected device
-StreamDeckSession.setUp { device in
-    print("Rendering \(device.info.productName)")
-    return StreamDeckLayout { keypadContext in // Trailing closure (keyArea:) expects content for the keypad
-        StreamDeckKeyAreaLayout { keyContext in // Trailing closure (keyView:) expects a factory for keys
-            StreamDeckKeyView { isDown in
-                // Handle key down/up events
-                print(isDown ? "Key is down" : "Key is up")
-            } content: {
-                // Provide SwiftUI content for each key
-                Text("\(keyContext.index)") // Use context to distinguish keys
-                    .padding(keyContext.size.width * 0.2) // Use context to get size info
-                    .background { Circle().fill(.yellow) }
+StreamDeckSession.setUp(newDeviceHandler: { device in
+    print("Rendering on \(device.info.productName)")
+    device.render(
+        StreamDeckLayout { keypadContext in // Trailing closure (keyArea:) expects content for the keypad
+            StreamDeckKeyAreaLayout { keyContext in // Trailing closure (keyView:) expects a factory for keys
+                StreamDeckKeyView { isDown in
+                    // Handle key down/up events
+                    print(isDown ? "Key is down" : "Key is up")
+                } content: {
+                    // Provide SwiftUI content for each key
+                    Text("\(keyContext.index)") // Use context to distinguish keys
+                        .padding(keyContext.size.width * 0.2) // Use context to get size info
+                        .background { Circle().fill(.yellow) }
+                }
             }
         }
-    }
-}
+    )
+})
 ```
 This uses predefined layout views to place content on a Stream Deck. 
 
@@ -118,24 +120,19 @@ This will show an overlay with a simulated Stream Deck. You can switch between d
 
 <img src="Documentation/_images/simulator.png" alt="A screenshot of the Stream Deck simulator window" width="200" />
 
+The simulator will automatically attach to your running session, and will behave just like a regular device.
+
 #### Preview
 
 You can use Simulator in XCode previews as well. 
 
 ```swift
 #Preview {
-    StreamDeckSession.setUp { _ in
-        // Your StreamDeckLayout implementation. See Listing 1.
-    }
-
-    return VStack {
-        Text("Hello World!") // Your regular content
-        StreamDeckSimulator.PreviewView(streamDeck: .mini)
+    StreamDeckSimulator.PreviewView(streamDeck: .mini) {
+        MyStreamDeckLayout()
     }
 }
 ```
-
-The simulator will automatically attach to your running session, and will behave just like a regular device.
 
 ## Installation
 

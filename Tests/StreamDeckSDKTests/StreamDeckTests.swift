@@ -44,13 +44,13 @@ final class StreamDeckTests: XCTestCase {
     // MARK: Set image on key
 
     func test_set_key_image_should_set_scaled_image_on_key() async throws {
-        await robot.operateDevice { $0.setKeyImage(.colored(.blue)!, at: 2, scaleAspectFit: false) }
+        await robot.operateDevice { $0.setKeyImage(.sdk_colored(.blue), at: 2, scaleAspectFit: false) }
         await robot.assertSnapshot(\.keys.first!.image, as: .image)
     }
 
     func test_set_key_image_should_replace_pending_operations_for_the_same_key() async throws {
         await robot.operateDevice(isBusy: true) { device in
-            let image: UIImage = .colored(.blue)!
+            let image = UIImage.sdk_colored(.blue)
 
             for _ in 0 ..< 10 {
                 device.setKeyImage(image, at: 0)
@@ -121,8 +121,8 @@ final class StreamDeckTests: XCTestCase {
 
     func test_fill_screen_should_replace_pending_drawing_operations() async throws {
         await robot.operateDevice(isBusy: true) { device in
-            device.setKeyImage(.colored(.blue)!, at: 1)
-            device.setScreenImage(.colored(.yellow)!)
+            device.setKeyImage(.sdk_colored(.blue), at: 1)
+            device.setScreenImage(.sdk_colored(.yellow))
             device.fillScreen(.init(red: 1, green: 1, blue: 1, alpha: 1.0))
         }
 
@@ -134,7 +134,7 @@ final class StreamDeckTests: XCTestCase {
     // MARK: Set screen image
 
     func test_set_screen_image_should_set_scaled_fullscreen_image() async throws {
-        await robot.operateDevice { $0.setScreenImage(.colored(.blue)!, scaleAspectFit: false) }
+        await robot.operateDevice { $0.setScreenImage(.sdk_colored(.blue), scaleAspectFit: false) }
 
         await robot.assertSnapshot(\.screens.first!, as: .image)
     }
@@ -144,7 +144,7 @@ final class StreamDeckTests: XCTestCase {
     func test_set_window_image_should_set_scaled_window_image() async throws {
         robot.use(.plus)
 
-        await robot.operateDevice { $0.setWindowImage(.colored(.blue)!, scaleAspectFit: false) }
+        await robot.operateDevice { $0.setWindowImage(.sdk_colored(.blue), scaleAspectFit: false) }
 
         await robot.assertSnapshot(\.windowImages.first!.image, as: .image)
     }
@@ -155,7 +155,7 @@ final class StreamDeckTests: XCTestCase {
         let expectedRect = CGRect(x: 12, y: 12, width: 42, height: 42)
 
         await robot.operateDevice {
-            $0.setWindowImage(.colored(.blue)!, at: expectedRect)
+            $0.setWindowImage(.sdk_colored(.blue), at: expectedRect)
         }
 
         robot.assertEqual(\.windowImages.first!.rect, expectedRect)
@@ -163,7 +163,7 @@ final class StreamDeckTests: XCTestCase {
     }
 
     func test_set_window_image_should_be_ignored_when_not_supported_by_device() async {
-        await robot.operateDevice { $0.setWindowImage(.colored(.blue)!) }
+        await robot.operateDevice { $0.setWindowImage(.sdk_colored(.blue)) }
 
         robot.assertEqual(\.windowImages.count, 0)
     }

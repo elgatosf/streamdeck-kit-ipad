@@ -23,7 +23,7 @@ StreamDeckLayout
 > The window area is only available for the Stream Deck + and will be ignored for other device types.
 
 ## Usage
-To use `StreamDeckLayout`, create an instance of it by specifying the key area and window views. Then, provide this instance to either the `StreamDeckSession.setUp` method or the `StreamDeck.render` method.
+To use `StreamDeckLayout`, create an instance of it by specifying the key area and window views. Then, provide this instance to the `StreamDeck.render` method.
 
 ### Example
 

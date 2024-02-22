@@ -53,7 +53,7 @@ public struct StreamDeckViewContext {
     }
 
     /// Must only be accessed by StreamDeckSimulator.
-    public static func _createDummyForSimulator(_ device: StreamDeck) -> Self {
+    public static func _createForSimulator(_ device: StreamDeck) -> Self {
         .init(device: device, dirtyMarker: .screen, size: device.capabilities.screenSize ?? .zero)
     }
 

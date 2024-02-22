@@ -40,23 +40,17 @@ private extension StreamDeckPedalSimulatorView {
     var touchPad: some View {
         GeometryReader { geo in
             HStack(spacing: geo.size.width / 16) {
-                SimulatorKeyView(image: nil) { pressed in
-                    client.emit(.keyPress(index: 0, pressed: pressed))
-                }
-                .frame(width: geo.size.width / 5)
-                .border(showTouchAreaBorders ? .red : .clear)
+                SimulatorKeyView(client: client, index: 0)
+                    .frame(width: geo.size.width / 5)
+                    .border(showTouchAreaBorders ? .red : .clear)
 
-                SimulatorKeyView(image: nil) { pressed in
-                    client.emit(.keyPress(index: 1, pressed: pressed))
-                }
-                .frame(width: geo.size.width * 0.475)
-                .border(showTouchAreaBorders ? .red : .clear)
+                SimulatorKeyView(client: client, index: 1)
+                    .frame(width: geo.size.width * 0.475)
+                    .border(showTouchAreaBorders ? .red : .clear)
 
-                SimulatorKeyView(image: nil) { pressed in
-                    client.emit(.keyPress(index: 2, pressed: pressed))
-                }
-                .frame(width: geo.size.width / 5)
-                .border(showTouchAreaBorders ? .red : .clear)
+                SimulatorKeyView(client: client, index: 2)
+                    .frame(width: geo.size.width / 5)
+                    .border(showTouchAreaBorders ? .red : .clear)
             }
         }
     }

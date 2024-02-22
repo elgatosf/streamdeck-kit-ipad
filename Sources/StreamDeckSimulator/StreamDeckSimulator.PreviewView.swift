@@ -56,7 +56,7 @@ public extension StreamDeckSimulator {
             .onAppear {
                 configuration.device.render(streamDeckView())
             }
-            .environment(\.streamDeckViewContext, ._createDummyForSimulator(configuration.device))
+            .environment(\.streamDeckViewContext, ._createForSimulator(configuration.device))
         }
 
         @ViewBuilder

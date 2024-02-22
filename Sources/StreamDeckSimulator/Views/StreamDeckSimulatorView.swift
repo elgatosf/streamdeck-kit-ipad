@@ -14,7 +14,6 @@ struct StreamDeckSimulatorView: View {
     @Binding var showDeviceBezels: Bool
     @Binding var showKeyAreaBorders: Bool
     @State private var backgroundImage: UIImage?
-    @State private var buttonImages: [Int: UIImage] = [:]
 
     let config: StreamDeckSimulator.Configuration
     var device: StreamDeck { config.device }
@@ -47,9 +46,6 @@ struct StreamDeckSimulatorView: View {
         simulatorView
             .onReceive(client.backgroundImage) { image in
                 backgroundImage = image
-            }
-            .onReceive(client.keyImages) { images in
-                buttonImages = images
             }
     }
 }
@@ -154,10 +150,7 @@ private extension StreamDeckSimulatorView {
     var touchPad: some View {
         StreamDeckLayout {
             StreamDeckKeyAreaLayout { context in
-                SimulatorKeyView(image: buttonImages[context.index]) { pressed in
-                    client.emit(.keyPress(index: context.index, pressed: pressed))
-                }
-                .equatable()
+                SimulatorKeyView(client: client, index: context.index)
             }
         } windowArea: {
             StreamDeckDialAreaLayout { context in

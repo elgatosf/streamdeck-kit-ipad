@@ -11,9 +11,9 @@ import SwiftUI
 
 struct SimulatorContainer: View {
 
-    public typealias DragValueHandler = (DragGesture.Value) -> Void
-    public typealias SizeChangeHandler = (CGFloat) -> Void
-    public typealias DeviceChangeHandler = (StreamDeckProduct, StreamDeck) -> Void
+    typealias DragValueHandler = (DragGesture.Value) -> Void
+    typealias SizeChangeHandler = (CGFloat) -> Void
+    typealias DeviceChangeHandler = (StreamDeckProduct, StreamDeck) -> Void
 
     let onDragMove: DragValueHandler
     let onSizeChange: SizeChangeHandler
@@ -28,7 +28,7 @@ struct SimulatorContainer: View {
     var device: StreamDeck { configuration.device }
     var product: StreamDeckProduct { configuration.device.info.product! }
 
-    public init(
+    init(
         streamDeck product: StreamDeckProduct = .regular,
         size: CGFloat = 400,
         onDragMove: @escaping DragValueHandler = { _ in },
@@ -43,7 +43,7 @@ struct SimulatorContainer: View {
         self.size = size
     }
 
-    public var body: some View {
+    var body: some View {
         VStack {
             HStack(spacing: 0) {
                 Button {
@@ -78,6 +78,8 @@ struct SimulatorContainer: View {
 
             simulator
                 .padding([.trailing, .bottom, .leading])
+                .environment(\.streamDeckViewContext, ._createForSimulator(device))
+                .id(device)
         }
         .frame(width: size)
         .background(.background)
@@ -119,8 +121,10 @@ struct SimulatorContainer: View {
     @ViewBuilder
     private var simulator: some View {
         if product == .pedal {
-            StreamDeckPedalSimulatorView(config: configuration, showTouchAreaBorders: $showKeyAreaBorders)
-                .environment(for: device)
+            StreamDeckPedalSimulatorView(
+                config: configuration,
+                showTouchAreaBorders: $showKeyAreaBorders
+            )
         } else {
             StreamDeckSimulatorView.create(
                 streamDeck: product,
@@ -128,14 +132,7 @@ struct SimulatorContainer: View {
                 showDeviceBezels: $showDeviceBezels,
                 showKeyAreaBorders: $showKeyAreaBorders
             )
-            .environment(for: device)
         }
-    }
-}
-
-private extension View {
-    func environment(for streamDeck: StreamDeck) -> some View {
-        environment(\.streamDeckViewContext, ._createDummyForSimulator(streamDeck))
     }
 }
 

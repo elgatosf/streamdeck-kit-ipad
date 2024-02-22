@@ -31,12 +31,10 @@ struct SimulatorKeyView: View {
             .onChange(of: isPressed) {
                 client.emit(.keyPress(index: index, pressed: isPressed))
             }
-            .onReceive(client.keyImages) { images in
-                guard let image = images[index],
-                      image !== self.image
-                else { return }
-
-                self.image = image
-            }
+            .onReceive(
+                client.keyImages
+                    .map(\.[index])
+                    .removeDuplicates(by: ===)
+            ) { self.image = $0 }
     }
 }

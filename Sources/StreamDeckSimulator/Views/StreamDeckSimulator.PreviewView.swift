@@ -10,11 +10,11 @@ import SwiftUI
 
 public extension StreamDeckSimulator {
 
-    struct PreviewView<SDView: StreamDeckView>: View {
+    struct PreviewView: View {
         private let product: StreamDeckProduct
         private let configuration: StreamDeckSimulator.Configuration
         private let showOptions: Bool
-        private let streamDeckView: () -> SDView
+        private let newDeviceHandler: (StreamDeck) -> Void
 
         @State private var showDeviceBezels: Bool
         @State private var showKeyAreaBorders: Bool
@@ -25,13 +25,13 @@ public extension StreamDeckSimulator {
             showOptions: Bool = true,
             showDeviceBezels: Bool = true,
             showKeyAreaBorders: Bool = false,
-            streamDeckView: @escaping () -> SDView
+            newDeviceHandler: @escaping (StreamDeck) -> Void
         ) {
             configuration = product.createConfiguration(serialNumber: serialNumber)
 
             self.product = product
             self.showOptions = showOptions
-            self.streamDeckView = streamDeckView
+            self.newDeviceHandler = newDeviceHandler
 
             _showDeviceBezels = .init(initialValue: showDeviceBezels)
             _showKeyAreaBorders = .init(initialValue: showKeyAreaBorders)
@@ -54,7 +54,7 @@ public extension StreamDeckSimulator {
                 }
             }
             .onAppear {
-                configuration.device.render(streamDeckView())
+                newDeviceHandler(configuration.device)
             }
             .environment(\.streamDeckViewContext, ._createForSimulator(configuration.device))
         }

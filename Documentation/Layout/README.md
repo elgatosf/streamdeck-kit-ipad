@@ -119,17 +119,23 @@ Depending on the device, the outcome will look like this:
 
 You can use the `StreamDeckSimulator.PreviewView` (see [Simulator](../Simulator.md)) to view your layouts in the SwiftUI Preview canvas.
 ```swift
-import StreamDeckSimulator 
+import StreamDeckSimulator
 
 #Preview("Stream Deck +") {
-    StreamDeckSimulator.PreviewView(streamDeck: .plus) {
-        StatelessStreamDeckLayout()
-    }
+    StreamDeckSimulator.PreviewView(
+        streamDeck: .plus,
+        newDeviceHandler: { device in
+            device.render(StatelessStreamDeckLayout())
+        }
+    )
 }
 
 #Preview("Stream Deck Classic") {
-    StreamDeckSimulator.PreviewView(streamDeck: .regular) {
-        StatelessStreamDeckLayout()
-    }
+    StreamDeckSimulator.PreviewView(
+        streamDeck: .regular,
+        newDeviceHandler: { device in
+            device.render(StatelessStreamDeckLayout())
+        }
+    )
 }
 ```

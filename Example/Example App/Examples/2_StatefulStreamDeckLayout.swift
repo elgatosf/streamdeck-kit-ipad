@@ -82,15 +82,21 @@ struct StatefulStreamDeckLayout {
     import StreamDeckSimulator
 
     #Preview("Stream Deck +") {
-        StreamDeckSimulator.PreviewView(streamDeck: .plus) {
-            StatefulStreamDeckLayout()
-        }
+        StreamDeckSimulator.PreviewView(
+            streamDeck: .plus,
+            newDeviceHandler: { device in
+                device.render(StatefulStreamDeckLayout())
+            }
+        )
     }
 
-    #Preview("Stream Deck Classic") {
-        StreamDeckSimulator.PreviewView(streamDeck: .xl) {
-            StatefulStreamDeckLayout()
-        }
+    #Preview("Stream Deck XL") {
+        StreamDeckSimulator.PreviewView(
+            streamDeck: .xl,
+            newDeviceHandler: { device in
+                device.render(StatefulStreamDeckLayout())
+            }
+        )
     }
 
 #endif

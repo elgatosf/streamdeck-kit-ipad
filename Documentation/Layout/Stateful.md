@@ -15,7 +15,6 @@ For Stream Deck +, this layout will be rendered and react to interactions as fol
     <figcaption></figcaption>
 </figure>
 
-
 ```swift
 import StreamDeckKit
 import SwiftUI

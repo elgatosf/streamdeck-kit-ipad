@@ -36,3 +36,20 @@ The guides illustrate the drawing areas for the keys and the dial areas and are 
 <figure>
     <img alt="An animation showing different simulator settings in action" src="_images/simulator_options.gif">
 </figure>
+
+## SwiftUI Preview
+
+You can use the `StreamDeckSimulator.PreviewView` to view your [Layouts](Layout/README) in the SwiftUI Preview canvas.
+
+```swift
+import StreamDeckSimulator
+
+#Preview("Stream Deck +") {
+    StreamDeckSimulator.PreviewView(
+        streamDeck: .plus,
+        newDeviceHandler: { device in
+            device.render(MyStreamDeckLayout)
+        }
+    )
+}
+```

@@ -150,15 +150,21 @@ struct AnimatedStreamDeckLayout {
     import StreamDeckSimulator
 
     #Preview("Stream Deck +") {
-        StreamDeckSimulator.PreviewView(streamDeck: .plus) {
-            AnimatedStreamDeckLayout()
-        }
+        StreamDeckSimulator.PreviewView(
+            streamDeck: .plus,
+            newDeviceHandler: { device in
+                device.render(AnimatedStreamDeckLayout())
+            }
+        )
     }
 
-    #Preview("Stream Deck Classic") {
-        StreamDeckSimulator.PreviewView(streamDeck: .mini) {
-            AnimatedStreamDeckLayout()
-        }
+    #Preview("Stream Deck Mini") {
+        StreamDeckSimulator.PreviewView(
+            streamDeck: .mini,
+            newDeviceHandler: { device in
+                device.render(AnimatedStreamDeckLayout())
+            }
+        )
     }
 
 #endif

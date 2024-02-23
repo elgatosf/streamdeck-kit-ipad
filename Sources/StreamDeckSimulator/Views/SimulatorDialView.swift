@@ -26,30 +26,34 @@ struct SimulatorDialView: View {
 
 struct SimulatorDialPressButton: View {
 
-    @State private var pressed: Bool = false
+    @GestureState private var isPressed = false
 
     let onPress: (Bool) -> Void
 
     var body: some View {
-        ZStack {
-            SimulatorKeyView { pressed in
-                self.pressed = pressed
-                onPress(pressed)
+        let tap = DragGesture(minimumDistance: 0)
+            .updating($isPressed) { _, state, _ in
+                state = true
             }
-            GeometryReader { metrics in
-                let strokeWidth: CGFloat = metrics.size.width * 0.05
-                Circle()
-                    .stroke(lineWidth: strokeWidth)
-                    .fill(.white)
-                    .padding(strokeWidth / 2)
-                Circle()
-                    .fill(.white)
-                    .padding(metrics.size.width * 0.2)
-            }
-            .allowsHitTesting(false)
-            .scaleEffect(pressed ? 0.9 : 1)
-            .opacity(pressed ? 0.8 : 1)
-            .foregroundColor(.white)
+  
+        GeometryReader { metrics in
+            let strokeWidth: CGFloat = metrics.size.width * 0.05
+            Circle()
+                .stroke(lineWidth: strokeWidth)
+                .fill(.white)
+                .padding(strokeWidth / 2)
+            Circle()
+                .fill(.white)
+                .padding(metrics.size.width * 0.2)
+        }
+        .allowsHitTesting(false)
+        .contentShape(Rectangle())
+        .gesture(tap)
+        .scaleEffect(isPressed ? 0.9 : 1)
+        .opacity(isPressed ? 0.8 : 1)
+        .foregroundColor(.white)
+        .onChange(of: isPressed) {
+            onPress(isPressed)
         }
         .aspectRatio(1, contentMode: .fit)
     }

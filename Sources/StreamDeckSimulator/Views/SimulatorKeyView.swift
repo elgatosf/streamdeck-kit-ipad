@@ -9,43 +9,32 @@ import SwiftUI
 import StreamDeckKit
 
 struct SimulatorKeyView: View {
+    static let emptyImage = UIImage()
 
     @GestureState private var isPressed = false
+    @State private var image: UIImage?
 
-    let image: UIImage?
-    let onPress: (Bool) -> Void
-
-    init(image: UIImage? = nil, onPress: @escaping (Bool) -> Void) {
-        self.image = image
-        self.onPress = onPress
-    }
+    let client: StreamDeckSimulatorClient
+    let index: Int
 
     var body: some View {
         let tap = DragGesture(minimumDistance: 0)
-            .updating($isPressed) { _, isPressed, _ in
-                isPressed = true
+            .updating($isPressed) { _, state, _ in
+                state = true
             }
 
-        StreamDeckKeyView {} content: {
-            if let image = image {
-                Image(uiImage: image)
-                    .resizable()
-            } else {
-                Rectangle()
-                    .foregroundColor(.clear)
+        Image(uiImage: image ?? Self.emptyImage)
+            .resizable()
+            .contentShape(Rectangle())
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .gesture(tap)
+            .onChange(of: isPressed) {
+                client.emit(.keyPress(index: index, pressed: isPressed))
             }
-        }
-        .contentShape(Rectangle())
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .gesture(tap)
-        .onChange(of: isPressed) {
-            onPress(isPressed)
-        }
-    }
-}
-
-extension SimulatorKeyView: Equatable {
-    static func == (lhs: SimulatorKeyView, rhs: SimulatorKeyView) -> Bool {
-        lhs.image === rhs.image
+            .onReceive(
+                client.keyImages
+                    .map(\.[index])
+                    .removeDuplicates(by: ===)
+            ) { self.image = $0 }
     }
 }

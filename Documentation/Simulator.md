@@ -1,8 +1,9 @@
 # Stream Deck Simulator
 Integrate the Stream Deck Simulator into your iPadOS app for convenient testing of your implementation without the need for a physical Stream Deck device. This is especially useful when running your app in Apple's iPadOS Simulator, in SwiftUI Previews, or directly on your iPad particularly for Stream Deck devices that may not be readily accessible.
 
-> [!NOTE]
-> The Stream Deck Simulator is specifically designed as a development tool and is not intended to be visible to end-users of your app. Its primary purpose is to assist developers in the development process.
+{% hint style="info" %}
+The Stream Deck Simulator is specifically designed as a development tool and is not intended to be visible to end-users of your app. Its primary purpose is to assist developers in the development process.
+{% endhint %}
 
 <figure>
     <img alt="An animated example of different Stream Deck simulators" src="_images/simulator_devices.gif">
@@ -28,8 +29,9 @@ The Stream Deck Simulator is displayed as a window above your app's content, all
 
 Additionally, you can toggle the visibility of the Simulator bezels and guides.
 
-> [!NOTE]
-> The guides illustrate the drawing areas for the keys and the dial areas and are never rendered on a real device.
+{% hint style="info" %}
+The guides illustrate the drawing areas for the keys and the dial areas and are never rendered on a real device.
+{% endhint %}
 
 <figure>
     <img alt="An animation showing different simulator settings in action" src="_images/simulator_options.gif">

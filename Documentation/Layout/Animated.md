@@ -1,8 +1,8 @@
 # Animated Layout
 
-As described in [Stateful Layout](Layout.md), the `StreamDeckLayout` combined with the `@StreamDeckView` Macro is used to automatically update the image rendered on your Stream Deck Device on view state changes. 
+As described in [Stateful Layout](./Stateful.md), the `StreamDeckLayout` combined with the `@StreamDeckView` Macro is used to automatically update the image rendered on your Stream Deck Device on view state changes.
 
-Due to the underlying transformation of an SwiftUI view to an image that can be rendered on your Stream Deck device, SwiftUI's animations do not work as you might expect. However, the following example shows how you can create animations regardless, leveraging incremental state changes over time. 
+Due to the underlying transformation of an SwiftUI view to an image that can be rendered on your Stream Deck device, SwiftUI's animations do not work as you might expect. However, the following example shows how you can create animations regardless, leveraging incremental state changes over time.
 
 ## Example
 
@@ -11,7 +11,8 @@ Here's an example of how to create a basic animated `StreamDeckLayout` which cha
 For Stream Deck +, this layout will be rendered and react to interactions as follows:
 
 <figure>
-    <img alt="An animation showing a stateful layout on a Stream Deck +" src="_images/layout_animated_sd_plus_device.gif">
+    <img alt="An animation showing a stateful layout on a Stream Deck +" src="../_images/layout_animated_sd_plus_device.gif">
+    <figcaption></figcaption>
 </figure>
 
 ```swift

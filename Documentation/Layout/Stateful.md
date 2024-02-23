@@ -1,8 +1,8 @@
 # Stateful Layout
 
-As described in [Layout](Layout.md), the `StreamDeckLayout` combined with the `@StreamDeckView` Macro does the heavy lifting for you by automatically recognizing view updates, and triggering an update of the rendered image on your Stream Deck device.
+As described in [Layout](./README.md), the `StreamDeckLayout` combined with the `@StreamDeckView` Macro does the heavy lifting for you by automatically recognizing view updates, and triggering an update of the rendered image on your Stream Deck device.
 
-To update your `StreamDeckLayout` on events like key presses or dial rotations, the view that should react to state changes needs to be extracted in its own view, just as you would normally do with SwiftUI. If that view is annotated with the `@StreamDeckView` Macro, context-dependent variables like the `viewIndex` and `viewSize` are available in that view's scope. 
+To update your `StreamDeckLayout` on events like key presses or dial rotations, the view that should react to state changes needs to be extracted in its own view, just as you would normally do with SwiftUI. If that view is annotated with the `@StreamDeckView` Macro, context-dependent variables like the `viewIndex` and `viewSize` are available in that view's scope.
 
 ## Example
 
@@ -11,7 +11,8 @@ Here's an example of how to create a basic stateful `StreamDeckLayout` which cha
 For Stream Deck +, this layout will be rendered and react to interactions as follows:
 
 <figure>
-    <img alt="An animation showing a stateful layout on a Stream Deck +" src="_images/layout_stateful_sd_plus_device.gif">
+    <img alt="An animation showing a stateful layout on a Stream Deck +" src="../_images/layout_stateful_sd_plus_device.gif">
+    <figcaption></figcaption>
 </figure>
 
 

@@ -1,10 +1,11 @@
 # Layout Basics
 
-The `StreamDeckLayout` view is a fundamental component for building layouts for Stream Deck devices using SwiftUI. It provides a way to define the key area view with its keys and window view with its dials for a Stream Deck layout. This layout can be used to draw a customized layout onto a Stream Deck device and to recognize Stream Deck interactions in the SwiftUI way. 
+The `StreamDeckLayout` view is a fundamental component for building layouts for Stream Deck devices using SwiftUI. It provides a way to define the key area view with its keys and window view with its dials for a Stream Deck layout. This layout can be used to draw a customized layout onto a Stream Deck device and to recognize Stream Deck interactions in the SwiftUI way.
 
 A `StreamDeckLayout` combined with the `@StreamDeckView` Macro does the heavy lifting for you by automatically recognizing view updates, and triggering an update of the rendered image on your Stream Deck device.
 
 The general structure of `StreamDeckLayout` is as follows:
+
 ```
 StreamDeckLayout
 └───keyArea: StreamDeckKeyAreaLayout
@@ -13,21 +14,24 @@ StreamDeckLayout
     └───StreamDeckDialView
 ```
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="_images/StreamDeckLayout.dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="_images/StreamDeckLayout.light.svg">
-  <img alt="An illustration of how layers are arranged in StreamDeckLayout" src="_images/StreamDeckLayout.light.svg">
-</picture>
+<figure>
+    <picture>
+        <source srcset="../_images/StreamDeckLayout.dark.svg" media="(prefers-color-scheme: dark)">
+        <img src="../_images/StreamDeckLayout.light.svg" alt="An illustration of how layers are arranged in StreamDeckLayout">
+    </picture>
+    <figcaption></figcaption>
+</figure>
 
-> [!NOTE]
-> The window area is only available for the Stream Deck + and will be ignored for other device types.
+{% hint style="info" %}
+The window area is only available for the Stream Deck + and will be ignored for other device types.
+{% endhint %}
 
 ## Usage
 To use `StreamDeckLayout`, create an instance of it by specifying the key area and window views. Then, provide this instance to the `StreamDeck.render` method.
 
 ### Example
 
-Here's an example of how to create a basic static `StreamDeckLayout`. For examples on how to create a stateful and an animated layout, see [Stateful Layout](Layout_Stateful.md) and [Animated Layout](Layout_Animated.md), respectively.
+Here's an example of how to create a basic static `StreamDeckLayout`. For examples on how to create a stateful and an animated layout, see [Stateful Layout](Stateful.md) and [Animated Layout](Animated.md), respectively.
 
 ```swift
 import SwiftUI 
@@ -85,26 +89,26 @@ Depending on the device, the outcome will look like this:
 <table>
 <tr>
     <td>Mini</td>
-    <td><img src="_images/layout_sd_mini.png"><br>
+    <td><img src="../_images/layout_sd_mini.png"><br>
     Note: On the Stream Deck Mini device, you can not set a complete screen image. However, the purple background on the key area would be visible if the keys had transparent areas.
     </td>
-    <td><img src="_images/layout_sd_mini_device.png"></td>
+    <td><img src="../_images/layout_sd_mini_device.png"></td>
    </tr> 
   <tr>
     <td>Classic</td>
-    <td><img src="_images/layout_sd_classic.png"></td>
-    <td><img src="_images/layout_sd_classic_device.png"></td>
+    <td><img src="../_images/layout_sd_classic.png"></td>
+    <td><img src="../_images/layout_sd_classic_device.png"></td>
    </tr> 
   </tr>
     <tr>
     <td>XL</td>
-    <td><img src="_images/layout_sd_xl.png"></td>
-    <td><img src="_images/layout_sd_xl_device.png"></td>
+    <td><img src="../_images/layout_sd_xl.png"></td>
+    <td><img src="../_images/layout_sd_xl_device.png"></td>
    </tr> 
    <tr>
     <td>Plus</td>
-    <td><img src="_images/layout_sd_plus.png"></td>
-    <td><img src="_images/layout_sd_plus_device.png"></td>
+    <td><img src="../_images/layout_sd_plus.png"></td>
+    <td><img src="../_images/layout_sd_plus_device.png"></td>
    </tr> 
   </tr>
 </table>
@@ -112,7 +116,7 @@ Depending on the device, the outcome will look like this:
 
 ### SwiftUI Preview
 
-You can use the provided `StreamDeckSimulator/PreviewView`  (see [Simulator](Simulator.md)) to view your layouts in the SwiftUI Preview canvas. 
+You can use the provided `StreamDeckSimulator/PreviewView`  (see [Simulator](../Simulator.md)) to view your layouts in the SwiftUI Preview canvas. 
 ```swift
 import StreamDeckSimulator 
 

@@ -30,6 +30,7 @@ import StreamDeckKit
 extension DeviceInfo {
     static let simulatorSerialPrefix = "SIM-"
 
+    /// Detects if the device was created by ``StreamDeckSimulator`` by analyzing its serial number.
     public var isSimulator: Bool {
         serialNumber.starts(with: Self.simulatorSerialPrefix, by: ==)
     }

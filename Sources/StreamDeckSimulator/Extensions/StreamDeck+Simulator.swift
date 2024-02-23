@@ -28,6 +28,7 @@
 import StreamDeckKit
 
 extension StreamDeck {
+    /// Detects if the device was created by ``StreamDeckSimulator`` by analyzing its serial number.
     public var isSimulator: Bool {
         info.isSimulator
     }

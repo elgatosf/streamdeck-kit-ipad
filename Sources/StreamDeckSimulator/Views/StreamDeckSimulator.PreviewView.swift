@@ -30,7 +30,16 @@ import StreamDeckKit
 import SwiftUI
 
 public extension StreamDeckSimulator {
-
+    /// A wrapper view to use ``StreamDeckSimulator`` in SwiftUI previews.
+    ///
+    /// This code will show a Stream Deck Mini simulator that renders a view conforming to `StreamDeckView`.
+    /// ```swift
+    /// #Preview {
+    ///     StreamDeckSimulator.PreviewView(streamDeck: .mini) { device in
+    ///         device.render(MyStreamDeckLayout())
+    ///     }
+    /// }
+    /// ```
     struct PreviewView: View {
         private let product: StreamDeckProduct
         private let configuration: StreamDeckSimulator.Configuration
@@ -39,7 +48,15 @@ public extension StreamDeckSimulator {
 
         @State private var showDeviceBezels: Bool
         @State private var showKeyAreaBorders: Bool
-
+        
+        /// Creates an instance of `StreamDeckSimulator`.
+        /// - Parameters:
+        ///   - product: The kind of simulator to show.
+        ///   - serialNumber: A specific serial number. If you e.g. want to do fancy stuff in your session.
+        ///   - showOptions: Show buttons to toggle device bezels and guides.
+        ///   - showDeviceBezels: Show device bezels on start initially.
+        ///   - showKeyAreaBorders: Show guides initially.
+        ///   - newDeviceHandler: A handler that is called when the simulators device is ready/changed. Use this to render your layout.
         public init(
             streamDeck product: StreamDeckProduct = .regular,
             serialNumber: String? = nil,

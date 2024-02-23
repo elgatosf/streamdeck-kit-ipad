@@ -5,12 +5,21 @@ cover: _images/GitBook_header.png
 
 # Stream Deck Kit
 
-With this SDK, you as developers gain full control over the [Stream Deck](https://www.elgato.com/stream-deck)'s capabilities while your app is in foreground, allowing you to tailor the user experience to your app's unique requirements. Whether it is triggering specific in-app actions, navigating menus, or launching functions, the possibilities are endless. It’s your app, your rules!
+With Stream Deck Kit, you gain full control over the [Stream Deck](https://www.elgato.com/stream-deck)'s capabilities while your app is in foreground, allowing you to tailor the user experience to your app's unique requirements. Whether it is triggering specific in-app actions, navigating menus, or launching functions, the possibilities are endless. It’s your app, your rules!
 
 <figure>
     <img alt="Stream Deck MK.2" src="_images/StreamDeckMK.s.webp"  width="400">
     <figcaption>Stream Deck MK.2</figcaption>
 </figure>
+
+## Resources
+
+- **Code**: [https://github.com/elgatosf/streamdeck-kit-ipad](https://github.com/elgatosf/streamdeck-kit-ipad)
+- **API documentation**: [https://elgatosf.github.io/streamdeck-kit-ipad/docs/documentation/streamdeckkit](https://elgatosf.github.io/streamdeck-kit-ipad/docs/documentation/streamdeckkit)
+
+Alongside the code, you will get a comprehensive [example app](https://github.com/elgatosf/streamdeck-kit-ipad/tree/main/Example) as well as a [simulator](Simulator.md) overlay to check out your implementation on different Stream Deck devices.
+
+To begin, check out the repository or read the [Getting Started](GettingStarted.md) guide.
 
 ## Perks
 

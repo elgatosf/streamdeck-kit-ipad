@@ -8,15 +8,11 @@
 import UIKit
 
 public extension UIImage {
-
-    static func colored(_ color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) -> UIImage? {
-        guard size.width > 0, size.height > 0 else { return nil }
-        let rect = CGRect(origin: .zero, size: size)
-        UIGraphicsBeginImageContextWithOptions(rect.size, true, 1)
-        color.setFill()
-        UIRectFill(rect)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return image
+    static func sdk_colored(_ color: UIColor, size: CGSize = .init(width: 1, height: 1)) -> UIImage {
+        return UIGraphicsImageRenderer(size: size).image { context in
+            context.cgContext.setFillColor(color.cgColor)
+            context.cgContext.addRect(CGRect(origin: .zero, size: size))
+            context.cgContext.drawPath(using: .fill)
+        }
     }
 }

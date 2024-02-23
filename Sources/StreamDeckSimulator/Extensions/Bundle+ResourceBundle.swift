@@ -1,5 +1,5 @@
 //
-//  StreamDeckSimulator+ResourceBundle.swift
+//  Bundle+ResourceBundle.swift
 //  StreamDeckSimulator
 //
 //  Created by Roman Schlagowsky on 13.12.23.

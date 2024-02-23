@@ -9,6 +9,24 @@ import StreamDeckKit
 import SwiftUI
 import UIKit
 
+/// A simulator overlay for different Stream Deck products.
+///
+/// You can start it from anywhere in your app like this:
+/// ```swift
+/// Button("Show Stream Deck simulator") {
+///     StreamDeckSimulator.show()
+/// }
+/// ```
+/// The simulator will automatically attach to your running session, and will behave just like a regular device.
+///
+/// It is also possible to have a simulator in your SwiftUI previews.
+/// ```swift
+/// #Preview {
+///     StreamDeckSimulator.PreviewView(streamDeck: .mini) {
+///         MyStreamDeckLayout()
+///     }
+/// }
+/// ```
 public final class StreamDeckSimulator {
 
     internal struct Configuration {
@@ -39,14 +57,24 @@ public final class StreamDeckSimulator {
         return windowScene?.first { $0.activationState == .foregroundActive }
     }
 
+    /// Shows a Stream Deck simulator overlay in the current scene.
+    ///
+    /// The overlay is contained in a new UIWindow. You will still be able to interact with your application UI.
+    /// - Parameter product: The Stream Deck product to show. Can be changed later in the UI.
     public static func show(streamDeck product: StreamDeckProduct) {
         shared.showSimulator(product)
     }
 
+    /// Shows a Stream Deck simulator overlay in the current scene.
+    ///
+    /// The overlay is contained in a new UIWindow. You will still be able to interact with your application UI.
+    /// - Parameter defaultProduct: The Stream Deck product to show when the method is first called. When the user changes the product in the UI,
+    /// the simulator will remember it. The next time you call this method, it will show the last user choice.
     public static func show(defaultStreamDeck defaultProduct: StreamDeckProduct = .regular) {
         shared.showSimulator(shared.lastSelectedProduct ?? defaultProduct)
     }
 
+    /// Closes the simulator overlay.
     public static func close() {
         shared.close()
     }

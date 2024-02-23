@@ -1,5 +1,5 @@
 //
-//  String+CString.swift
+//  String+IOReturn.swift
 //  StreamDeckDriverTest
 //
 //  Created by Roman Schlagowsky on 30.08.23.

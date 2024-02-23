@@ -188,3 +188,23 @@ public final class StreamDeck {
     }
 
 }
+
+// MARK: Identifiable
+
+extension StreamDeck: Identifiable {
+    public var id: String {
+        info.serialNumber
+    }
+}
+
+// MARK: Hashable
+
+extension StreamDeck: Hashable {
+    public static func == (lhs: StreamDeck, rhs: StreamDeck) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}

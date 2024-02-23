@@ -16,9 +16,9 @@ struct StreamDeckKitExampleApp: App {
         // Uncomment the next line to enable StreamDeckKit internal logging.
         // streamDeckLoggingHandler = { os_log($0, "\($1)") }
 
-        StreamDeckSession.setUp { _ in
-            BaseStreamDeckView()
-        }
+        StreamDeckSession.setUp(newDeviceHandler: {
+            $0.render(BaseStreamDeckView())
+        })
     }
 
     var body: some Scene {

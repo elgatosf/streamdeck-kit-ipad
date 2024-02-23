@@ -10,8 +10,6 @@ import OSLog
 import StreamDeckCApi
 import UIKit
 
-private let driverAppInstallationCheckURL = URL(string: "elgato-device-driver://")!
-
 final actor InternalStreamDeckSession {
     nonisolated let state = CurrentValueSubject<StreamDeckSession.State, Never>(.idle)
     nonisolated let driverVersion = CurrentValueSubject<Version?, Never>(nil)

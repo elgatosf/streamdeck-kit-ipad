@@ -275,10 +275,7 @@ private extension StreamDeck {
     func fakeFillKey(_ color: UIColor, at index: Int) {
         guard supports(.setKeyImage),
               let keySize = capabilities.keySize,
-              let image = UIImage.colored(color, size: keySize)
-        else { return }
-
-        guard let data = transform(image, size: keySize, scaleAspectFit: false)
+              let data = transform(.sdk_colored(color, size: keySize), size: keySize, scaleAspectFit: false)
         else { return }
 
         for index in 0 ..< capabilities.keyCount {

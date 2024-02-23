@@ -113,7 +113,7 @@ extension StreamDeckSimulatorClient: StreamDeckClientProtocol {
     public func fillScreen(red: UInt8, green: UInt8, blue: UInt8) {
         guard let screenSize = capabilities.screenSize else { return }
         keyImageSubject.value = [:]
-        backgroundImageSubject.value = UIImage.colored(
+        backgroundImageSubject.value = .sdk_colored(
             .init(
                 red: CGFloat(red) / 255,
                 green: CGFloat(green) / 255,
@@ -125,19 +125,17 @@ extension StreamDeckSimulatorClient: StreamDeckClientProtocol {
     }
 
     public func fillKey(red: UInt8, green: UInt8, blue: UInt8, at index: Int) {
-        guard let keySize = capabilities.keySize,
-              let image = UIImage.colored(
-                .init(
-                    red: CGFloat(red) / 255,
-                    green: CGFloat(green) / 255,
-                    blue: CGFloat(blue) / 255,
-                    alpha: 1
-                ),
-                size: keySize
-              )
-        else { return }
+        guard let keySize = capabilities.keySize else { return }
 
-        keyImageSubject.value[index] = image
+        keyImageSubject.value[index] = .sdk_colored(
+            .init(
+                red: CGFloat(red) / 255,
+                green: CGFloat(green) / 255,
+                blue: CGFloat(blue) / 255,
+                alpha: 1
+            ),
+            size: keySize
+        )
     }
 
     public func showLogo() {

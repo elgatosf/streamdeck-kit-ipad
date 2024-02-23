@@ -87,36 +87,37 @@ struct StatelessStreamDeckLayout {
 Depending on the device, the outcome will look like this:
 
 <table>
-<tr>
-    <td>Mini</td>
-    <td><img src="../_images/layout_sd_mini.png"><br>
-    Note: On the Stream Deck Mini device, you can not set a complete screen image. However, the purple background on the key area would be visible if the keys had transparent areas.
-    </td>
-    <td><img src="../_images/layout_sd_mini_device.png"></td>
-   </tr> 
-  <tr>
-    <td>Classic</td>
-    <td><img src="../_images/layout_sd_classic.png"></td>
-    <td><img src="../_images/layout_sd_classic_device.png"></td>
-   </tr> 
-  </tr>
     <tr>
-    <td>XL</td>
-    <td><img src="../_images/layout_sd_xl.png"></td>
-    <td><img src="../_images/layout_sd_xl_device.png"></td>
-   </tr> 
-   <tr>
-    <td>Plus</td>
-    <td><img src="../_images/layout_sd_plus.png"></td>
-    <td><img src="../_images/layout_sd_plus_device.png"></td>
-   </tr> 
-  </tr>
+        <td rowspan="2">Mini</td>
+        <td><img src="../_images/layout_sd_mini.png"></td>
+        <td><img src="../_images/layout_sd_mini_device.png"></td>
+    </tr> 
+    <tr>
+        <td colspan="2">
+            <strong>Note:</strong> On the Stream Deck Mini device, you can not set a complete screen image. However, the purple background on the key area would be visible if the keys had transparent areas.
+        </td>
+    </tr> 
+    <tr>
+        <td>Classic</td>
+        <td><img src="../_images/layout_sd_classic.png"></td>
+        <td><img src="../_images/layout_sd_classic_device.png"></td>
+    </tr> 
+    <tr>
+        <td>XL</td>
+        <td><img src="../_images/layout_sd_xl.png"></td>
+        <td><img src="../_images/layout_sd_xl_device.png"></td>
+    </tr> 
+    <tr>
+        <td>Plus</td>
+        <td><img src="../_images/layout_sd_plus.png"></td>
+        <td><img src="../_images/layout_sd_plus_device.png"></td>
+    </tr> 
 </table>
 
 
 ### SwiftUI Preview
 
-You can use the provided `StreamDeckSimulator/PreviewView`  (see [Simulator](../Simulator.md)) to view your layouts in the SwiftUI Preview canvas. 
+You can use the `StreamDeckSimulator.PreviewView` (see [Simulator](../Simulator.md)) to view your layouts in the SwiftUI Preview canvas.
 ```swift
 import StreamDeckSimulator 
 

@@ -45,11 +45,8 @@ You can use the `StreamDeckSimulator.PreviewView` to view your [Layouts](Layout/
 import StreamDeckSimulator
 
 #Preview("Stream Deck +") {
-    StreamDeckSimulator.PreviewView(
-        streamDeck: .plus,
-        newDeviceHandler: { device in
-            device.render(MyStreamDeckLayout)
-        }
-    )
+    StreamDeckSimulator.PreviewView(streamDeck: .plus) { device in
+        device.render(MyStreamDeckLayout)
+    }
 }
 ```

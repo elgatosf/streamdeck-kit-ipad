@@ -88,15 +88,13 @@ Depending on the device, the outcome will look like this:
 
 <table>
     <tr>
-        <td rowspan="2">Mini</td>
-        <td><img src="../_images/layout_sd_mini.png"></td>
-        <td><img src="../_images/layout_sd_mini_device.png"></td>
-    </tr> 
-    <tr>
-        <td colspan="2">
+        <td>Mini</td>
+        <td>
+            <img src="../_images/layout_sd_mini.png">
             <strong>Note:</strong> On the Stream Deck Mini device, you can not set a complete screen image. However, the purple background on the key area would be visible if the keys had transparent areas.
         </td>
-    </tr> 
+        <td><img src="../_images/layout_sd_mini_device.png"></td>
+    </tr>
     <tr>
         <td>Classic</td>
         <td><img src="../_images/layout_sd_classic.png"></td>

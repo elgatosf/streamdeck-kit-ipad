@@ -69,7 +69,7 @@ import StreamDeckKit
 StreamDeckSession.setUp(newDeviceHandler: { device in
     print("Rendering on \(device.info.productName)")
     device.render(
-        StreamDeckLayout { keypadContext in // Trailing closure (keyArea:) expects content for the keypad
+        StreamDeckLayout { // Trailing closure (keyArea:) expects content for the keypad
             StreamDeckKeyAreaLayout { keyContext in // Trailing closure (keyView:) expects a factory for keys
                 StreamDeckKeyView { isDown in
                     // Handle key down/up events

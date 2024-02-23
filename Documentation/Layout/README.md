@@ -88,15 +88,13 @@ Depending on the device, the outcome will look like this:
 
 <table>
     <tr>
-        <td rowspan="2">Mini</td>
-        <td><img src="../_images/layout_sd_mini.png"></td>
-        <td><img src="../_images/layout_sd_mini_device.png"></td>
-    </tr> 
-    <tr>
-        <td colspan="2">
+        <td>Mini</td>
+        <td>
+            <img src="../_images/layout_sd_mini.png">
             <strong>Note:</strong> On the Stream Deck Mini device, you can not set a complete screen image. However, the purple background on the key area would be visible if the keys had transparent areas.
         </td>
-    </tr> 
+        <td><img src="../_images/layout_sd_mini_device.png"></td>
+    </tr>
     <tr>
         <td>Classic</td>
         <td><img src="../_images/layout_sd_classic.png"></td>
@@ -119,17 +117,17 @@ Depending on the device, the outcome will look like this:
 
 You can use the `StreamDeckSimulator.PreviewView` (see [Simulator](../Simulator.md)) to view your layouts in the SwiftUI Preview canvas.
 ```swift
-import StreamDeckSimulator 
+import StreamDeckSimulator
 
 #Preview("Stream Deck +") {
-    StreamDeckSimulator.PreviewView(streamDeck: .plus) {
-        StatelessStreamDeckLayout()
+    StreamDeckSimulator.PreviewView(streamDeck: .plus) { device in
+        device.render(StatelessStreamDeckLayout())
     }
 }
 
 #Preview("Stream Deck Classic") {
-    StreamDeckSimulator.PreviewView(streamDeck: .regular) {
-        StatelessStreamDeckLayout()
+    StreamDeckSimulator.PreviewView(streamDeck: .regular) { device in
+        device.render(StatelessStreamDeckLayout())
     }
 }
 ```

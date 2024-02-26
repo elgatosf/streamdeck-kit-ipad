@@ -143,7 +143,7 @@ struct MyFirstStreamDeckLayout {
 
 <img src="Documentation/_images/layout_sd_plus_device.png" alt="A screenshot of a Stream Deck +, showing increasing numbers on it's buttons" width="200" />
 
-For instructions on how to react to state changes, refer to [Stateful Layouts](Documentation/Layout/Stateful.md).
+For instructions on how to react to state changes, refer to [Handling state changes](Documentation/Layout/Stateful.md).
 
 ### Utilizing the Simulator
 

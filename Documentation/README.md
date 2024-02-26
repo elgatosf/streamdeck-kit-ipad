@@ -21,7 +21,7 @@ Alongside the code, you will get a comprehensive [example app](https://github.co
 
 To begin, check out the repository or read the [Getting Started](GettingStarted.md) guide.
 
-## Perks
+## Concept
 
 In contrast to the iconic Stream Deck application on Desktop, which serves as a centralized hub for users to configure their Stream Deck(s), the Stream Deck for iPad SDK is tailored for a seamless plug-and-play experience on iPadOS. Here, your application takes control when it comes to the foreground, dictating the appearance and functions of the Stream Deck's buttons, and for the Stream Deck +, managing its rotary knobs and touchscreen interactions.
 

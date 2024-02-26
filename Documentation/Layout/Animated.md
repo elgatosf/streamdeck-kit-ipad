@@ -1,6 +1,6 @@
-# Animated Layout
+# Basic animations
 
-As described in [Stateful Layout](./Stateful.md), the `StreamDeckLayout` combined with the `@StreamDeckView` Macro is used to automatically update the image rendered on your Stream Deck Device on view state changes.
+As described in [Handling state changes](./Stateful.md), the `StreamDeckLayout` combined with the `@StreamDeckView` Macro is used to automatically update the image rendered on your Stream Deck Device on view state changes.
 
 Due to the underlying transformation of an SwiftUI view to an image that can be rendered on your Stream Deck device, SwiftUI's animations do not work as you might expect. However, the following example shows how you can create animations regardless, leveraging incremental state changes over time.
 

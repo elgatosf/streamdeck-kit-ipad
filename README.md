@@ -8,13 +8,22 @@ Stream Deck Kit is a Swift Library for controlling physical [Elgato Stream Deck]
 
 ## Features
 
-All Stream Deck devices share the ability to subscribe to key up/down events. 
+The Stream Deck for iPad SDK is tailored for a seamless plug-and-play experience on iPadOS. Here, your application takes control when it comes to the foreground, dictating the appearance and functions of the Stream Deck's buttons, and for the Stream Deck +, managing its rotary knobs and touchscreen interactions.
 
-Additionally, devices equipped with LED keys offer the functionality of setting images onto keys, applying background images, and rendering keys and backgrounds using SwiftUI.
+All Stream Deck devices:
+- Handle key up/down events
 
-For devices featuring rotary encoders, it is possible to subscribe to rotation and up/down events. 
+Devices with LED keys:
+- Set images onto keys
+- Set background images
+- Render keys and backgrounds with SwiftUI
 
-Devices with touch displays allow for rendering display content with SwiftUI.
+Devices with Rotary encoders:
+- Handle rotation and up/down events
+
+Devices with touch displays:
+- Draw onto touch display
+- Render touch display content with SwiftUI
 
 ## Prerequisites
 
@@ -24,7 +33,7 @@ To interact with a physical Stream Deck device, ensure you have the following:
 - The [Elgato Stream Deck Connect](https://itunes.apple.com/de/app/elgato-stream-deck-connect/id6474433828) app installed
 - The Stream Deck Device Driver enabled in iOS settings app (Refer to the in-app instructions for guidance)
 
-On the other hand, if you want to verify your implementation using the [Stream Deck Simulator](#utilizing-the-simulator) only, no additional prerequisites are necessary.
+However, if you want to verify your implementation using the [Stream Deck Simulator](#utilizing-the-simulator) only, no additional prerequisites are necessary.
 
 > [!IMPORTANT]
 > During the alpha phase, the app is not in available in the App Store. [Click here to participate in the public alpha of Stream Deck Connect](https://testflight.apple.com/join/U4bWfk8O) in [TestFlight](https://developer.apple.com/testflight/).

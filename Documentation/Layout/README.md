@@ -31,7 +31,7 @@ To use `StreamDeckLayout`, create an instance of it by specifying the key area a
 
 ### Example
 
-Here's an example of how to create a basic static `StreamDeckLayout`. For examples on how to create a stateful and an animated layout, see [Stateful Layout](Stateful.md) and [Animated Layout](Animated.md), respectively.
+Here's an example of how to create a basic static `StreamDeckLayout`. For examples on how to create a stateful and an animated layout, see [Handling state changes](Stateful.md) and [Basic animations](Animated.md), respectively.
 
 ```swift
 import SwiftUI 

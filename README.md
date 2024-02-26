@@ -8,8 +8,10 @@ Stream Deck Kit is a Swift Library for controlling physical [Elgato Stream Deck]
 
 ## Features
 
+The Stream Deck for iPad SDK is tailored for a seamless plug-and-play experience on iPadOS. Here, your application takes control when it comes to the foreground, dictating the appearance and functions of the Stream Deck's buttons, and for the Stream Deck +, managing its rotary knobs and touchscreen interactions.
+
 All Stream Deck devices:
-- Subscribe to key up/down events
+- Handle key up/down events
 
 Devices with LED keys:
 - Set images onto keys
@@ -17,122 +19,28 @@ Devices with LED keys:
 - Render keys and backgrounds with SwiftUI
 
 Devices with Rotary encoders:
-- Subscribe to rotation and up/down events
+- Handle rotation and up/down events
 
 Devices with touch displays:
 - Draw onto touch display
 - Render touch display content with SwiftUI
 
-## Requirements
+## Prerequisites
 
-If you want to interact with a physical Stream Deck device, you need the following:
+To interact with a physical Stream Deck device, ensure you have the following:
 
-- An iPad with USB-C jack
-- Installed [Elgato Stream Deck Connect](https://itunes.apple.com/de/app/elgato-stream-deck-connect/id6474433828) app
-- Enabled Stream Deck driver in iOS settings app (Follow instructions in the app)
+- An iPad with a USB-C jack
+- The [Elgato Stream Deck Connect](https://itunes.apple.com/de/app/elgato-stream-deck-connect/id6474433828) app installed
+- The Stream Deck Device Driver enabled in iOS settings app (Refer to the in-app instructions for guidance)
 
-However, you don't need anything if you just want to check out your work on the [Stream Deck simulator](#using-the-simulator).
+However, if you want to verify your implementation using the [Stream Deck Simulator](#utilizing-the-simulator) only, no additional prerequisites are necessary.
 
 > [!IMPORTANT]
-> During the alpha phase, the app is not in available in the App Store. You can load it via the [TestFlight](https://developer.apple.com/testflight/) app. Use [this link [TODO: ADD LINK]](https://add.testflight/link/here) to participate in testing.
+> During the alpha phase, the app is not in available in the App Store. [Click here to participate in the public alpha of Stream Deck Connect](https://testflight.apple.com/join/U4bWfk8O) in [TestFlight](https://developer.apple.com/testflight/).
 
 | iOS Version | Swift Version | XCode Version |
 | ----------- | ------------- | ------------- |
 | >= 16       | >= 5.8        | >= 15         |
-
-### Check driver-app installation
-
-You can find out if the app is installed by trying to open an URL with its scheme:
-```swift
-UIApplication.shared.canOpenURL(URL(string: "elgato-device-driver://")!)
-```
-Be sure that you add "elgato-device-driver" to `LSApplicationQueriesSchemes` in your Info.plist file. If the app is not installed on the device, you best inform the user that it is required to enable Stream Deck features.
-
-## Getting started
-
-To render content on a Stream Deck, you can use SwiftUI as you would in a regular app UI.
-
-```swift
-StreamDeckSession.setUp(newDeviceHandler: { $0.render(Color.blue) })
-```
-
-This would show a blue color on all buttons and displays on a device.
-
-### Rendering Keys
-
-To render content on specific buttons, you can use the Layout system.
-
-
-```swift
-import StreamDeckKit
-// Run session setup to define what should be displayed on every connected device
-StreamDeckSession.setUp(newDeviceHandler: { device in
-    print("Rendering on \(device.info.productName)")
-    device.render(
-        StreamDeckLayout { // Trailing closure (keyArea:) expects content for the keypad
-            StreamDeckKeyAreaLayout { keyContext in // Trailing closure (keyView:) expects a factory for keys
-                StreamDeckKeyView { isDown in
-                    // Handle key down/up events
-                    print(isDown ? "Key is down" : "Key is up")
-                } content: {
-                    // Provide SwiftUI content for each key
-                    Text("\(keyContext.index)") // Use context to distinguish keys
-                        .padding(keyContext.size.width * 0.2) // Use context to get size info
-                        .background { Circle().fill(.yellow) }
-                }
-            }
-        }
-    )
-})
-```
-This uses predefined layout views to place content on a Stream Deck. 
-
-<img src="Documentation/_images/example_keys.png" alt="A screenshot of a Stream Deck, showing increasing numbers on it's buttons" width="200" />
-
-The closure we passed to `StreamDeckLayout` defines the key area of the device. The closure we passed to `StreamDeckKeyAreaLayout` is a factory, providing a view for each LED key on the device. 
-
-We can use the `index` property of the `keyContext` parameter to find out which key is to be rendered.
-
-### Using Context
-
-The `StreamDeckViewContext` object provides you with Infos about the current device and drawing area. You can access it via the parameter of the builder methods (see above) or the environment variable.
-```swift
-@Environment(\.streamDeckViewContext) var context
-```
-Depending on which area you are drawing (key, keyArea, window...), the context object will give you the correct canvas `size`.
-
-### Using the Simulator
-
-#### Overlay
-
-The SDK comes with a fully functional simulator that you can use to check your implementation on different devices. Although, we always recommend to check on a real device.
-
-You can trigger the Stream Deck simulator like this:
-
-```swift
-import StreamDeckSimulator
-Button("Show Stream Deck Simulator") {
-    StreamDeckSimulator.show()
-}
-```
-
-This will show an overlay with a simulated Stream Deck. You can switch between different devices with the menu in the upper right. There you can also toggle device bezels. There is also an option to render the exact borders of the button areas.
-
-<img src="Documentation/_images/simulator.png" alt="A screenshot of the Stream Deck simulator window" width="200" />
-
-The simulator will automatically attach to your running session, and will behave just like a regular device.
-
-#### Preview
-
-You can use Simulator in XCode previews as well. 
-
-```swift
-#Preview {
-    StreamDeckSimulator.PreviewView(streamDeck: .mini) {
-        MyStreamDeckLayout()
-    }
-}
-```
 
 ## Installation
 
@@ -157,6 +65,130 @@ target 'YourAppTarget' do
     pod 'StreamDeckSimulator', :configurations => ['Debug']
 end
 ```
+
+## Getting started
+
+Rendering content on a Stream Deck is very simple with SwiftUI, much like designing a typical app UI.
+
+```swift
+import StreamDeckKit
+
+StreamDeckSession.setUp(newDeviceHandler: { $0.render(Color.blue) })
+```
+
+This code snippet demonstrates rendering a blue color across all buttons and displays on a device.
+
+> [!NOTE]
+> `StreamDeckSession` operates as a singleton, meaning you should invoke `setUp` only once throughout your application's life cycle.
+ 
+### Rendering Layouts 
+
+To render content on specific areas, utilize the `StreamDeckLayout` system with the `@StreamDeckView` Macro. `StreamDeckLayout` provides predefined layout views to position content on a Stream Deck. 
+
+```swift
+import StreamDeckKit
+
+StreamDeckSession.setUp(newDeviceHandler: { $0.render(MyFirstStreamDeckLayout()) })
+```
+
+```swift
+import SwiftUI 
+import StreamDeckKit
+
+@StreamDeckView
+struct MyFirstStreamDeckLayout {
+
+    var streamDeckBody: some View {
+        StreamDeckLayout {
+            // Define key area
+            // Use StreamDeckKeyAreaLayout for rendering separate keys
+            StreamDeckKeyAreaLayout { context in
+                // Define content for each key.
+                // StreamDeckKeyAreaLayout provides a context for each available key,
+                // and StreamDeckKeyView provides a callback for the key action
+                // Example:
+                StreamDeckKeyView { pressed in
+                    print("pressed \(pressed)")
+                } content: {
+                    Text("\(context.index)")
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(.teal)
+                }
+            }.background(.purple)
+        } windowArea: {
+            // Define window area
+            // Use StreamDeckDialAreaLayout for rendering separate parts of the display
+            StreamDeckDialAreaLayout { context in
+                // Define content for each dial
+                // StreamDeckDialAreaLayout provides a context for each available dial,
+                // and StreamDeckDialView provides callbacks for the dial actions
+                // Example:
+                StreamDeckDialView { rotations in
+                    print("dial rotated \(rotations)")
+                } press: { pressed in
+                    print("pressed \(pressed)")
+                } touch: { location in
+                    print("touched at \(location)")
+                } content: {
+                    Text("\(context.index)")
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(Color(white: Double(context.index) / 5 + 0.5))
+                }
+            }
+        }.background(.indigo)
+    }
+
+}
+```
+
+<img src="Documentation/_images/layout_sd_plus_device.png" alt="A screenshot of a Stream Deck +, showing increasing numbers on it's buttons" width="200" />
+
+For instructions on how to react to state changes, refer to [Stateful Layouts](Documentation/Layout/Stateful.md).
+
+### Utilizing the Simulator
+
+The SDK is equipped with a fully operational simulator, providing a convenient way to to verify your implementation on various devices. However, we recommend to conduct testing on a real device as well. 
+
+> [!NOTE]
+> The simulator attaches to your running `StreamDeckSession`, mimicking the behavior of a regular device.
+
+Executing this code presents the Stream Deck Simulator as an overlay featuring a simulated Stream Deck:
+
+```swift
+import StreamDeckSimulator
+
+Button("Show Stream Deck Simulator") {
+    StreamDeckSimulator.show()
+}
+```
+
+<img src="Documentation/_images/simulator.png" alt="A screenshot of the Stream Deck simulator window" width="200" />
+
+For further instructions, refer to [Simulator](Documentation/Simulator.md).
+
+#### Previews
+
+You can use Simulator in XCode Previews. 
+
+```swift
+#Preview {
+    StreamDeckSimulator.PreviewView(streamDeck: .mini) {
+        MyStreamDeckLayout()
+    }
+}
+```
+
+### Verify Stream Deck Connect Installation
+
+In your app, consider addressing the scenario where Stream Deck Connect, and consequently, its driver, is not installed on the user's device. In such cases, you could prompt users with a message instructing users to install the app and enable the driver before utilizing your app with Stream Deck.
+
+To determine if Stream Deck Connect is installed within your project, use the following snippet with `canOpenURL` and its scheme:
+
+```swift
+UIApplication.shared.canOpenURL(URL(string: "elgato-device-driver://")!)
+```
+
+Ensure to include `"elgato-device-driver"` in the `LSApplicationQueriesSchemes` section of your Info.plist file.
 
 ## Contribution
 

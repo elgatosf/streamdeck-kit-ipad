@@ -1,4 +1,4 @@
-# Layout Basics
+# The layout system
 
 The `StreamDeckLayout` view is a fundamental component for building layouts for Stream Deck devices using SwiftUI. It provides a way to define the key area view with its keys and window view with its dials for a Stream Deck layout. This layout can be used to draw a customized layout onto a Stream Deck device and to recognize Stream Deck interactions in the SwiftUI way.
 
@@ -31,7 +31,7 @@ To use `StreamDeckLayout`, create an instance of it by specifying the key area a
 
 ### Example
 
-Here's an example of how to create a basic static `StreamDeckLayout`. For examples on how to create a stateful and an animated layout, see [Stateful Layout](Stateful.md) and [Animated Layout](Animated.md), respectively.
+Here's an example of how to create a basic static `StreamDeckLayout`. For examples on how to create a stateful and an animated layout, see [Handling state changes](Stateful.md) and [Basic animations](Animated.md), respectively.
 
 ```swift
 import SwiftUI 

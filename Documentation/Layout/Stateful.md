@@ -1,6 +1,6 @@
-# Stateful Layout
+# Handling state changes
 
-As described in [Layout](./README.md), the `StreamDeckLayout` combined with the `@StreamDeckView` Macro does the heavy lifting for you by automatically recognizing view updates, and triggering an update of the rendered image on your Stream Deck device.
+As described in [The layout system](./README.md), the `StreamDeckLayout` combined with the `@StreamDeckView` Macro does the heavy lifting for you by automatically recognizing view updates, and triggering an update of the rendered image on your Stream Deck device.
 
 To update your `StreamDeckLayout` on events like key presses or dial rotations, the view that should react to state changes needs to be extracted in its own view, just as you would normally do with SwiftUI. If that view is annotated with the `@StreamDeckView` Macro, context-dependent variables like the `viewIndex` and `viewSize` are available in that view's scope.
 

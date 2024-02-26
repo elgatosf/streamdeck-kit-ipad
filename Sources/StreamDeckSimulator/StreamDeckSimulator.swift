@@ -42,8 +42,8 @@ import UIKit
 /// It is also possible to have a simulator in your SwiftUI previews.
 /// ```swift
 /// #Preview {
-///     StreamDeckSimulator.PreviewView(streamDeck: .mini) {
-///         MyStreamDeckLayout()
+///     StreamDeckSimulator.PreviewView(streamDeck: .mini) { device in
+///         device.render(MyStreamDeckLayout())
 ///     }
 /// }
 /// ```

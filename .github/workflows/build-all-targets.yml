@@ -22,4 +22,4 @@ jobs:
       - name: Build Example 
         run: |
           cd Example
-          set -o pipefail && xcodebuild -scheme "Example App" -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" | xcpretty
+          set -o pipefail && xcodebuild -scheme "StreamDeckKitExample App" -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" | xcpretty

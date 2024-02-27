@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "streamdeck-kit-macros",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/elgatosf/streamdeck-kit-macros",
+      "state" : {
+        "branch" : "main",
+        "revision" : "0805b3efa7adfc8c88b59e9a1d8c4a90015a2460"
+      }
+    },
+    {
       "identity" : "swift-syntax",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-syntax.git",

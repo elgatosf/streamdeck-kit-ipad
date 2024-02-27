@@ -6,7 +6,7 @@ import CompilerPluginSupport
 
 let package = Package(
     name: "StreamDeckKit",
-    platforms: [.iOS(.v17), .macOS(.v10_15)],
+    platforms: [.iOS(.v17)],
     products: [
         .library(
             name: "StreamDeckKit",
@@ -23,8 +23,8 @@ let package = Package(
             from: "1.12.0"
         ),
         .package(
-            url: "https://github.com/apple/swift-syntax.git",
-            from: "509.0.0"
+            url: "https://github.com/elgatosf/streamdeck-kit-macros",
+            branch: "main"
         )
     ],
     targets: [
@@ -35,27 +35,21 @@ let package = Package(
         ),
         .target(
             name: "StreamDeckKit",
-            dependencies: ["StreamDeckCApi", "StreamDeckMacros"]
+            dependencies: [
+                "StreamDeckCApi",
+                .product(name: "StreamDeckKitMacros", package: "streamdeck-kit-macros")
+            ]
         ),
         .target(
             name: "StreamDeckCApi",
             linkerSettings: [.linkedFramework("IOKit")]
         ),
-        .macro(
-            name: "StreamDeckMacros",
-            dependencies: [
-                .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
-                .product(name: "SwiftCompilerPlugin", package: "swift-syntax")
-            ]
-        ),
         .testTarget(
             name: "StreamDeckSDKTests",
             dependencies: [
                 "StreamDeckKit",
-                "StreamDeckMacros",
                 "StreamDeckSimulator",
-                .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
-                .product(name: "SwiftSyntaxMacrosTestSupport", package: "swift-syntax")
+                .product(name: "SnapshotTesting", package: "swift-snapshot-testing")
             ]
         )
     ]

@@ -21,6 +21,10 @@
 		3073017E2B3DB96200C5F5B4 /* StreamDeckSimulator in Frameworks */ = {isa = PBXBuildFile; productRef = 3073017D2B3DB96200C5F5B4 /* StreamDeckSimulator */; };
 		307301822B3DBA7900C5F5B4 /* StreamDeckKit in Frameworks */ = {isa = PBXBuildFile; productRef = 307301812B3DBA7900C5F5B4 /* StreamDeckKit */; };
 		307301842B3DBA7900C5F5B4 /* StreamDeckSimulator in Frameworks */ = {isa = PBXBuildFile; productRef = 307301832B3DBA7900C5F5B4 /* StreamDeckSimulator */; };
+		30C0D5112B8DF55E0087E095 /* StreamDeckKit in Frameworks */ = {isa = PBXBuildFile; productRef = 30C0D5102B8DF55E0087E095 /* StreamDeckKit */; };
+		30C0D5132B8DF55E0087E095 /* StreamDeckSimulator in Frameworks */ = {isa = PBXBuildFile; productRef = 30C0D5122B8DF55E0087E095 /* StreamDeckSimulator */; };
+		30C0D5162B8E115F0087E095 /* StreamDeckKit in Frameworks */ = {isa = PBXBuildFile; productRef = 30C0D5152B8E115F0087E095 /* StreamDeckKit */; };
+		30C0D5182B8E115F0087E095 /* StreamDeckSimulator in Frameworks */ = {isa = PBXBuildFile; productRef = 30C0D5172B8E115F0087E095 /* StreamDeckSimulator */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,9 +49,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30C0D5162B8E115F0087E095 /* StreamDeckKit in Frameworks */,
+				30C0D5132B8DF55E0087E095 /* StreamDeckSimulator in Frameworks */,
 				3073017E2B3DB96200C5F5B4 /* StreamDeckSimulator in Frameworks */,
+				30C0D5112B8DF55E0087E095 /* StreamDeckKit in Frameworks */,
 				307301822B3DBA7900C5F5B4 /* StreamDeckKit in Frameworks */,
 				307301842B3DBA7900C5F5B4 /* StreamDeckSimulator in Frameworks */,
+				30C0D5182B8E115F0087E095 /* StreamDeckSimulator in Frameworks */,
 				3073017C2B3DB96200C5F5B4 /* StreamDeckKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,6 +145,10 @@
 				3073017D2B3DB96200C5F5B4 /* StreamDeckSimulator */,
 				307301812B3DBA7900C5F5B4 /* StreamDeckKit */,
 				307301832B3DBA7900C5F5B4 /* StreamDeckSimulator */,
+				30C0D5102B8DF55E0087E095 /* StreamDeckKit */,
+				30C0D5122B8DF55E0087E095 /* StreamDeckSimulator */,
+				30C0D5152B8E115F0087E095 /* StreamDeckKit */,
+				30C0D5172B8E115F0087E095 /* StreamDeckSimulator */,
 			);
 			productName = "StreamDeckKit Example";
 			productReference = 307301692B3DB70000C5F5B4 /* StreamDeckKit StreamDeckKitExample.app */;
@@ -167,7 +179,7 @@
 			);
 			mainGroup = 307301602B3DB70000C5F5B4;
 			packageReferences = (
-				307301802B3DBA7900C5F5B4 /* XCLocalSwiftPackageReference ".." */,
+				30C0D5142B8E115F0087E095 /* XCLocalSwiftPackageReference ".." */,
 			);
 			productRefGroup = 3073016A2B3DB70000C5F5B4 /* Products */;
 			projectDirPath = "";
@@ -442,7 +454,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		307301802B3DBA7900C5F5B4 /* XCLocalSwiftPackageReference ".." */ = {
+		30C0D5142B8E115F0087E095 /* XCLocalSwiftPackageReference ".." */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ..;
 		};
@@ -462,6 +474,22 @@
 			productName = StreamDeckKit;
 		};
 		307301832B3DBA7900C5F5B4 /* StreamDeckSimulator */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = StreamDeckSimulator;
+		};
+		30C0D5102B8DF55E0087E095 /* StreamDeckKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = StreamDeckKit;
+		};
+		30C0D5122B8DF55E0087E095 /* StreamDeckSimulator */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = StreamDeckSimulator;
+		};
+		30C0D5152B8E115F0087E095 /* StreamDeckKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = StreamDeckKit;
+		};
+		30C0D5172B8E115F0087E095 /* StreamDeckSimulator */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = StreamDeckSimulator;
 		};

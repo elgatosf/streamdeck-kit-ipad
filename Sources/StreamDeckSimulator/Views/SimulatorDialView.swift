@@ -55,7 +55,7 @@ struct SimulatorDialPressButton: View {
             .updating($isPressed) { _, state, _ in
                 state = true
             }
-  
+
         GeometryReader { metrics in
             let strokeWidth: CGFloat = metrics.size.width * 0.05
             Circle()

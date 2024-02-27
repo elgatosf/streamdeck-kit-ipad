@@ -1,4 +1,6 @@
-# StreamDeck Kit
+<img src="Documentation/_images/StreamDeckKit.svg" alt="The Stream Deck Kit logo" />
+
+# Stream Deck Kit
 
 Stream Deck Kit is a Swift Library for controlling physical [Elgato Stream Deck](https://www.elgato.com/stream-deck) devices with an iPadOS app.
 
@@ -40,7 +42,7 @@ However, if you want to verify your implementation using the [Stream Deck Simula
 
 | iOS Version | Swift Version | XCode Version |
 | ----------- | ------------- | ------------- |
-| >= 16       | >= 5.8        | >= 15         |
+| >= 16       | >= 5.9        | >= 15         |
 
 ## Installation
 

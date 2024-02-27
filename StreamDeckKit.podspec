@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
 
     s.summary      = 'Integrate StreamDeck hardware into your App'
     s.author       = { 'Elgato' => 'info@elgato.com' }
-    s.homepage     = 'https://github.com/elgatosf/streamdeck-kit-ipad'
+    s.homepage     = 'https://docs.elgato.com/ipad'
     s.license      = { :type => 'MIT', :file => 'LICENSE' }
     s.source       = { :git => 'https://github.com/elgatosf/streamdeck-kit-ipad.git', :tag => "#{s.version}" }
 

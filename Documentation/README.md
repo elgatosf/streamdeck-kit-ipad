@@ -15,7 +15,7 @@ With Stream Deck Kit, you gain full control over the [Stream Deck](https://www.e
 ## Resources
 
 - **Code**: [https://github.com/elgatosf/streamdeck-kit-ipad](https://github.com/elgatosf/streamdeck-kit-ipad)
-- **API documentation**: [https://elgatosf.github.io/streamdeck-kit-ipad/docs/documentation/streamdeckkit](https://elgatosf.github.io/streamdeck-kit-ipad/docs/documentation/streamdeckkit)
+- **API documentation**: [https://elgatosf.github.io/streamdeck-kit-ipad/documentation/streamdeckkit/](https://elgatosf.github.io/streamdeck-kit-ipad/documentation/streamdeckkit/)
 
 Alongside the code, you will get a comprehensive [example app](https://github.com/elgatosf/streamdeck-kit-ipad/tree/main/Example) as well as a [simulator](Simulator.md) overlay to check out your implementation on different Stream Deck devices.
 

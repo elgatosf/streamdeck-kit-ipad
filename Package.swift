@@ -6,7 +6,7 @@ import CompilerPluginSupport
 
 let package = Package(
     name: "StreamDeckKit",
-    platforms: [.iOS(.v17)],
+    platforms: [.iOS(.v16)],
     products: [
         .library(
             name: "StreamDeckKit",

@@ -14,6 +14,6 @@ Pod::Spec.new do |s|
     s.source_files = "Sources/#{s.name}/**/*.swift"
     s.dependency 'StreamDeckCApi', "#{s.version.to_s}"
 
-    s.platform     = :ios, '17.0'
-    s.ios.deployment_target = '17'
+    s.platform     = :ios, '16.0'
+    s.ios.deployment_target = '16'
 end

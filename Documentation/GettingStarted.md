@@ -16,7 +16,7 @@ During the alpha phase, the app is not in available in the App Store. [Click her
 
 | iOS Version | Swift Version | XCode Version |
 | ----------- | ------------- | ------------- |
-| >= 17       | >= 5.9        | >= 15         |
+| >= 16       | >= 5.9        | >= 15         |
 
 ## Installation
 

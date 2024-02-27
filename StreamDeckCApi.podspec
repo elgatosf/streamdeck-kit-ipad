@@ -17,6 +17,6 @@ Pod::Spec.new do |s|
     # See: https://github.com/CocoaPods/CocoaPods/issues/12073#issuecomment-1737821281
     s.xcconfig = { 'ENABLE_USER_SCRIPT_SANDBOXING' => false }
 
-    s.platform     = :ios, '17.0'
-    s.ios.deployment_target = '17'
+    s.platform     = :ios, '16.0'
+    s.ios.deployment_target = '16'
 end

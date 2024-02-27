@@ -249,7 +249,7 @@ private extension StreamDeckSimulatorView {
 #if DEBUG
 
     // MARK: - Preview
-
+    @available(iOS 17, *)
     #Preview("Square", traits: .fixedLayout(width: 700, height: 700)) {
         Group {
             let config = StreamDeckProduct.mini.createConfiguration()
@@ -262,6 +262,7 @@ private extension StreamDeckSimulatorView {
         }
     }
 
+    @available(iOS 17, *)
     #Preview("Landscape", traits: .landscapeLeft) {
         Group {
             StreamDeckSimulatorView.create(

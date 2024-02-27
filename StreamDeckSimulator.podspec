@@ -17,6 +17,6 @@ Pod::Spec.new do |s|
     # See: https://medium.com/clutter-engineering/supporting-both-swift-package-manager-and-cocoapods-in-your-library-861f00b6b0f9#8694
     s.resource_bundles = { "StreamDeckKit_#{s.name}" => ["Sources/#{s.name}/Resources/**/*"] }
 
-    s.platform     = :ios, '17.0'
-    s.ios.deployment_target = '17'
+    s.platform     = :ios, '16.0'
+    s.ios.deployment_target = '16'
 end

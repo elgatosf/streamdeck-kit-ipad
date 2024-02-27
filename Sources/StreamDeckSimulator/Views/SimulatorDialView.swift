@@ -29,6 +29,7 @@ import SwiftUI
 
 struct SimulatorDialView: View {
 
+    @State private var oldValue: Double = 0
     @State private var value: Double = 0
 
     let onRotate: (Int) -> Void
@@ -36,8 +37,9 @@ struct SimulatorDialView: View {
     var body: some View {
         Dial(value: $value)
             .aspectRatio(contentMode: .fill)
-            .onChange(of: value) { oldValue, newValue in
+            .onChange(of: value) { newValue in
                 onRotate(Int(newValue) - Int(oldValue))
+                oldValue = newValue
             }
             .aspectRatio(1, contentMode: .fit)
     }
@@ -72,7 +74,7 @@ struct SimulatorDialPressButton: View {
         .scaleEffect(isPressed ? 0.9 : 1)
         .opacity(isPressed ? 0.8 : 1)
         .foregroundColor(.white)
-        .onChange(of: isPressed) {
+        .onChange(of: isPressed) { _ in
             onPress(isPressed)
         }
         .aspectRatio(1, contentMode: .fit)

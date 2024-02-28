@@ -38,15 +38,9 @@ final class StreamDeckLayoutRenderer {
     init() {}
 
     @MainActor
-    init<Content: View>(content: Content, device: StreamDeck) {
-        render(content, on: device)
-    }
-
-    @MainActor
     func render<Content: View>(_ content: Content, on device: StreamDeck) {
         cancellable?.cancel()
-
-        dirtyViews = .init([.screen])
+        dirtyViews = [.screen]
 
         let context = StreamDeckViewContext(
             device: device,
@@ -90,7 +84,7 @@ final class StreamDeckLayoutRenderer {
 
         defer { dirtyViews.removeAll(keepingCapacity: true) }
 
-        log("requires updates of \(Array(dirtyViews))")
+        log("requires updates of \(dirtyViews)")
 
         guard !dirtyViews.contains(.screen) else {
             log("complete screen required")

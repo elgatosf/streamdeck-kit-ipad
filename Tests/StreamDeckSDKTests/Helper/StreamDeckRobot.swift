@@ -63,6 +63,7 @@ final class StreamDeckRobot {
     func use<Content: View>(
         _ product: StreamDeckProduct,
         rendering content: Content,
+        waitForLayout: Bool = true,
         file: StaticString = #file,
         line: UInt = #line
     ) async throws {
@@ -70,8 +71,10 @@ final class StreamDeckRobot {
 
         await device.render(content)
 
-        try await recorder.$screens.waitFor(file: file, line: line) {
-            !$0.isEmpty
+        if waitForLayout {
+            try await recorder.$screens.waitFor(file: file, line: line) {
+                !$0.isEmpty
+            }
         }
     }
 

@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/elgatosf/streamdeck-kit-macros",
       "state" : {
-        "branch" : "main",
-        "revision" : "0805b3efa7adfc8c88b59e9a1d8c4a90015a2460"
+        "revision" : "47324ebb0e2517219dd795d2915987f06d46e47e",
+        "version" : "0.0.1"
       }
     },
     {

@@ -134,4 +134,39 @@ final class StreamDeckLayoutTests: XCTestCase {
             await robot.assertSnapshot(\.windowImages[section].image, as: .image, named: "section_\(section)")
         }
     }
+
+    // MARK: Pedal
+
+    func test_key_events_on_pedal() async throws {
+        var events = [(index: Int, pressed: Bool)]()
+
+        try await robot.use(.pedal, rendering: StreamDeckLayout(keyArea: {
+            StreamDeckKeyAreaLayout { context in
+                StreamDeckKeyView { pressed in
+                    events.append((index: context.index, pressed: pressed))
+                } content: { EmptyView() }
+            }
+        }), waitForLayout: false)
+
+        for key in 0 ..< 3 {
+            try await robot.keyPress(key, pressed: true, waitForLayout: false)
+            try await robot.keyPress(key, pressed: false, waitForLayout: false)
+        }
+
+        await robot.digest()
+
+        robot.assertEqual(\.screens.count, 0)
+        robot.assertEqual(\.keys.count, 0)
+
+        XCTAssertEqual(events.count, 6)
+
+        for key in 0 ..< 3 {
+            XCTAssertEqual(events[key * 2].index, key)
+            XCTAssertEqual(events[key * 2 + 1].index, key)
+
+            XCTAssertTrue(events[key * 2].pressed)
+            XCTAssertFalse(events[key * 2 + 1].pressed)
+        }
+    }
+
 }

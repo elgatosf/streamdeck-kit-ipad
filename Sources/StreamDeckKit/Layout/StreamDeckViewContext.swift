@@ -61,6 +61,7 @@ public struct StreamDeckViewContext {
 
     @MainActor
     public func updateRequired() {
+        guard size != .zero else { return } // Pedal
         device.renderer.updateRequired(dirtyMarker)
     }
 

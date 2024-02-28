@@ -24,7 +24,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/elgatosf/streamdeck-kit-macros",
-            branch: "main"
+            from: "0.0.1"
         )
     ],
     targets: [
@@ -37,7 +37,7 @@ let package = Package(
             name: "StreamDeckKit",
             dependencies: [
                 "StreamDeckCApi",
-                .product(name: "StreamDeckKitMacros", package: "streamdeck-kit-macros")
+                .product(name: "StreamDeckView", package: "streamdeck-kit-macros")
             ]
         ),
         .target(

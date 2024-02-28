@@ -29,7 +29,7 @@ import Combine
 import Foundation
 import SwiftUI
 
-@_exported import StreamDeckKitMacros
+@_exported import StreamDeckView
 
 /// The basic view to build a layout for Stream Deck from.
 ///

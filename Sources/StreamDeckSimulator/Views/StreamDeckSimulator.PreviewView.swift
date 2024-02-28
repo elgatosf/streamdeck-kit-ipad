@@ -48,7 +48,7 @@ public extension StreamDeckSimulator {
 
         @State private var showDeviceBezels: Bool
         @State private var showKeyAreaBorders: Bool
-        
+
         /// Creates an instance of `StreamDeckSimulator`.
         /// - Parameters:
         ///   - product: The kind of simulator to show.

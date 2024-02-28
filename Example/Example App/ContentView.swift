@@ -51,7 +51,7 @@ struct ContentView: View {
                 #if DEBUG
                     Text("or")
                     Button("Start the Stream Deck Simulator") {
-                        StreamDeckSimulator.show(streamDeck: .mini)
+                        StreamDeckSimulator.show(defaultStreamDeck: .mini)
                     }
                 #endif
             } else {

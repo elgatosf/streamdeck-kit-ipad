@@ -29,6 +29,8 @@ import Combine
 import Foundation
 import SwiftUI
 
+@_exported import StreamDeckView
+
 /// The basic view to build a layout for Stream Deck from.
 ///
 /// Provide this to the `content` parameter of ``StreamDeckSession/setUp(stateHandler:newDeviceHandler:content:)`` or ``StreamDeck/render(_:)``

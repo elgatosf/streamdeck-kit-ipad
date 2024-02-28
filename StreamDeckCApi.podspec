@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
     s.name         = 'StreamDeckCApi'
     s.version      = '0.0.1'
-    s.swift_version = '5'
+    s.swift_version = '5.9'
 
     s.summary      = 'C header for StreamDeckKit. Not for standalone use.'
     s.author       = { 'Elgato' => 'info@elgato.com' }
@@ -17,6 +17,6 @@ Pod::Spec.new do |s|
     # See: https://github.com/CocoaPods/CocoaPods/issues/12073#issuecomment-1737821281
     s.xcconfig = { 'ENABLE_USER_SCRIPT_SANDBOXING' => false }
 
-    s.platform     = :ios, '17.0'
-    s.ios.deployment_target = '17'
+    s.platform     = :ios, '16.0'
+    s.ios.deployment_target = '16'
 end

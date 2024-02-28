@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
     s.name         = 'StreamDeckSimulator'
     s.version      = '0.0.1'
-    s.swift_version = '5'
+    s.swift_version = '5.9'
 
     s.summary      = 'Simulate different StreamDeck devices to test your StreamDeckKit integration.'
     s.author       = { 'Elgato' => 'info@elgato.com' }
@@ -17,6 +17,6 @@ Pod::Spec.new do |s|
     # See: https://medium.com/clutter-engineering/supporting-both-swift-package-manager-and-cocoapods-in-your-library-861f00b6b0f9#8694
     s.resource_bundles = { "StreamDeckKit_#{s.name}" => ["Sources/#{s.name}/Resources/**/*"] }
 
-    s.platform     = :ios, '17.0'
-    s.ios.deployment_target = '17'
+    s.platform     = :ios, '16.0'
+    s.ios.deployment_target = '16'
 end

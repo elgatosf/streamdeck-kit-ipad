@@ -48,7 +48,7 @@ struct SimulatorKeyView: View {
             .contentShape(Rectangle())
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .gesture(tap)
-            .onChange(of: isPressed) {
+            .onChange(of: isPressed) { _ in
                 client.emit(.keyPress(index: index, pressed: isPressed))
             }
             .onReceive(

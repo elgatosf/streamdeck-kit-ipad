@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
     s.name         = 'StreamDeckKit'
     s.version      = '0.0.1'
-    s.swift_version = '5'
+    s.swift_version = '5.9'
 
     s.summary      = 'Integrate StreamDeck hardware into your App'
     s.author       = { 'Elgato' => 'info@elgato.com' }
@@ -14,6 +14,6 @@ Pod::Spec.new do |s|
     s.source_files = "Sources/#{s.name}/**/*.swift"
     s.dependency 'StreamDeckCApi', "#{s.version.to_s}"
 
-    s.platform     = :ios, '17.0'
-    s.ios.deployment_target = '17'
+    s.platform     = :ios, '16.0'
+    s.ios.deployment_target = '16'
 end

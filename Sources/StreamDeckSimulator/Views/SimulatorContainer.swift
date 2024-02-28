@@ -117,7 +117,7 @@ struct SimulatorContainer: View {
                 Text(model.formFactorName).tag(model)
             }
         }
-        .onChange(of: productSelection) { _, newValue in
+        .onChange(of: productSelection) { newValue in
             let config = newValue.createConfiguration()
             onDeviceChange(newValue, config.device)
             configuration = config
@@ -157,22 +157,27 @@ struct SimulatorContainer: View {
 }
 
 #if DEBUG
+@available(iOS 17, *)
 #Preview("Plus", traits: .fixedLayout(width: 600, height: 600)) {
     SimulatorContainer(streamDeck: .plus)
 }
 
+@available(iOS 17, *)
 #Preview("Mini", traits: .fixedLayout(width: 600, height: 600)) {
     SimulatorContainer(streamDeck: .mini)
 }
 
+@available(iOS 17, *)
 #Preview("Regular", traits: .fixedLayout(width: 600, height: 600)) {
     SimulatorContainer(streamDeck: .regular)
 }
 
+@available(iOS 17, *)
 #Preview("XL", traits: .fixedLayout(width: 600, height: 600)) {
     SimulatorContainer(streamDeck: .xl)
 }
 
+@available(iOS 17, *)
 #Preview("Pedal", traits: .fixedLayout(width: 600, height: 600)) {
     SimulatorContainer(streamDeck: .pedal)
 }

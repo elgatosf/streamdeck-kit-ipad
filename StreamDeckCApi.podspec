@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
     s.name         = 'StreamDeckCApi'
     s.version      = '0.0.1'
-    s.swift_version = '5'
+    s.swift_version = '5.9'
 
     s.summary      = 'C header for StreamDeckKit. Not for standalone use.'
     s.author       = { 'Elgato' => 'info@elgato.com' }

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
     s.name         = 'StreamDeckSimulator'
     s.version      = '0.0.1'
-    s.swift_version = '5'
+    s.swift_version = '5.9'
 
     s.summary      = 'Simulate different StreamDeck devices to test your StreamDeckKit integration.'
     s.author       = { 'Elgato' => 'info@elgato.com' }

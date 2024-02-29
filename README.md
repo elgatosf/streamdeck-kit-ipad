@@ -70,6 +70,8 @@ end
 
 ## Getting started
 
+First, add the [DriverKit Communicates with Drivers](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_driverkit_communicates-with-drivers) capability to your app target. Refer to [Adding capabilities to your app](https://developer.apple.com/documentation/xcode/adding-capabilities-to-your-app/) for guidance.  
+
 Rendering content on a Stream Deck is very simple with SwiftUI, much like designing a typical app UI.
 
 ```swift

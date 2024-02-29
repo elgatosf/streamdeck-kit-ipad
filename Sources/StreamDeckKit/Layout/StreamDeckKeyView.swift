@@ -29,22 +29,25 @@ import SwiftUI
 
 public struct StreamDeckKeyView<Content: View>: View {
 
+    public typealias KeyAction = @MainActor (_ isPressed: Bool) -> Void
+    public typealias ContentProvider = @MainActor () -> Content
+
     @Environment(\.streamDeckViewContext) var context
 
-    let action: @MainActor (Bool) -> Void
-    @ViewBuilder let content: @MainActor () -> Content
+    let action: KeyAction
+    @ViewBuilder let content: ContentProvider
 
     public init(
-        action: @escaping (Bool) -> Void,
-        @ViewBuilder content: @escaping () -> Content
+        action: @escaping KeyAction,
+        @ViewBuilder content: @escaping ContentProvider
     ) {
         self.action = action
         self.content = content
     }
 
     public init(
-        action: @escaping () -> Void,
-        @ViewBuilder content: @escaping () -> Content
+        action: @escaping @MainActor () -> Void,
+        @ViewBuilder content: @escaping ContentProvider
     ) {
         self.init(
             action: { if $0 { action() } },

@@ -30,6 +30,10 @@ import OSLog
 import StreamDeckCApi
 import UIKit
 
+fileprivate enum IOErrorCode: Int {
+    case notPermitted = -536870174
+}
+
 final actor InternalStreamDeckSession {
     nonisolated let state = CurrentValueSubject<StreamDeckSession.State, Never>(.idle)
     nonisolated let driverVersion = CurrentValueSubject<Version?, Never>(nil)
@@ -99,6 +103,9 @@ final actor InternalStreamDeckSession {
 
             guard ret == kIOReturnSuccess else {
                 os_log(.error, "Failed opening service with error: \(String(ioReturn: ret)).")
+                if ret == IOErrorCode.notPermitted.rawValue {
+                    state.value = .failed(.missingEntitlement)
+                }
                 continue
             }
 

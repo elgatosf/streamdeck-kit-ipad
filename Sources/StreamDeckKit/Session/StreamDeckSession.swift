@@ -72,7 +72,8 @@ public final class StreamDeckSession {
         case unexpectedDriverError
         /// The driver has a different major version. Either the SDK or the driver app needs an update.
         case driverVersionMismatch
-        /// The app needs to have the "Communicates with Drivers" (com.apple.developer.driverkit.communicates-with-drivers) capability set in its entitlements.
+        /// The app needs to have the "Communicates with Drivers"
+        /// (com.apple.developer.driverkit.communicates-with-drivers) capability set in its entitlements.
         case missingEntitlement
     }
 

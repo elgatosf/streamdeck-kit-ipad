@@ -30,7 +30,7 @@ import OSLog
 import StreamDeckCApi
 import UIKit
 
-fileprivate enum IOErrorCode: Int {
+private enum IOErrorCode: Int {
     case notPermitted = -536870174
 }
 

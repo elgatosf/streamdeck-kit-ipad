@@ -66,15 +66,15 @@ struct MyFirstStreamDeckLayout {
         StreamDeckLayout {
             // Define key area
             // Use StreamDeckKeyAreaLayout for rendering separate keys
-            StreamDeckKeyAreaLayout { context in
+            StreamDeckKeyAreaLayout { keyIndex in
                 // Define content for each key.
-                // StreamDeckKeyAreaLayout provides a context for each available key,
+                // StreamDeckKeyAreaLayout provides an index for each available key,
                 // and StreamDeckKeyView provides a callback for the key action
                 // Example:
                 StreamDeckKeyView { pressed in
                     print("pressed \(pressed)")
                 } content: {
-                    Text("\(context.index)")
+                    Text("\(keyIndex)")
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .background(.teal)
                 }

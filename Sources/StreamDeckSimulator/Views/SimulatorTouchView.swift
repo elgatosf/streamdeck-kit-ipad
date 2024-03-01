@@ -28,24 +28,34 @@
 import SwiftUI
 import StreamDeckKit
 
-struct SimulatorTouchView: View {
+@StreamDeckView
+struct SimulatorTouchView {
 
-    let onTouch: (CGPoint) -> Void
-    let onFling: (CGPoint, CGPoint) -> Void
+    let client: StreamDeckSimulatorClient?
 
-    var body: some View {
+    var streamDeckBody: some View {
         StreamDeckDialView {
             Color.clear
         }
         .contentShape(Rectangle())
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .onTapGesture(coordinateSpace: .local) { location in
-            onTouch(location)
+        .onTapGesture(coordinateSpace: .local) { localLocation in
+            guard let client = client else { return }
+            let x = CGFloat(viewIndex) * viewSize.width + localLocation.x
+            Task { await client.emit(.touch(.init(x: x, y: localLocation.y))) }
         }
         .gesture(
             DragGesture(minimumDistance: 10, coordinateSpace: .local)
                 .onEnded { value in
-                    onFling(value.startLocation, value.location)
+                    guard let client = client else { return }
+                    let startX = CGFloat(viewIndex) * viewSize.width + value.startLocation.x
+                    let endX = CGFloat(viewIndex) * viewSize.width + value.location.x
+                    Task {
+                        await client.emit(.fling(
+                            start: .init(x: startX, y: value.startLocation.y),
+                            end: .init(x: endX, y: value.location.y)
+                        ))
+                    }
                 }
         )
     }

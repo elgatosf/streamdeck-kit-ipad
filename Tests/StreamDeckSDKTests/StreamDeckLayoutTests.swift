@@ -141,9 +141,9 @@ final class StreamDeckLayoutTests: XCTestCase {
         var events = [(index: Int, pressed: Bool)]()
 
         try await robot.use(.pedal, rendering: StreamDeckLayout(keyArea: {
-            StreamDeckKeyAreaLayout { context in
+            StreamDeckKeyAreaLayout { keyIndex in
                 StreamDeckKeyView { pressed in
-                    events.append((index: context.index, pressed: pressed))
+                    events.append((index: keyIndex, pressed: pressed))
                 } content: { EmptyView() }
             }
         }), waitForLayout: false)

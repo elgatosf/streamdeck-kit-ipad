@@ -41,9 +41,10 @@ public struct StreamDeckDialAreaLayout<Dial: View>: View {
     /// A handler for press events on a rotary encoder(dial).
     ///
     /// The first parameter is the index of the dial. The second one indicates if the dial is down or not.
-    public typealias DialPressHandler = @MainActor (Int, Bool) -> Void
+    public typealias DialPressHandler = @MainActor (_ index: Int, _ isPressed: Bool) -> Void
     public typealias TouchHandler = @MainActor (CGPoint) -> Void
-    public typealias FlingHandler = @MainActor (CGPoint, CGPoint, InputEvent.Direction) -> Void
+    public typealias FlingHandler = @MainActor (_ start: CGPoint, _ end: CGPoint, _ direction: InputEvent.Direction) -> Void
+    public typealias DialProvider = @MainActor (_ keyIndex: Int) -> Dial
 
     @Environment(\.streamDeckViewContext) private var context
 
@@ -51,14 +52,14 @@ public struct StreamDeckDialAreaLayout<Dial: View>: View {
     private let press: DialPressHandler?
     private let touch: TouchHandler?
     private let fling: FlingHandler?
-    @ViewBuilder private let dial: @MainActor (StreamDeckViewContext) -> Dial
+    @ViewBuilder private let dial: DialProvider
 
     public init(
         rotate: DialRotationHandler? = nil,
         press: DialPressHandler? = nil,
         touch: TouchHandler? = nil,
         fling: FlingHandler? = nil,
-        @ViewBuilder dial: @escaping @MainActor (StreamDeckViewContext) -> Dial
+        @ViewBuilder dial: @escaping DialProvider
     ) {
         self.rotate = rotate
         self.press = press
@@ -72,7 +73,7 @@ public struct StreamDeckDialAreaLayout<Dial: View>: View {
         press: @escaping @MainActor (Int) -> Void,
         touch: TouchHandler? = nil,
         fling: FlingHandler? = nil,
-        @ViewBuilder dial: @escaping @MainActor (StreamDeckViewContext) -> Dial
+        @ViewBuilder dial: @escaping DialProvider
     ) {
         self.init(
             rotate: rotate,
@@ -96,7 +97,7 @@ public struct StreamDeckDialAreaLayout<Dial: View>: View {
                     index: section
                 )
 
-                dial(dialContext)
+                dial(dialContext.index)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                     .environment(\.streamDeckViewContext, dialContext)
             }

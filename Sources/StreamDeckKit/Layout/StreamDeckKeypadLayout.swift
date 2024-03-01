@@ -35,7 +35,7 @@ public struct StreamDeckKeyAreaLayout<Key: View>: View {
     /// A factory function that provides a view for a key.
     ///
     /// Use the ``StreamDeckViewContext/index`` property of the context parameter to distinguish keys.
-    public typealias KeyViewProvider = @MainActor (StreamDeckViewContext) -> Key
+    public typealias KeyViewProvider = @MainActor (_ keyIndex: Int) -> Key
 
     @Environment(\.streamDeckViewContext) private var context
 
@@ -67,7 +67,7 @@ public struct StreamDeckKeyAreaLayout<Key: View>: View {
                             index: position
                         )
 
-                        keyView(keyContext)
+                        keyView(keyContext.index)
                             .frame(width: keySize.width, height: keySize.height)
                             .environment(\.streamDeckViewContext, keyContext)
                     }

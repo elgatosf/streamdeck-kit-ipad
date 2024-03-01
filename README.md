@@ -46,7 +46,11 @@ However, if you want to verify your implementation using the [Stream Deck Simula
 
 ## Installation
 
-### Swift Package Manager 
+### Package
+
+You can add the library to your XCode project via Swift Package Manager. See "[Adding package dependencies to your app](https://developer.apple.com/documentation/xcode/adding-package-dependencies-to-your-app)".
+
+If you want to add it to your own libraries `Package.swift`, use this code instead:
 
 ```swift
 dependencies: [
@@ -54,23 +58,11 @@ dependencies: [
 ]
 ```
 
-### CocoaPods
+### Entitlements
 
-Example Podfile
-
-```Ruby
-platform :ios, '16.0'
-
-target 'YourAppTarget' do
-    use_frameworks!
-    pod 'StreamDeckKit'
-    pod 'StreamDeckSimulator', :configurations => ['Debug']
-end
-```
+In order to connect to the Stream Deck driver, you need to add the "[Communicates with Drivers](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_driverkit_communicates-with-drivers)" (`com.apple.developer.driverkit.communicates-with-drivers`) capability to your app target. Refer to "[Adding capabilities to your app](https://developer.apple.com/documentation/xcode/adding-capabilities-to-your-app/)" for guidance.
 
 ## Getting started
-
-First, add the [DriverKit Communicates with Drivers](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_driverkit_communicates-with-drivers) capability to your app target. Refer to [Adding capabilities to your app](https://developer.apple.com/documentation/xcode/adding-capabilities-to-your-app/) for guidance.  
 
 Rendering content on a Stream Deck is very simple with SwiftUI, much like designing a typical app UI.
 

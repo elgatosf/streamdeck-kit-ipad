@@ -96,6 +96,7 @@ build_documentation() {
     xcodebuild docbuild \
     -scheme $build_scheme \
     -destination generic/platform=iOS \
+    -skipMacroValidation \
     OTHER_DOCC_FLAGS="--transform-for-static-hosting$base_path_param --output-path $documentation_dir" \
     | xcpretty
 }

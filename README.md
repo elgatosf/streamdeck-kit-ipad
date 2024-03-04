@@ -4,9 +4,7 @@
 
 Stream Deck Kit is a Swift Library for controlling physical [Elgato Stream Deck](https://www.elgato.com/stream-deck) devices with an iPadOS app.
 
-![Build all targets workflow badge](https://github.com/elgatosf/streamdeck-kit-ipad/actions/workflows/build-all-targets.yml/badge.svg)
-![Lint workflow badge](https://github.com/elgatosf/streamdeck-kit-ipad/actions/workflows/lint.yml/badge.svg)
-![Tests workflow badge](https://github.com/elgatosf/streamdeck-kit-ipad/actions/workflows/test.yml/badge.svg)
+![Code checks workflow badge](https://github.com/elgatosf/streamdeck-kit-ipad/actions/workflows/code-checks.yml/badge.svg)
 
 ## Features
 

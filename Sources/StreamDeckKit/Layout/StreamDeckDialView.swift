@@ -48,7 +48,7 @@ public struct StreamDeckDialView<Content: View>: View {
     private let press: DialPressHandler?
     private let touch: TouchHandler?
     @ViewBuilder private let content: @MainActor () -> Content
-    
+
     /// Creates an instance of the view.
     /// - Parameters:
     ///   - rotate: A handler for rotation events of the rotary encoder. Values can be positive or negative.

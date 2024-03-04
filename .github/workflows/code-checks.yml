@@ -1,8 +1,20 @@
-name: "Build all targets"
-run-name: Building all targets
+name: "Code checks"
+run-name: Running code checks
 on: [pull_request]
 jobs:
-  Build:
+  lint:
+    name: Run SwiftLint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: GitHub Action for SwiftLint
+        uses: norio-nomura/action-swiftlint@3.2.1
+        with:
+          args: --strict
+  build:
+    name: Build all targets
+    needs: lint
     runs-on: macos-14
     steps:
       - name: Print job info
@@ -23,3 +35,12 @@ jobs:
         run: |
           cd Example
           set -o pipefail && xcodebuild -scheme "StreamDeckKitExample App" -destination "platform=iOS Simulator,name=iPad Air (5th generation),OS=latest" -skipMacroValidation | xcpretty
+
+  test:
+    name: Run unit tests
+    runs-on: macos-14
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test StreamDeckKit
+        run: set -o pipefail && xcodebuild -scheme StreamDeckKit-Package test -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" -skipMacroValidation | xcpretty

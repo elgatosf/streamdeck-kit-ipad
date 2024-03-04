@@ -44,8 +44,9 @@ public struct StreamDeckDialAreaLayout<Dial: View>: View {
     public typealias TouchHandler = @MainActor (CGPoint) -> Void
     /// A handler for fling gestures on the window area.
     ///
-    /// A fling gesture is a quick swipe-like motion performed by the user. Unlike a regular swipe gesture that tracks the movement of the finger, a fling gesture is characterized by a rapid motion without continuous tracking.
-    /// You will just receive a single event when the gesture completes.
+    /// A fling gesture is a quick swipe-like motion performed by the user. Unlike a regular swipe gesture that tracks the movement of the
+    /// finger, a fling gesture is characterized by a rapid motion without continuous tracking. You will just receive a single event when the
+    /// gesture completes.
     /// - Parameters:
     ///   - start: The point where the fling began / where the finger first touched the display.
     ///   - end: The point where the fling ended / where the finger was lifted from the display.

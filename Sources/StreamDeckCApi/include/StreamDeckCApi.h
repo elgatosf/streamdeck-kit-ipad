@@ -31,4 +31,7 @@
 #include <IOKit/IOKitLib.h>
 #include "StreamDeckDriverShared.h"
 
+/// Exported error constant to handle problems with "Communicates with Driver" capability in Swift.
+extern const IOReturn sdkIOReturnNotPermitted;
+
 #endif /* StreamDeckCApi_h */

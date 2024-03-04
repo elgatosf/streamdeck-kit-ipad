@@ -3,14 +3,6 @@
     {
       "text" : "Protocol for views rendered on StreamDeck.",
       "type" : "text"
-    },
-    {
-      "text" : " ",
-      "type" : "text"
-    },
-    {
-      "text" : "This automatically tells StreamDeckLayout that the drawing area of this view needs to be updated on the device.",
-      "type" : "text"
     }
   ],
   "hierarchy" : {
@@ -26,7 +18,7 @@
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:13StreamDeckKit0aB4ViewP",
+    "externalID" : "s:14StreamDeckViewAAP",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -103,22 +95,29 @@
           "type" : "heading"
         },
         {
-          "code" : [
-            "struct NumberDisplayKey: StreamDeckView {",
-            "    @Environment(\\.streamDeckViewContext) var context",
-            "    @State var isPressed: Bool = false",
-            "",
-            "    var body: some View {",
-            "        StreamDeckKeyView  { isPressed in",
-            "            self.isPressed = isPressed",
-            "        } content: {",
-            "            isPressed ? Color.orange : Color.clear",
-            "        }",
-            "    }",
-            "}"
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "Use this implicitly by applying the ",
+                  "type" : "text"
+                },
+                {
+                  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView()",
+                  "isActive" : true,
+                  "type" : "reference"
+                },
+                {
+                  "text" : " macro.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
           ],
-          "syntax" : "swift",
-          "type" : "codeListing"
+          "name" : "Note",
+          "style" : "note",
+          "type" : "aside"
         }
       ],
       "kind" : "content"
@@ -145,23 +144,15 @@
   "topicSections" : [
     {
       "identifiers" : [
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView\/Content"
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView\/StreamDeckBody-swift.associatedtype"
       ],
       "title" : "Associated Types"
     },
     {
       "identifiers" : [
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView\/context",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView\/streamDeckBody"
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView\/streamDeckBody-swift.property"
       ],
       "title" : "Instance Properties"
-    },
-    {
-      "generated" : true,
-      "identifiers" : [
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView\/View-Implementations"
-      ],
-      "title" : "Default Implementations"
     }
   ],
   "variants" : [
@@ -185,9 +176,18 @@
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit": {
   "abstract" : [
-
+    {
+      "text" : "Communicate with a Stream Deck via Swift.",
+      "type" : "text"
+    }
   ],
   "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+  "images" : [
+    {
+      "identifier" : "logo.png",
+      "type" : "icon"
+    }
+  ],
   "kind" : "symbol",
   "role" : "collection",
   "title" : "StreamDeckKit",
@@ -198,14 +198,6 @@
   "abstract" : [
     {
       "text" : "Protocol for views rendered on StreamDeck.",
-      "type" : "text"
-    },
-    {
-      "text" : " ",
-      "type" : "text"
-    },
-    {
-      "text" : "This automatically tells StreamDeckLayout that the drawing area of this view needs to be updated on the device.",
       "type" : "text"
     }
   ],
@@ -236,9 +228,44 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeckview"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckView/Content": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckView()": {
   "abstract" : [
-
+    {
+      "text" : "Defines and implements conformance of the StreamDeckView protocol.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "macro"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckView"
+    },
+    {
+      "kind" : "text",
+      "text" : "()"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView()",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "StreamDeckView()",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckview()"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckView/StreamDeckBody-swift.associatedtype": {
+  "abstract" : [
+    {
+      "text" : "The type of view representing the streamDeckBody of this view.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -251,7 +278,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "Content"
+      "text" : "StreamDeckBody"
     },
     {
       "kind" : "text",
@@ -263,63 +290,20 @@
       "text" : "View"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView\/Content",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView\/StreamDeckBody-swift.associatedtype",
   "kind" : "symbol",
   "required" : true,
   "role" : "symbol",
-  "title" : "Content",
+  "title" : "StreamDeckBody",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeckview\/content"
+  "url" : "\/documentation\/streamdeckkit\/streamdeckview\/streamdeckbody-swift.associatedtype"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckView/View-Implementations": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckView/streamDeckBody-swift.property": {
   "abstract" : [
-
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView\/View-Implementations",
-  "kind" : "article",
-  "role" : "collectionGroup",
-  "title" : "View Implementations",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeckview\/view-implementations"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckView/context": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
     {
-      "kind" : "keyword",
-      "text" : "var"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "context"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:13StreamDeckKit0aB11ViewContextV",
-      "text" : "StreamDeckViewContext"
+      "text" : "The content of the view.",
+      "type" : "text"
     }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView\/context",
-  "kind" : "symbol",
-  "required" : true,
-  "role" : "symbol",
-  "title" : "context",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeckview\/context"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckView/streamDeckBody": {
-  "abstract" : [
-
   ],
   "fragments" : [
     {
@@ -348,17 +332,30 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:13StreamDeckKit0aB4ViewP7ContentQa",
-      "text" : "Content"
+      "text" : "StreamDeckBody"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView\/streamDeckBody",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView\/streamDeckBody-swift.property",
   "kind" : "symbol",
   "required" : true,
   "role" : "symbol",
   "title" : "streamDeckBody",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeckview\/streamdeckbody"
+  "url" : "\/documentation\/streamdeckkit\/streamdeckview\/streamdeckbody-swift.property"
+},
+"logo.png": {
+  "alt" : "A technology icon representing the StreamDeckKit framework.",
+  "identifier" : "logo.png",
+  "type" : "image",
+  "variants" : [
+    {
+      "traits" : [
+        "1x",
+        "light"
+      ],
+      "url" : "\/images\/logo.png"
+    }
+  ]
 }
 }
 }

@@ -550,9 +550,18 @@
 "references": {
 "doc://StreamDeckKit/documentation/StreamDeckKit": {
   "abstract" : [
-
+    {
+      "text" : "Communicate with a Stream Deck via Swift.",
+      "type" : "text"
+    }
   ],
   "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+  "images" : [
+    {
+      "identifier" : "logo.png",
+      "type" : "icon"
+    }
+  ],
   "kind" : "symbol",
   "role" : "collection",
   "title" : "StreamDeckKit",
@@ -562,7 +571,7 @@
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialAreaLayout": {
   "abstract" : [
     {
-      "text" : "A View that draws the layout of a Stream Deck dial window area (The display above the ).",
+      "text" : "A View that draws the layout of a dial window area (The display above the rotary encoders) on a Stream Deck +.",
       "type" : "text"
     }
   ],
@@ -785,6 +794,20 @@
   "title" : "confirmationDialog(_:isPresented:titleVisibility:presenting:actions:message:)",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeckdialarealayout\/confirmationdialog(_:ispresented:titlevisibility:presenting:actions:message:)-1ubw"
+},
+"logo.png": {
+  "alt" : "A technology icon representing the StreamDeckKit framework.",
+  "identifier" : "logo.png",
+  "type" : "image",
+  "variants" : [
+    {
+      "traits" : [
+        "1x",
+        "light"
+      ],
+      "url" : "\/images\/logo.png"
+    }
+  ]
 }
 }
 }

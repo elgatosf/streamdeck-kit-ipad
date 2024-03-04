@@ -78,7 +78,7 @@
             },
             {
               "kind" : "genericParameter",
-              "text" : "BackgroundView"
+              "text" : "KeyArea"
             },
             {
               "kind" : "text",
@@ -86,15 +86,7 @@
             },
             {
               "kind" : "genericParameter",
-              "text" : "KeyAreaView"
-            },
-            {
-              "kind" : "text",
-              "text" : ", "
-            },
-            {
-              "kind" : "genericParameter",
-              "text" : "WindowView"
+              "text" : "WindowArea"
             },
             {
               "kind" : "text",
@@ -110,7 +102,7 @@
             },
             {
               "kind" : "typeIdentifier",
-              "text" : "BackgroundView"
+              "text" : "KeyArea"
             },
             {
               "kind" : "text",
@@ -127,24 +119,7 @@
             },
             {
               "kind" : "typeIdentifier",
-              "text" : "KeyAreaView"
-            },
-            {
-              "kind" : "text",
-              "text" : " : "
-            },
-            {
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:7SwiftUI4ViewP",
-              "text" : "View"
-            },
-            {
-              "kind" : "text",
-              "text" : ", "
-            },
-            {
-              "kind" : "typeIdentifier",
-              "text" : "WindowView"
+              "text" : "WindowArea"
             },
             {
               "kind" : "text",
@@ -171,24 +146,16 @@
         {
           "inlineContent" : [
             {
-              "text" : "Provide this to the ",
-              "type" : "text"
-            },
+              "identifier" : "layout",
+              "type" : "image"
+            }
+          ],
+          "type" : "paragraph"
+        },
+        {
+          "inlineContent" : [
             {
-              "code" : "content",
-              "type" : "codeVoice"
-            },
-            {
-              "text" : " parameter of ",
-              "type" : "text"
-            },
-            {
-              "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/setUp(stateHandler:newDeviceHandler:content:)",
-              "isActive" : true,
-              "type" : "reference"
-            },
-            {
-              "text" : " or ",
+              "text" : "Provide this to ",
               "type" : "text"
             },
             {
@@ -197,11 +164,7 @@
               "type" : "reference"
             },
             {
-              "text" : " ",
-              "type" : "text"
-            },
-            {
-              "text" : "to draw a layout  onto a Stream Deck device.",
+              "text" : " to draw a layout  onto a Stream Deck device.",
               "type" : "text"
             }
           ],
@@ -229,10 +192,19 @@
   "sections" : [
 
   ],
+  "seeAlsoSections" : [
+    {
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession"
+      ],
+      "title" : "Essentials"
+    }
+  ],
   "topicSections" : [
     {
       "identifiers" : [
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckLayout\/init(background:keyAreaView:windowView:)"
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckLayout\/init(keyArea:windowArea:)"
       ],
       "title" : "Initializers"
     },
@@ -271,9 +243,18 @@
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit": {
   "abstract" : [
-
+    {
+      "text" : "Communicate with a Stream Deck via Swift.",
+      "type" : "text"
+    }
   ],
   "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+  "images" : [
+    {
+      "identifier" : "logo.png",
+      "type" : "icon"
+    }
+  ],
   "kind" : "symbol",
   "role" : "collection",
   "title" : "StreamDeckKit",
@@ -416,7 +397,7 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdecklayout\/body"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckLayout/init(background:keyAreaView:windowView:)": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckLayout/init(keyArea:windowArea:)": {
   "abstract" : [
     {
       "text" : "Creates a new instance.",
@@ -434,175 +415,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "background"
-    },
-    {
-      "kind" : "text",
-      "text" : ": ("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:13StreamDeckKit0aB11ViewContextV",
-      "text" : "StreamDeckViewContext"
-    },
-    {
-      "kind" : "text",
-      "text" : ") -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:13StreamDeckKit0aB6LayoutV14BackgroundViewxmfp",
-      "text" : "BackgroundView"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "keyAreaView"
-    },
-    {
-      "kind" : "text",
-      "text" : ": ("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:13StreamDeckKit0aB11ViewContextV",
-      "text" : "StreamDeckViewContext"
-    },
-    {
-      "kind" : "text",
-      "text" : ") -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:13StreamDeckKit0aB6LayoutV11KeyAreaViewq_mfp",
-      "text" : "KeyAreaView"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "windowView"
-    },
-    {
-      "kind" : "text",
-      "text" : ": ("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:13StreamDeckKit0aB11ViewContextV",
-      "text" : "StreamDeckViewContext"
-    },
-    {
-      "kind" : "text",
-      "text" : ") -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:13StreamDeckKit0aB6LayoutV10WindowViewq0_mfp",
-      "text" : "WindowView"
-    },
-    {
-      "kind" : "text",
-      "text" : ")"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckLayout\/init(background:keyAreaView:windowView:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "init(background:keyAreaView:windowView:)",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdecklayout\/init(background:keyareaview:windowview:)"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession/setUp(stateHandler:newDeviceHandler:content:)": {
-  "abstract" : [
-    {
-      "text" : "Creates a session, associates it with the necessary application life cycle events,",
-      "type" : "text"
-    },
-    {
-      "text" : " ",
-      "type" : "text"
-    },
-    {
-      "text" : "and renders the content supplied by the view builder content block on every connected device.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "static"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "setUp"
-    },
-    {
-      "kind" : "text",
-      "text" : "<"
-    },
-    {
-      "kind" : "genericParameter",
-      "text" : "Content"
-    },
-    {
-      "kind" : "text",
-      "text" : ">("
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "stateHandler"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:13StreamDeckKit0aB7SessionC12StateHandlera",
-      "text" : "StateHandler"
-    },
-    {
-      "kind" : "text",
-      "text" : "?, "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "newDeviceHandler"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:13StreamDeckKit0aB7SessionC16NewDeviceHandlera",
-      "text" : "NewDeviceHandler"
-    },
-    {
-      "kind" : "text",
-      "text" : "?, "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "content"
+      "text" : "keyArea"
     },
     {
       "kind" : "text",
@@ -615,49 +428,112 @@
     },
     {
       "kind" : "text",
-      "text" : " ("
+      "text" : " () -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB6LayoutV7KeyAreaxmfp",
+      "text" : "KeyArea"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
     },
     {
       "kind" : "externalParam",
-      "text" : "_"
+      "text" : "windowArea"
     },
     {
       "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "internalParam",
-      "text" : "device"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
+      "text" : ": @"
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:13StreamDeckKit0aB0C",
-      "text" : "StreamDeck"
+      "preciseIdentifier" : "s:ScM",
+      "text" : "MainActor"
     },
     {
       "kind" : "text",
-      "text" : ") -> "
+      "text" : " () -> "
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:13StreamDeckKit0aB7SessionC5setUp12stateHandler09newDeviceH07contentyyAC5StateOScMYccSg_yAA0aB0CScMYccSgxALScMYcct7SwiftUI4ViewRzlFZ7ContentL_xmfp",
-      "text" : "Content"
+      "preciseIdentifier" : "s:13StreamDeckKit0aB6LayoutV10WindowAreaq_mfp",
+      "text" : "WindowArea"
     },
     {
       "kind" : "text",
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession\/setUp(stateHandler:newDeviceHandler:content:)",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckLayout\/init(keyArea:windowArea:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "setUp(stateHandler:newDeviceHandler:content:)",
+  "title" : "init(keyArea:windowArea:)",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdecksession\/setup(statehandler:newdevicehandler:content:)"
+  "url" : "\/documentation\/streamdeckkit\/streamdecklayout\/init(keyarea:windowarea:)"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckSession": {
+  "abstract" : [
+    {
+      "text" : "A mechanism that enables Stream Deck driver state observation and device detection.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckSession"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckSession"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckSession",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdecksession"
+},
+"layout": {
+  "alt" : "A schematic depiction of the Stream Deck layout system",
+  "identifier" : "layout",
+  "type" : "image",
+  "variants" : [
+    {
+      "traits" : [
+        "1x",
+        "light"
+      ],
+      "url" : "\/images\/layout.jpg"
+    }
+  ]
+},
+"logo.png": {
+  "alt" : "A technology icon representing the StreamDeckKit framework.",
+  "identifier" : "logo.png",
+  "type" : "image",
+  "variants" : [
+    {
+      "traits" : [
+        "1x",
+        "light"
+      ],
+      "url" : "\/images\/logo.png"
+    }
+  ]
 }
 }
 }

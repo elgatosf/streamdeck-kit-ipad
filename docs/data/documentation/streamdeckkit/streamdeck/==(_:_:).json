@@ -57,11 +57,7 @@
       },
       {
         "kind" : "text",
-        "text" : "(StreamDeckKit"
-      },
-      {
-        "kind" : "text",
-        "text" : "."
+        "text" : "("
       },
       {
         "kind" : "typeIdentifier",
@@ -70,11 +66,7 @@
       },
       {
         "kind" : "text",
-        "text" : ", StreamDeckKit"
-      },
-      {
-        "kind" : "text",
-        "text" : "."
+        "text" : ", "
       },
       {
         "kind" : "typeIdentifier",
@@ -146,11 +138,7 @@
             },
             {
               "kind" : "text",
-              "text" : ": StreamDeckKit"
-            },
-            {
-              "kind" : "text",
-              "text" : "."
+              "text" : ": "
             },
             {
               "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck",
@@ -168,11 +156,7 @@
             },
             {
               "kind" : "text",
-              "text" : ": StreamDeckKit"
-            },
-            {
-              "kind" : "text",
-              "text" : "."
+              "text" : ": "
             },
             {
               "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck",
@@ -219,9 +203,18 @@
 "references": {
 "doc://StreamDeckKit/documentation/StreamDeckKit": {
   "abstract" : [
-
+    {
+      "text" : "Communicate with a Stream Deck via Swift.",
+      "type" : "text"
+    }
   ],
   "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+  "images" : [
+    {
+      "identifier" : "logo.png",
+      "type" : "icon"
+    }
+  ],
   "kind" : "symbol",
   "role" : "collection",
   "title" : "StreamDeckKit",
@@ -293,11 +286,7 @@
     },
     {
       "kind" : "text",
-      "text" : "(StreamDeckKit"
-    },
-    {
-      "kind" : "text",
-      "text" : "."
+      "text" : "("
     },
     {
       "kind" : "typeIdentifier",
@@ -306,11 +295,7 @@
     },
     {
       "kind" : "text",
-      "text" : ", StreamDeckKit"
-    },
-    {
-      "kind" : "text",
-      "text" : "."
+      "text" : ", "
     },
     {
       "kind" : "typeIdentifier",
@@ -344,6 +329,20 @@
   "title" : "Equatable Implementations",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeck\/equatable-implementations"
+},
+"logo.png": {
+  "alt" : "A technology icon representing the StreamDeckKit framework.",
+  "identifier" : "logo.png",
+  "type" : "image",
+  "variants" : [
+    {
+      "traits" : [
+        "1x",
+        "light"
+      ],
+      "url" : "\/images\/logo.png"
+    }
+  ]
 }
 }
 }

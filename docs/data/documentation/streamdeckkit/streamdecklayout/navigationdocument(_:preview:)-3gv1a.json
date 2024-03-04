@@ -345,9 +345,18 @@
 "references": {
 "doc://StreamDeckKit/documentation/StreamDeckKit": {
   "abstract" : [
-
+    {
+      "text" : "Communicate with a Stream Deck via Swift.",
+      "type" : "text"
+    }
   ],
   "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+  "images" : [
+    {
+      "identifier" : "logo.png",
+      "type" : "icon"
+    }
+  ],
   "kind" : "symbol",
   "role" : "collection",
   "title" : "StreamDeckKit",
@@ -498,6 +507,20 @@
   "title" : "navigationDocument(_:preview:)",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdecklayout\/navigationdocument(_:preview:)-3gv1a"
+},
+"logo.png": {
+  "alt" : "A technology icon representing the StreamDeckKit framework.",
+  "identifier" : "logo.png",
+  "type" : "image",
+  "variants" : [
+    {
+      "traits" : [
+        "1x",
+        "light"
+      ],
+      "url" : "\/images\/logo.png"
+    }
+  ]
 }
 }
 }

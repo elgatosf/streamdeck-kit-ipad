@@ -12,7 +12,7 @@
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:m:s:e:s:So7UIImageC13StreamDeckKitE7colored_4sizeABSgSo7UIColorC_So6CGSizeVtFZ",
+    "externalID" : "s:m:s:e:s:So7UIImageC13StreamDeckKitE11sdk_colored_4sizeABSo7UIColorC_So6CGSizeVtFZ",
     "modules" : [
       {
         "name" : "StreamDeckKit"
@@ -55,9 +55,18 @@
 "references": {
 "doc://StreamDeckKit/documentation/StreamDeckKit": {
   "abstract" : [
-
+    {
+      "text" : "Communicate with a Stream Deck via Swift.",
+      "type" : "text"
+    }
   ],
   "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+  "images" : [
+    {
+      "identifier" : "logo.png",
+      "type" : "icon"
+    }
+  ],
   "kind" : "symbol",
   "role" : "collection",
   "title" : "StreamDeckKit",
@@ -106,6 +115,20 @@
   "title" : "UIImage",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/uikit\/uiimage"
+},
+"logo.png": {
+  "alt" : "A technology icon representing the StreamDeckKit framework.",
+  "identifier" : "logo.png",
+  "type" : "image",
+  "variants" : [
+    {
+      "traits" : [
+        "1x",
+        "light"
+      ],
+      "url" : "\/images\/logo.png"
+    }
+  ]
 }
 }
 }

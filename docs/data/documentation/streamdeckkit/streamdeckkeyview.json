@@ -1,4 +1,19 @@
 {
+  "abstract" : [
+    {
+      "text" : "A view that renders a single LED key in a ",
+      "type" : "text"
+    },
+    {
+      "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckLayout",
+      "isActive" : true,
+      "type" : "reference"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    }
+  ],
   "hierarchy" : {
     "paths" : [
       [
@@ -103,6 +118,35 @@
         }
       ],
       "kind" : "declarations"
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "overview",
+          "level" : 2,
+          "text" : "Overview",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "This should be provided to ",
+              "type" : "text"
+            },
+            {
+              "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyAreaLayout\/init(keyView:)",
+              "isActive" : true,
+              "type" : "reference"
+            },
+            {
+              "text" : " to be rendered properly.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
     }
   ],
   "relationshipsSections" : [
@@ -126,8 +170,8 @@
   "topicSections" : [
     {
       "identifiers" : [
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/init(action:content:)-1v3c9",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/init(action:content:)-911qi"
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/init(action:content:)-75po",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/init(action:content:)-7h0vj"
       ],
       "title" : "Initializers"
     },
@@ -136,6 +180,13 @@
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/body"
       ],
       "title" : "Instance Properties"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/ContentProvider",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/KeyAction"
+      ],
+      "title" : "Type Aliases"
     },
     {
       "generated" : true,
@@ -166,18 +217,80 @@
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit": {
   "abstract" : [
-
+    {
+      "text" : "Communicate with a Stream Deck via Swift.",
+      "type" : "text"
+    }
   ],
   "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+  "images" : [
+    {
+      "identifier" : "logo.png",
+      "type" : "icon"
+    }
+  ],
   "kind" : "symbol",
   "role" : "collection",
   "title" : "StreamDeckKit",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit"
 },
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckKeyAreaLayout/init(keyView:)": {
+  "abstract" : [
+    {
+      "text" : "Creates an instance of the view.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "identifier",
+      "text" : "init"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "keyView"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB13KeyAreaLayoutV0D12ViewProvidera",
+      "text" : "KeyViewProvider"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyAreaLayout\/init(keyView:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "init(keyView:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckkeyarealayout\/init(keyview:)"
+},
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckKeyView": {
   "abstract" : [
-
+    {
+      "text" : "A view that renders a single LED key in a ",
+      "type" : "text"
+    },
+    {
+      "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckLayout",
+      "isActive" : true,
+      "type" : "reference"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -205,6 +318,71 @@
   "title" : "StreamDeckKeyView",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeckkeyview"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckKeyView/ContentProvider": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "typealias"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "ContentProvider"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/ContentProvider",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "ContentProvider"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckKeyView.ContentProvider",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckkeyview\/contentprovider"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckKeyView/KeyAction": {
+  "abstract" : [
+    {
+      "text" : "A handler for key-up\/down events of LED keys.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "typealias"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "KeyAction"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/KeyAction",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "KeyAction"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckKeyView.KeyAction",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckkeyview\/keyaction"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckKeyView/View-Implementations": {
   "abstract" : [
@@ -259,9 +437,12 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeckkeyview\/body"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckKeyView/init(action:content:)-1v3c9": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckKeyView/init(action:content:)-75po": {
   "abstract" : [
-
+    {
+      "text" : "Creates an instance of the view.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -278,16 +459,16 @@
     },
     {
       "kind" : "text",
-      "text" : ": ("
+      "text" : ": @"
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sb",
-      "text" : "Bool"
+      "preciseIdentifier" : "s:ScM",
+      "text" : "MainActor"
     },
     {
       "kind" : "text",
-      "text" : ") -> "
+      "text" : " () -> "
     },
     {
       "kind" : "typeIdentifier",
@@ -304,28 +485,31 @@
     },
     {
       "kind" : "text",
-      "text" : ": () -> "
+      "text" : ": "
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:13StreamDeckKit0aB7KeyViewV7Contentxmfp",
-      "text" : "Content"
+      "preciseIdentifier" : "s:13StreamDeckKit0aB7KeyViewV15ContentProvidera",
+      "text" : "ContentProvider"
     },
     {
       "kind" : "text",
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/init(action:content:)-1v3c9",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/init(action:content:)-75po",
   "kind" : "symbol",
   "role" : "symbol",
   "title" : "init(action:content:)",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeckkeyview\/init(action:content:)-1v3c9"
+  "url" : "\/documentation\/streamdeckkit\/streamdeckkeyview\/init(action:content:)-75po"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckKeyView/init(action:content:)-911qi": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckKeyView/init(action:content:)-7h0vj": {
   "abstract" : [
-
+    {
+      "text" : "Creates an instance of the view.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -342,12 +526,12 @@
     },
     {
       "kind" : "text",
-      "text" : ": () -> "
+      "text" : ": "
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:s4Voida",
-      "text" : "Void"
+      "preciseIdentifier" : "s:13StreamDeckKit0aB7KeyViewV0D6Actiona",
+      "text" : "KeyAction"
     },
     {
       "kind" : "text",
@@ -359,24 +543,72 @@
     },
     {
       "kind" : "text",
-      "text" : ": () -> "
+      "text" : ": "
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:13StreamDeckKit0aB7KeyViewV7Contentxmfp",
-      "text" : "Content"
+      "preciseIdentifier" : "s:13StreamDeckKit0aB7KeyViewV15ContentProvidera",
+      "text" : "ContentProvider"
     },
     {
       "kind" : "text",
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/init(action:content:)-911qi",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/init(action:content:)-7h0vj",
   "kind" : "symbol",
   "role" : "symbol",
   "title" : "init(action:content:)",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeckkeyview\/init(action:content:)-911qi"
+  "url" : "\/documentation\/streamdeckkit\/streamdeckkeyview\/init(action:content:)-7h0vj"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckLayout": {
+  "abstract" : [
+    {
+      "text" : "The basic view to build a layout for Stream Deck from.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckLayout"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckLayout",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckLayout"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckLayout",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdecklayout"
+},
+"logo.png": {
+  "alt" : "A technology icon representing the StreamDeckKit framework.",
+  "identifier" : "logo.png",
+  "type" : "image",
+  "variants" : [
+    {
+      "traits" : [
+        "1x",
+        "light"
+      ],
+      "url" : "\/images\/logo.png"
+    }
+  ]
 }
 }
 }

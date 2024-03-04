@@ -115,6 +115,8 @@
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/keySize",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/keyVerticalSpacing",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/screenSize",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/windowAreaLeadingSpacing",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/windowAreaTrailingSpacing",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/windowRect"
       ],
       "title" : "Instance Properties"
@@ -144,9 +146,18 @@
 "references": {
 "doc://StreamDeckKit/documentation/StreamDeckKit": {
   "abstract" : [
-
+    {
+      "text" : "Communicate with a Stream Deck via Swift.",
+      "type" : "text"
+    }
   ],
   "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+  "images" : [
+    {
+      "identifier" : "logo.png",
+      "type" : "icon"
+    }
+  ],
   "kind" : "symbol",
   "role" : "collection",
   "title" : "StreamDeckKit",
@@ -1113,6 +1124,74 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/screensize"
 },
+"doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/windowAreaLeadingSpacing": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "windowAreaLeadingSpacing"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:14CoreFoundation7CGFloatV",
+      "text" : "CGFloat"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/windowAreaLeadingSpacing",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "windowAreaLeadingSpacing",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/windowarealeadingspacing"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/windowAreaTrailingSpacing": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "windowAreaTrailingSpacing"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:14CoreFoundation7CGFloatV",
+      "text" : "CGFloat"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceCapabilities\/windowAreaTrailingSpacing",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "windowAreaTrailingSpacing",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/windowareatrailingspacing"
+},
 "doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities/windowRect": {
   "abstract" : [
     {
@@ -1153,6 +1232,20 @@
   "title" : "windowRect",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/devicecapabilities\/windowrect"
+},
+"logo.png": {
+  "alt" : "A technology icon representing the StreamDeckKit framework.",
+  "identifier" : "logo.png",
+  "type" : "image",
+  "variants" : [
+    {
+      "traits" : [
+        "1x",
+        "light"
+      ],
+      "url" : "\/images\/logo.png"
+    }
+  ]
 }
 }
 }

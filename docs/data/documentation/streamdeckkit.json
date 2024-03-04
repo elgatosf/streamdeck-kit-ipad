@@ -1,4 +1,10 @@
 {
+  "abstract" : [
+    {
+      "text" : "Communicate with a Stream Deck via Swift.",
+      "type" : "text"
+    }
+  ],
   "hierarchy" : {
     "paths" : [
       [
@@ -12,7 +18,16 @@
   },
   "kind" : "symbol",
   "metadata" : {
+    "color" : {
+      "standardColorIdentifier" : "blue"
+    },
     "externalID" : "StreamDeckKit",
+    "images" : [
+      {
+        "identifier" : "logo.png",
+        "type" : "icon"
+      }
+    ],
     "modules" : [
       {
         "name" : "StreamDeckKit"
@@ -23,6 +38,55 @@
     "symbolKind" : "module",
     "title" : "StreamDeckKit"
   },
+  "primaryContentSections" : [
+    {
+      "content" : [
+        {
+          "anchor" : "Overview",
+          "level" : 2,
+          "text" : "Overview",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "Stream Deck Kit is a Swift Library for controlling physical ",
+              "type" : "text"
+            },
+            {
+              "identifier" : "https:\/\/www.elgato.com\/stream-deck",
+              "isActive" : true,
+              "type" : "reference"
+            },
+            {
+              "text" : " devices with an iPadOS app.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "See ",
+              "type" : "text"
+            },
+            {
+              "identifier" : "https:\/\/docs.elgato.com\/ipad",
+              "isActive" : true,
+              "type" : "reference"
+            },
+            {
+              "text" : " for the main documentation.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
+    }
+  ],
   "schemaVersion" : {
     "major" : 0,
     "minor" : 3,
@@ -34,8 +98,14 @@
   "topicSections" : [
     {
       "identifiers" : [
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession"
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckSession",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckLayout"
+      ],
+      "title" : "Essentials"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck"
       ],
       "title" : "Classes"
     },
@@ -52,19 +122,30 @@
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/DeviceInfo",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialView",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyAreaLayout",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeypadLayout",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckLayout",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckViewContext",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckViewContextKey",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/Version"
       ],
       "title" : "Structures"
     },
     {
       "identifiers" : [
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/InputEventHandler"
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/streamDeckLoggingHandler"
+      ],
+      "title" : "Variables"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView()"
+      ],
+      "title" : "Macros"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/InputEventHandler",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/LoggingHandler"
       ],
       "title" : "Type Aliases"
     },
@@ -100,9 +181,18 @@
 "references": {
 "doc://StreamDeckKit/documentation/StreamDeckKit": {
   "abstract" : [
-
+    {
+      "text" : "Communicate with a Stream Deck via Swift.",
+      "type" : "text"
+    }
   ],
   "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+  "images" : [
+    {
+      "identifier" : "logo.png",
+      "type" : "icon"
+    }
+  ],
   "kind" : "symbol",
   "role" : "collection",
   "title" : "StreamDeckKit",
@@ -276,6 +366,40 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/inputeventhandler"
 },
+"doc://StreamDeckKit/documentation/StreamDeckKit/LoggingHandler": {
+  "abstract" : [
+    {
+      "text" : "A handler for logging messages.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "typealias"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "LoggingHandler"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/LoggingHandler",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "LoggingHandler"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "LoggingHandler",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/logginghandler"
+},
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck": {
   "abstract" : [
     {
@@ -344,7 +468,7 @@
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialAreaLayout": {
   "abstract" : [
     {
-      "text" : "A View that draws the layout of a Stream Deck dial window area (The display above the ).",
+      "text" : "A View that draws the layout of a dial window area (The display above the rotary encoders) on a Stream Deck +.",
       "type" : "text"
     }
   ],
@@ -377,7 +501,19 @@
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialView": {
   "abstract" : [
-
+    {
+      "text" : "A view that renders a single Dial element in a ",
+      "type" : "text"
+    },
+    {
+      "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckLayout",
+      "isActive" : true,
+      "type" : "reference"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -406,9 +542,55 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeckdialview"
 },
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckKeyAreaLayout": {
+  "abstract" : [
+    {
+      "text" : "A View that draws the layout of a Stream Deck key area.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckKeyAreaLayout"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyAreaLayout",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckKeyAreaLayout"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckKeyAreaLayout",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckkeyarealayout"
+},
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckKeyView": {
   "abstract" : [
-
+    {
+      "text" : "A view that renders a single LED key in a ",
+      "type" : "text"
+    },
+    {
+      "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckLayout",
+      "isActive" : true,
+      "type" : "reference"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -436,40 +618,6 @@
   "title" : "StreamDeckKeyView",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeckkeyview"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckKeypadLayout": {
-  "abstract" : [
-    {
-      "text" : "A View that draws the layout of a Stream Deck keypad.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "struct"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "StreamDeckKeypadLayout"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeypadLayout",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "StreamDeckKeypadLayout"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "StreamDeckKeypadLayout",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeckkeypadlayout"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckLayout": {
   "abstract" : [
@@ -612,14 +760,6 @@
     {
       "text" : "Protocol for views rendered on StreamDeck.",
       "type" : "text"
-    },
-    {
-      "text" : " ",
-      "type" : "text"
-    },
-    {
-      "text" : "This automatically tells StreamDeckLayout that the drawing area of this view needs to be updated on the device.",
-      "type" : "text"
     }
   ],
   "fragments" : [
@@ -649,10 +789,42 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeckview"
 },
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckView()": {
+  "abstract" : [
+    {
+      "text" : "Defines and implements conformance of the StreamDeckView protocol.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "macro"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckView"
+    },
+    {
+      "kind" : "text",
+      "text" : "()"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView()",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "StreamDeckView()",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckview()"
+},
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckViewContext": {
   "abstract" : [
     {
-      "text" : "Provides information about the current device\/key context in SwiftUI environments.",
+      "text" : "Provides information about the current context (screen, key-area, key, window, dial) in SwiftUI environments.",
       "type" : "text"
     }
   ],
@@ -682,37 +854,6 @@
   "title" : "StreamDeckViewContext",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeckviewcontext"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckViewContextKey": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "struct"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "StreamDeckViewContextKey"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckViewContextKey",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "StreamDeckViewContextKey"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "StreamDeckViewContextKey",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeckviewcontextkey"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/SwiftUI": {
   "abstract" : [
@@ -769,6 +910,85 @@
   "title" : "Version",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/version"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/streamDeckLoggingHandler": {
+  "abstract" : [
+    {
+      "text" : "An optional handler to receive logging output from StreamDeckKit.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "streamDeckLoggingHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit14LoggingHandlera",
+      "text" : "LoggingHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/streamDeckLoggingHandler",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "streamDeckLoggingHandler",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdecklogginghandler"
+},
+"https://docs.elgato.com/ipad": {
+  "identifier" : "https:\/\/docs.elgato.com\/ipad",
+  "title" : "docs.elgato.com\/ipad",
+  "titleInlineContent" : [
+    {
+      "text" : "docs.elgato.com\/ipad",
+      "type" : "text"
+    }
+  ],
+  "type" : "link",
+  "url" : "https:\/\/docs.elgato.com\/ipad"
+},
+"https://www.elgato.com/stream-deck": {
+  "identifier" : "https:\/\/www.elgato.com\/stream-deck",
+  "title" : "Elgato Stream Deck",
+  "titleInlineContent" : [
+    {
+      "text" : "Elgato Stream Deck",
+      "type" : "text"
+    }
+  ],
+  "type" : "link",
+  "url" : "https:\/\/www.elgato.com\/stream-deck"
+},
+"logo.png": {
+  "alt" : "A technology icon representing the StreamDeckKit framework.",
+  "identifier" : "logo.png",
+  "type" : "image",
+  "variants" : [
+    {
+      "traits" : [
+        "1x",
+        "light"
+      ],
+      "url" : "\/images\/logo.png"
+    }
+  ]
 }
 }
 }

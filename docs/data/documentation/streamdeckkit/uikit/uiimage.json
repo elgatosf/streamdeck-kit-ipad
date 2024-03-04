@@ -14,7 +14,7 @@
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "UIKit",
-    "externalID" : "s:e:s:So7UIImageC13StreamDeckKitE7colored_4sizeABSgSo7UIColorC_So6CGSizeVtFZ",
+    "externalID" : "s:e:s:So7UIImageC13StreamDeckKitE11sdk_colored_4sizeABSo7UIColorC_So6CGSizeVtFZ",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -90,7 +90,7 @@
   "topicSections" : [
     {
       "identifiers" : [
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/UIKit\/UIImage\/colored(_:size:)"
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/UIKit\/UIImage\/sdk_colored(_:size:)"
       ],
       "title" : "Type Methods"
     }
@@ -111,9 +111,18 @@
 "references": {
 "doc://StreamDeckKit/documentation/StreamDeckKit": {
   "abstract" : [
-
+    {
+      "text" : "Communicate with a Stream Deck via Swift.",
+      "type" : "text"
+    }
   ],
   "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+  "images" : [
+    {
+      "identifier" : "logo.png",
+      "type" : "icon"
+    }
+  ],
   "kind" : "symbol",
   "role" : "collection",
   "title" : "StreamDeckKit",
@@ -163,7 +172,7 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/uikit\/uiimage"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/UIKit/UIImage/colored(_:size:)": {
+"doc://StreamDeckKit/documentation/StreamDeckKit/UIKit/UIImage/sdk_colored(_:size:)": {
   "abstract" : [
 
   ],
@@ -186,7 +195,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "colored"
+      "text" : "sdk_colored"
     },
     {
       "kind" : "text",
@@ -222,18 +231,28 @@
       "kind" : "typeIdentifier",
       "preciseIdentifier" : "c:objc(cs)UIImage",
       "text" : "UIImage"
-    },
-    {
-      "kind" : "text",
-      "text" : "?"
     }
   ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/UIKit\/UIImage\/colored(_:size:)",
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/UIKit\/UIImage\/sdk_colored(_:size:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "colored(_:size:)",
+  "title" : "sdk_colored(_:size:)",
   "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/uikit\/uiimage\/colored(_:size:)"
+  "url" : "\/documentation\/streamdeckkit\/uikit\/uiimage\/sdk_colored(_:size:)"
+},
+"logo.png": {
+  "alt" : "A technology icon representing the StreamDeckKit framework.",
+  "identifier" : "logo.png",
+  "type" : "image",
+  "variants" : [
+    {
+      "traits" : [
+        "1x",
+        "light"
+      ],
+      "url" : "\/images\/logo.png"
+    }
+  ]
 }
 }
 }

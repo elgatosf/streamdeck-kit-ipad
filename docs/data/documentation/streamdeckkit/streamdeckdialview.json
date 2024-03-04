@@ -1,4 +1,19 @@
 {
+  "abstract" : [
+    {
+      "text" : "A view that renders a single Dial element in a ",
+      "type" : "text"
+    },
+    {
+      "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckLayout",
+      "isActive" : true,
+      "type" : "reference"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    }
+  ],
   "hierarchy" : {
     "paths" : [
       [
@@ -103,6 +118,68 @@
         }
       ],
       "kind" : "declarations"
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "overview",
+          "level" : 2,
+          "text" : "Overview",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "A dial consists of a rotary encoder that can also be pressed, as well a as portion of the touch display on a Stream Deck +.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        },
+        {
+          "inlineContent" : [
+            {
+              "identifier" : "dial",
+              "type" : "image"
+            }
+          ],
+          "type" : "paragraph"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "This should be provided to the ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "dial",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : "-factory parameter of one of  ",
+                  "type" : "text"
+                },
+                {
+                  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout",
+                  "isActive" : true,
+                  "type" : "reference"
+                },
+                {
+                  "text" : "s initializers, to be rendered properly.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "Note",
+          "style" : "note",
+          "type" : "aside"
+        }
+      ],
+      "kind" : "content"
     }
   ],
   "relationshipsSections" : [
@@ -167,6 +244,20 @@
   ]
 , 
 "references": {
+"dial": {
+  "alt" : "Dial",
+  "identifier" : "dial",
+  "type" : "image",
+  "variants" : [
+    {
+      "traits" : [
+        "1x",
+        "light"
+      ],
+      "url" : "\/images\/dial.jpg"
+    }
+  ]
+},
 "doc://StreamDeckKit/7SwiftUI4ViewP": {
   "identifier" : "doc:\/\/StreamDeckKit\/7SwiftUI4ViewP",
   "title" : "SwiftUI.View",
@@ -174,18 +265,73 @@
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit": {
   "abstract" : [
-
+    {
+      "text" : "Communicate with a Stream Deck via Swift.",
+      "type" : "text"
+    }
   ],
   "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+  "images" : [
+    {
+      "identifier" : "logo.png",
+      "type" : "icon"
+    }
+  ],
   "kind" : "symbol",
   "role" : "collection",
   "title" : "StreamDeckKit",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit"
 },
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialAreaLayout": {
+  "abstract" : [
+    {
+      "text" : "A View that draws the layout of a dial window area (The display above the rotary encoders) on a Stream Deck +.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckDialAreaLayout"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialAreaLayout",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckDialAreaLayout"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckDialAreaLayout",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckdialarealayout"
+},
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialView": {
   "abstract" : [
-
+    {
+      "text" : "A view that renders a single Dial element in a ",
+      "type" : "text"
+    },
+    {
+      "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckLayout",
+      "isActive" : true,
+      "type" : "reference"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -216,7 +362,10 @@
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialView/DialPressHandler": {
   "abstract" : [
-
+    {
+      "text" : "A handler for key-up\/down events of the rotary encoder.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -247,7 +396,10 @@
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialView/DialRotationHandler": {
   "abstract" : [
-
+    {
+      "text" : "A handler for rotation events of the rotary encoder. Values can be positive or negative.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -278,7 +430,10 @@
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialView/TouchHandler": {
   "abstract" : [
-
+    {
+      "text" : "A handler for touch events on the touch area. Coordinates are relative to frame of the dial area.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -362,7 +517,10 @@
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialView/init(rotate:press:touch:content:)-1zcbz": {
   "abstract" : [
-
+    {
+      "text" : "Creates an instance of the view.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -460,7 +618,10 @@
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialView/init(rotate:press:touch:content:)-8ibcx": {
   "abstract" : [
-
+    {
+      "text" : "Creates an instance of the view.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -564,6 +725,54 @@
   "title" : "init(rotate:press:touch:content:)",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeckdialview\/init(rotate:press:touch:content:)-8ibcx"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckLayout": {
+  "abstract" : [
+    {
+      "text" : "The basic view to build a layout for Stream Deck from.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckLayout"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckLayout",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckLayout"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckLayout",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdecklayout"
+},
+"logo.png": {
+  "alt" : "A technology icon representing the StreamDeckKit framework.",
+  "identifier" : "logo.png",
+  "type" : "image",
+  "variants" : [
+    {
+      "traits" : [
+        "1x",
+        "light"
+      ],
+      "url" : "\/images\/logo.png"
+    }
+  ]
 }
 }
 }

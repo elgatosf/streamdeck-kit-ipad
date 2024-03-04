@@ -130,14 +130,11 @@
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/fillScreen(_:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/onClose(_:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/render(_:)",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/set(view:at:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setBrightness(_:)",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setFullscreen(view:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setKeyImage(_:at:scaleAspectFit:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setScreenImage(_:scaleAspectFit:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setWindowImage(_:at:scaleAspectFit:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setWindowImage(_:scaleAspectFit:)",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setWindowImage(view:at:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/showLogo()",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/supports(_:)"
       ],
@@ -192,9 +189,18 @@
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit": {
   "abstract" : [
-
+    {
+      "text" : "Communicate with a Stream Deck via Swift.",
+      "type" : "text"
+    }
   ],
   "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+  "images" : [
+    {
+      "identifier" : "logo.png",
+      "type" : "icon"
+    }
+  ],
   "kind" : "symbol",
   "role" : "collection",
   "title" : "StreamDeckKit",
@@ -890,77 +896,6 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeck\/render(_:)"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/set(view:at:)": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "set"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "view"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "some"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:7SwiftUI4ViewP",
-      "text" : "View"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "at"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Si",
-      "text" : "Int"
-    },
-    {
-      "kind" : "text",
-      "text" : ")"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/set(view:at:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "set(view:at:)",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeck\/set(view:at:)"
-},
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/setBrightness(_:)": {
   "abstract" : [
     {
@@ -1001,60 +936,6 @@
   "title" : "setBrightness(_:)",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeck\/setbrightness(_:)"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/setFullscreen(view:)": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "setFullscreen"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "view"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "some"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:7SwiftUI4ViewP",
-      "text" : "View"
-    },
-    {
-      "kind" : "text",
-      "text" : ")"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setFullscreen(view:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "setFullscreen(view:)",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeck\/setfullscreen(view:)"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/setKeyImage(_:at:scaleAspectFit:)": {
   "abstract" : [
@@ -1319,77 +1200,6 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeck\/setwindowimage(_:scaleaspectfit:)"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/setWindowImage(view:at:)": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "setWindowImage"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "view"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "keyword",
-      "text" : "some"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:7SwiftUI4ViewP",
-      "text" : "View"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "at"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "c:@S@CGRect",
-      "text" : "CGRect"
-    },
-    {
-      "kind" : "text",
-      "text" : ")"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeck\/setWindowImage(view:at:)",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "setWindowImage(view:at:)",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeck\/setwindowimage(view:at:)"
-},
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeck/showLogo()": {
   "abstract" : [
     {
@@ -1489,6 +1299,20 @@
   "identifier" : "doc:\/\/StreamDeckKit\/s12IdentifiableP",
   "title" : "Swift.Identifiable",
   "type" : "unresolvable"
+},
+"logo.png": {
+  "alt" : "A technology icon representing the StreamDeckKit framework.",
+  "identifier" : "logo.png",
+  "type" : "image",
+  "variants" : [
+    {
+      "traits" : [
+        "1x",
+        "light"
+      ],
+      "url" : "\/images\/logo.png"
+    }
+  ]
 }
 }
 }

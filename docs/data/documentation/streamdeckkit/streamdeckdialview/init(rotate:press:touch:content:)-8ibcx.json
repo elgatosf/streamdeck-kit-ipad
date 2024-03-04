@@ -1,4 +1,10 @@
 {
+  "abstract" : [
+    {
+      "text" : "Creates an instance of the view.",
+      "type" : "text"
+    }
+  ],
   "hierarchy" : {
     "paths" : [
       [
@@ -260,6 +266,67 @@
         }
       ],
       "kind" : "declarations"
+    },
+    {
+      "kind" : "parameters",
+      "parameters" : [
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "A handler for rotation events of the rotary encoder. Values can be positive or negative.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "rotate"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "A handler for key-down events of the rotary encoder.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "press"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "A handler for touch events on the touch area. Coordinates are relative to frame of the dial area.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "touch"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "The SwiftUI view content to be rendered on the dial area of the touch display.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "content"
+        }
+      ]
     }
   ],
   "schemaVersion" : {
@@ -286,9 +353,18 @@
 "references": {
 "doc://StreamDeckKit/documentation/StreamDeckKit": {
   "abstract" : [
-
+    {
+      "text" : "Communicate with a Stream Deck via Swift.",
+      "type" : "text"
+    }
   ],
   "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+  "images" : [
+    {
+      "identifier" : "logo.png",
+      "type" : "icon"
+    }
+  ],
   "kind" : "symbol",
   "role" : "collection",
   "title" : "StreamDeckKit",
@@ -297,7 +373,19 @@
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialView": {
   "abstract" : [
-
+    {
+      "text" : "A view that renders a single Dial element in a ",
+      "type" : "text"
+    },
+    {
+      "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckLayout",
+      "isActive" : true,
+      "type" : "reference"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -328,7 +416,10 @@
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialView/DialRotationHandler": {
   "abstract" : [
-
+    {
+      "text" : "A handler for rotation events of the rotary encoder. Values can be positive or negative.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -359,7 +450,10 @@
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialView/TouchHandler": {
   "abstract" : [
-
+    {
+      "text" : "A handler for touch events on the touch area. Coordinates are relative to frame of the dial area.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -390,7 +484,10 @@
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckDialView/init(rotate:press:touch:content:)-8ibcx": {
   "abstract" : [
-
+    {
+      "text" : "Creates an instance of the view.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -494,6 +591,54 @@
   "title" : "init(rotate:press:touch:content:)",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeckdialview\/init(rotate:press:touch:content:)-8ibcx"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckLayout": {
+  "abstract" : [
+    {
+      "text" : "The basic view to build a layout for Stream Deck from.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckLayout"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckLayout",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckLayout"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckLayout",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdecklayout"
+},
+"logo.png": {
+  "alt" : "A technology icon representing the StreamDeckKit framework.",
+  "identifier" : "logo.png",
+  "type" : "image",
+  "variants" : [
+    {
+      "traits" : [
+        "1x",
+        "light"
+      ],
+      "url" : "\/images\/logo.png"
+    }
+  ]
 }
 }
 }

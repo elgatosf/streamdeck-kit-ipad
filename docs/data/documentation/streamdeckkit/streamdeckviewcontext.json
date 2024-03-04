@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Provides information about the current device\/key context in SwiftUI environments.",
+      "text" : "Provides information about the current context (screen, key-area, key, window, dial) in SwiftUI environments.",
       "type" : "text"
     }
   ],
@@ -88,18 +88,29 @@
         {
           "inlineContent" : [
             {
-              "text" : "You can access the current context via the environment like this:",
+              "text" : "This is used internally by the ",
+              "type" : "text"
+            },
+            {
+              "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView",
+              "isActive" : true,
+              "type" : "reference"
+            },
+            {
+              "text" : " macro and the ",
+              "type" : "text"
+            },
+            {
+              "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckLayout",
+              "isActive" : true,
+              "type" : "reference"
+            },
+            {
+              "text" : " system.",
               "type" : "text"
             }
           ],
           "type" : "paragraph"
-        },
-        {
-          "code" : [
-            "@Environment(\\.streamDeckViewContext) var context"
-          ],
-          "syntax" : "swift",
-          "type" : "codeListing"
         }
       ],
       "kind" : "content"
@@ -118,7 +129,6 @@
       "identifiers" : [
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckViewContext\/device",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckViewContext\/index",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckViewContext\/nextID",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckViewContext\/size"
       ],
       "title" : "Instance Properties"
@@ -146,19 +156,96 @@
 "references": {
 "doc://StreamDeckKit/documentation/StreamDeckKit": {
   "abstract" : [
-
+    {
+      "text" : "Communicate with a Stream Deck via Swift.",
+      "type" : "text"
+    }
   ],
   "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+  "images" : [
+    {
+      "identifier" : "logo.png",
+      "type" : "icon"
+    }
+  ],
   "kind" : "symbol",
   "role" : "collection",
   "title" : "StreamDeckKit",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit"
 },
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckLayout": {
+  "abstract" : [
+    {
+      "text" : "The basic view to build a layout for Stream Deck from.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckLayout"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckLayout",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckLayout"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckLayout",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdecklayout"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckView": {
+  "abstract" : [
+    {
+      "text" : "Protocol for views rendered on StreamDeck.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "protocol"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckView"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckView"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckView",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckview"
+},
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckViewContext": {
   "abstract" : [
     {
-      "text" : "Provides information about the current device\/key context in SwiftUI environments.",
+      "text" : "Provides information about the current context (screen, key-area, key, window, dial) in SwiftUI environments.",
       "type" : "text"
     }
   ],
@@ -263,40 +350,6 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeckviewcontext\/index"
 },
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckViewContext/nextID": {
-  "abstract" : [
-
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "var"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "nextID"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:s6UInt64V",
-      "text" : "UInt64"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckViewContext\/nextID",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "nextID",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeckviewcontext\/nextid"
-},
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckViewContext/size": {
   "abstract" : [
     {
@@ -336,10 +389,7 @@
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckViewContext/updateRequired()": {
   "abstract" : [
-    {
-      "text" : "Tells StreamDeckLayout that the current drawing area needs to be re-rendered.",
-      "type" : "text"
-    }
+
   ],
   "fragments" : [
     {
@@ -365,6 +415,20 @@
   "title" : "updateRequired()",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeckviewcontext\/updaterequired()"
+},
+"logo.png": {
+  "alt" : "A technology icon representing the StreamDeckKit framework.",
+  "identifier" : "logo.png",
+  "type" : "image",
+  "variants" : [
+    {
+      "traits" : [
+        "1x",
+        "light"
+      ],
+      "url" : "\/images\/logo.png"
+    }
+  ]
 }
 }
 }

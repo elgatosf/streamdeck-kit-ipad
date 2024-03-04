@@ -1,10 +1,4 @@
 {
-  "abstract" : [
-    {
-      "text" : "Tells StreamDeckLayout that the current drawing area needs to be re-rendered.",
-      "type" : "text"
-    }
-  ],
   "hierarchy" : {
     "paths" : [
       [
@@ -92,47 +86,6 @@
         }
       ],
       "kind" : "declarations"
-    },
-    {
-      "content" : [
-        {
-          "anchor" : "discussion",
-          "level" : 2,
-          "text" : "Discussion",
-          "type" : "heading"
-        },
-        {
-          "inlineContent" : [
-            {
-              "text" : "Call this when the layout of your view changes. E.g. due to a change of state.",
-              "type" : "text"
-            }
-          ],
-          "type" : "paragraph"
-        },
-        {
-          "code" : [
-            "struct NumberDisplayKey: View {",
-            "    let context: StreamDeckViewContext",
-            "    @State var isPressed: Bool = false",
-            "",
-            "    var body: some View {",
-            "        StreamDeckKeyView  { isPressed in",
-            "            self.isPressed = isPressed",
-            "        } content: {",
-            "            isPressed ? Color.orange : Color.clear",
-            "        }",
-            "        .onChange(of: isPressed) {",
-            "            context.updateRequired()",
-            "        }",
-            "    }",
-            "}"
-          ],
-          "syntax" : "swift",
-          "type" : "codeListing"
-        }
-      ],
-      "kind" : "content"
     }
   ],
   "schemaVersion" : {
@@ -159,9 +112,18 @@
 "references": {
 "doc://StreamDeckKit/documentation/StreamDeckKit": {
   "abstract" : [
-
+    {
+      "text" : "Communicate with a Stream Deck via Swift.",
+      "type" : "text"
+    }
   ],
   "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+  "images" : [
+    {
+      "identifier" : "logo.png",
+      "type" : "icon"
+    }
+  ],
   "kind" : "symbol",
   "role" : "collection",
   "title" : "StreamDeckKit",
@@ -171,7 +133,7 @@
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckViewContext": {
   "abstract" : [
     {
-      "text" : "Provides information about the current device\/key context in SwiftUI environments.",
+      "text" : "Provides information about the current context (screen, key-area, key, window, dial) in SwiftUI environments.",
       "type" : "text"
     }
   ],
@@ -204,10 +166,7 @@
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckViewContext/updateRequired()": {
   "abstract" : [
-    {
-      "text" : "Tells StreamDeckLayout that the current drawing area needs to be re-rendered.",
-      "type" : "text"
-    }
+
   ],
   "fragments" : [
     {
@@ -233,6 +192,20 @@
   "title" : "updateRequired()",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeckviewcontext\/updaterequired()"
+},
+"logo.png": {
+  "alt" : "A technology icon representing the StreamDeckKit framework.",
+  "identifier" : "logo.png",
+  "type" : "image",
+  "variants" : [
+    {
+      "traits" : [
+        "1x",
+        "light"
+      ],
+      "url" : "\/images\/logo.png"
+    }
+  ]
 }
 }
 }

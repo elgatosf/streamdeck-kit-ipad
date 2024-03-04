@@ -1,4 +1,10 @@
 {
+  "abstract" : [
+    {
+      "text" : "The current context object of the view.",
+      "type" : "text"
+    }
+  ],
   "hierarchy" : {
     "paths" : [
       [
@@ -109,6 +115,26 @@
         }
       ],
       "kind" : "declarations"
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "discussion",
+          "level" : 2,
+          "text" : "Discussion",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "Values depend on the currently rendered view.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
     }
   ],
   "schemaVersion" : {
@@ -135,9 +161,18 @@
 "references": {
 "doc://StreamDeckKit/documentation/StreamDeckKit": {
   "abstract" : [
-
+    {
+      "text" : "Communicate with a Stream Deck via Swift.",
+      "type" : "text"
+    }
   ],
   "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit",
+  "images" : [
+    {
+      "identifier" : "logo.png",
+      "type" : "icon"
+    }
+  ],
   "kind" : "symbol",
   "role" : "collection",
   "title" : "StreamDeckKit",
@@ -147,7 +182,7 @@
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckViewContext": {
   "abstract" : [
     {
-      "text" : "Provides information about the current device\/key context in SwiftUI environments.",
+      "text" : "Provides information about the current context (screen, key-area, key, window, dial) in SwiftUI environments.",
       "type" : "text"
     }
   ],
@@ -223,7 +258,10 @@
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/SwiftUI/EnvironmentValues/streamDeckViewContext": {
   "abstract" : [
-
+    {
+      "text" : "The current context object of the view.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -254,6 +292,20 @@
   "title" : "streamDeckViewContext",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/swiftui\/environmentvalues\/streamdeckviewcontext"
+},
+"logo.png": {
+  "alt" : "A technology icon representing the StreamDeckKit framework.",
+  "identifier" : "logo.png",
+  "type" : "image",
+  "variants" : [
+    {
+      "traits" : [
+        "1x",
+        "light"
+      ],
+      "url" : "\/images\/logo.png"
+    }
+  ]
 }
 }
 }

@@ -43,6 +43,7 @@ public struct StreamDeckKeyAreaLayout<Key: View>: View {
 
     /// Creates an instance of the view.
     /// - Parameter keyView: A factory function that provides a view for a key.
+    /// To handle actions on keys, use instances ``StreamDeckKeyView``.
     public init(@ViewBuilder keyView: @escaping KeyViewProvider) {
         self.keyView = keyView
     }

@@ -28,9 +28,18 @@
 import Foundation
 import SwiftUI
 
+/// A view that renders a single Dial element in a ``StreamDeckLayout``.
+///
+/// A dial consists of a rotary encoder that can also be pressed, as well a as portion of the touch display on a Stream Deck +.
+///
+/// ![Dial](dial)
+/// - Note: This should be provided to the `dial`-factory parameter of one of  ``StreamDeckDialAreaLayout``s initializers, to be rendered properly.
 public struct StreamDeckDialView<Content: View>: View {
+    /// A handler for rotation events of the rotary encoder. Values can be positive or negative.
     public typealias DialRotationHandler = @MainActor (Int) -> Void
+    /// A handler for key-up/down events of the rotary encoder.
     public typealias DialPressHandler = @MainActor (Bool) -> Void
+    /// A handler for touch events on the touch area. Coordinates are relative to frame of the dial area.
     public typealias TouchHandler = @MainActor (CGPoint) -> Void
 
     @Environment(\.streamDeckViewContext) private var context
@@ -40,6 +49,12 @@ public struct StreamDeckDialView<Content: View>: View {
     private let touch: TouchHandler?
     @ViewBuilder private let content: @MainActor () -> Content
 
+    /// Creates an instance of the view.
+    /// - Parameters:
+    ///   - rotate: A handler for rotation events of the rotary encoder. Values can be positive or negative.
+    ///   - press: A handler for key-up/down events of the rotary encoder.
+    ///   - touch: A handler for touch events on the touch area. Coordinates are relative to frame of the dial area.
+    ///   - content: The SwiftUI view content to be rendered on the dial area of the touch display.
     public init(
         rotate: DialRotationHandler? = nil,
         press: DialPressHandler? = nil,
@@ -52,6 +67,12 @@ public struct StreamDeckDialView<Content: View>: View {
         self.content = content
     }
 
+    /// Creates an instance of the view.
+    /// - Parameters:
+    ///   - rotate: A handler for rotation events of the rotary encoder. Values can be positive or negative.
+    ///   - press: A handler for key-down events of the rotary encoder.
+    ///   - touch: A handler for touch events on the touch area. Coordinates are relative to frame of the dial area.
+    ///   - content: The SwiftUI view content to be rendered on the dial area of the touch display.
     public init(
         rotate: DialRotationHandler? = nil,
         press: @escaping @MainActor () -> Void,

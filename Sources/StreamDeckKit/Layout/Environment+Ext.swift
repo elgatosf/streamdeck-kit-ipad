@@ -42,6 +42,9 @@ struct StreamDeckViewContextKey: EnvironmentKey {
 
 public extension EnvironmentValues {
 
+    /// The current context object of the view.
+    ///
+    /// Values depend on the currently rendered view.
     var streamDeckViewContext: StreamDeckViewContext {
         get { self[StreamDeckViewContextKey.self] }
         set { self[StreamDeckViewContextKey.self] = newValue }

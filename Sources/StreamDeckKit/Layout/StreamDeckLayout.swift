@@ -33,8 +33,9 @@ import SwiftUI
 
 /// The basic view to build a layout for Stream Deck from.
 ///
-/// Provide this to the `content` parameter of ``StreamDeckSession/setUp(stateHandler:newDeviceHandler:content:)`` or ``StreamDeck/render(_:)``
-/// to draw a layout  onto a Stream Deck device.
+/// ![A schematic depiction of the Stream Deck layout system](layout)
+///
+/// Provide this to ``StreamDeck/render(_:)`` to draw a layout  onto a Stream Deck device.
 public struct StreamDeckLayout<KeyArea: View, WindowArea: View>: View {
     @Environment(\.streamDeckViewContext) var context
 

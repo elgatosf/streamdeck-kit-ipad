@@ -169,22 +169,12 @@ private extension StreamDeckSimulatorView {
     @ViewBuilder
     var touchPad: some View {
         StreamDeckLayout {
-            StreamDeckKeyAreaLayout { context in
-                SimulatorKeyView(client: client, index: context.index)
+            StreamDeckKeyAreaLayout { keyIndex in
+                SimulatorKeyView(client: client, index: keyIndex)
             }
         } windowArea: {
-            StreamDeckDialAreaLayout { context in
-                SimulatorTouchView { localLocation in
-                    let x = CGFloat(context.index) * context.size.width + localLocation.x
-                    client.emit(.touch(.init(x: x, y: localLocation.y)))
-                } onFling: { startLocation, endLocation in
-                    let startX = CGFloat(context.index) * context.size.width + startLocation.x
-                    let endX = CGFloat(context.index) * context.size.width + endLocation.x
-                    client.emit(.fling(
-                        start: .init(x: startX, y: startLocation.y),
-                        end: .init(x: endX, y: endLocation.y)
-                    ))
-                }
+            StreamDeckDialAreaLayout { _ in
+                SimulatorTouchView(client: client)
             }
         }
         .background {
@@ -216,7 +206,7 @@ private extension StreamDeckSimulatorView {
             }
         } windowArea: {
             StreamDeckDialAreaLayout { _ in
-                SimulatorTouchView { _ in } onFling: { _, _ in }
+                SimulatorTouchView(client: nil)
                     .background {
                         Color.clear.border(.red)
                     }

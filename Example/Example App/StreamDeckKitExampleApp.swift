@@ -16,9 +16,10 @@ struct StreamDeckKitExampleApp: App {
         // Uncomment the next line to enable StreamDeckKit internal logging.
         // streamDeckLoggingHandler = { os_log($0, "\($1)") }
 
-        StreamDeckSession.setUp(newDeviceHandler: {
-            $0.render(BaseStreamDeckView())
-        })
+        StreamDeckSession.setUp(
+            stateHandler: { os_log("Stream Deck session state: %s", String(describing: $0)) },
+            newDeviceHandler: { $0.render(BaseStreamDeckView()) }
+        )
     }
 
     var body: some Scene {

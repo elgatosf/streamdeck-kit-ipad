@@ -36,6 +36,7 @@ extension StreamDeckSession.State: CustomDebugStringConvertible {
             switch sessionError {
             case .unexpectedDriverError: return ".failed(.unexpectedDriverError)"
             case .driverVersionMismatch: return ".failed(.driverVersionMismatch)"
+            case .missingEntitlement: return ".failed(.missingEntitlement)"
             }
         }
     }

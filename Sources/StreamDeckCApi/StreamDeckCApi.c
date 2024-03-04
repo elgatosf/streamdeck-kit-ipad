@@ -27,3 +27,5 @@
 
 #include <stdio.h>
 #import "include/StreamDeckCApi.h"
+
+const IOReturn sdkIOReturnNotPermitted = kIOReturnNotPermitted;

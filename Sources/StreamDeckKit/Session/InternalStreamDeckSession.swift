@@ -99,6 +99,9 @@ final actor InternalStreamDeckSession {
 
             guard ret == kIOReturnSuccess else {
                 os_log(.error, "Failed opening service with error: \(String(ioReturn: ret)).")
+                if ret == sdkIOReturnNotPermitted {
+                    state.value = .failed(.missingEntitlement)
+                }
                 continue
             }
 

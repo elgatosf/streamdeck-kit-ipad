@@ -27,8 +27,12 @@
 
 import SwiftUI
 
+/// A view that renders a single LED key in a ``StreamDeckLayout``.
+///
+/// This should be provided to ``StreamDeckKeyAreaLayout/init(keyView:)`` to be rendered properly.
 public struct StreamDeckKeyView<Content: View>: View {
 
+    /// A handler for key-up/down events of LED keys.
     public typealias KeyAction = @MainActor (_ isPressed: Bool) -> Void
     public typealias ContentProvider = @MainActor () -> Content
 
@@ -37,6 +41,10 @@ public struct StreamDeckKeyView<Content: View>: View {
     let action: KeyAction
     @ViewBuilder let content: ContentProvider
 
+    /// Creates an instance of the view.
+    /// - Parameters:
+    ///   - action: A handler to be called when key-up/down events were triggered.
+    ///   - content: The SwiftUI view content to be rendered on the LED display of the key.
     public init(
         action: @escaping KeyAction,
         @ViewBuilder content: @escaping ContentProvider
@@ -45,6 +53,10 @@ public struct StreamDeckKeyView<Content: View>: View {
         self.content = content
     }
 
+    /// Creates an instance of the view.
+    /// - Parameters:
+    ///   - action: A handler to be called when key-down events were triggered.
+    ///   - content: The SwiftUI view content to be rendered on the LED display of the key.
     public init(
         action: @escaping @MainActor () -> Void,
         @ViewBuilder content: @escaping ContentProvider

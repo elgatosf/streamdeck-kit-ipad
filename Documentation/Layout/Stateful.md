@@ -30,10 +30,14 @@ struct StatefulStreamDeckLayout {
                 MyKeyView()
             }
         } windowArea: {
-            StreamDeckDialAreaLayout { _ in
-                // To react to state changes within each StreamDeckDialView, extract the view, just as you normally would in SwiftUI
-                // Example:
-                MyDialView()
+            // To react to state changes within each view, extract the view, just as you normally would in SwiftUI
+            // Example:
+            if streamDeck.info.product == .plus {
+                StreamDeckDialAreaLayout { _ in
+                    MyDialView()
+                }
+            } else if streamDeck.info.product == .neo {
+                MyNeoPanelView()
             }
         }
     }
@@ -83,6 +87,34 @@ struct StatefulStreamDeckLayout {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color(white: Double(viewIndex) / 5 + 0.5))
             }
+        }
+    }
+    
+    @StreamDeckView
+    struct MyNeoPanelView {
+
+        @State private var offset: Double = 0
+        @State private var date: Date = .now
+
+        let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
+        var streamDeckBody: some View {
+            // Use StreamDeckNeoPanelLayout for Stream Deck Neo
+            StreamDeckNeoPanelLayout { touched in
+                offset -= touched ? 5 : 0
+            } rightTouch: { touched in
+                offset += touched ? 5 : 0
+            } panel: {
+                VStack {
+                    Text(date.formatted(date: .complete, time: .omitted))
+                    Text(date.formatted(date: .omitted, time: .standard)).bold().monospaced()
+                }
+                .offset(x: offset)
+            }
+            .background(Color(white: Double(1) / 5 + 0.5))
+            .onReceive(timer, perform: { _ in
+                date = .now
+            })
         }
     }
 

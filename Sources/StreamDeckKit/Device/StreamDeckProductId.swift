@@ -63,4 +63,6 @@ public extension StreamDeckProductId {
     static let sd_pedal: StreamDeckProductId = 0x0086
     /// Stream Deck + (Wave Deck)
     static let sd_plus: StreamDeckProductId = 0x0084
+    /// Stream Deck Neo
+    static let sd_neo: StreamDeckProductId = 0x009A
 }

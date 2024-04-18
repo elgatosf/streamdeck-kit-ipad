@@ -32,7 +32,7 @@ enum TestViews {
 
     final class SimpleEventModel: ObservableObject {
         enum Event: Equatable, CustomStringConvertible { // swiftlint:disable:this nesting
-            case none, press(Bool), rotate(Int), fling(InputEvent.Direction), touch(CGPoint)
+            case none, press(Bool), rotate(Int), fling(InputEvent.Direction), touch(CGPoint), neoLeftTouch(Bool), neoRightTouch(Bool)
 
             var description: String {
                 switch self {
@@ -41,6 +41,8 @@ enum TestViews {
                 case let .rotate(steps): "steps \(steps)"
                 case let .fling(direction): "fling \(direction.description)"
                 case let .touch(point): "touch(\(point.x),\(point.y))"
+                case let .neoLeftTouch(touched): "\(touched ? "touched" : "released") left touch key"
+                case let .neoRightTouch(touched): "\(touched ? "touched" : "released") right touch key"
                 }
             }
 
@@ -135,6 +137,36 @@ enum TestViews {
                         dial: { _ in SimpleDialView() }
                     )
                     Text(model.lastEvent.description)
+                }
+            }
+        }
+
+        var body: some View {
+            StreamDeckLayout(
+                keyArea: { StreamDeckKeyAreaLayout { _ in SimpleKey() } },
+                windowArea: { WindowLayout() }
+            )
+        }
+    }
+
+    struct NeoTouchKeyTestLayout: View {
+        @StreamDeckView
+        struct WindowLayout { // swiftlint:disable:this nesting
+            @StateObject var model = SimpleEventModel()
+
+            var streamDeckBody: some View {
+                ZStack {
+                    StreamDeckNeoPanelLayout { touched in
+                        model.lastEvent = .neoLeftTouch(touched)
+                    } rightTouch: { touched in
+                        model.lastEvent = .neoRightTouch(touched)
+                    } panel: {
+                        VStack {
+                            Text("Info Panel").frame(maxWidth: .infinity, maxHeight: .infinity)
+                            Text("\(model.lastEvent.description)").frame(maxWidth: .infinity, maxHeight: .infinity)
+                        }
+                        .background(.white)
+                    }
                 }
             }
         }

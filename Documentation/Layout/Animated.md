@@ -30,10 +30,14 @@ struct AnimatedStreamDeckLayout {
                 MyKeyView()
             }
         } windowArea: {
-            StreamDeckDialAreaLayout { _ in
-                // To react to state changes within each StreamDeckDialView, extract the view, just as you normally would in SwiftUI
-                // Example:
-                MyDialView()
+            // To react to state changes within each view, extract the view, just as you normally would in SwiftUI
+            // Example:
+            if streamDeck.info.product == .plus {
+                StreamDeckDialAreaLayout { _ in
+                    MyDialView()
+                }
+            } else if streamDeck.info.product == .neo {
+                MyNeoPanelView()
             }
         }
     }
@@ -149,6 +153,57 @@ struct AnimatedStreamDeckLayout {
                         x: viewSize.width / 2,
                         y: viewSize.height / 2 // `viewSize` is provided by the `@StreamDeckView` macro
                     )
+                }
+            }
+        }
+    }
+    
+    @StreamDeckView
+    struct MyNeoPanelView {
+
+        @State private var offset: Double = 0
+        @State private var targetOffset: Double = 0
+
+        @State private var date: Date = .now
+
+        let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
+        var streamDeckBody: some View {
+            // Use StreamDeckNeoPanelLayout for Stream Deck Neo
+            StreamDeckNeoPanelLayout { touched in
+                targetOffset -= touched ? 50 : 0
+            } rightTouch: { touched in
+                targetOffset += touched ? 50 : 0
+            } panel: {
+                VStack {
+                    Text(date.formatted(date: .complete, time: .omitted))
+                    Text(date.formatted(date: .omitted, time: .standard)).bold().monospaced()
+                }
+                .offset(x: offset)
+            }
+            .background(Color(white: Double(1) / 5 + 0.5))
+            .onReceive(timer, perform: { _ in
+                date = .now
+            })
+            .task(id: targetOffset) {
+                // Animate the change of the offset by applying different position values over time
+                // Calculate three values in between the current offset and the target offset
+
+                func calculateCenter(_ offsetA: Double, _ offsetB: Double) -> Double {
+                    return (offsetA + offsetB) / 2
+                }
+                let currentOffset = offset
+                let centerOffset = calculateCenter(currentOffset, targetOffset)
+                let firstQuarterOffset = calculateCenter(currentOffset, centerOffset)
+                let thirdQuarterOffset = calculateCenter(currentOffset, targetOffset)
+
+                func apply(_ offset: Double) async {
+                    guard !Task.isCancelled else { return }
+                    self.offset = offset
+                    try? await Task.sleep(for: .milliseconds(50))
+                }
+                for position in [firstQuarterOffset, centerOffset, thirdQuarterOffset, targetOffset] {
+                    await apply(position)
                 }
             }
         }

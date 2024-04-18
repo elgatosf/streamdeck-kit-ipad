@@ -161,6 +161,30 @@ final class StreamDeckRobot {
             ) { $0.count == keysCount + 1 && $0.last?.index == index }
         }
     }
+    
+    func touchKeyTouched(
+        _ index: Int,
+        touched: Bool,
+        waitForLayout: Bool = true,
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) async throws {
+        let imageCount = recorder.windowImages.count
+        
+        try await emit(
+            .keyPress(index: index, pressed: touched),
+            file: file,
+            line: line
+        )
+        
+        if waitForLayout {
+            try await recorder.$windowImages.waitFor(
+                description: "window area was rendered",
+                file: file,
+                line: line
+            ) { $0.count == imageCount + 1 }
+        }
+    }
 
     func rotate(
         _ index: Int,

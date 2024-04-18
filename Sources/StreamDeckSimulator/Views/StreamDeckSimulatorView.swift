@@ -126,6 +126,13 @@ extension StreamDeckSimulatorView {
                 baseScaleMultiplier: 0.858,
                 yTransformBaseScaleMultiplier: 101
             )
+        case .neo:
+            return create(
+                bezelImageAspectRatio: 1440 / 1040,
+                bezelImageName: "NeoTemplate",
+                baseScaleMultiplier: 0.70,
+                yTransformBaseScaleMultiplier: 51
+            )
         default: fatalError("Unexpected simulator model")
         }
     }
@@ -173,8 +180,12 @@ private extension StreamDeckSimulatorView {
                 SimulatorKeyView(client: client, index: keyIndex)
             }
         } windowArea: {
-            StreamDeckDialAreaLayout { _ in
-                SimulatorTouchView(client: client)
+            if config.device.info.product == .plus {
+                StreamDeckDialAreaLayout { _ in
+                    SimulatorDialTouchView(client: client)
+                }
+            } else if config.device.info.product == .neo {
+                SimulatorNeoPanelView(client: client, showGuides: .constant(false))
             }
         }
         .background {
@@ -205,8 +216,15 @@ private extension StreamDeckSimulatorView {
                 }
             }
         } windowArea: {
-            StreamDeckDialAreaLayout { _ in
-                SimulatorTouchView(client: nil)
+            if config.device.info.product == .plus {
+                StreamDeckDialAreaLayout { _ in
+                    SimulatorDialTouchView(client: nil)
+                        .background {
+                            Color.clear.border(.red)
+                        }
+                }
+            } else if config.device.info.product == .neo {
+                SimulatorNeoPanelView(client: client, showGuides: $showKeyAreaBorders)
                     .background {
                         Color.clear.border(.red)
                     }
@@ -238,27 +256,28 @@ private extension StreamDeckSimulatorView {
 
 #if DEBUG
 
-    // MARK: - Preview
-    @available(iOS 17, *)
-    #Preview("Square", traits: .fixedLayout(width: 700, height: 700)) {
-        Group {
-            let config = StreamDeckProduct.mini.createConfiguration()
-            StreamDeckSimulatorView.create(streamDeck: .mini, config: config)
-                .frame(width: 400, height: 700)
-                .onAppear {
-                    config.device.setKeyImage(.init(systemName: "gear")!, at: 1)
-                    config.device.fillKey(.red, at: 3)
-                }
-        }
-    }
+// MARK: - Preview
 
-    @available(iOS 17, *)
-    #Preview("Landscape", traits: .landscapeLeft) {
-        Group {
-            StreamDeckSimulatorView.create(
-                streamDeck: .plus,
-                config: StreamDeckProduct.plus.createConfiguration()
-            )
-        }
+@available(iOS 17, *)
+#Preview("Square", traits: .fixedLayout(width: 700, height: 700)) {
+    Group {
+        let config = StreamDeckProduct.mini.createConfiguration()
+        StreamDeckSimulatorView.create(streamDeck: .mini, config: config)
+            .frame(width: 400, height: 700)
+            .onAppear {
+                config.device.setKeyImage(.init(systemName: "gear")!, at: 1)
+                config.device.fillKey(.red, at: 3)
+            }
     }
+}
+
+@available(iOS 17, *)
+#Preview("Landscape", traits: .landscapeLeft) {
+    Group {
+        StreamDeckSimulatorView.create(
+            streamDeck: .plus,
+            config: StreamDeckProduct.plus.createConfiguration()
+        )
+    }
+}
 #endif

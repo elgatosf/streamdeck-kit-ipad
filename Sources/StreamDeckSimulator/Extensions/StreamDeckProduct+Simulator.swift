@@ -41,6 +41,7 @@ extension StreamDeckProduct: Identifiable {
         case .plus: return .sd_plus
         case .xl: return .sd_xl_2022
         case .pedal: return .sd_pedal
+        case .neo: return .sd_neo
         }
     }
 
@@ -51,6 +52,7 @@ extension StreamDeckProduct: Identifiable {
         case .plus: return "SD+ Simulator"
         case .xl: return "SD XL Simulator"
         case .pedal: return "SD Pedal Simulator"
+        case .neo: return "SD Neo Simulator"
         }
     }
 
@@ -61,6 +63,7 @@ extension StreamDeckProduct: Identifiable {
         case .plus: return "Plus"
         case .xl: return "XL"
         case .pedal: return "Pedal"
+        case .neo: return "Neo"
         }
     }
 
@@ -180,6 +183,40 @@ extension StreamDeckProduct: Identifiable {
                 screenSize: .zero,
                 imageFormat: .none,
                 features: [.keyPressEvents]
+            )
+        case .neo:
+            return DeviceCapabilities(
+                keyCount: 8,
+                keySize: .init(width: 96, height: 96),
+                keyRows: 2,
+                keyColumns: 4,
+                dialCount: 0,
+                screenSize: .init(width: 480, height: 320),
+                keyAreaRect: .init(
+                    x: 3,
+                    y: 9,
+                    width: 96 * 4 + 30 * 3,
+                    height: 96 * 2 + 30
+                ),
+                windowRect: .init(
+                    x: 116,
+                    y: 262,
+                    width: 248,
+                    height: 58
+                ),
+                keyHorizontalSpacing: 30,
+                keyVerticalSpacing: 30,
+                imageFormat: .jpeg,
+                features: [
+                    .setBrightness,
+                    .setKeyImage,
+                    .setScreenImage,
+                    .setWindowImage,
+                    .setWindowImageAtXY,
+                    .fillScreen,
+                    .fillKey,
+                    .keyPressEvents
+                ]
             )
         }
     }

@@ -29,7 +29,7 @@ import SwiftUI
 import StreamDeckKit
 
 @StreamDeckView
-struct SimulatorTouchView {
+struct SimulatorDialTouchView {
 
     let client: StreamDeckSimulatorClient?
 

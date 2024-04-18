@@ -10,8 +10,10 @@ The general structure of `StreamDeckLayout` is as follows:
 StreamDeckLayout
 └───keyArea: StreamDeckKeyAreaLayout
 │   └───StreamDeckKeyView
-└───windowArea: StreamDeckDialAreaLayout
-    └───StreamDeckDialView
+└───windowArea: 
+    └───StreamDeckDialAreaLayout
+        └───StreamDeckDialView
+    └───StreamDeckNeoPanelLayout
 ```
 
 <figure>
@@ -23,7 +25,7 @@ StreamDeckLayout
 </figure>
 
 {% hint style="info" %}
-The window area is only available for the Stream Deck + and will be ignored for other device types.
+The window area is only available for the Stream Deck + and Stream Deck Neo, and will be ignored for other device types. For the Stream Deck Neo, the window area corresponds to the info panel only, excluding the touch buttons. 
 {% endhint %}
 
 ## Usage
@@ -59,23 +61,35 @@ struct StatelessStreamDeckLayout {
             }.background(.purple)
         } windowArea: {
             // Define window area
-            // Use StreamDeckDialAreaLayout for rendering separate parts of the display
-            StreamDeckDialAreaLayout { dialIndex in
-                // Define content for each dial
-                // StreamDeckDialAreaLayout provides an index for each available dial,
-                // and StreamDeckDialView provides callbacks for the dial actions
-                // Example:
-                StreamDeckDialView { rotations in
-                    print("dial rotated \(rotations)")
-                } press: { pressed in
-                    print("pressed \(pressed)")
-                } touch: { location in
-                    print("touched at \(location)")
-                } content: {
-                    Text("\(dialIndex)")
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background(Color(white: Double(dialIndex) / 5 + 0.5))
+            if streamDeck.info.product == .plus {
+                // Use StreamDeckDialAreaLayout for Stream Deck +
+                StreamDeckDialAreaLayout { dialIndex in
+                    // Define content for each dial
+                    // StreamDeckDialAreaLayout provides an index for each available dial,
+                    // and StreamDeckDialView provides callbacks for the dial actions
+                    // Example:
+                    StreamDeckDialView { rotations in
+                        print("dial rotated \(rotations)")
+                    } press: { pressed in
+                        print("pressed \(pressed)")
+                    } touch: { location in
+                        print("touched at \(location)")
+                    } content: {
+                        Text("\(dialIndex)")
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .background(Color(white: Double(dialIndex) / 5 + 0.5))
+                    }
                 }
+            } else if streamDeck.info.product == .neo {
+                // Use StreamDeckNeoPanelLayout for Stream Deck Neo
+                StreamDeckNeoPanelLayout { touched in
+                    print("left key touched \(touched)")
+                } rightTouch: { touched in
+                    print("right key touched \(touched)")
+                } panel: {
+                    Text("Info Panel")
+                }
+                .background(.yellow)
             }
         }.background(.indigo)
     }
@@ -109,6 +123,14 @@ Depending on the device, the outcome will look like this:
         <td>Plus</td>
         <td><img src="../_images/layout_sd_plus.png"></td>
         <td><img src="../_images/layout_sd_plus_device.png"></td>
+    </tr> 
+    <tr>
+        <td>Neo</td>
+        <td>
+            <img src="../_images/layout_sd_neo.png">
+            <strong>Note:</strong> On the Stream Deck Neo device, you can not set images to the two touch key areas directly. However, you can change the appeareance of these by changing the background.  
+        </td>
+        <td><img src="../_images/layout_sd_neo_device.png"></td>
     </tr> 
 </table>
 

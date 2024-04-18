@@ -111,23 +111,35 @@ struct MyFirstStreamDeckLayout {
             }.background(.purple)
         } windowArea: {
             // Define window area
-            // Use StreamDeckDialAreaLayout for rendering separate parts of the display
-            StreamDeckDialAreaLayout { context in
-                // Define content for each dial
-                // StreamDeckDialAreaLayout provides a context for each available dial,
-                // and StreamDeckDialView provides callbacks for the dial actions
-                // Example:
-                StreamDeckDialView { rotations in
-                    print("dial rotated \(rotations)")
-                } press: { pressed in
-                    print("pressed \(pressed)")
-                } touch: { location in
-                    print("touched at \(location)")
-                } content: {
-                    Text("\(context.index)")
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background(Color(white: Double(context.index) / 5 + 0.5))
+            if streamDeck.info.product == .plus {
+                // Use StreamDeckDialAreaLayout for Stream Deck +
+                StreamDeckDialAreaLayout { dialIndex in
+                    // Define content for each dial
+                    // StreamDeckDialAreaLayout provides an index for each available dial,
+                    // and StreamDeckDialView provides callbacks for the dial actions
+                    // Example:
+                    StreamDeckDialView { rotations in
+                        print("dial rotated \(rotations)")
+                    } press: { pressed in
+                        print("pressed \(pressed)")
+                    } touch: { location in
+                        print("touched at \(location)")
+                    } content: {
+                        Text("\(dialIndex)")
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .background(Color(white: Double(dialIndex) / 5 + 0.5))
+                    }
                 }
+            } else if streamDeck.info.product == .neo {
+                // Use StreamDeckNeoPanelLayout for Stream Deck Neo
+                StreamDeckNeoPanelLayout { touched in
+                    print("left key touched \(touched)")
+                } rightTouch: { touched in
+                    print("right key touched \(touched)")
+                } panel: {
+                    Text("Info Panel")
+                }
+                .background(.yellow)
             }
         }.background(.indigo)
     }

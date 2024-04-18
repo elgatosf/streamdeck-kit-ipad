@@ -181,4 +181,9 @@ struct SimulatorContainer: View {
 #Preview("Pedal", traits: .fixedLayout(width: 600, height: 600)) {
     SimulatorContainer(streamDeck: .pedal)
 }
+
+@available(iOS 17, *)
+#Preview("Neo", traits: .fixedLayout(width: 600, height: 600)) {
+    SimulatorContainer(streamDeck: .neo)
+}
 #endif

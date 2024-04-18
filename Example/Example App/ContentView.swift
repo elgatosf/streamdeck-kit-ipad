@@ -39,7 +39,7 @@ struct ContentView: View {
     }
 
     var sessionStateView: some View {
-        VStack {
+        VStack(spacing: 20) {
             switch dataModel.selectedExample {
             case .stateless: Text("1. Example - Stateless").font(.title).padding()
             case .stateful: Text("2. Example - Stateful").font(.title).padding()
@@ -48,12 +48,6 @@ struct ContentView: View {
             Text("Session State: \(stateDescription)")
             if devices.isEmpty {
                 Text("Please connect a Stream Deck device!")
-                #if DEBUG
-                    Text("or")
-                    Button("Start the Stream Deck Simulator") {
-                        StreamDeckSimulator.show(defaultStreamDeck: .mini)
-                    }
-                #endif
             } else {
                 ForEach(devices) { device in
                     VStack(alignment: .leading) {
@@ -75,8 +69,16 @@ struct ContentView: View {
             Spacer()
         }
         .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .onReceive(StreamDeckSession.instance.$state) { stateDescription = $0.debugDescription }
         .onReceive(StreamDeckSession.instance.$devices) { devices = $0 }
+        .overlay(alignment: .bottomTrailing) {
+            Button("Show Stream Deck Simulator") {
+                StreamDeckSimulator.show(streamDeck: .regular)
+            }
+            .buttonStyle(.borderedProminent)
+            .padding()
+        }
     }
 }
 

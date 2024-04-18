@@ -25,9 +25,9 @@
 //  SOFTWARE.
 //
 
+import SnapshotTesting
 import SwiftUI
 import XCTest
-import SnapshotTesting
 @testable import StreamDeckKit
 @testable import StreamDeckSimulator
 
@@ -133,6 +133,24 @@ final class StreamDeckLayoutTests: XCTestCase {
             try await robot.touch(x: Int(rect.midX), y: Int(rect.midY))
             await robot.assertSnapshot(\.windowImages[section].image, as: .image, named: "section_\(section)")
         }
+    }
+
+    // MARK: Neo
+
+    func test_touch_on_touch_keys() async throws {
+        try await robot.use(.neo, rendering: TestViews.NeoTouchKeyTestLayout())
+
+        await robot.assertSnapshot(\.screens[0], as: .image)
+
+        try await robot.touchKeyTouched(8, touched: true)
+        try await robot.touchKeyTouched(8, touched: false)
+        try await robot.touchKeyTouched(9, touched: true)
+        try await robot.touchKeyTouched(9, touched: false)
+
+        await robot.assertSnapshot(\.windowImages[0].image, as: .image, named: "left_touched")
+        await robot.assertSnapshot(\.windowImages[1].image, as: .image, named: "left_released")
+        await robot.assertSnapshot(\.windowImages[2].image, as: .image, named: "right_touched")
+        await robot.assertSnapshot(\.windowImages[3].image, as: .image, named: "right_released")
     }
 
     // MARK: Pedal

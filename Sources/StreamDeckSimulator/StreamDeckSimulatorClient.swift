@@ -31,7 +31,7 @@ import StreamDeckCApi
 import StreamDeckKit
 import UIKit
 
-final class StreamDeckSimulatorClient {
+public final class StreamDeckSimulatorClient {
 
     private let capabilities: DeviceCapabilities
     private let brightnessSubject = CurrentValueSubject<Int, Never>(0)

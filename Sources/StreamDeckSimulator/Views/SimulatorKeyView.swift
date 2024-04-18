@@ -25,8 +25,8 @@
 //  SOFTWARE.
 //
 
-import SwiftUI
 import StreamDeckKit
+import SwiftUI
 
 struct SimulatorKeyView: View {
     static let emptyImage = UIImage()
@@ -38,16 +38,16 @@ struct SimulatorKeyView: View {
     let index: Int
 
     var body: some View {
-        let tap = DragGesture(minimumDistance: 0)
-            .updating($isPressed) { _, state, _ in
-                state = true
-            }
-
         Image(uiImage: image ?? Self.emptyImage)
             .resizable()
             .contentShape(Rectangle())
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .gesture(tap)
+            .gesture(
+                DragGesture(minimumDistance: 0)
+                    .updating($isPressed) { _, state, _ in
+                        state = true
+                    }
+            )
             .onChange(of: isPressed) { _ in
                 client.emit(.keyPress(index: index, pressed: isPressed))
             }

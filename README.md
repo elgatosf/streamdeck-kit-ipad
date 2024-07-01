@@ -30,7 +30,7 @@ Devices with touch displays:
 To interact with a physical Stream Deck device, ensure you have the following:
 
 - An iPad with a USB-C jack and Apple silicon chip (at least M1)
-- The [Elgato Stream Deck Connect](https://itunes.apple.com/de/app/elgato-stream-deck-connect/id6474433828) app installed
+- The [Elgato Stream Deck Connect](https://apps.apple.com/app/elgato-stream-deck-connect/id6474433828) app installed
 - The Stream Deck Device Driver enabled in iOS settings app (Refer to the in-app instructions for guidance)
 
 However, if you want to verify your implementation using the [Stream Deck Simulator](#utilizing-the-simulator) only, no additional prerequisites are necessary.

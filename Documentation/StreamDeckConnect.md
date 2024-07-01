@@ -1,6 +1,6 @@
 # Stream Deck Connect app
 
-The [Elgato Stream Deck Connect](https://itunes.apple.com/de/app/elgato-stream-deck-connect/id6474433828) app contains the driver which is needed to communicate with physical Stream Deck devices. 
+The [Elgato Stream Deck Connect](https://apps.apple.com/app/elgato-stream-deck-connect/id6474433828) app contains the driver which is needed to communicate with physical Stream Deck devices. 
 
 Users download it from the Apple App Store, and are guided to activate the driver once within the iPadOS settings. Going forward, they then are all set for using their Stream Deck(s) with any iPadOS application that integrates the Elgato Stream Deck for iPad SDK.
 

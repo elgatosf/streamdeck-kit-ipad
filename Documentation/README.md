@@ -29,7 +29,7 @@ Our Stream Deck for iPad SDK is designed for easy integration into your iPad app
 
 ## How does it work?
 
-Users download the [Elgato Stream Deck Connect](https://itunes.apple.com/de/app/elgato-stream-deck-connect/id6474433828) App from the Apple App Store, which holds a driver for the Elgato Stream Deck devices, and are guided to activate the driver once within the iPadOS settings.
+Users download the [Elgato Stream Deck Connect](https://apps.apple.com/app/elgato-stream-deck-connect/id6474433828) App from the Apple App Store, which holds a driver for the Elgato Stream Deck devices, and are guided to activate the driver once within the iPadOS settings.
 
 Going forward, they then are all set for using their Stream Deck(s) with any iPadOS application that integrates the Elgato Stream Deck for iPad SDK. You then can determine within your app if a Stream Deck is connected to the iPad using our SDK and manage it accordingly. Stream Deck(s) can be connected either directly to the iPad’s USB-C port or even via a (powered) USB hub.
 

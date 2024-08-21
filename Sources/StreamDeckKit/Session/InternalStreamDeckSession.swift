@@ -126,30 +126,8 @@ final actor InternalStreamDeckSession {
                 driverVersion.value = version
             }
 
-            guard let info = client.getDeviceInfo() else {
-                log(.error, "Error fetching device info.")
-                client.close()
+            guard let device = createDevice(with: client, service: service) else {
                 continue
-            }
-
-            guard let capabilities = client.getDeviceCapabilities() else {
-                log(.error, "Error fetching device capabilities \(String(reflecting: info)).")
-                client.close()
-                continue
-            }
-
-            let device = StreamDeck(client: client, info: info, capabilities: capabilities)
-            log(.debug, "StreamDeck device attached (\(String(reflecting: info))).")
-
-            devicesByService[service] = device
-
-            client.setErrorHandler { [weak self] error in
-                if case let .disconnected = error, let self = self {
-                    Task { await self.stop() }
-                }
-            }
-            device.onClose { [weak self] in
-                await self?.removeService(service)
             }
 
             addDevice(device: device)
@@ -168,6 +146,35 @@ final actor InternalStreamDeckSession {
     private func removeService(_ service: io_service_t) {
         guard let device = devicesByService.removeValue(forKey: service) else { return }
         removeDevice(device: device)
+    }
+
+    private func createDevice(with client: StreamDeckClient, service: io_object_t) -> StreamDeck? {
+        guard let info = client.getDeviceInfo() else {
+            log(.error, "Error fetching device info.")
+            client.close()
+            return nil
+        }
+
+        guard let capabilities = client.getDeviceCapabilities() else {
+            log(.error, "Error fetching device capabilities \(String(reflecting: info)).")
+            client.close()
+            return nil
+        }
+
+        let device = StreamDeck(client: client, info: info, capabilities: capabilities)
+        log(.debug, "StreamDeck device attached (\(String(reflecting: info))).")
+
+        devicesByService[service] = device
+
+        client.setErrorHandler { [weak self] error in
+            if case let .disconnected = error, let self = self {
+                Task { await self.stop() }
+            }
+        }
+        device.onClose { [weak self] in
+            await self?.removeService(service)
+        }
+        return device
     }
 
     func addDevice(device: StreamDeck) {

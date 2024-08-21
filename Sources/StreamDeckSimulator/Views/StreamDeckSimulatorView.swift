@@ -74,6 +74,7 @@ struct StreamDeckSimulatorView: View {
 
 extension StreamDeckSimulatorView {
 
+    // swiftlint:disable:next function_body_length
     static func create(
         streamDeck product: StreamDeckProduct,
         config: StreamDeckSimulator.Configuration,

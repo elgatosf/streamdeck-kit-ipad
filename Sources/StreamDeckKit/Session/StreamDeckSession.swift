@@ -206,6 +206,19 @@ public final class StreamDeckSession {
             }
             .store(in: &cancellables)
 
+        start()
+    }
+
+    /// Starts the session and listening for new devices.
+    ///
+    /// ``setUp(stateHandler:newDeviceHandler:)-swift.type.method`` needs to be called before.
+    ///
+    /// Normally you should not need to call this, as the session manages starting and stopping automatically when the
+    /// app transitions between back- and foreground.
+    /// In __split screen__ scenarios though, it can happen that another app claimed the StreamDeck connection. You can
+    /// use this method to re-claim the connection, then.
+    public func start() {
+        guard didSetUp, internalSession.state.value == .idle else { return }
         Task { await self.internalSession.start() }
     }
 

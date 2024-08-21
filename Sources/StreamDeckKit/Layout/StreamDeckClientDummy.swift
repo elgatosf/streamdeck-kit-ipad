@@ -31,6 +31,7 @@ import Foundation
 final class StreamDeckClientDummy: StreamDeckClientProtocol {
     public init() {}
     public func setInputEventHandler(_ handler: @escaping InputEventHandler) {}
+    func setErrorHandler(_ handler: @escaping ClientErrorHandler) {}
     func setBrightness(_ brightness: Int) {}
     func setKeyImage(_ data: Data, at index: Int) {}
     func setScreenImage(_ data: Data) {}

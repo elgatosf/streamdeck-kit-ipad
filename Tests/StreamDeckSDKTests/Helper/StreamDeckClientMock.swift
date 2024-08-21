@@ -153,6 +153,8 @@ extension StreamDeckClientMock: StreamDeckClientProtocol {
         subscribedToInputEventsSubject.send(true)
     }
 
+    func setErrorHandler(_ handler: @escaping ClientErrorHandler) {}
+
     public func setBrightness(_ brightness: Int) {
         lock.lock(); defer { lock.unlock() }
         brightnessSubject.send(brightness)

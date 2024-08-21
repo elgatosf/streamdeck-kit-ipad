@@ -98,7 +98,7 @@ final actor InternalStreamDeckSession {
             let ret = client.open()
 
             guard ret == kIOReturnSuccess else {
-                os_log(.error, "Failed opening service with error: \(String(ioReturn: ret)).")
+                log(.error, "Failed opening service with error: \(String(ioReturn: ret)).")
                 if ret == sdkIOReturnNotPermitted {
                     state.value = .failed(.missingEntitlement)
                 }
@@ -106,7 +106,7 @@ final actor InternalStreamDeckSession {
             }
 
             guard let version = client.getDriverVersion() else {
-                os_log(.error, "Error fetching driver version - closing session.")
+                log(.error, "Error fetching driver version - closing session.")
                 state.value = .failed(.unexpectedDriverError)
                 internalStop()
                 return
@@ -115,7 +115,7 @@ final actor InternalStreamDeckSession {
             guard version.major == StreamDeck.minimumDriverVersion.major,
                   version >= StreamDeck.minimumDriverVersion
             else {
-                os_log(.error, "SDK driver version mismatch (driver version: \(version), SDK minimum version: \(StreamDeck.minimumDriverVersion)")
+                log(.error, "SDK driver version mismatch (driver version: \(version), SDK minimum version: \(StreamDeck.minimumDriverVersion)")
                 driverVersion.value = version
                 state.value = .failed(.driverVersionMismatch)
                 internalStop()
@@ -127,22 +127,27 @@ final actor InternalStreamDeckSession {
             }
 
             guard let info = client.getDeviceInfo() else {
-                os_log(.error, "Error fetching device info.")
+                log(.error, "Error fetching device info.")
                 client.close()
                 continue
             }
 
             guard let capabilities = client.getDeviceCapabilities() else {
-                os_log(.error, "Error fetching device capabilities \(String(reflecting: info)).")
+                log(.error, "Error fetching device capabilities \(String(reflecting: info)).")
                 client.close()
                 continue
             }
 
             let device = StreamDeck(client: client, info: info, capabilities: capabilities)
-            os_log(.debug, "StreamDeck device attached (\(String(reflecting: info))).")
+            log(.debug, "StreamDeck device attached (\(String(reflecting: info))).")
 
             devicesByService[service] = device
 
+            client.setErrorHandler { [weak self] error in
+                if case let .disconnected = error, let self = self {
+                    Task { await self.stop() }
+                }
+            }
             device.onClose { [weak self] in
                 await self?.removeService(service)
             }
@@ -155,7 +160,7 @@ final actor InternalStreamDeckSession {
         while case let service = IOIteratorNext(iterator), service != 0 {
             guard let device = devicesByService[service] else { continue }
 
-            os_log(.debug, "StreamDeck device detached (\(String(reflecting: device.info))).")
+            log(.debug, "StreamDeck device detached (\(String(reflecting: device.info))).")
             device.close()
         }
     }

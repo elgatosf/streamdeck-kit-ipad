@@ -169,9 +169,9 @@ final actor InternalStreamDeckSession {
 
         devicesByService[service] = device
 
-        client.setErrorHandler { [weak self] error in
-            if case .disconnected = error, let self = self {
-                Task { await device.close() }
+        client.setErrorHandler { error in
+            if case .disconnected = error {
+                device.close()
             }
         }
         device.onClose { [weak self] in

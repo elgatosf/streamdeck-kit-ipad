@@ -308,7 +308,9 @@ final class StreamDeckClient {
         )
 
         guard ret == kIOReturnSuccess else {
-            log(.error, "Error subscribing to input events (\(String(ioReturn: ret)))")
+            let errorMessage = "Error subscribing to input events (\(String(ioReturn: ret)))"
+            log(.error, errorMessage)
+            errorHandler?(.disconnected(reason: errorMessage))
             return
         }
     }

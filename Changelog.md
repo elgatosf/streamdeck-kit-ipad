@@ -9,13 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 This is the first official release. 🎉
 
-It extends the example app with a check for the StreamDeck Connect app. 
-
-It's also improving the error handling. Taking into account, that only one app can control a StreamDeck device at a given time.
-
 ### Added
-- Installation check in example app
-- Auto-remove erroneous devices
+- __SDK - Error Handling:__ Auto-remove erroneous devices.
+
+### Changed
+- __Example App - Stream Deck Connect App Detection:__ The example app now contains a  check for the Stream Deck Connect app
 
  
 ## [0.0.2-alpha] - 2024-04-18

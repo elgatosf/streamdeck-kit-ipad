@@ -88,8 +88,11 @@ final actor InternalStreamDeckSession {
         IOServiceAddMatchingNotification(notificationPort, kIOFirstMatchNotification, matcher, matchingCallback, unsafeSelf, &iterator)
         deviceConnected(iterator)
 
-        IOServiceAddMatchingNotification(notificationPort, kIOTerminatedNotification, matcher, removalCallback, unsafeSelf, &iterator)
-        deviceDisconnected(iterator)
+        // Notification port could be nil when `deviceConnected` closed the session due to an error.
+        if notificationPort != nil {
+            IOServiceAddMatchingNotification(notificationPort, kIOTerminatedNotification, matcher, removalCallback, unsafeSelf, &iterator)
+            deviceDisconnected(iterator)
+        }
     }
 
     private func deviceConnected(_ iterator: io_iterator_t) {

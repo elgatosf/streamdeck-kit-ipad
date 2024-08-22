@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
  
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
+
+## [1.0.0] - 2024-08-22
+
+This is the first official release. 🎉
+
+It extends the example app with a check for the StreamDeck Connect app. 
+
+It's also improving the error handling. Taking into account, that only one app can control a StreamDeck device at a given time.
+
+### Added
+- Installation check in example app
+- Auto-remove erroneous devices
+
  
 ## [0.0.2-alpha] - 2024-04-18
  

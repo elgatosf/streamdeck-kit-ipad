@@ -10,10 +10,6 @@ To interact with a physical Stream Deck device, ensure you have the following:
 
 However, if you want to verify your implementation using the [Stream Deck Simulator](Simulator.md) only, no additional prerequisites are necessary.
 
-{% hint style="info" %}
-During the alpha phase, the app is not in available in the App Store. [Click here to participate in the public alpha of Stream Deck Connect](https://testflight.apple.com/join/U4bWfk8O) in [TestFlight](https://developer.apple.com/testflight/).
-{% endhint %}
-
 | iOS Version | Swift Version | XCode Version |
 | ----------- | ------------- | ------------- |
 | >= 16       | >= 5.9        | >= 15         |
@@ -28,7 +24,7 @@ If you want to add it to your own libraries `Package.swift`, use this code inste
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/elgatosf/streamdeck-kit-ipad.git", upToNextMajor: "0.0.1")
+    .package(url: "https://github.com/elgatosf/streamdeck-kit-ipad.git", upToNextMajor: "1.0.0")
 ]
 ```
 

@@ -12,8 +12,12 @@ struct ContentView: View {
 
     @Environment(\.exampleDataModel) var dataModel
 
+    private let appWillEnterForeground = NotificationCenter.default
+        .publisher(for: UIApplication.willEnterForegroundNotification)
+
     @State private var stateDescription: String = StreamDeckSession.State.idle.debugDescription
     @State private var devices: [StreamDeck] = []
+    @State private var isDriverHostInstalled: Bool = false
 
     var body: some View {
         @Bindable var dataModel = dataModel
@@ -45,6 +49,7 @@ struct ContentView: View {
             case .stateful: Text("2. Example - Stateful").font(.title).padding()
             case .animated: Text("3. Example - Animated").font(.title).padding()
             }
+            Text("Stream Deck Connect installation: \(isDriverHostInstalled ? "done" : "not installed")")
             Text("Session State: \(stateDescription)")
             if devices.isEmpty {
                 Text("Please connect a Stream Deck device!")
@@ -72,6 +77,8 @@ struct ContentView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .onReceive(StreamDeckSession.instance.$state) { stateDescription = $0.debugDescription }
         .onReceive(StreamDeckSession.instance.$devices) { devices = $0 }
+        .onReceive(appWillEnterForeground) { _ in checkDriverHostAppInstallation() }
+        .onAppear { checkDriverHostAppInstallation() }
         .overlay(alignment: .bottomTrailing) {
             Button("Show Stream Deck Simulator") {
                 StreamDeckSimulator.show(streamDeck: .regular)
@@ -79,6 +86,10 @@ struct ContentView: View {
             .buttonStyle(.borderedProminent)
             .padding()
         }
+    }
+
+    private func checkDriverHostAppInstallation() {
+        isDriverHostInstalled = UIApplication.shared.canOpenURL(URL(string: "elgato-device-driver://")!)
     }
 }
 

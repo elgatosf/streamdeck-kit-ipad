@@ -43,4 +43,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Test StreamDeckKit
-        run: set -o pipefail && xcodebuild -scheme StreamDeckKit-Package test -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" -skipMacroValidation | xcpretty
+        run: set -o pipefail && xcodebuild -scheme StreamDeckKit-Package test -destination "platform=iOS Simulator,name=iPhone 15,OS=17.5" -skipMacroValidation | xcpretty

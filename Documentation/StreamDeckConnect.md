@@ -15,3 +15,11 @@ UIApplication.shared.canOpenURL(URL(string: "elgato-device-driver://")!)
 ```
 
 Ensure to include `"elgato-device-driver"` in the `LSApplicationQueriesSchemes` section of your Info.plist file.
+
+## Promote your app
+
+Once you have published a new version of your app that supports Stream Deck, you can apply for a promotion inside of the Stream Deck Connect app.
+
+Do that by creating a pull request to the [Stream Deck Kit - Compatible Apps](https://github.com/elgatosf/streamdeck-kit-ipad-compatible-apps/) repository on GitHub. You need to provide a few infos about your app as well as a logo image.
+
+These infos will be displayed at a prominent place in Stream Deck Connect, when your request is accepted.

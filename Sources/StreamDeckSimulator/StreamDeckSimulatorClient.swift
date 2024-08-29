@@ -80,6 +80,8 @@ extension StreamDeckSimulatorClient: StreamDeckClientProtocol {
         inputEventHandler = handler
     }
 
+    public func setErrorHandler(_ handler: @escaping ClientErrorHandler) {}
+
     public func setBrightness(_ brightness: Int) {
         brightnessSubject.value = brightness
     }

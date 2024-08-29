@@ -161,7 +161,7 @@ final class StreamDeckRobot {
             ) { $0.count == keysCount + 1 && $0.last?.index == index }
         }
     }
-    
+
     func touchKeyTouched(
         _ index: Int,
         touched: Bool,
@@ -170,13 +170,13 @@ final class StreamDeckRobot {
         line: UInt = #line
     ) async throws {
         let imageCount = recorder.windowImages.count
-        
+
         try await emit(
             .keyPress(index: index, pressed: touched),
             file: file,
             line: line
         )
-        
+
         if waitForLayout {
             try await recorder.$windowImages.waitFor(
                 description: "window area was rendered",

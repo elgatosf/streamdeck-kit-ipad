@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
  
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
+
+## [1.0.0] - 2024-08-22
+
+This is the first official release. 🎉
+
+### Added
+- __SDK - Error Handling:__ Auto-remove erroneous devices.
+
+### Changed
+- __Example App - Stream Deck Connect App Detection:__ The example app now contains a  check for the Stream Deck Connect app
+
  
 ## [0.0.2-alpha] - 2024-04-18
  

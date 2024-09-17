@@ -75,5 +75,8 @@ public struct StreamDeckKeyAreaLayout<Key: View>: View {
                 }
             }
         }
+        .onChange(of: _nextID) { _ in
+            context.updateRequired()
+        }
     }
 }

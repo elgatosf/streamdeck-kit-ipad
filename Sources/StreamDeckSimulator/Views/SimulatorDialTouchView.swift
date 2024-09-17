@@ -33,7 +33,7 @@ import StreamDeckKit
 // always threw an error.
 // If you read this and XCode 16 was finally released, please check if just using the macro is working again.
 
-struct SimulatorDialTouchView: StreamDeckView {
+struct SimulatorDialTouchView: View {
 
     @Environment(\.streamDeckViewContext) private var context
     private var viewSize: CGSize { context.size }
@@ -41,9 +41,7 @@ struct SimulatorDialTouchView: StreamDeckView {
 
     let client: StreamDeckSimulatorClient?
 
-    @MainActor
-    @ViewBuilder
-    var streamDeckBody: some View {
+    var body: some View {
         StreamDeckDialView {
             Color.clear
         }
@@ -52,7 +50,7 @@ struct SimulatorDialTouchView: StreamDeckView {
         .onTapGesture(coordinateSpace: .local) { localLocation in
             guard let client = client else { return }
             let x = CGFloat(viewIndex) * viewSize.width + localLocation.x
-            Task { await client.emit(.touch(.init(x: x, y: localLocation.y))) }
+            client.emit(.touch(.init(x: x, y: localLocation.y)))
         }
         .gesture(
             DragGesture(minimumDistance: 10, coordinateSpace: .local)
@@ -60,28 +58,11 @@ struct SimulatorDialTouchView: StreamDeckView {
                     guard let client = client else { return }
                     let startX = CGFloat(viewIndex) * viewSize.width + value.startLocation.x
                     let endX = CGFloat(viewIndex) * viewSize.width + value.location.x
-                    Task {
-                        await client.emit(.fling(
-                            start: .init(x: startX, y: value.startLocation.y),
-                            end: .init(x: endX, y: value.location.y)
-                        ))
-                    }
+                    client.emit(.fling(
+                        start: .init(x: startX, y: value.startLocation.y),
+                        end: .init(x: endX, y: value.location.y)
+                    ))
                 }
         )
-    }
-
-    @MainActor
-    var body: some View {
-        if #available (iOS 17, *) {
-            return streamDeckBody
-                .onChange(of: StreamDeckKit._nextID) {
-                    context.updateRequired()
-                }
-        } else {
-            return streamDeckBody
-                .onChange(of: StreamDeckKit._nextID) { _ in
-                    context.updateRequired()
-                }
-        }
     }
 }

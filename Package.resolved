@@ -1,15 +1,6 @@
 {
   "pins" : [
     {
-      "identity" : "streamdeck-kit-macros",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/elgatosf/streamdeck-kit-macros",
-      "state" : {
-        "revision" : "47324ebb0e2517219dd795d2915987f06d46e47e",
-        "version" : "0.0.1"
-      }
-    },
-    {
       "identity" : "swift-snapshot-testing",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-snapshot-testing",

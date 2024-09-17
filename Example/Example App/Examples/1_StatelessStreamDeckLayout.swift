@@ -8,10 +8,11 @@
 import StreamDeckKit
 import SwiftUI
 
-@StreamDeckView
-struct StatelessStreamDeckLayout {
+struct StatelessStreamDeckLayout: View {
 
-    var streamDeckBody: some View {
+    @Environment(\.streamDeckViewContext.device) var streamDeck
+
+    var body: some View {
         StreamDeckLayout {
             // Define key area
             // Use StreamDeckKeyAreaLayout for rendering separate keys

@@ -8,10 +8,11 @@
 import StreamDeckKit
 import SwiftUI
 
-@StreamDeckView
-struct StatefulStreamDeckLayout {
+struct StatefulStreamDeckLayout: View {
 
-    var streamDeckBody: some View {
+    @Environment(\.streamDeckViewContext.device) var streamDeck
+
+    var body: some View {
         StreamDeckLayout {
             StreamDeckKeyAreaLayout { _ in
                 // To react to state changes within each StreamDeckKeyView, extract the view, just as you normally would in SwiftUI
@@ -31,12 +32,12 @@ struct StatefulStreamDeckLayout {
         }
     }
 
-    @StreamDeckView
-    struct MyKeyView {
+    struct MyKeyView: View {
 
+        @Environment(\.streamDeckViewContext.index) var viewIndex
         @State private var isPressed: Bool = false
 
-        var streamDeckBody: some View {
+        var body: some View {
             StreamDeckKeyView { pressed in
                 self.isPressed = pressed
             } content: {
@@ -50,13 +51,15 @@ struct StatefulStreamDeckLayout {
         }
     }
 
-    @StreamDeckView
-    struct MyDialView {
+    struct MyDialView: View {
+
+        @Environment(\.streamDeckViewContext.index) var viewIndex
+        @Environment(\.streamDeckViewContext.size) var viewSize
 
         @State private var offset: CGSize = .zero
         @State private var scale: CGFloat = 1
 
-        var streamDeckBody: some View {
+        var body: some View {
             StreamDeckDialView { rotations in
                 self.scale = min(max(scale + CGFloat(rotations) / 10, 0.5), 5)
             } press: { pressed in
@@ -79,15 +82,14 @@ struct StatefulStreamDeckLayout {
         }
     }
 
-    @StreamDeckView
-    struct MyNeoPanelView {
+    struct MyNeoPanelView: View {
 
         @State private var offset: Double = 0
         @State private var date: Date = .now
 
         let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
-        var streamDeckBody: some View {
+        var body: some View {
             // Use StreamDeckNeoPanelLayout for Stream Deck Neo
             StreamDeckNeoPanelLayout { touched in
                 offset -= touched ? 5 : 0

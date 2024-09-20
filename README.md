@@ -74,7 +74,7 @@ This code snippet demonstrates rendering a blue color across all buttons and dis
  
 ### Rendering Layouts 
 
-To render content on specific areas, utilize the `StreamDeckLayout` system with the `@StreamDeckView` Macro. `StreamDeckLayout` provides predefined layout views to position content on a Stream Deck. 
+To render content on specific areas, utilize the `StreamDeckLayout` system. `StreamDeckLayout` provides predefined layout views to position content on a Stream Deck. 
 
 ```swift
 import StreamDeckKit
@@ -86,10 +86,9 @@ StreamDeckSession.setUp(newDeviceHandler: { $0.render(MyFirstStreamDeckLayout())
 import SwiftUI 
 import StreamDeckKit
 
-@StreamDeckView
-struct MyFirstStreamDeckLayout {
+struct MyFirstStreamDeckLayout: View {
 
-    var streamDeckBody: some View {
+    var body: some View {
         StreamDeckLayout {
             // Define key area
             // Use StreamDeckKeyAreaLayout for rendering separate keys

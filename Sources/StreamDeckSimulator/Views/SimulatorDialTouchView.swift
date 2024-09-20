@@ -28,11 +28,6 @@
 import SwiftUI
 import StreamDeckKit
 
-// The explicit implementation of the `StreamDeckView` protocol is a workaround. Normally we would use the `@StreamDeckView`
-// macro here. But due to a bug in XCode 16 and 16.1 betas, the `if #available` check that the macro implemented,
-// always threw an error.
-// If you read this and XCode 16 was finally released, please check if just using the macro is working again.
-
 struct SimulatorDialTouchView: View {
 
     @Environment(\.streamDeckViewContext) private var context

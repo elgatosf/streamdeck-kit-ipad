@@ -42,7 +42,7 @@ struct StatefulStreamDeckLayout: View {
                 self.isPressed = pressed
             } content: {
                 VStack {
-                    Text("\(viewIndex)") // `viewIndex` is provided by the `@StreamDeckView` macro
+                    Text("\(viewIndex)")
                     Text(isPressed ? "Key down" : "Key up")
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -70,7 +70,7 @@ struct StatefulStreamDeckLayout: View {
             } touch: { location in
                 self.offset = CGSize(
                     width: location.x - viewSize.width / 2,
-                    height: location.y - viewSize.height / 2 // `viewSize` is provided by the `@StreamDeckView` macro
+                    height: location.y - viewSize.height / 2
                 )
             } content: {
                 Text("\(viewIndex)")

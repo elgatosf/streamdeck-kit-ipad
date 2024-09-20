@@ -50,15 +50,14 @@ This code snippet demonstrates rendering a blue color across all buttons and dis
  
 
 
-To render content on specific areas, utilize the [Stream Deck Layout](Layout/README.md) system. `StreamDeckLayout` with the `@StreamDeckView` Macro provides predefined layout views to position content on a Stream Deck. 
+To render content on specific areas, utilize the [Stream Deck Layout](Layout/README.md) system. `StreamDeckLayout` provides predefined layout views to position content on a Stream Deck. 
 
 ```swift
 import SwiftUI 
 import StreamDeckKit
 
-@StreamDeckView
-struct MyFirstStreamDeckLayout {
-    var streamDeckBody: some View {
+struct MyFirstStreamDeckLayout: View {
+    var body: some View {
         StreamDeckLayout {
             // Define key area
             // Use StreamDeckKeyAreaLayout for rendering separate keys

@@ -44,7 +44,7 @@ struct AnimatedStreamDeckLayout: View {
                 self.isPressed = pressed
             } content: {
                 VStack {
-                    Text("\(viewIndex)") // `viewIndex` is provided by the `@StreamDeckView` macro
+                    Text("\(viewIndex)")
                     Text(isPressed == true ? "Key down" : "Key up")
                 }
                 .scaleEffect(scale) // Updating the scale depending on the state
@@ -142,7 +142,7 @@ struct AnimatedStreamDeckLayout: View {
                 if isPressed == nil || isPressed == true {
                     self.position = CGPoint(
                         x: viewSize.width / 2,
-                        y: viewSize.height / 2 // `viewSize` is provided by the `@StreamDeckView` macro
+                        y: viewSize.height / 2
                     )
                 }
             }

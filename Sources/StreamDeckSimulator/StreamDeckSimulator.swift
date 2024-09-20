@@ -55,11 +55,25 @@ public final class StreamDeckSimulator {
     }
 
     private class PassThroughWindow: UIWindow {
+
         override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
             // Get view from superclass.
             guard let hitView = super.hitTest(point, with: event) else { return nil }
-            // If the returned view is the `UIHostingController`'s view, ignore.
-            return rootViewController?.view == hitView || rootViewController?.view.superview == hitView ? nil : hitView
+
+            if isInsideSimulator(point, with: event) {
+                // When the location check passes, return the view.
+                return hitView
+            } else {
+                // When the returned view is the `UIHostingController`'s view, ignore.
+                return rootViewController?.view == hitView || rootViewController?.view.superview == hitView ? nil : hitView
+            }
+        }
+
+        func isInsideSimulator(_ point: CGPoint, with event: UIEvent?) -> Bool {
+            guard let viewToCheck: UIView = rootViewController?.view.subviews.first else {
+                return super.point(inside: point, with: event)
+            }
+            return viewToCheck.point(inside: convert(point, to: viewToCheck), with: event)
         }
     }
 

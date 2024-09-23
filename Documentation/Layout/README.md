@@ -41,6 +41,12 @@ import StreamDeckKit
 
 struct StatelessStreamDeckLayout: View {
 
+    // Use the `streamDeckViewContext` environment variable to get information about 
+    // the device, the view size or the current key index. 
+    // Values will be different, depending on which layout level (e.g. window, key
+    // or background) we are.
+    @Environment(\.streamDeckViewContext.device) var streamDeck
+
     var body: some View {
         StreamDeckLayout {
             // Define key area

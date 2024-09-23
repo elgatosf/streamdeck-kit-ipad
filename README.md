@@ -49,7 +49,7 @@ If you want to add it to your own libraries `Package.swift`, use this code inste
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/elgatosf/streamdeck-kit-ipad.git", upToNextMajor: "1.0.0")
+    .package(url: "https://github.com/elgatosf/streamdeck-kit-ipad.git", upToNextMajor: "1.1.0")
 ]
 ```
 
@@ -88,19 +88,21 @@ import StreamDeckKit
 
 struct MyFirstStreamDeckLayout: View {
 
+    @Environment(\.streamDeckViewContext.device) var streamDeck
+
     var body: some View {
         StreamDeckLayout {
             // Define key area
             // Use StreamDeckKeyAreaLayout for rendering separate keys
-            StreamDeckKeyAreaLayout { context in
+            StreamDeckKeyAreaLayout { keyIndex in
                 // Define content for each key.
-                // StreamDeckKeyAreaLayout provides a context for each available key,
+                // StreamDeckKeyAreaLayout provides an index for each available key,
                 // and StreamDeckKeyView provides a callback for the key action
                 // Example:
                 StreamDeckKeyView { pressed in
-                    print("pressed \(pressed)")
+                    print("pressed \(pressed) at index \(keyIndex)")
                 } content: {
-                    Text("\(context.index)")
+                    Text("\(keyIndex)")
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .background(.teal)
                 }

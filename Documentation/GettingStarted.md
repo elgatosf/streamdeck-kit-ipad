@@ -24,7 +24,7 @@ If you want to add it to your own libraries `Package.swift`, use this code inste
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/elgatosf/streamdeck-kit-ipad.git", upToNextMajor: "1.0.0")
+    .package(url: "https://github.com/elgatosf/streamdeck-kit-ipad.git", upToNextMajor: "1.1.0")
 ]
 ```
 

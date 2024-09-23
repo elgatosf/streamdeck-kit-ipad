@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.1.0] - 2024-09-23
+
+Removes the need for a macro.
+
+You can now declare your Stream Deck layouts as regular Swift UI views. There is no need to implement `StreamDeckView` anymore.
+
+### Removed
+
+- The dependency on [Stream Deck Kit - Macros](https://github.com/elgatosf/streamdeck-kit-macros)
+- The `StreamDeckView` protocol
+
 ## [1.0.0] - 2024-08-22
 
 This is the first official release. 🎉

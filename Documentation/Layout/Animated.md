@@ -21,6 +21,8 @@ import SwiftUI
 
 struct AnimatedStreamDeckLayout {
 
+    @Environment(\.streamDeckViewContext.device) var streamDeck
+
     var body: some View {
         StreamDeckLayout {
             StreamDeckKeyAreaLayout { _ in
@@ -111,6 +113,7 @@ struct AnimatedStreamDeckLayout {
         @State private var targetPosition: CGPoint?
         
         @Environment(\.streamDeckViewContext.size) var viewSize
+        @Environment(\.streamDeckViewContext.index) var viewIndex
 
         var body: some View {
             StreamDeckDialView { rotations in

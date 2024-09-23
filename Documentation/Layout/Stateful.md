@@ -19,6 +19,8 @@ import SwiftUI
 
 struct StatefulStreamDeckLayout {
 
+    @Environment(\.streamDeckViewContext.device) var streamDeck
+
     var body: some View {
         StreamDeckLayout {
             StreamDeckKeyAreaLayout { _ in

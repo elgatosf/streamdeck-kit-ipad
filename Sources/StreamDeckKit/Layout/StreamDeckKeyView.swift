@@ -74,5 +74,8 @@ public struct StreamDeckKeyView<Content: View>: View {
                     action(pressed)
                 }
             }
+            .onChange(of: _nextID) { _ in
+                context.updateRequired()
+            }
     }
 }

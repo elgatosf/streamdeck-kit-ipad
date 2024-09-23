@@ -29,7 +29,16 @@ import Combine
 import Foundation
 import SwiftUI
 
-@_exported import StreamDeckView
+private var _id: UInt64 = 0
+
+// Used in conjunction with View.onChange to get a post-render callback.
+var _nextID: UInt64 {
+    if _id == UInt64.max {
+        _id = 0
+    }
+    _id += 1
+    return _id
+}
 
 /// The basic view to build a layout for Stream Deck from.
 ///
@@ -90,6 +99,9 @@ public struct StreamDeckLayout<KeyArea: View, WindowArea: View>: View {
             }
         }
         .frame(width: context.size.width, height: context.size.height)
+        .onChange(of: _nextID) { _ in
+            context.updateRequired()
+        }
     }
 
 }

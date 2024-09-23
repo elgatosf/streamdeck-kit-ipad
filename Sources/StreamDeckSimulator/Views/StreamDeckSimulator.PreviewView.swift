@@ -32,7 +32,7 @@ import SwiftUI
 public extension StreamDeckSimulator {
     /// A wrapper view to use ``StreamDeckSimulator`` in SwiftUI previews.
     ///
-    /// This code will show a Stream Deck Mini simulator that renders a view conforming to `StreamDeckView`.
+    /// This code will show a Stream Deck Mini simulator that renders some layout view.
     /// ```swift
     /// #Preview {
     ///     StreamDeckSimulator.PreviewView(streamDeck: .mini) { device in

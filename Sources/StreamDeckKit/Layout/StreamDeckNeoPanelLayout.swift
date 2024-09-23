@@ -69,5 +69,8 @@ public struct StreamDeckNeoPanelLayout<InfoPanel: View>: View {
                     }
                 }
             }
+            .onChange(of: _nextID) { _ in
+                context.updateRequired()
+            }
     }
 }

@@ -8,12 +8,19 @@
 import StreamDeckKit
 import SwiftUI
 
-@StreamDeckView
 struct BaseStreamDeckView: View {
+    @Environment(\.streamDeckViewContext) var context
     @Environment(\.exampleDataModel) var dataModel
 
+    var body: some View {
+        content
+            .onChange(of: dataModel.selectedExample) {
+                context.updateRequired()
+            }
+    }
+
     @ViewBuilder
-    var streamDeckBody: some View {
+    private var content: some View {
         switch dataModel.selectedExample {
         case .stateless:
             StatelessStreamDeckLayout()

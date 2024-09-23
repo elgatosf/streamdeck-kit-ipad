@@ -8,10 +8,11 @@
 import StreamDeckKit
 import SwiftUI
 
-@StreamDeckView
-struct AnimatedStreamDeckLayout {
+struct AnimatedStreamDeckLayout: View {
 
-    var streamDeckBody: some View {
+    @Environment(\.streamDeckViewContext.device) var streamDeck
+
+    var body: some View {
         StreamDeckLayout {
             StreamDeckKeyAreaLayout { _ in
                 // To react to state changes within each StreamDeckKeyView, extract the view, just as you normally would in SwiftUI
@@ -31,19 +32,19 @@ struct AnimatedStreamDeckLayout {
         }
     }
 
-    @StreamDeckView
-    struct MyKeyView {
+    struct MyKeyView: View {
 
+        @Environment(\.streamDeckViewContext.index) var viewIndex
         @State private var isPressed: Bool?
         @State private var scale: CGFloat = 1.0
         @State private var rotationDegree: Double = .zero
 
-        var streamDeckBody: some View {
+        var body: some View {
             StreamDeckKeyView { pressed in
                 self.isPressed = pressed
             } content: {
                 VStack {
-                    Text("\(viewIndex)") // `viewIndex` is provided by the `@StreamDeckView` macro
+                    Text("\(viewIndex)")
                     Text(isPressed == true ? "Key down" : "Key up")
                 }
                 .scaleEffect(scale) // Updating the scale depending on the state
@@ -92,15 +93,16 @@ struct AnimatedStreamDeckLayout {
         }
     }
 
-    @StreamDeckView
-    struct MyDialView {
+    struct MyDialView: View {
 
+        @Environment(\.streamDeckViewContext.index) var viewIndex
+        @Environment(\.streamDeckViewContext.size) var viewSize
         @State private var isPressed: Bool?
 
         @State private var position: CGPoint = .zero
         @State private var targetPosition: CGPoint?
 
-        var streamDeckBody: some View {
+        var body: some View {
             StreamDeckDialView { rotations in
                 self.position.x += CGFloat(rotations)
             } press: { pressed in
@@ -140,15 +142,14 @@ struct AnimatedStreamDeckLayout {
                 if isPressed == nil || isPressed == true {
                     self.position = CGPoint(
                         x: viewSize.width / 2,
-                        y: viewSize.height / 2 // `viewSize` is provided by the `@StreamDeckView` macro
+                        y: viewSize.height / 2
                     )
                 }
             }
         }
     }
 
-    @StreamDeckView
-    struct MyNeoPanelView {
+    struct MyNeoPanelView: View {
 
         @State private var offset: Double = 0
         @State private var targetOffset: Double = 0
@@ -157,7 +158,7 @@ struct AnimatedStreamDeckLayout {
 
         let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
-        var streamDeckBody: some View {
+        var body: some View {
             // Use StreamDeckNeoPanelLayout for Stream Deck Neo
             StreamDeckNeoPanelLayout { touched in
                 targetOffset -= touched ? 50 : 0

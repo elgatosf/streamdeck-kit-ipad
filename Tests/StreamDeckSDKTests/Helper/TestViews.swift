@@ -51,11 +51,11 @@ enum TestViews {
         @Published var lastEvent: Event = .none
     }
 
-    @StreamDeckView
-    struct SimpleKey {
+    struct SimpleKey: View {
+        @Environment(\.streamDeckViewContext.index) var viewIndex
         @StateObject var model = SimpleEventModel()
 
-        var streamDeckBody: some View {
+        var body: some View {
             StreamDeckKeyView { isPressed in
                 model.lastEvent = .press(isPressed)
             } content: {
@@ -74,11 +74,11 @@ enum TestViews {
         }
     }
 
-    @StreamDeckView
-    struct SimpleDialView {
+    struct SimpleDialView: View {
+        @Environment(\.streamDeckViewContext.index) var viewIndex
         @StateObject var model = SimpleEventModel()
 
-        var streamDeckBody: some View {
+        var body: some View {
             StreamDeckDialView { steps in
                 model.lastEvent = .rotate(steps)
             } press: { pressed in
@@ -96,9 +96,8 @@ enum TestViews {
         }
     }
 
-    @StreamDeckView
-    struct SimpleLayout {
-        var streamDeckBody: some View {
+    struct SimpleLayout: View {
+        var body: some View {
             StreamDeckLayout(
                 keyArea: {
                     StreamDeckKeyAreaLayout { _ in
@@ -115,11 +114,10 @@ enum TestViews {
     }
 
     struct TouchAreaTestLayout: View {
-        @StreamDeckView
-        struct WindowLayout { // swiftlint:disable:this nesting
+        struct WindowLayout: View { // swiftlint:disable:this nesting
             @StateObject var model = SimpleEventModel()
 
-            var streamDeckBody: some View {
+            var body: some View {
                 ZStack {
                     StreamDeckDialAreaLayout(
                         rotate: { _, steps in
@@ -150,11 +148,10 @@ enum TestViews {
     }
 
     struct NeoTouchKeyTestLayout: View {
-        @StreamDeckView
-        struct WindowLayout { // swiftlint:disable:this nesting
+        struct WindowLayout: View { // swiftlint:disable:this nesting
             @StateObject var model = SimpleEventModel()
 
-            var streamDeckBody: some View {
+            var body: some View {
                 ZStack {
                     StreamDeckNeoPanelLayout { touched in
                         model.lastEvent = .neoLeftTouch(touched)

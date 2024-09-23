@@ -137,5 +137,8 @@ public struct StreamDeckDialAreaLayout<Dial: View>: View {
             default: break
             }
         }
+        .onChange(of: _nextID) { _ in
+            context.updateRequired()
+        }
     }
 }

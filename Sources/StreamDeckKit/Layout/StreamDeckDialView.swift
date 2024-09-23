@@ -113,5 +113,8 @@ public struct StreamDeckDialView<Content: View>: View {
                 default: break
                 }
             }
+            .onChange(of: _nextID) { _ in
+                context.updateRequired()
+            }
     }
 }

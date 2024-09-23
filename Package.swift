@@ -21,10 +21,6 @@ let package = Package(
         .package(
             url: "https://github.com/pointfreeco/swift-snapshot-testing",
             from: "1.12.0"
-        ),
-        .package(
-            url: "https://github.com/elgatosf/streamdeck-kit-macros",
-            from: "0.0.1"
         )
     ],
     targets: [
@@ -35,10 +31,7 @@ let package = Package(
         ),
         .target(
             name: "StreamDeckKit",
-            dependencies: [
-                "StreamDeckCApi",
-                .product(name: "StreamDeckView", package: "streamdeck-kit-macros")
-            ]
+            dependencies: ["StreamDeckCApi"]
         ),
         .target(
             name: "StreamDeckCApi",

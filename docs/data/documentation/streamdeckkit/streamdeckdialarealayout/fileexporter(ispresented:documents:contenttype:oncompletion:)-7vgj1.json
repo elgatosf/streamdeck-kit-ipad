@@ -138,7 +138,7 @@
       },
       {
         "kind" : "text",
-        "text" : "], "
+        "text" : "], any "
       },
       {
         "kind" : "typeIdentifier",
@@ -327,7 +327,7 @@
             },
             {
               "kind" : "text",
-              "text" : "], "
+              "text" : "], any "
             },
             {
               "kind" : "typeIdentifier",
@@ -399,6 +399,7 @@
             },
             {
               "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:ST7ElementQa",
               "text" : "Element"
             },
             {
@@ -619,7 +620,7 @@
     },
     {
       "kind" : "text",
-      "text" : "], "
+      "text" : "], any "
     },
     {
       "kind" : "typeIdentifier",

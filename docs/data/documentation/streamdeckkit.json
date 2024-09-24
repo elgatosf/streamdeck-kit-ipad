@@ -111,8 +111,7 @@
     },
     {
       "identifiers" : [
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol",
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView"
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol"
       ],
       "title" : "Protocols"
     },
@@ -124,6 +123,7 @@
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckDialView",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyAreaLayout",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckNeoPanelLayout",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckViewContext",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/Version"
@@ -138,12 +138,7 @@
     },
     {
       "identifiers" : [
-        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView()"
-      ],
-      "title" : "Macros"
-    },
-    {
-      "identifiers" : [
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/ClientErrorHandler",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/InputEventHandler",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/LoggingHandler"
       ],
@@ -153,6 +148,7 @@
       "identifiers" : [
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/ImageFormat",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/InputEvent",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientError",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProduct"
       ],
       "title" : "Enumerations"
@@ -198,6 +194,37 @@
   "title" : "StreamDeckKit",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/ClientErrorHandler": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "typealias"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "ClientErrorHandler"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/ClientErrorHandler",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "ClientErrorHandler"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "ClientErrorHandler",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/clienterrorhandler"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/DeviceCapabilities": {
   "abstract" : [
@@ -434,6 +461,37 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeck"
 },
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckClientError": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "enum"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckClientError"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientError",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckClientError"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckClientError",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckclienterror"
+},
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckClientProtocol": {
   "abstract" : [
 
@@ -653,6 +711,40 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdecklayout"
 },
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckNeoPanelLayout": {
+  "abstract" : [
+    {
+      "text" : "A View that draws the layout of a info window area (the display below the keys) on a Stream Deck Neo.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckNeoPanelLayout"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckNeoPanelLayout",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StreamDeckNeoPanelLayout"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "StreamDeckNeoPanelLayout",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckneopanellayout"
+},
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProduct": {
   "abstract" : [
     {
@@ -754,72 +846,6 @@
   "title" : "StreamDeckSession",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdecksession"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckView": {
-  "abstract" : [
-    {
-      "text" : "Protocol for views rendered on StreamDeck.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "protocol"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "StreamDeckView"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "StreamDeckView"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "StreamDeckView",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeckview"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckView()": {
-  "abstract" : [
-    {
-      "text" : "Defines and implements conformance of the StreamDeckView protocol.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "macro"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "StreamDeckView"
-    },
-    {
-      "kind" : "text",
-      "text" : "()"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView()",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "StreamDeckView()",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeckview()"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckViewContext": {
   "abstract" : [

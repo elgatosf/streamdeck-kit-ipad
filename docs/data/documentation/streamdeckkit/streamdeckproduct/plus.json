@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Stream Deck Plus (8 keys, 4 dials)",
+      "text" : "Stream Deck Plus (8 keys, 4 dials, window)",
       "type" : "text"
     }
   ],
@@ -152,7 +152,7 @@
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProduct/plus": {
   "abstract" : [
     {
-      "text" : "Stream Deck Plus (8 keys, 4 dials)",
+      "text" : "Stream Deck Plus (8 keys, 4 dials, window)",
       "type" : "text"
     }
   ],

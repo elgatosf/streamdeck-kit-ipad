@@ -102,6 +102,7 @@
     {
       "identifiers" : [
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProduct\/mini",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProduct\/neo",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProduct\/pedal",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProduct\/plus",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProduct\/regular",
@@ -278,6 +279,34 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeckproduct\/mini"
 },
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProduct/neo": {
+  "abstract" : [
+    {
+      "text" : "Stream Deck Neo (8 keys, 2 touch keys, windowl)",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "neo"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProduct\/neo",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "StreamDeckProduct.neo",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckproduct\/neo"
+},
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProduct/pedal": {
   "abstract" : [
     {
@@ -309,7 +338,7 @@
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProduct/plus": {
   "abstract" : [
     {
-      "text" : "Stream Deck Plus (8 keys, 4 dials)",
+      "text" : "Stream Deck Plus (8 keys, 4 dials, window)",
       "type" : "text"
     }
   ],

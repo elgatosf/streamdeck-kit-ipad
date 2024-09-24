@@ -87,6 +87,7 @@
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/fillKey(red:green:blue:at:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/fillScreen(red:green:blue:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/setBrightness(_:)",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/setErrorHandler(_:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/setInputEventHandler(_:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/setKeyImage(_:at:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/setScreenImage(_:)",
@@ -409,6 +410,45 @@
   "title" : "setBrightness(_:)",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeckclientprotocol\/setbrightness(_:)"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckClientProtocol/setErrorHandler(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "setErrorHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit18ClientErrorHandlera",
+      "text" : "ClientErrorHandler"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckClientProtocol\/setErrorHandler(_:)",
+  "kind" : "symbol",
+  "required" : true,
+  "role" : "symbol",
+  "title" : "setErrorHandler(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckclientprotocol\/seterrorhandler(_:)"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckClientProtocol/setInputEventHandler(_:)": {
   "abstract" : [

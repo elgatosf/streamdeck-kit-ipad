@@ -76,44 +76,6 @@
         }
       ],
       "kind" : "declarations"
-    },
-    {
-      "content" : [
-        {
-          "anchor" : "overview",
-          "level" : 2,
-          "text" : "Overview",
-          "type" : "heading"
-        },
-        {
-          "inlineContent" : [
-            {
-              "text" : "This is used internally by the ",
-              "type" : "text"
-            },
-            {
-              "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView",
-              "isActive" : true,
-              "type" : "reference"
-            },
-            {
-              "text" : " macro and the ",
-              "type" : "text"
-            },
-            {
-              "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckLayout",
-              "isActive" : true,
-              "type" : "reference"
-            },
-            {
-              "text" : " system.",
-              "type" : "text"
-            }
-          ],
-          "type" : "paragraph"
-        }
-      ],
-      "kind" : "content"
     }
   ],
   "schemaVersion" : {
@@ -173,74 +135,6 @@
   "title" : "StreamDeckKit",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckLayout": {
-  "abstract" : [
-    {
-      "text" : "The basic view to build a layout for Stream Deck from.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "struct"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "StreamDeckLayout"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckLayout",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "StreamDeckLayout"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "StreamDeckLayout",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdecklayout"
-},
-"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckView": {
-  "abstract" : [
-    {
-      "text" : "Protocol for views rendered on StreamDeck.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "protocol"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "StreamDeckView"
-    }
-  ],
-  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckView",
-  "kind" : "symbol",
-  "navigatorTitle" : [
-    {
-      "kind" : "identifier",
-      "text" : "StreamDeckView"
-    }
-  ],
-  "role" : "symbol",
-  "title" : "StreamDeckView",
-  "type" : "topic",
-  "url" : "\/documentation\/streamdeckkit\/streamdeckview"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckViewContext": {
   "abstract" : [

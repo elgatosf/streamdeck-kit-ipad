@@ -147,6 +147,7 @@
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_mini_2022",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_mk2",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_mk2_scissor",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_neo",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_original",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_pedal",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_plus",
@@ -586,6 +587,51 @@
   "title" : "sd_mk2_scissor",
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeckproductid\/sd_mk2_scissor"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProductId/sd_neo": {
+  "abstract" : [
+    {
+      "text" : "Stream Deck Neo",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "sd_neo"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:13StreamDeckKit0aB9ProductIdV",
+      "text" : "StreamDeckProductId"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckProductId\/sd_neo",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "sd_neo",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckproductid\/sd_neo"
 },
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckProductId/sd_original": {
   "abstract" : [

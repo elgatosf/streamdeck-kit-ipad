@@ -19,6 +19,7 @@
       }
     ],
     "role" : "collectionGroup",
+    "roleHeading" : "API Collection",
     "title" : "View Implementations"
   },
   "schemaVersion" : {
@@ -219,6 +220,7 @@
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/defaultScrollAnchor(_:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/defersSystemGestures(on:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/deleteDisabled(_:)",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/dialogIcon(_:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/dialogSuppressionToggle(_:isSuppressed:)-4vzf9",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/dialogSuppressionToggle(_:isSuppressed:)-67v1m",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/dialogSuppressionToggle(_:isSuppressed:)-9oso1",
@@ -436,6 +438,8 @@
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/onLongPressGesture(minimumDuration:perform:onPressingChanged:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/onLongPressGesture(minimumDuration:pressing:perform:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/onOpenURL(perform:)",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/onPencilDoubleTap(perform:)",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/onPencilSqueeze(perform:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/onPreferenceChange(_:perform:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/onReceive(_:perform:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/onSubmit(of:_:)",
@@ -515,6 +519,7 @@
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/scrollTransition(topLeading:bottomTrailing:axis:transition:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/searchCompletion(_:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/searchDictationBehavior(_:)",
+        "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/searchPresentationToolbarBehavior(_:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/searchScopes(_:activation:_:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/searchScopes(_:scopes:)",
         "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/searchSuggestions(_:)",
@@ -9893,6 +9898,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7SwiftUI13PreferenceKeyP5ValueQa",
       "text" : "Value"
     },
     {
@@ -11108,6 +11114,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7SwiftUI13PreferenceKeyP5ValueQa",
       "text" : "Value"
     },
     {
@@ -11215,6 +11222,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7SwiftUI13PreferenceKeyP5ValueQa",
       "text" : "Value"
     },
     {
@@ -16471,6 +16479,57 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeckkeyview\/deletedisabled(_:)"
 },
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckKeyView/dialogIcon(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "dialogIcon"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7SwiftUI5ImageV",
+      "text" : "Image"
+    },
+    {
+      "kind" : "text",
+      "text" : "?) -> "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "some"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7SwiftUI4ViewP",
+      "text" : "View"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/dialogIcon(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "dialogIcon(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckkeyview\/dialogicon(_:)"
+},
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckKeyView/dialogSuppressionToggle(_:isSuppressed:)-4vzf9": {
   "abstract" : [
 
@@ -18390,7 +18449,7 @@
     },
     {
       "kind" : "text",
-      "text" : ", "
+      "text" : ", any "
     },
     {
       "kind" : "typeIdentifier",
@@ -18560,7 +18619,7 @@
     },
     {
       "kind" : "text",
-      "text" : ", "
+      "text" : ", any "
     },
     {
       "kind" : "typeIdentifier",
@@ -18730,7 +18789,7 @@
     },
     {
       "kind" : "text",
-      "text" : ", "
+      "text" : ", any "
     },
     {
       "kind" : "typeIdentifier",
@@ -18917,7 +18976,7 @@
     },
     {
       "kind" : "text",
-      "text" : ", "
+      "text" : ", any "
     },
     {
       "kind" : "typeIdentifier",
@@ -19087,7 +19146,7 @@
     },
     {
       "kind" : "text",
-      "text" : "], "
+      "text" : "], any "
     },
     {
       "kind" : "typeIdentifier",
@@ -19240,7 +19299,7 @@
     },
     {
       "kind" : "text",
-      "text" : "], "
+      "text" : "], any "
     },
     {
       "kind" : "typeIdentifier",
@@ -19393,7 +19452,7 @@
     },
     {
       "kind" : "text",
-      "text" : "], "
+      "text" : "], any "
     },
     {
       "kind" : "typeIdentifier",
@@ -19563,7 +19622,7 @@
     },
     {
       "kind" : "text",
-      "text" : "], "
+      "text" : "], any "
     },
     {
       "kind" : "typeIdentifier",
@@ -19750,7 +19809,7 @@
     },
     {
       "kind" : "text",
-      "text" : ", "
+      "text" : ", any "
     },
     {
       "kind" : "typeIdentifier",
@@ -19928,7 +19987,7 @@
     },
     {
       "kind" : "text",
-      "text" : "], "
+      "text" : "], any "
     },
     {
       "kind" : "typeIdentifier",
@@ -20251,7 +20310,7 @@
     },
     {
       "kind" : "text",
-      "text" : "], "
+      "text" : "], any "
     },
     {
       "kind" : "typeIdentifier",
@@ -20397,7 +20456,7 @@
     },
     {
       "kind" : "text",
-      "text" : "], "
+      "text" : "], any "
     },
     {
       "kind" : "typeIdentifier",
@@ -20543,7 +20602,7 @@
     },
     {
       "kind" : "text",
-      "text" : ", "
+      "text" : ", any "
     },
     {
       "kind" : "typeIdentifier",
@@ -20672,7 +20731,7 @@
     },
     {
       "kind" : "text",
-      "text" : ", "
+      "text" : ", any "
     },
     {
       "kind" : "typeIdentifier",
@@ -20801,7 +20860,7 @@
     },
     {
       "kind" : "text",
-      "text" : ", "
+      "text" : ", any "
     },
     {
       "kind" : "typeIdentifier",
@@ -20954,7 +21013,7 @@
     },
     {
       "kind" : "text",
-      "text" : "], "
+      "text" : "], any "
     },
     {
       "kind" : "typeIdentifier",
@@ -21090,7 +21149,7 @@
     },
     {
       "kind" : "text",
-      "text" : "], "
+      "text" : "], any "
     },
     {
       "kind" : "typeIdentifier",
@@ -26453,6 +26512,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7SwiftUI14LayoutValueKeyP0D0Qa",
       "text" : "Value"
     },
     {
@@ -31355,7 +31415,7 @@
     },
     {
       "kind" : "text",
-      "text" : ": "
+      "text" : ": any "
     },
     {
       "kind" : "typeIdentifier",
@@ -31432,7 +31492,7 @@
     },
     {
       "kind" : "text",
-      "text" : ": "
+      "text" : ": any "
     },
     {
       "kind" : "typeIdentifier",
@@ -33040,6 +33100,142 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeckkeyview\/onopenurl(perform:)"
 },
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckKeyView/onPencilDoubleTap(perform:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "onPencilDoubleTap"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "perform"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7SwiftUI27PencilDoubleTapGestureValueV",
+      "text" : "PencilDoubleTapGestureValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s4Voida",
+      "text" : "Void"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "some"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7SwiftUI4ViewP",
+      "text" : "View"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/onPencilDoubleTap(perform:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "onPencilDoubleTap(perform:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckkeyview\/onpencildoubletap(perform:)"
+},
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckKeyView/onPencilSqueeze(perform:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "onPencilSqueeze"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "perform"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7SwiftUI25PencilSqueezeGesturePhaseO",
+      "text" : "PencilSqueezeGesturePhase"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s4Voida",
+      "text" : "Void"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "some"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7SwiftUI4ViewP",
+      "text" : "View"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/onPencilSqueeze(perform:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "onPencilSqueeze(perform:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckkeyview\/onpencilsqueeze(perform:)"
+},
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckKeyView/onPreferenceChange(_:perform:)": {
   "abstract" : [
 
@@ -33095,6 +33291,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7SwiftUI13PreferenceKeyP5ValueQa",
       "text" : "Value"
     },
     {
@@ -33186,6 +33383,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7Combine9PublisherP6OutputQa",
       "text" : "Output"
     },
     {
@@ -33917,6 +34115,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7SwiftUI13PreferenceKeyP5ValueQa",
       "text" : "Value"
     },
     {
@@ -34024,6 +34223,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7SwiftUI13PreferenceKeyP5ValueQa",
       "text" : "Value"
     },
     {
@@ -35116,6 +35316,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7SwiftUI13PreferenceKeyP5ValueQa",
       "text" : "Value"
     },
     {
@@ -38658,6 +38859,57 @@
   "type" : "topic",
   "url" : "\/documentation\/streamdeckkit\/streamdeckkeyview\/searchdictationbehavior(_:)"
 },
+"doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckKeyView/searchPresentationToolbarBehavior(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "searchPresentationToolbarBehavior"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7SwiftUI33SearchPresentationToolbarBehaviorV",
+      "text" : "SearchPresentationToolbarBehavior"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "some"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7SwiftUI4ViewP",
+      "text" : "View"
+    }
+  ],
+  "identifier" : "doc:\/\/StreamDeckKit\/documentation\/StreamDeckKit\/StreamDeckKeyView\/searchPresentationToolbarBehavior(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "searchPresentationToolbarBehavior(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/streamdeckkit\/streamdeckkeyview\/searchpresentationtoolbarbehavior(_:)"
+},
 "doc://StreamDeckKit/documentation/StreamDeckKit/StreamDeckKeyView/searchScopes(_:activation:_:)": {
   "abstract" : [
 
@@ -39151,6 +39403,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ST7ElementQa",
       "text" : "Element"
     },
     {
@@ -39354,6 +39607,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ST7ElementQa",
       "text" : "Element"
     },
     {
@@ -39557,6 +39811,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ST7ElementQa",
       "text" : "Element"
     },
     {
@@ -39734,6 +39989,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ST7ElementQa",
       "text" : "Element"
     },
     {
@@ -39911,6 +40167,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ST7ElementQa",
       "text" : "Element"
     },
     {
@@ -40088,6 +40345,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ST7ElementQa",
       "text" : "Element"
     },
     {
@@ -41389,6 +41647,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ST7ElementQa",
       "text" : "Element"
     },
     {
@@ -41590,6 +41849,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ST7ElementQa",
       "text" : "Element"
     },
     {
@@ -41791,6 +42051,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ST7ElementQa",
       "text" : "Element"
     },
     {
@@ -41966,6 +42227,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ST7ElementQa",
       "text" : "Element"
     },
     {
@@ -42141,6 +42403,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ST7ElementQa",
       "text" : "Element"
     },
     {
@@ -42323,6 +42586,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ST7ElementQa",
       "text" : "Element"
     },
     {
@@ -42556,6 +42820,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ST7ElementQa",
       "text" : "Element"
     },
     {
@@ -42782,6 +43047,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ST7ElementQa",
       "text" : "Element"
     },
     {
@@ -43008,6 +43274,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ST7ElementQa",
       "text" : "Element"
     },
     {
@@ -43208,6 +43475,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ST7ElementQa",
       "text" : "Element"
     },
     {
@@ -43415,6 +43683,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ST7ElementQa",
       "text" : "Element"
     },
     {
@@ -43615,6 +43884,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:ST7ElementQa",
       "text" : "Element"
     },
     {
@@ -47454,6 +47724,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7SwiftUI13PreferenceKeyP5ValueQa",
       "text" : "Value"
     },
     {
@@ -47722,6 +47993,7 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7SwiftUI13PreferenceKeyP5ValueQa",
       "text" : "Value"
     },
     {

@@ -1,8 +1,28 @@
 //
-//  3_AnimatedStreamDeckLayout.swift
-//  Example App
-//
+//  StreamDeckKit - 3_AnimatedStreamDeckLayout.swift
 //  Created by Christiane Göhring on 21.02.24.
+//
+//  MIT License
+//
+//  Copyright (c) 2024 Corsair Memory Inc.
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
 //
 
 import StreamDeckKit
@@ -54,7 +74,7 @@ struct AnimatedStreamDeckLayout: View {
             }
             .task(id: isPressed) {
                 // Animate the scale effect by applying different scale values over time
-                func apply(_ scale: CGFloat) async {
+                @MainActor func apply(_ scale: CGFloat) async {
                     guard !Task.isCancelled else { return }
                     self.scale = scale
                     try? await Task.sleep(for: .milliseconds(100))
@@ -73,7 +93,7 @@ struct AnimatedStreamDeckLayout: View {
             }
             .task(id: isPressed) {
                 // Animate the rotation effect by applying different rotation degree values over time
-                func apply(_ degree: Double) async {
+                @MainActor func apply(_ degree: Double) async {
                     guard !Task.isCancelled else { return }
                     self.rotationDegree = degree
                     try? await Task.sleep(for: .milliseconds(50))
@@ -128,7 +148,7 @@ struct AnimatedStreamDeckLayout: View {
                 let firstQuarterPosition = calculateCenter(currentPosition, centerPosition)
                 let thirdQuarterPosition = calculateCenter(centerPosition, targetPosition)
 
-                func apply(_ position: CGPoint) async {
+                @MainActor func apply(_ position: CGPoint) async {
                     guard !Task.isCancelled else { return }
                     self.position = position
                     try? await Task.sleep(for: .milliseconds(50))
@@ -187,7 +207,7 @@ struct AnimatedStreamDeckLayout: View {
                 let firstQuarterOffset = calculateCenter(currentOffset, centerOffset)
                 let thirdQuarterOffset = calculateCenter(currentOffset, targetOffset)
 
-                func apply(_ offset: Double) async {
+                @MainActor func apply(_ offset: Double) async {
                     guard !Task.isCancelled else { return }
                     self.offset = offset
                     try? await Task.sleep(for: .milliseconds(50))

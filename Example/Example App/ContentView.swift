@@ -39,6 +39,12 @@ struct ContentView: View {
                     Label("3. Example - Animated", systemImage: "figure.stairs")
                 }
                 .tag(Example.animated)
+            
+            sessionStateView
+                .tabItem {
+                    Label("4. Example - Device Specific", systemImage: "figure.dance")
+                }
+                .tag(Example.deviceSpecific)
         }
     }
 
@@ -48,6 +54,7 @@ struct ContentView: View {
             case .stateless: Text("1. Example - Stateless").font(.title).padding()
             case .stateful: Text("2. Example - Stateful").font(.title).padding()
             case .animated: Text("3. Example - Animated").font(.title).padding()
+            case .deviceSpecific: Text("4. Example - Device Specific").font(.title).padding()
             }
             Text("Stream Deck Connect installation: \(isDriverHostInstalled ? "done" : "not installed")")
             Text("Session State: \(stateDescription)")

@@ -91,6 +91,11 @@ public final class StreamDeckSimulator {
         return windowScene?.first { $0.activationState == .foregroundActive }
     }
 
+    /// Returns whether the Stream Deck simulator overlay is visible.
+    public static var isVisible: Bool {
+        !(shared.window?.isHidden ?? true)
+    }
+
     /// Shows a Stream Deck simulator overlay in the current scene.
     ///
     /// The overlay is contained in a new UIWindow. You will still be able to interact with your application UI.

@@ -39,7 +39,7 @@ struct ContentView: View {
                     Label("3. Example - Animated", systemImage: "figure.stairs")
                 }
                 .tag(Example.animated)
-            
+
             sessionStateView
                 .tabItem {
                     Label("4. Example - Device Specific", systemImage: "figure.dance")

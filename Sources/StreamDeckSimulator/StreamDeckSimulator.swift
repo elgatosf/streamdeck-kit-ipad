@@ -55,6 +55,7 @@ public final class StreamDeckSimulator {
     }
 
     private class PassThroughWindow: UIWindow {
+        override var canBecomeKey: Bool { false }
 
         override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
             // Get view from superclass.

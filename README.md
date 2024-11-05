@@ -176,8 +176,8 @@ You can use Simulator in XCode Previews.
 
 ```swift
 #Preview {
-    StreamDeckSimulator.PreviewView(streamDeck: .mini) {
-        MyStreamDeckLayout()
+    StreamDeckSimulator.PreviewView(streamDeck: .mini) { device in
+        device.render(MyStreamDeckLayout())
     }
 }
 ```

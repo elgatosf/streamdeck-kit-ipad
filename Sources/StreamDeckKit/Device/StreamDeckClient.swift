@@ -63,15 +63,12 @@ final class StreamDeckClient {
             case SDInputEventType_Rotary.rawValue:
                 switch UInt32(event.rotaryEncoders.type) {
                 case SDInputEventRotaryType_Rotate.rawValue:
-                    let buffer = withUnsafeBytes(of: &event.rotaryEncoders.rotate) { rawPtr in
-                        rawPtr.baseAddress!.assumingMemoryBound(to: Int8.self)
+                    let rotationValues = withUnsafeBytes(of: &event.rotaryEncoders.rotate) { rawPtr in
+                        Array(rawPtr.bindMemory(to: Int8.self))
                     }
 
-                    for encoder in 0 ..< Int(event.rotaryEncoders.encoderCount) {
-                        let value = buffer.advanced(by: encoder).pointee
-                        if value != 0 {
-                            inputEventHandler?(.rotaryEncoderRotation(index: encoder, rotation: Int(value)))
-                        }
+                    for (index, value) in rotationValues.enumerated() where value != 0 {
+                        inputEventHandler?(.rotaryEncoderRotation(index: index, rotation: Int(value)))
                     }
                 case SDInputEventRotaryType_Press.rawValue:
                     let current = event.rotaryEncoders.press

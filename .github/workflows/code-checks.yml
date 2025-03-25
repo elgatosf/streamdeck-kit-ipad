@@ -29,12 +29,12 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build Simulator
-        run: set -o pipefail && xcodebuild -scheme StreamDeckSimulator -destination "platform=iOS Simulator,name=iPad Air (5th generation),OS=latest" -skipMacroValidation | xcpretty
+        run: set -o pipefail && xcodebuild -scheme StreamDeckSimulator -destination "platform=iOS Simulator,name=iPad (10th generation),OS=latest" -skipMacroValidation | xcpretty
 
       - name: Build Example 
         run: |
           cd Example
-          set -o pipefail && xcodebuild -scheme "StreamDeckKitExample App" -destination "platform=iOS Simulator,name=iPad Air (5th generation),OS=latest" -skipMacroValidation | xcpretty
+          set -o pipefail && xcodebuild -scheme "StreamDeckKitExample App" -destination "platform=iOS Simulator,name=iPad (10th generation),OS=latest" -skipMacroValidation | xcpretty
 
   test:
     name: Run unit tests

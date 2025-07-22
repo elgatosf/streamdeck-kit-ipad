@@ -38,7 +38,7 @@ public struct StreamDeckProductId: RawRepresentable, Equatable, ExpressibleByInt
     }
 
     public init(integerLiteral value: Int) {
-        self.rawValue = value
+        rawValue = value
     }
 }
 
@@ -65,4 +65,10 @@ public extension StreamDeckProductId {
     static let sd_plus: StreamDeckProductId = 0x0084
     /// Stream Deck Neo
     static let sd_neo: StreamDeckProductId = 0x009A
+    /// Stream Deck MK.2 Module (2025)
+    static let sd_mk2_module: StreamDeckProductId = 0x00B9
+    /// Stream Deck Mini Module (2025)
+    static let sd_mini_module: StreamDeckProductId = 0x00B8
+    /// Stream Deck XL Module (2025)
+    static let sd_xl_module: StreamDeckProductId = 0x00BA
 }

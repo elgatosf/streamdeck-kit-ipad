@@ -29,13 +29,13 @@ import Foundation
 
 /// Stream Deck product type.
 public enum StreamDeckProduct: CaseIterable {
-    /// Stream Deck Mini (6 keys)
+    /// Stream Deck Mini, Stream Deck Mini Module (6 keys)
     case mini
-    /// Stream Deck and Stream Deck MK.2 (15 keys)
+    /// Stream Deck, Stream Deck MK.2, Stream Deck Module (15 keys)
     case regular
     /// Stream Deck Plus (8 keys, 4 dials, window)
     case plus
-    /// Stream Deck XL (32 keys)
+    /// Stream Deck XL, Stream Deck XL Module (32 keys)
     case xl
     /// Stream Deck Pedal (3 keys)
     case pedal
@@ -44,20 +44,19 @@ public enum StreamDeckProduct: CaseIterable {
 
     public init?(productId: Int) {
         switch StreamDeckProductId(rawValue: productId) {
-        case .sd_original, .sd_2019, .sd_mk2, .sd_mk2_scissor:
+        case .sd_original, .sd_2019, .sd_mk2, .sd_mk2_scissor, .sd_mk2_module:
             self = .regular
-        case .sd_mini, .sd_mini_2022:
+        case .sd_mini, .sd_mini_2022, .sd_mini_module:
             self = .mini
         case .sd_plus:
             self = .plus
-        case .sd_xl, .sd_xl_2022:
+        case .sd_xl, .sd_xl_2022, .sd_xl_module:
             self = .xl
         case .sd_pedal:
             self = .pedal
         case .sd_neo:
             self = .neo
-        default:
-            return nil
+        default: return nil
         }
     }
 }

@@ -77,6 +77,13 @@ final class StreamDeckLayoutRenderer {
         log("Layout did change")
         let caps = device.capabilities
 
+        // Devices with a continuous screen (e.g. Plus/Plus XL/Neo) must update
+        // via full-screen frames to keep keys and window in sync.
+        if device.supports(.setScreenImage) {
+            device.setScreenImage(image, scaleAspectFit: false)
+            return
+        }
+
         guard !dirtyViews.isEmpty else {
             log("no dirty views")
             return

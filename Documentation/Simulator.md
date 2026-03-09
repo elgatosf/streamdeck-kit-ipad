@@ -10,7 +10,7 @@ The Stream Deck Simulator is specifically designed as a development tool and is 
     <figcaption>Different simulators for all supported Stream Deck devices, demonstrated in an example app.</figcaption>
 </figure>
 
-The Stream Deck Simulator replicates the behavior of a hardware Stream Deck, triggering key-down and key-up events through touch-down and touch-up inside a key. For the Stream Deck + Simulator, an additional button below each dial simulates the dial-press, and rotation of a dial and touch on the dial area respond to the respective gestures.
+The Stream Deck Simulator replicates the behavior of a hardware Stream Deck, triggering key-down and key-up events through touch-down and touch-up inside a key. For the Stream Deck + and Stream Deck + XL Simulators, an additional button below each dial simulates the dial-press, and rotation of a dial and touch on the dial area respond to the respective gestures.
 
 Moreover, the Stream Deck Simulator employs the same image rendering mechanism used before sending data to a hardware Stream Deck, providing an exact preview of what would be rendered on a real device.
 

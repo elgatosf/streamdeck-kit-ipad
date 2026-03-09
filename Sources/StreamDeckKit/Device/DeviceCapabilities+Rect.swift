@@ -50,11 +50,11 @@ extension DeviceCapabilities {
               let keyAreaHeight = keyAreaRect?.height
         else { return 0 }
 
-        guard let windowHeight = windowRect?.height else { // no window area
+        guard let windowRect else { // no window area
             return screenHeight - (keyAreaTopSpacing + keyAreaHeight)
         }
 
-        return screenHeight - (keyAreaTopSpacing + keyAreaHeight + windowHeight)
+        return windowRect.origin.y - (keyAreaTopSpacing + keyAreaHeight)
     }
 
     public func getKeyRect(_ key: Int) -> CGRect {

@@ -25,6 +25,7 @@ struct DeviceSpecificStreamDeckLayout: View {
         case .xl: StreamDeckXLUI()
         case .neo: StreamDeckNeoUI()
         case .plus: StreamDeckPlusUI()
+        case .plusXL: StreamDeckPlusUI()
         case .pedal: StreamDeckPedalUI()
         default: StreamDeckRegularUI()
         }

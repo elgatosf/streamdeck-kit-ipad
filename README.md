@@ -8,7 +8,7 @@ Stream Deck Kit is a Swift Library for controlling physical [Elgato Stream Deck]
 
 ## Features
 
-The Stream Deck for iPad SDK is tailored for a seamless plug-and-play experience on iPadOS. Here, your application takes control when it comes to the foreground, dictating the appearance and functions of the Stream Deck's buttons, and for the Stream Deck +, managing its rotary knobs and touchscreen interactions.
+The Stream Deck for iPad SDK is tailored for a seamless plug-and-play experience on iPadOS. Here, your application takes control when it comes to the foreground, dictating the appearance and functions of the Stream Deck's buttons, and for the Stream Deck + and Stream Deck + XL, managing its rotary knobs and touchscreen interactions.
 
 All Stream Deck devices:
 - Handle key up/down events
@@ -109,8 +109,8 @@ struct MyFirstStreamDeckLayout: View {
             }.background(.purple)
         } windowArea: {
             // Define window area
-            if streamDeck.info.product == .plus {
-                // Use StreamDeckDialAreaLayout for Stream Deck +
+            if streamDeck.info.product == .plus || streamDeck.info.product == .plusXL {
+                // Use StreamDeckDialAreaLayout for Stream Deck + and Stream Deck + XL
                 StreamDeckDialAreaLayout { dialIndex in
                     // Define content for each dial
                     // StreamDeckDialAreaLayout provides an index for each available dial,

@@ -41,6 +41,8 @@ public enum StreamDeckProduct: CaseIterable {
     case pedal
     /// Stream Deck Neo (8 keys, 2 touch keys, windowl)
     case neo
+    /// Stream Deck + XL (36 keys, 6 dials, window)
+    case plusXL
 
     public init?(productId: Int) {
         switch StreamDeckProductId(rawValue: productId) {
@@ -56,6 +58,8 @@ public enum StreamDeckProduct: CaseIterable {
             self = .pedal
         case .sd_neo:
             self = .neo
+        case .sd_plusXL:
+            self = .plusXL
         default: return nil
         }
     }

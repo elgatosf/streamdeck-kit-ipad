@@ -98,7 +98,7 @@ public struct StreamDeckLayout<KeyArea: View, WindowArea: View>: View {
                     .environment(\.streamDeckViewContext, windowContext)
             }
         }
-        .frame(width: context.size.width, height: context.size.height)
+        .frame(width: context.size.width, height: context.size.height, alignment: .topLeading)
         .onChange(of: _nextID) { _ in
             context.updateRequired()
         }

@@ -23,7 +23,7 @@ To begin, check out the repository or read the [Getting Started](GettingStarted.
 
 ## Concept
 
-In contrast to the iconic Stream Deck application on Desktop, which serves as a centralized hub for users to configure their Stream Deck(s), the Stream Deck for iPad SDK is tailored for a seamless plug-and-play experience on iPadOS. Here, your application takes control when it comes to the foreground, dictating the appearance and functions of the Stream Deck's buttons, and for the Stream Deck +, managing its rotary knobs and touchscreen interactions.
+In contrast to the iconic Stream Deck application on Desktop, which serves as a centralized hub for users to configure their Stream Deck(s), the Stream Deck for iPad SDK is tailored for a seamless plug-and-play experience on iPadOS. Here, your application takes control when it comes to the foreground, dictating the appearance and functions of the Stream Deck's buttons, and for the Stream Deck + and Stream Deck + XL, managing its rotary knobs and touchscreen interactions.
 
 Our Stream Deck for iPad SDK is designed for easy integration into your iPad app, ensuring a smooth development process. Detailed documentation, examples and support from the Elgato Mobile Apps development team are provided to facilitate a hassle-free implementation.
 

@@ -45,21 +45,27 @@ extension StreamDeck {
             newSize.width = floor(newSize.width)
             newSize.height = floor(newSize.height)
 
-            // Move origin to middle
+            // Move to output center, apply rotation/flip, then move to input center.
             context.cgContext.translateBy(x: newSize.width / 2, y: newSize.height / 2)
-            // Apply transformation
             context.cgContext.concatenate(transform)
+            context.cgContext.translateBy(x: -size.width / 2, y: -size.height / 2)
 
             context.cgContext.setFillColor(UIColor.black.cgColor)
-            context.fill(.init(origin: .zero.translatedByHalf(of: newSize), size: size))
+            context.fill(.init(origin: .zero, size: size))
 
-            let rect = image.drawingRect(resizedTo: newSize, scaleAspectFit: scaleAspectFit)
-            image.draw(in: CGRect(origin: rect.origin.translatedByHalf(of: newSize), size: rect.size))
+            let rect = image.drawingRect(resizedTo: size, scaleAspectFit: scaleAspectFit)
+            image.draw(in: rect)
         }
     }
 
     func transform(_ image: UIImage, size: CGSize, scaleAspectFit: Bool) -> Data? {
-        let renderer = renderer(size: size)
+        var transformedSize = CGRect(origin: .zero, size: size)
+            .applying(capabilities.transform)
+            .size
+        transformedSize.width = floor(transformedSize.width)
+        transformedSize.height = floor(transformedSize.height)
+
+        let renderer = renderer(size: transformedSize)
         let action = Self.transformDrawingAction(
             image: image,
             size: size,
@@ -123,11 +129,5 @@ private extension UIImage {
             CGImageDestinationFinalize(imageDestination)
             return data as Data
         }
-    }
-}
-
-private extension CGPoint {
-    func translatedByHalf(of size: CGSize) -> CGPoint {
-        .init(x: x - (size.width / 2), y: y - (size.height / 2))
     }
 }

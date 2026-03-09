@@ -42,6 +42,7 @@ extension StreamDeckProduct: Identifiable {
         case .xl: return .sd_xl_2022
         case .pedal: return .sd_pedal
         case .neo: return .sd_neo
+        case .plusXL: return .sd_plusXL
         }
     }
 
@@ -53,6 +54,7 @@ extension StreamDeckProduct: Identifiable {
         case .xl: return "SD XL Simulator"
         case .pedal: return "SD Pedal Simulator"
         case .neo: return "SD Neo Simulator"
+        case .plusXL: return "SD+ XL Simulator"
         }
     }
 
@@ -64,6 +66,7 @@ extension StreamDeckProduct: Identifiable {
         case .xl: return "XL"
         case .pedal: return "Pedal"
         case .neo: return "Neo"
+        case .plusXL: return "Plus XL"
         }
     }
 
@@ -216,6 +219,43 @@ extension StreamDeckProduct: Identifiable {
                     .fillScreen,
                     .fillKey,
                     .keyPressEvents
+                ]
+            )
+        case .plusXL:
+            return DeviceCapabilities(
+                keyCount: 36,
+                keySize: .init(width: 112, height: 112),
+                keyRows: 4,
+                keyColumns: 9,
+                dialCount: 6,
+                screenSize: .init(width: 1280, height: 800),
+                keyAreaRect: .init(
+                    x: 11,
+                    y: 32,
+                    width: 112 * 9 + 31 * 8,
+                    height: 112 * 4 + 32 * 3
+                ),
+                windowRect: .init(
+                    x: 40,
+                    y: 674,
+                    width: 1200,
+                    height: 100
+                ),
+                keyHorizontalSpacing: 31,
+                keyVerticalSpacing: 32,
+                imageFormat: .jpeg,
+                features: [
+                    .setBrightness,
+                    .setKeyImage,
+                    .setScreenImage,
+                    .setWindowImage,
+                    .setWindowImageAtXY,
+                    .fillScreen,
+                    .fillKey,
+                    .keyPressEvents,
+                    .rotaryEvents,
+                    .touchEvents,
+                    .flingEvents
                 ]
             )
         }

@@ -40,6 +40,7 @@ struct DeviceSpecificStreamDeckLayout: View {
         case .xl: StreamDeckXLUI()
         case .neo: StreamDeckNeoUI()
         case .plus: StreamDeckPlusUI()
+        case .plusXL: StreamDeckPlusUI()
         case .pedal: StreamDeckPedalUI()
         default: StreamDeckRegularUI()
         }
@@ -226,6 +227,12 @@ import StreamDeckSimulator
             }
 
             StreamDeckSimulator.PreviewView(streamDeck: .pedal) { device in
+                device.render(DeviceSpecificStreamDeckLayout())
+            }
+        }
+
+        GridRow {
+            StreamDeckSimulator.PreviewView(streamDeck: .plusXL) { device in
                 device.render(DeviceSpecificStreamDeckLayout())
             }
         }

@@ -71,4 +71,6 @@ public extension StreamDeckProductId {
     static let sd_mini_module: StreamDeckProductId = 0x00B8
     /// Stream Deck XL Module (2025)
     static let sd_xl_module: StreamDeckProductId = 0x00BA
+    /// Stream Deck + XL
+    static let sd_plusXL: StreamDeckProductId = 0x00C6
 }

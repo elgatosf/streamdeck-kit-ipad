@@ -134,6 +134,13 @@ extension StreamDeckSimulatorView {
                 baseScaleMultiplier: 0.70,
                 yTransformBaseScaleMultiplier: 51
             )
+        case .plusXL:
+            return create(
+                bezelImageAspectRatio: 1472.0 / 1320.0,
+                bezelImageName: "SD+XLBlackTemplate",
+                baseScaleMultiplier: 0.845,
+                yTransformBaseScaleMultiplier: -2.5
+            )
         default: fatalError("Unexpected simulator model")
         }
     }
@@ -162,7 +169,7 @@ private extension StreamDeckSimulatorView {
                         if device.capabilities.dialCount != 0 {
                             dialControls
                                 .frame(
-                                    width: metrics.size.width * 0.74,
+                                    width: metrics.size.width * (config.device.info.product == .plusXL ? 0.82 : 0.74),
                                     height: metrics.size.height * 0.27
                                 )
                                 .background(showDeviceBezels ? .clear : .black)
@@ -181,7 +188,7 @@ private extension StreamDeckSimulatorView {
                 SimulatorKeyView(client: client, index: keyIndex)
             }
         } windowArea: {
-            if config.device.info.product == .plus {
+            if config.device.info.product == .plus || config.device.info.product == .plusXL {
                 StreamDeckDialAreaLayout { _ in
                     SimulatorDialTouchView(client: client)
                 }
@@ -217,7 +224,7 @@ private extension StreamDeckSimulatorView {
                 }
             }
         } windowArea: {
-            if config.device.info.product == .plus {
+            if config.device.info.product == .plus || config.device.info.product == .plusXL {
                 StreamDeckDialAreaLayout { _ in
                     SimulatorDialTouchView(client: nil)
                         .background {
@@ -238,7 +245,10 @@ private extension StreamDeckSimulatorView {
     @ViewBuilder
     var dialControls: some View {
         GeometryReader { metrics in
-            HStack(spacing: metrics.size.width * 0.14) {
+            let isPlusXL = config.device.info.product == .plusXL
+            let interDialSpacing = isPlusXL ? 0.05 : 0.14
+            let dialWidth = isPlusXL ? 0.125 : 0.145
+            HStack(spacing: metrics.size.width * interDialSpacing) {
                 ForEach(0 ..< device.capabilities.dialCount, id: \.self) { index in
                     VStack {
                         SimulatorDialView { rotation in
@@ -248,7 +258,7 @@ private extension StreamDeckSimulatorView {
                             client.emit(.rotaryEncoderPress(index: index, pressed: pressed))
                         }
                     }
-                    .frame(width: metrics.size.width * 0.145)
+                    .frame(width: metrics.size.width * dialWidth)
                 }
             }
         }

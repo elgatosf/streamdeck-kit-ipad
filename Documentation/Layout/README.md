@@ -25,7 +25,7 @@ StreamDeckLayout
 </figure>
 
 {% hint style="info" %}
-The window area is only available for the Stream Deck + and Stream Deck Neo, and will be ignored for other device types. For the Stream Deck Neo, the window area corresponds to the info panel only, excluding the touch buttons. 
+The window area is only available for the Stream Deck +, Stream Deck + XL, and Stream Deck Neo, and will be ignored for other device types. For the Stream Deck Neo, the window area corresponds to the info panel only, excluding the touch buttons. 
 {% endhint %}
 
 ## Usage
@@ -66,8 +66,8 @@ struct StatelessStreamDeckLayout: View {
             }.background(.purple)
         } windowArea: {
             // Define window area
-            if streamDeck.info.product == .plus {
-                // Use StreamDeckDialAreaLayout for Stream Deck +
+            if streamDeck.info.product == .plus || streamDeck.info.product == .plusXL {
+                // Use StreamDeckDialAreaLayout for Stream Deck + and Stream Deck + XL
                 StreamDeckDialAreaLayout { dialIndex in
                     // Define content for each dial
                     // StreamDeckDialAreaLayout provides an index for each available dial,

@@ -118,6 +118,12 @@ final class StreamDeckClient {
 
     private var notificationPort: IONotificationPortRef?
 
+    /// Guards the IOKit handles. `close()` is reached from three places that can
+    /// run concurrently: the input-event callback on the main run loop, the
+    /// session's error handler, and the device's `.close` operation on its own
+    /// task; each handle must be released at most once.
+    private let handleLock = NSLock()
+
     init(service: io_service_t) {
         self.service = service
     }
@@ -133,18 +139,29 @@ final class StreamDeckClient {
     }
 
     func close() {
+        let (connection, service, notificationPort) = handleLock.withLock {
+            let snapshot = (self.connection, self.service, self.notificationPort)
+            self.connection = IO_OBJECT_NULL
+            self.service = IO_OBJECT_NULL
+            self.notificationPort = nil
+            return snapshot
+        }
+
         if connection != IO_OBJECT_NULL {
             IOServiceClose(connection)
             IOObjectRelease(connection)
-            connection = IO_OBJECT_NULL
         }
         if service != IO_OBJECT_NULL {
             IOObjectRelease(service)
-            service = IO_OBJECT_NULL
         }
-        if notificationPort != nil {
-            IONotificationPortDestroy(notificationPort)
-            notificationPort = nil
+        if let notificationPort {
+            // The port's run-loop source is scheduled on the main run loop, and
+            // this may be running inside that source's own callout (the input
+            // callback closes on error). Destroying it there frees memory the
+            // callout still touches on return, so defer to the next main-loop turn.
+            DispatchQueue.main.async {
+                IONotificationPortDestroy(notificationPort)
+            }
         }
     }
 
@@ -261,9 +278,14 @@ final class StreamDeckClient {
 
     @MainActor
     private func subscribeToInputEvents() {
-        guard notificationPort == nil else { return }
+        let subscription: (port: IONotificationPortRef?, connection: io_connect_t)? = handleLock.withLock {
+            guard self.notificationPort == nil, self.connection != IO_OBJECT_NULL else { return nil }
+            let port = IONotificationPortCreate(kIOMainPortDefault)
+            self.notificationPort = port
+            return (port, self.connection)
+        }
+        guard case let (notificationPort, connection)? = subscription else { return }
 
-        notificationPort = IONotificationPortCreate(kIOMainPortDefault)
         let runLoopSource = IONotificationPortGetRunLoopSource(notificationPort).takeUnretainedValue()
         let machNotificationPort = IONotificationPortGetMachPort(notificationPort)
         CFRunLoopAddSource(RunLoop.main.getCFRunLoop(), runLoopSource, .defaultMode)
